@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 
 class TodoListItem extends Component {
     listItemStyle = () => {
@@ -14,11 +15,31 @@ class TodoListItem extends Component {
         }
     }
 
+    renderCompleted = () => {
+        return this.props.completed ? 
+            <FaCheckCircle
+                style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}}
+            />
+            :
+            <FaRegCircle
+                style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}}
+            />
+    }
+
     render() {
         const { item } = this.props;
         return ( 
             <div style={ this.listItemStyle() }>
-                { item }
+
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    { this.renderCompleted() } 
+
+                    <span>
+                        <div>
+                            { item }
+                        </div>
+                    </span>
+                </div>
             </div>
         );
     }
