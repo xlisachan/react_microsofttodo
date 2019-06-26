@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import data from './data.json';
 import TDHeader from './components/TDHeader';
+import ToDoListItem from './components/ToDoListItem';
 
 class App extends Component {
     state = data
@@ -50,6 +51,20 @@ class App extends Component {
                     listTitle={ this.state.listTitle }
                     date={ this.state.todays_date }
                 />
+
+                <div style={{position: 'relative', top: '10px', fontSize: '1rem'}}>
+                    { 
+                        this.state.tasks.map(task => {
+                            return (
+                                <ToDoListItem 
+                                    key={ task.task_id }
+                                    { ... task }
+                                />
+                            )
+                        })
+                    }
+                </div>
+
             </div>
         );
     }
