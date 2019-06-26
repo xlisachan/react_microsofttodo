@@ -19,10 +19,12 @@ class TodoListItem extends Component {
         return this.props.completed ? 
             <FaCheckCircle
                 style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}}
+                onClick={this.props.toggleCompleted.bind(this, this.props.task_id)}
             />
             :
             <FaRegCircle
                 style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}}
+                onClick={this.props.toggleCompleted.bind(this, this.props.task_id)}
             />
     }
 
