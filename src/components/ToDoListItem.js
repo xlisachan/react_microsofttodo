@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
+import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
 
 class TodoListItem extends Component {
     listItemStyle = () => {
@@ -21,6 +21,13 @@ class TodoListItem extends Component {
         return {
             color: this.props.completed ? 'dimgray' : 'black',
             textDecoration: this.props.completed ? 'line-through' : 'none'
+        }
+    }
+
+    listItemDetail = () => {
+        return {
+            fontSize: '.9rem',
+            color: this.props.completed ? 'darkgray' : 'dimgray'
         }
     }
 
@@ -51,7 +58,7 @@ class TodoListItem extends Component {
     }
 
     render() {
-        const { item } = this.props;
+        const { item, list, date_due } = this.props;
         return ( 
             <div 
                 style={ this.listItemStyle() }
@@ -64,6 +71,28 @@ class TodoListItem extends Component {
                     <span>
                         <div style={ this.listItem() }>
                             { item }
+                        </div>
+
+                        <div style={ this.listItemDetail() }>
+                            <span style={{color: 'royalblue', display: this.props.listTitle !== "My Day" && this.props.my_day === true ? 'inline' : 'none'}}>
+                                <FaRegSun style={{fontSize: '.9rem'}} /> My Day
+                            </span>
+
+                            <span style={{display: (this.props.listTitle !== "My Day" && this.props.my_day === true && this.props.list === "Tasks" && this.props.listTitle !== "Tasks") ? 'inline' : 'none'}}>
+                                {'  '} &middot; {'  '}
+                            </span>
+
+                            <span style={{display: this.props.list === "Tasks" && this.props.listTitle !== "Tasks" ? 'inline' : 'none'}}>
+                                { list }  
+                            </span>
+                            
+                            <span style={{display: (this.props.list === "Tasks" && date_due) ? 'inline' : 'none' }}>
+                                {'  '} &middot; {'  '}
+                            </span>
+
+                            <span style={{display: date_due ? 'inline' : 'none'}}>
+                                <FaRegCalendar style={{fontSize: '.9rem'}} /> { date_due }
+                            </span>
                         </div>
                     </span>
                 </div>
