@@ -15,6 +15,13 @@ class TodoListItem extends Component {
         }
     }
 
+    listItem = () => {
+        return {
+            color: this.props.completed ? 'dimgray' : 'black',
+            textDecoration: this.props.completed ? 'line-through' : 'none'
+        }
+    }
+
     renderCompleted = () => {
         return this.props.completed ? 
             <FaCheckCircle
@@ -50,7 +57,7 @@ class TodoListItem extends Component {
                     { this.renderCompleted() } 
 
                     <span>
-                        <div>
+                        <div style={ this.listItem() }>
                             { item }
                         </div>
                     </span>
@@ -63,5 +70,5 @@ class TodoListItem extends Component {
         );
     }
 }
- 
+
 export default TodoListItem;
