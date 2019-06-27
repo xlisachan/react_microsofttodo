@@ -11,7 +11,9 @@ class TodoListItem extends Component {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '10px 20px',
-            borderBottom: '1px solid gainsboro'
+            borderBottom: '1px solid gainsboro',
+            backgroundColor: this.props.moreInfo.task_id === this.props.task_id ? 'whitesmoke' : null,
+            borderRadius: this.props.moreInfo.task_id === this.props.task_id ? 10 : null
         }
     }
 
@@ -51,7 +53,10 @@ class TodoListItem extends Component {
     render() {
         const { item } = this.props;
         return ( 
-            <div style={ this.listItemStyle() }>
+            <div 
+                style={ this.listItemStyle() }
+                onClick={ this.props.toggleMoreInfo.bind(this, this.props) }
+                >
 
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     { this.renderCompleted() } 

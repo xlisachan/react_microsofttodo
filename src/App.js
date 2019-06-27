@@ -66,6 +66,12 @@ class App extends Component {
       })
     }
 
+    toggleMoreInfo = task => {
+      this.setState({
+          moreInfo: task
+      })
+    }
+
     render() {
         return (
             <div>
@@ -81,8 +87,10 @@ class App extends Component {
                                 <ToDoListItem 
                                     key={ task.task_id }
                                     { ... task }
+                                    moreInfo={ this.state.moreInfo }
                                     toggleCompleted={ this.toggleCompleted }
                                     toggleImportant={ this.toggleImportant }
+                                    toggleMoreInfo={ this.toggleMoreInfo }
                                 />
                             )
                         })
