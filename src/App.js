@@ -55,6 +55,17 @@ class App extends Component {
       })
     }
 
+    toggleImportant = id => {
+      this.setState({
+          tasks: this.state.tasks.map(task => {
+              if (task.task_id === id) {
+                  task.important = !task.important
+              }
+              return task;
+          })
+      })
+    }
+
     render() {
         return (
             <div>
@@ -71,6 +82,7 @@ class App extends Component {
                                     key={ task.task_id }
                                     { ... task }
                                     toggleCompleted={ this.toggleCompleted }
+                                    toggleImportant={ this.toggleImportant }
                                 />
                             )
                         })

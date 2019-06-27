@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 
 class TodoListItem extends Component {
     listItemStyle = () => {
@@ -28,6 +28,19 @@ class TodoListItem extends Component {
             />
     }
 
+    renderImportant = () => {
+        return this.props.important ? 
+            <FaStar 
+                style={{fontSize: '1.5rem', color: 'royalblue'}}
+                onClick={this.props.toggleImportant.bind(this, this.props.task_id)}
+            />
+            :
+            <FaRegStar
+                style={{fontSize: '1.5rem', color: 'gray'}}
+                onClick={this.props.toggleImportant.bind(this, this.props.task_id)}
+            />
+    }
+
     render() {
         const { item } = this.props;
         return ( 
@@ -41,6 +54,10 @@ class TodoListItem extends Component {
                             { item }
                         </div>
                     </span>
+                </div>
+
+                <div>
+                    { this.renderImportant() }
                 </div>
             </div>
         );
