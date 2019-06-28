@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import data from './data.json';
-import TDHeader from './components/TDHeader';
-import ToDoListItem from './components/ToDoListItem';
-import ToDoAddItem from './components/ToDoAddItem';
+import ResponsiveDrawer from './components/ResponsiveDrawer';
 import uuid from 'uuid';
 
 class App extends Component {
@@ -97,33 +95,16 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <TDHeader
-                    listTitle={ this.state.listTitle }
-                    date={ this.state.todays_date }
-                />
-
-                <div style={{position: 'relative', top: '10px', fontSize: '1rem'}}>
-                    { 
-                        this.state.tasks.map(task => {
-                            return (
-                                <ToDoListItem 
-                                    key={ task.task_id }
-                                    { ... task }
-                                    moreInfo={ this.state.moreInfo }
-                                    toggleCompleted={ this.toggleCompleted }
-                                    toggleImportant={ this.toggleImportant }
-                                    toggleMoreInfo={ this.toggleMoreInfo }
-                                />
-                            )
-                        })
-                    }
-                </div>
-
-            <ToDoAddItem
-              addTask={ this.addTask } />
-
-            </div>
+            <ResponsiveDrawer 
+                listTitle={ this.state.listTitle }
+                date={ this.state.todays_date }
+                tasks={ this.state.tasks }
+                moreInfo={ this.state.moreInfo }
+                toggleCompleted={ this.toggleCompleted }
+                toggleImportant={ this.toggleImportant }
+                toggleMoreInfo={ this.toggleMoreInfo }
+                addTask={ this.addTask }
+          />
         );
     }
 }
