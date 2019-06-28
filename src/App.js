@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import data from './data.json';
 import TDHeader from './components/TDHeader';
 import ToDoListItem from './components/ToDoListItem';
+import ToDoAddItem from './components/ToDoAddItem';
 
 class App extends Component {
     state = data
@@ -72,6 +73,32 @@ class App extends Component {
       })
     }
 
+    nextId = () => {
+      this.uniqueId = this.uniqueId || 4
+      return this.uniqueId++
+    }
+
+    addTask = item => {
+      this.setState(prevState => ({
+        tasks: [
+          ...prevState.tasks,
+          {
+            "task_id": this.nextId(),
+            item,
+            "list": "Tasks",
+            "completed": false,
+            "moreInfo": false,
+            "date_created": "",
+            "date_due": "",
+            "my_day": true,
+            "planned": false,
+            "important": false,
+            "tasks": false
+          }
+        ]
+      }))
+    }
+
     render() {
         return (
             <div>
@@ -96,6 +123,9 @@ class App extends Component {
                         })
                     }
                 </div>
+
+            <ToDoAddItem
+              addTask={ this.addTask } />
 
             </div>
         );
