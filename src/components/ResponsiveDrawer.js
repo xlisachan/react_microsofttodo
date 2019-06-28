@@ -91,6 +91,14 @@ export default function ResponsiveDrawer(props) {
 
                             <ListItemText primary={text} />
                         </div>
+
+                        <div style={{color: 'gray'}}>
+                            { 
+                                props.tasks.filter(task => {
+                                    return task[`${ text.toLowerCase().replace(/ /g,"_") }`]
+                                }).length
+                            }
+                        </div>
                     </ListItem>
                 ))}
             </List>
