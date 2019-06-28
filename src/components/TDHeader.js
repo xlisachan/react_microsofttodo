@@ -1,17 +1,8 @@
 import React from 'react';
 
-const TDHeader= props => {
+const TDHeader = props => {
     return (
-        <div style={{ 
-            padding: '1rem 2rem',
-            width: '100%',
-            height: 90,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            backgroundColor: 'rgb(80, 40, 250)',
-            color: 'white'
-        }}>
+        <header style={ headerStyle }>
 
             <div>
                 <div style={{fontSize: '1.8rem', fontWeight: 'bold'}}>
@@ -22,8 +13,19 @@ const TDHeader= props => {
                     { props.date }
                 </span>
             </div>
-        </div>
+        </header>
     );
+}
+
+const headerStyle = {
+    padding: '1rem 2rem',
+    width: '100%',
+    height: 90,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgb(80, 40, 250)',
+    color: 'white'
 }
  
 export default TDHeader;
