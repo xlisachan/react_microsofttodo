@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ResponsiveDrawer(props) {
-    const { container, listTitle, date, moreInfo, toggleCompleted, toggleImportant, toggleMoreInfo, addTask } = props;
+    const { container, listTitle, date, moreInfo, getListTitle, toggleCompleted, toggleImportant, toggleMoreInfo, addTask } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -73,7 +73,10 @@ export default function ResponsiveDrawer(props) {
                         style={{
                             display: 'flex', 
                             alignItems: 'center', 
-                        }}>
+                            justifyContent: 'space-between', 
+                            backgroundColor: listTitle === text ? 'gainsboro' : null
+                        }}
+                        onClick={ () => getListTitle(text) }>
 
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <ListItemIcon 

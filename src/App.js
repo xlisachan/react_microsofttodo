@@ -93,6 +93,12 @@ class App extends Component {
       }))
     }
 
+    getListTitle = listTitle => {
+      this.setState({
+        listTitle: listTitle
+      })
+    }
+
     render() {
         return (
             <ResponsiveDrawer 
@@ -104,6 +110,7 @@ class App extends Component {
                 toggleImportant={ this.toggleImportant }
                 toggleMoreInfo={ this.toggleMoreInfo }
                 addTask={ this.addTask }
+                getListTitle={ this.getListTitle }
           />
         );
     }
