@@ -3,7 +3,6 @@ import React from 'react';
 const TDHeader = props => {
     return (
         <header style={ headerStyle }>
-
             <div>
                 <div style={{fontSize: '1.8rem', fontWeight: 'bold'}}>
                     { props.listTitle }
@@ -20,7 +19,7 @@ const TDHeader = props => {
 const headerStyle = {
     padding: '1rem 2rem',
     width: '100%',
-    height: 90,
+    height: 120,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
