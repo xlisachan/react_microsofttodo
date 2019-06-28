@@ -15,11 +15,13 @@ class AddTask extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        this.props.addTask(this.state.item);
+        if (this.state.item) {
+            this.props.addTask(this.state.item);
 
-        this.setState({
-            item: ""
-        })
+            this.setState({
+                item: ""
+            })
+        }
     }
 
     render() {
