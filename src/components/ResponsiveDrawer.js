@@ -84,7 +84,7 @@ export default function ResponsiveDrawer(props) {
                                     marginRight: -15, 
                                     fontSize: '1.5rem', 
                                     color: 'royalblue'
-                                    }}>
+                                }}>
 
                                 { listIcons[index] }
                             </ListItemIcon>
@@ -159,7 +159,9 @@ export default function ResponsiveDrawer(props) {
 
                 <div style={{position: 'relative', top: 40}}>
                     { 
-                        props.tasks.map(task => {
+                        props.tasks.filter(task => {
+                            return task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
+                        }).map(task => {
                             return (
                                 <ToDoListItem 
                                     key={ task.task_id }
