@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaRegCircle, FaPlus } from 'react-icons/fa';
 
 class AddTask extends Component {
     state = {
@@ -10,6 +10,13 @@ class AddTask extends Component {
         this.setState({
             item : e.target.value,
         })
+    }
+
+    handleButtonChange = () => {
+        return this.state.item.length > 0 ? 
+            <FaRegCircle style={{color: 'gray'}}/> 
+            :
+            <FaPlus style={{color: 'royalblue'}} />
     }
 
     onSubmit = e => {
@@ -29,7 +36,7 @@ class AddTask extends Component {
             <form style={ addItemStyle } onSubmit={ this.onSubmit }>
 
                 <button style={ buttonStyle } type="submit">
-                    <FaPlus />
+                    { this.handleButtonChange() }
                 </button>
                 
                 <input
@@ -48,15 +55,16 @@ class AddTask extends Component {
 const addItemStyle = {
     width: '100%',
     height: 60,
-    margin: '0 auto',
+    margin: '10px auto',
     display: 'flex',
     alignItems: 'center',
-    padding: '10px 20px',
+    padding: '10px 13px',
     borderBottom: '1px solid gainsboro',
 }
 
 const buttonStyle = {
-    color: 'royalblue',
+    fontSize: '1.5rem',
+    marginRight: 5,
     background: 'transparent',
     border: 'none'
 }
