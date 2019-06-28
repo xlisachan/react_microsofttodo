@@ -3,6 +3,7 @@ import data from './data.json';
 import TDHeader from './components/TDHeader';
 import ToDoListItem from './components/ToDoListItem';
 import ToDoAddItem from './components/ToDoAddItem';
+import uuid from 'uuid';
 
 class App extends Component {
     state = data
@@ -73,17 +74,12 @@ class App extends Component {
       })
     }
 
-    nextId = () => {
-      this.uniqueId = this.uniqueId || 4
-      return this.uniqueId++
-    }
-
     addTask = item => {
       this.setState(prevState => ({
         tasks: [
           ...prevState.tasks,
           {
-            "task_id": this.nextId(),
+            "task_id": uuid.v4(),
             item,
             "list": "Tasks",
             "completed": false,
