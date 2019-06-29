@@ -55,7 +55,7 @@ class AddTask extends Component {
 const addItemStyle = {
     width: '100%',
     height: 60,
-    margin: '10px auto',
+    margin: '0px auto',
     display: 'flex',
     alignItems: 'center',
     padding: '10px 13px',
