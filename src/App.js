@@ -10,6 +10,19 @@ class App extends Component {
       this.setState({
           todays_date: this.getHeaderDate(this.getDate())
       });
+
+      this.setState({
+        tasks: this.state.tasks.map(task => {
+            (
+              task.date_created === this.getTodaysDate(this.getDate()) ||
+              task.date_due === this.getTodaysDate(this.getDate())
+            ) ?
+              task.my_day = true
+              :
+              task.my_day = false
+            return task;
+        })
+      })
     }
 
     getDate = () => {
@@ -60,19 +73,21 @@ class App extends Component {
       return date.weekday + ', ' + date.month + ' ' + date.day;
     }
 
-    getDateCreated = date => {
-      return date.newDate;
+    getFormatDate = date => {
+      return date.weekday.substr(0,3) + ' ' + date.month.substr(0,3) + ' ' + date.day + ' ' + date.year;
     }
 
-    getListItemDate = date => {
-      return date.weekday.substr(0,3) + ', ' + date.month.substr(0,3) + ' ' + date.day;
+    getTodaysDate = date => {
+      return date.weekday.substr(0,3) + ' ' + date.month.substr(0,3) + ' ' + date.day + ' ' + date.year 
     }
 
     toggleCompleted = id => {
       this.setState({
           tasks: this.state.tasks.map(task => {
               if (task.task_id === id) {
-                  task.completed = !task.completed
+                  task.completedStatus = !task.completedStatus
+                  task.important = false
+                  task.planned = false
               }
               return task;
           })
@@ -83,6 +98,7 @@ class App extends Component {
       this.setState({
           tasks: this.state.tasks.map(task => {
               if (task.task_id === id) {
+                  task.importantStatus = !task.importantStatus
                   task.important = !task.important
               }
               return task;
@@ -104,11 +120,12 @@ class App extends Component {
             "task_id": uuid.v4(),
             item,
             "list": "Tasks",
-            "completed": false,
+            "completedStatus": false,
+            "importantStatus": false,
             "moreInfo": false,
-            "date_created": this.getDateCreated(this.getDate()),
+            "date_created_full": this.getDate(),
+            "date_created": this.getFormatDate(this.getDate()),
             "date_due": "",
-            "date_display": this.getListItemDate(this.getDate()),
             "my_day": true,
             "planned": false,
             "important": false,
