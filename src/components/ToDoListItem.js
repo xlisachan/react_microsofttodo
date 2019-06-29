@@ -19,20 +19,20 @@ class TodoListItem extends Component {
 
     listItem = () => {
         return {
-            color: this.props.completed ? 'dimgray' : 'black',
-            textDecoration: this.props.completed ? 'line-through' : 'none'
+            color: this.props.completedStatus ? 'dimgray' : 'black',
+            textDecoration: this.props.completedStatus ? 'line-through' : 'none'
         }
     }
 
     listItemDetail = () => {
         return {
-            fontSize: '.9rem',
-            color: this.props.completed ? 'darkgray' : 'dimgray'
+            fontSize: '.8rem',
+            color: this.props.completedStatus ? 'darkgray' : 'dimgray'
         }
     }
 
     renderCompleted = () => {
-        return this.props.completed ? 
+        return this.props.completedStatus ? 
             <FaCheckCircle
                 style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}}
                 onClick={this.props.toggleCompleted.bind(this, this.props.task_id)}
@@ -45,7 +45,7 @@ class TodoListItem extends Component {
     }
 
     renderImportant = () => {
-        return this.props.important ? 
+        return this.props.importantStatus ? 
             <FaStar 
                 style={{fontSize: '1.5rem', color: 'royalblue'}}
                 onClick={this.props.toggleImportant.bind(this, this.props.task_id)}
@@ -86,7 +86,11 @@ class TodoListItem extends Component {
                                 { list }  
                             </span>
                             
-                            <span style={{display: (this.props.list === "Tasks" && date_due) ? 'inline' : 'none' }}>
+                            <span style={{display: (this.props.list === "Tasks" && this.props.listTitle !== "Tasks" && date_due) ? 'inline' : 'none' }}>
+                                {'  '} &middot; {'  '}
+                            </span>
+
+                            <span style={{ display: (this.props.listTitle !== "My Day" && this.props.my_day === true && date_due) ? 'inline' : 'none' }}>
                                 {'  '} &middot; {'  '}
                             </span>
 
