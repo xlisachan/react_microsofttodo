@@ -11,8 +11,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Header from '../containers/Main/Header';
-// import ToDoListItem from './ToDoListItem';
-// import ToDoAddItem from './ToDoAddItem';
+import ListBody from '../containers/Main/ListBody';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
 const drawerWidth = 240;
@@ -154,29 +153,8 @@ export default function ResponsiveDrawer(props) {
 
                 <div className={classes.toolbar} />
 
-                {/* <div style={{position: 'relative', top: 40}}>
-                    { 
-                        props.tasks.filter(task => {
-                            return task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
-                        }).map(task => {
-                            return (
-                                <ToDoListItem 
-                                    key={ task.task_id }
-                                    { ... task }
-                                    listTitle={ listTitle }
-                                    moreInfo={ moreInfo }
-                                    toggleCompleted={ toggleCompleted }
-                                    toggleImportant={ toggleImportant }
-                                    toggleMoreInfo={ toggleMoreInfo }
-                                />
-                            )
-                        })
-                    }
+                <ListBody />
 
-                    <ToDoAddItem
-                        addTask={ addTask }
-                    />
-                </div> */}
             </main>
         </div>
     );
