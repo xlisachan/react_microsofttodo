@@ -27,3 +27,16 @@ export const toggleMoreInfo = task => dispatch => {
         payload: task
     })
 }
+
+export const addTask = (
+        task_id, item, list, completedStatus=false, importantStatus=false, moreInfo=[],
+        date_created_full, date_created, date_due, my_day, planned=false, important=false, tasks=true
+    ) => dispatch => {
+        dispatch({
+            type: C.ADD_TASK,
+            payload: {
+                task_id, item, list, completedStatus, importantStatus, moreInfo,
+                date_created_full, date_created, date_due, my_day, planned, important, tasks
+            }
+        })
+}

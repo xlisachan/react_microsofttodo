@@ -11,8 +11,19 @@ const moreInfo = (state=[], action) =>
         action.payload :
         state
 
+const task = (state={}, action) =>
+    (action.type === C.ADD_TASK) ?
+        action.payload :
+        state
+
 const tasks = (state=[], action) => {
     switch(action.type) {
+        case C.ADD_TASK :
+            return [
+                ...state,
+                task(null, action)
+            ]
+        
         case C.EDIT_TASK_STATUS_COMPLETE :
             return state.map(task => {
                 if (task.task_id === action.payload) {
@@ -41,7 +52,7 @@ const tasks = (state=[], action) => {
 
                 return task;
             })
-
+            
         default:
             return state
     }
