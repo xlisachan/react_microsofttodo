@@ -10,9 +10,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import TDHeader from './TDHeader';
-import ToDoListItem from './ToDoListItem';
-import ToDoAddItem from './ToDoAddItem';
+import Header from '../containers/Main/Header';
+// import ToDoListItem from './ToDoListItem';
+// import ToDoAddItem from './ToDoAddItem';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
 const drawerWidth = 240;
@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ResponsiveDrawer(props) {
-    const { container, listTitle, date, moreInfo, getListTitle, toggleCompleted, toggleImportant, toggleMoreInfo, addTask } = props;
+    const { container, listTitle, getListTitle } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -92,13 +92,13 @@ export default function ResponsiveDrawer(props) {
                             <ListItemText primary={text} />
                         </div>
 
-                        <div style={{color: 'gray'}}>
+                        {/* <div style={{color: 'gray'}}>
                             { 
                                 props.tasks.filter(task => {
                                     return task[`${ text.toLowerCase().replace(/ /g,"_") }`]
                                 }).length
                             }
-                        </div>
+                        </div> */}
                     </ListItem>
                 ))}
             </List>
@@ -109,10 +109,7 @@ export default function ResponsiveDrawer(props) {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
-                <TDHeader
-                    date={ date }
-                    listTitle={ listTitle }
-                />
+                <Header />
             </AppBar>
 
             <nav className={classes.drawer} aria-label="Mailbox folders">
@@ -157,7 +154,7 @@ export default function ResponsiveDrawer(props) {
 
                 <div className={classes.toolbar} />
 
-                <div style={{position: 'relative', top: 40}}>
+                {/* <div style={{position: 'relative', top: 40}}>
                     { 
                         props.tasks.filter(task => {
                             return task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
@@ -179,7 +176,7 @@ export default function ResponsiveDrawer(props) {
                     <ToDoAddItem
                         addTask={ addTask }
                     />
-                </div>
+                </div> */}
             </main>
         </div>
     );
