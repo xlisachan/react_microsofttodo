@@ -13,6 +13,35 @@ const moreInfo = (state=[], action) =>
 
 const tasks = (state=[], action) => {
     switch(action.type) {
+        case C.EDIT_TASK_STATUS_COMPLETE :
+            return state.map(task => {
+                if (task.task_id === action.payload) {
+                    
+                    if (task.importantStatus) {
+                        task.important = !task.important;
+                    }
+
+                    task.completedStatus = !task.completedStatus;
+                }
+
+                return task;
+            })
+        
+        case C.EDIT_TASK_STATUS_IMPORTANT :
+            return state.map(task => {
+                if (task.task_id === action.payload) {
+                    
+                    task.importantStatus = !task.importantStatus;
+                    task.important = !task.important;
+
+                    if (task.completedStatus) {
+                        task.important = false;
+                    }
+                }
+
+                return task;
+            })
+
         default:
             return state
     }
