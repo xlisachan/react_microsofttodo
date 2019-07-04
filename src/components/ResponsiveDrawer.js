@@ -2,16 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import HeaderList from '../containers/Side/ListTitles';
 import Header from '../containers/Main/Header';
-import ListBody from '../containers/Main/ListBody';
+// import ListBody from '../containers/Main/ListBody';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
 const drawerWidth = 240;
@@ -51,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ResponsiveDrawer(props) {
-    const { container, listTitle, getListTitle } = props;
+    const { container } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -63,44 +59,12 @@ export default function ResponsiveDrawer(props) {
     const drawer = (
         <div>
             <div className={classes.toolbar} />
-            <Divider />
-            <List>
-                {['My Day', 'Important', 'Planned', 'Tasks'].map((text, index) => (
-                    <ListItem 
-                        button 
-                        key={text}
-                        style={{
-                            display: 'flex', 
-                            alignItems: 'center', 
-                            justifyContent: 'space-between', 
-                            backgroundColor: listTitle === text ? 'gainsboro' : null
-                        }}
-                        onClick={ () => getListTitle(text) }>
+            
+            <HeaderList
+                sideList={ ['My Day', 'Important', 'Planned', 'Tasks'] }
+                sideIcons={ listIcons }
+            />
 
-                        <div style={{display: 'flex', alignItems: 'center'}}>
-                            <ListItemIcon 
-                                style={{
-                                    marginRight: -15, 
-                                    fontSize: '1.5rem', 
-                                    color: 'royalblue'
-                                }}>
-
-                                { listIcons[index] }
-                            </ListItemIcon>
-
-                            <ListItemText primary={text} />
-                        </div>
-
-                        {/* <div style={{color: 'gray'}}>
-                            { 
-                                props.tasks.filter(task => {
-                                    return task[`${ text.toLowerCase().replace(/ /g,"_") }`]
-                                }).length
-                            }
-                        </div> */}
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -153,7 +117,7 @@ export default function ResponsiveDrawer(props) {
 
                 <div className={classes.toolbar} />
 
-                <ListBody />
+                {/* <ListBody /> */}
 
             </main>
         </div>
