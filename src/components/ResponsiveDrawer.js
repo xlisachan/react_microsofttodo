@@ -7,7 +7,7 @@ import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import HeaderList from '../containers/Side/ListTitles';
 import Header from '../containers/Main/Header';
-// import ListBody from '../containers/Main/ListBody';
+import ListBody from '../containers/Main/ListBody';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
 const drawerWidth = 240;
@@ -117,7 +117,7 @@ export default function ResponsiveDrawer(props) {
 
                 <div className={classes.toolbar} />
 
-                {/* <ListBody /> */}
+                <ListBody />
 
             </main>
         </div>
