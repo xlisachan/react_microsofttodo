@@ -1,30 +1,9 @@
 import React, { Component } from 'react';
-import data from './initialState.json';
 import getDate from './getDate';
 import uuid from 'uuid';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 
 class App extends Component {
-    state = data
-
-    componentDidMount(){
-        this.setState({
-            todays_date: this.getHeaderDate(getDate())
-        });
-
-      this.setState({
-          tasks: this.state.tasks.map(task => {
-              (
-                task.date_created === this.getTodaysDate(getDate()) ||
-                task.date_due === this.getTodaysDate(getDate())
-              ) ?
-                task.my_day = true
-                :
-                task.my_day = false
-              return task;
-          })
-        })
-    }
 
     getHeaderDate = date => {
         return date.weekday + ', ' + date.month + ' ' + date.day;
@@ -101,10 +80,6 @@ class App extends Component {
     render() {
         return (
             <ResponsiveDrawer 
-                listTitle={ this.state.listTitle }
-                date={ this.state.todays_date }
-                tasks={ this.state.tasks }
-                moreInfo={ this.state.moreInfo }
                 toggleCompleted={ this.toggleCompleted }
                 toggleImportant={ this.toggleImportant }
                 toggleMoreInfo={ this.toggleMoreInfo }
