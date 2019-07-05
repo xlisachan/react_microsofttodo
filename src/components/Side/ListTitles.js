@@ -21,9 +21,9 @@ class ListTitles extends Component {
     }
 
     numberOfTasks = (text) => {
-        const numOfTasks = this.props.tasks.filter(task => {
-                return task[`${ text.toLowerCase().replace(/ /g,"_") }`]
-            }).length;
+        const numOfTasks = this.props.tasks.filter(task =>
+            task[`${ text.toLowerCase().replace(/ /g,"_") }`]
+        ).length
         
         return numOfTasks > 0 ?
             <div style={{color: 'gray'}}>
