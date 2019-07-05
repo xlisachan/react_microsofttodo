@@ -40,3 +40,8 @@ export const addTask = (
             }
         })
 }
+
+export const removeTask = id => ({
+    type: C.REMOVE_TASK,
+    payload: id
+})
