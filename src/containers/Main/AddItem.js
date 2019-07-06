@@ -2,6 +2,10 @@ import AddItem from '../../components/Main/AddItem';
 import { connect } from 'react-redux';
 import { addTask } from '../../actions';
 
+const mapStateToProps = state => ({
+    listTitle: state.listTitle
+})
+
 const mapDispatchToProps = dispatch => ({
 
     onAddTask({
@@ -18,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(null, mapDispatchToProps)(AddItem);
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

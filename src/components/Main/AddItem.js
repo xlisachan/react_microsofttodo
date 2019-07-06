@@ -28,7 +28,23 @@ class AddTask extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        if (this.state.item) {
+        if (this.state.item && this.props.listTitle === "Important") {
+            this.props.onAddTask({
+                task_id: uuid.v4(), 
+                item: this.state.item, 
+                list: "Tasks", 
+                completedStatus: false, 
+                importantStatus: true, 
+                moreInfo: false,
+                date_created_full: new Date(), 
+                date_created: this.getDateCreated(getDate()), 
+                date_due: "", 
+                my_day: true, 
+                planned: false, 
+                important: true, 
+                tasks: true
+            });
+        } else if (this.state.item) {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
@@ -44,11 +60,11 @@ class AddTask extends Component {
                 important: false, 
                 tasks: true
             });
-
-            this.setState({
-                item: ""
-            })
         }
+
+        this.setState({
+            item: ""
+        });
     }
 
     render() {
