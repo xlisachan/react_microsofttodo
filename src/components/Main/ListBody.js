@@ -1,22 +1,22 @@
 import React from 'react';
-import ListItem from '../../containers/Main/ListItem';
+import RightClickMenu from '../../containers/Main/RightClickMenu';
 import AddItem from '../../containers/Main/AddItem';
 
 const ListBody = ({tasks, listTitle}) => {
+    const filteredTasks = tasks.filter(task =>
+        task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
+    )
+
     return (
         <div className="main-container">
-            { tasks.filter(task => {
-                        return task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
-                    })
-                    .map(task => {
-                        return (
-                            <ListItem 
-                                key={ task.task_id }
-                                task={ task }                            
-                            />
-                        )
-                    })
-            }
+            
+            { filteredTasks.map(task =>
+                <RightClickMenu 
+                    key={ task.task_id }
+                    id={ task.task_id}
+                    task={ task }
+                />
+            )}
 
             <AddItem />
         </div>
