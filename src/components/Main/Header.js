@@ -8,7 +8,7 @@ const Header = ({listTitle, todaysDate}) => {
                     { listTitle }
                 </h2>
 
-                <span>
+                <span style={{display: listTitle === "My Day" ? 'inline' : 'none'}}>
                     { todaysDate }
                 </span>
             </div>
