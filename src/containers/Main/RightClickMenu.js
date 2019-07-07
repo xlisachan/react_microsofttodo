@@ -1,9 +1,15 @@
 import RightClickMenu from '../../components/Main/RightClickMenu';
 import { connect } from 'react-redux';
-import { toggleCompleted, toggleImportant, removeTask } from '../../actions'; 
+import { toggleMyDay, toggleCompleted, toggleImportant, removeTask } from '../../actions'; 
 
 const mapDispatchToProps = dispatch => ({
     
+    onToggleMyDay(id) {
+        dispatch(
+            toggleMyDay(id)
+        )
+    },
+
     onToggleComplete(id) {
         dispatch(
             toggleCompleted(id)

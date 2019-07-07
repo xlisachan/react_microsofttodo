@@ -15,6 +15,11 @@ export const toggleImportant = id => ({
     payload: id
 })
 
+export const toggleMyDay = id => ({
+    type: C.EDIT_TASK_STATUS_MYDAY,
+    payload: id
+})
+
 export const toggleMoreInfo = task => ({
     type: C.SET_MOREINFO,
     payload: task

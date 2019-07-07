@@ -61,6 +61,17 @@ const tasks = (state=[], action) => {
                     task
                 )
             
+        case C.EDIT_TASK_STATUS_MYDAY :
+            return state.map(task =>
+                task.task_id === action.payload ?
+                    {
+                        ...task,
+                        my_day: !task.my_day
+                    }
+                    :
+                    task
+            )            
+            
         case C.REMOVE_TASK :
             return state.filter(task => task.task_id !== action.payload)
             

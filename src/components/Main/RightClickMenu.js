@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import ListItem from '../../containers/Main/ListItem';
-import { FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar, FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar, FaRegTrashAlt } from 'react-icons/fa';
 
 class RightClickMenu extends Component {
+    switchMyDay = () =>
+        <MenuItem onClick={() => this.props.onToggleMyDay(this.props.task.task_id)}>
+            { this.props.task.my_day ?
+                <div>
+                    <FaRegSun style={{margin: '0 5px 3px 0'}}/>
+                    <span>Remove from My Day</span>
+                </div>
+                :
+                <div>
+                    <FaRegSun style={{margin: '0 5px 3px 0'}}/>
+                    <span>Add to My Day</span>
+                </div>
+            }
+        </MenuItem>
+
     switchComplete = () => 
         <MenuItem onClick={() => this.props.onToggleComplete(this.props.task.task_id)}>
             { this.props.task.completedStatus ?
@@ -52,6 +67,8 @@ class RightClickMenu extends Component {
                 </ContextMenuTrigger>
 
                 <ContextMenu id={`menuitem_ + ${task.task_id}`}>
+                    { this.switchMyDay() }
+
                     { this.switchComplete() }
                     
                     { this.switchImportant() }
