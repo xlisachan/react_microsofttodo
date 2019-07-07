@@ -1,26 +1,68 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import ListItem from '../../containers/Main/ListItem';
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar, FaRegTrashAlt } from 'react-icons/fa';
 
-const myApp = props =>
-    <div>
-        <ContextMenuTrigger id={`menuitem_ + ${props.task.task_id}`}>
-            <ListItem 
-                id={ props.task.task_id}
-                task={ props.task }                            
-            />
-        </ContextMenuTrigger>
+class RightClickMenu extends Component {
+    switchComplete = () => 
+        <MenuItem onClick={() => this.props.onToggleComplete(this.props.task.task_id)}>
+            { this.props.task.completedStatus ?
+                <div>
+                    <FaRegCheckCircle style={{margin: '0 5px 3px 0'}}/>
+                    <span>Mark as not completed</span>
+                </div>
+                :
+                <div>
+                    <FaCheckCircle style={{margin: '0 5px 3px 0'}}/>
+                    <span>Mark as completed</span>
+                </div>
+            }
+        </MenuItem>
 
-        <ContextMenu id={`menuitem_ + ${props.task.task_id}`}>
-            <MenuItem
-                onClick={() => props.onRemoveTask(props.task.task_id)}>
-                
-                <FaRegTrashAlt style={{margin: '0 5px 3px 0'}}/>
-                Delete task
+    switchImportant = () =>
+        <MenuItem onClick={() => this.props.onToggleImportant(this.props.task.task_id)}>
+            { this.props.task.importantStatus ?
+                <div>
+                    <FaRegStar style={{margin: '0 5px 3px 0'}}/>
+                    <span>Remove importance</span>
+                </div>
+                :
+                <div>
+                    <FaStar style={{margin: '0 5px 3px 0'}}/>
+                    <span>Mark as important</span>
+                </div>
+            }
+        </MenuItem>
+    
+    removeTask = () =>
+        <MenuItem onClick={() => this.props.onRemoveTask(this.props.task.task_id)}>
+            <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
+            <span>Delete task</span>
+        </MenuItem>
 
-            </MenuItem>
-        </ContextMenu>
-    </div>
+    render() {
+        const { task } = this.props;
+        return(
+            <div>
+                <ContextMenuTrigger id={`menuitem_ + ${task.task_id}`}>
+                    <ListItem
+                        id={ task.task_id}
+                        task={ task }                            
+                    />
+                </ContextMenuTrigger>
 
-export default myApp;
+                <ContextMenu id={`menuitem_ + ${task.task_id}`}>
+                    { this.switchComplete() }
+                    
+                    { this.switchImportant() }
+
+                    <MenuItem divider />
+
+                    { this.removeTask() }
+                </ContextMenu>
+            </div>
+        )
+    }
+}
+
+export default RightClickMenu;
