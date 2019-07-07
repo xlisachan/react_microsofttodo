@@ -43,19 +43,23 @@ const tasks = (state=[], action) => {
                 )
 
         case C.EDIT_TASK_STATUS_IMPORTANT :
-            return state.map(task => {
-                if (task.task_id === action.payload) {
-                    
-                    task.importantStatus = !task.importantStatus;
-                    task.important = !task.important;
-
-                    if (task.completedStatus) {
-                        task.important = false;
-                    }
-                }
-
-                return task;
-            })
+            return state.map(task =>
+                task.task_id === action.payload ?
+                    task.completedStatus ?
+                        {
+                            ...task,
+                            importantStatus: !task.importantStatus,
+                            important: false
+                        }
+                        :
+                        {
+                            ...task,
+                            importantStatus: !task.importantStatus,
+                            important: !task.important
+                        }
+                    :
+                    task
+                )
             
         case C.REMOVE_TASK :
             return state.filter(task => task.task_id !== action.payload)
