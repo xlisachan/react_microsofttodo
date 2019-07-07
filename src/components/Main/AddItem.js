@@ -39,9 +39,25 @@ class AddTask extends Component {
                 date_created_full: new Date(), 
                 date_created: this.getDateCreated(getDate()), 
                 date_due: "", 
-                my_day: true, 
+                my_day: false, 
                 planned: false, 
                 important: true, 
+                tasks: true
+            });
+        } else if (this.state.item && this.props.listTitle === "Tasks") {
+            this.props.onAddTask({
+                task_id: uuid.v4(), 
+                item: this.state.item, 
+                list: "Tasks", 
+                completedStatus: false, 
+                importantStatus: false, 
+                moreInfo: false,
+                date_created_full: new Date(), 
+                date_created: this.getDateCreated(getDate()), 
+                date_due: "", 
+                my_day: false, 
+                planned: false, 
+                important: false, 
                 tasks: true
             });
         } else if (this.state.item) {
