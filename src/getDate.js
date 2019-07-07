@@ -1,4 +1,4 @@
-const getDate = () => {
+export const getDate = () => {
     const weekdays = {
         '0': 'Sunday',
         '1': 'Monday',
@@ -41,4 +41,10 @@ const getDate = () => {
     return date;
 }
 
-export default getDate;
+export const getHeaderDate = date => {
+    return date.weekday + ', ' + date.month + ' ' + date.day ;
+}
+
+export const getCurrentDate = date => {
+    return date.weekday.substr(0,3) + ' ' + date.month.substr(0,3) + ' ' + date.day + ' ' + date.year;
+}
