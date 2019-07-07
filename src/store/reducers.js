@@ -25,19 +25,23 @@ const tasks = (state=[], action) => {
             ]
         
         case C.EDIT_TASK_STATUS_COMPLETE :
-            return state.map(task => {
-                if (task.task_id === action.payload) {
-                    
-                    if (task.importantStatus) {
-                        task.important = !task.important;
-                    }
+            return state.map(task =>
+                task.task_id === action.payload ?
+                    task.importantStatus ?
+                        { 
+                            ...task,
+                            important: !task.important,
+                            completedStatus: !task.completedStatus
+                        }
+                        :
+                        {
+                            ...task,
+                            completedStatus: !task.completedStatus
+                        }
+                    :
+                    task
+                )
 
-                    task.completedStatus = !task.completedStatus;
-                }
-
-                return task;
-            })
-        
         case C.EDIT_TASK_STATUS_IMPORTANT :
             return state.map(task => {
                 if (task.task_id === action.payload) {
