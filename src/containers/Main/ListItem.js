@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { toggleCompleted, toggleImportant, toggleMoreInfo } from '../../actions'; 
 
 const mapStateToProps = state => ({
-    tasks: state.tasks,
     listTitle: state.listTitle,
     moreInfo: state.moreInfo
 })
