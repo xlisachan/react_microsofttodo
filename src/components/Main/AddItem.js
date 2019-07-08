@@ -28,7 +28,6 @@ class AddTask extends Component {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
-                list: "Tasks", 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "", 
@@ -43,7 +42,6 @@ class AddTask extends Component {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
-                list: "Tasks", 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -58,7 +56,6 @@ class AddTask extends Component {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
-                list: "Tasks", 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -73,7 +70,6 @@ class AddTask extends Component {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
-                list: "Tasks", 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -88,7 +84,6 @@ class AddTask extends Component {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
-                list: "Tasks", 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
