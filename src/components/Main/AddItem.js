@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
-import getDate from '../../getDate';
+import { getDate, getCurrentDate }  from '../../getDate';
 import uuid from 'uuid';
 
 class AddTask extends Component {
@@ -21,27 +21,52 @@ class AddTask extends Component {
             <FaPlus style={{color: 'royalblue'}} />
     }
 
-    getDateCreated = date => {
-        return date.weekday.substr(0,3) + ' ' + date.month.substr(0,3) + ' ' + date.day + ' ' + date.year;
-    }
-
     onSubmit = e => {
         e.preventDefault();
 
-        if (this.state.item && this.props.listTitle === "Important") {
+        if (this.state.item && this.props.listTitle === "My Day") {
             this.props.onAddTask({
                 task_id: uuid.v4(), 
                 item: this.state.item, 
                 list: "Tasks", 
+                date_created_full: new Date(), 
+                date_created: getCurrentDate(getDate()), 
+                date_due: "", 
+                completedStatus: false, 
+                importantStatus: false, 
+                my_day: true, 
+                planned: false, 
+                important: false, 
+                tasks: true
+            });
+        } else if (this.state.item && this.props.listTitle === "Important") {
+            this.props.onAddTask({
+                task_id: uuid.v4(), 
+                item: this.state.item, 
+                list: "Tasks", 
+                date_created_full: new Date(), 
+                date_created: getCurrentDate(getDate()), 
+                date_due: "",
                 completedStatus: false, 
                 importantStatus: true, 
-                moreInfo: false,
-                date_created_full: new Date(), 
-                date_created: this.getDateCreated(getDate()), 
-                date_due: "", 
                 my_day: false, 
                 planned: false, 
                 important: true, 
+                tasks: true
+            });
+        } else if (this.state.item && this.props.listTitle === "Planned") {
+            this.props.onAddTask({
+                task_id: uuid.v4(), 
+                item: this.state.item, 
+                list: "Tasks", 
+                date_created_full: new Date(), 
+                date_created: getCurrentDate(getDate()), 
+                date_due: "",
+                completedStatus: false, 
+                importantStatus: false, 
+                my_day: false, 
+                planned: true, 
+                important: false, 
                 tasks: true
             });
         } else if (this.state.item && this.props.listTitle === "Tasks") {
@@ -49,12 +74,11 @@ class AddTask extends Component {
                 task_id: uuid.v4(), 
                 item: this.state.item, 
                 list: "Tasks", 
+                date_created_full: new Date(), 
+                date_created: getCurrentDate(getDate()), 
+                date_due: "",
                 completedStatus: false, 
                 importantStatus: false, 
-                moreInfo: false,
-                date_created_full: new Date(), 
-                date_created: this.getDateCreated(getDate()), 
-                date_due: "", 
                 my_day: false, 
                 planned: false, 
                 important: false, 
@@ -65,13 +89,12 @@ class AddTask extends Component {
                 task_id: uuid.v4(), 
                 item: this.state.item, 
                 list: "Tasks", 
+                date_created_full: new Date(), 
+                date_created: getCurrentDate(getDate()), 
+                date_due: "",
                 completedStatus: false, 
                 importantStatus: false, 
-                moreInfo: false,
-                date_created_full: new Date(), 
-                date_created: this.getDateCreated(getDate()), 
-                date_due: "", 
-                my_day: true, 
+                my_day: false, 
                 planned: false, 
                 important: false, 
                 tasks: true
