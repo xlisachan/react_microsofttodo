@@ -2,22 +2,6 @@ import React, { Component } from 'react';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
 
 class ListItem extends Component {
-
-    listItemStyle = () => {
-        return {
-            width: '100%',
-            height: 60,
-            margin: '0 auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '10px 20px',
-            borderBottom: '1px solid gainsboro',
-            backgroundColor: this.props.moreInfo.task_id === this.props.task.task_id ? 'whitesmoke' : null,
-            borderRadius: this.props.moreInfo.task_id === this.props.task.task_id ? 10 : null
-        }
-    }
-
     listItem = () => {
         return {
             color: this.props.task.completedStatus ? 'dimgray' : 'black',
@@ -60,48 +44,45 @@ class ListItem extends Component {
 
     render() {
         return ( 
-            <div onClick={() => this.props.onToggleMoreInfo(this.props.task)} >
-                <div style={ this.listItemStyle() } >
+            <div className="list-item" >
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    { this.renderCompleted() }
 
-                    <div style={{display: 'flex', alignItems: 'center'}}>
-                        { this.renderCompleted() } 
+                    <span>
+                        <div style={ this.listItem() }>
+                            { this.props.task.item }
+                        </div>
 
-                        <span>
-                            <div style={ this.listItem() }>
-                                { this.props.task.item }
-                            </div>
+                        <div style={ this.listItemDetail() }>
+                            <span style={{color: 'royalblue', display: this.props.listTitle !== "My Day" && this.props.task.my_day === true ? 'inline' : 'none'}}>
+                                <FaRegSun style={{fontSize: '.9rem'}} /> My Day
+                            </span>
 
-                            <div style={ this.listItemDetail() }>
-                                <span style={{color: 'royalblue', display: this.props.listTitle !== "My Day" && this.props.task.my_day === true ? 'inline' : 'none'}}>
-                                    <FaRegSun style={{fontSize: '.9rem'}} /> My Day
-                                </span>
+                            <span style={{display: (this.props.listTitle !== "My Day" && this.props.listTitle !== "Tasks" && this.props.task.tasks && this.props.task.my_day) ? 'inline' : 'none'}}>
+                                {'  '} &middot; {'  '}
+                            </span>
 
-                                <span style={{display: (this.props.listTitle !== "My Day" && this.props.listTitle !== "Tasks" && this.props.task.tasks && this.props.task.my_day) ? 'inline' : 'none'}}>
-                                    {'  '} &middot; {'  '}
-                                </span>
+                            <span style={{display: this.props.listTitle !== "Tasks" && this.props.task.tasks ? 'inline' : 'none'}}>
+                                Tasks
+                            </span>
+                            
+                            <span style={{display: (this.props.listTitle !== "Tasks" && this.props.task.tasks && this.props.task.date_due) ? 'inline' : 'none' }}>
+                                {'  '} &middot; {'  '}
+                            </span>
 
-                                <span style={{display: this.props.listTitle !== "Tasks" && this.props.task.tasks ? 'inline' : 'none'}}>
-                                    Tasks
-                                </span>
-                                
-                                <span style={{display: (this.props.listTitle !== "Tasks" && this.props.task.tasks && this.props.task.date_due) ? 'inline' : 'none' }}>
-                                    {'  '} &middot; {'  '}
-                                </span>
+                            <span style={{ display: (this.props.listTitle !== "My Day" && this.props.listTitle === null && this.props.task.date_due && this.props.task.my_day) ? 'inline' : 'none' }}>
+                                {'  '} &middot; {'  '}
+                            </span>
 
-                                <span style={{ display: (this.props.listTitle !== "My Day" && this.props.listTitle === null && this.props.task.date_due && this.props.task.my_day) ? 'inline' : 'none' }}>
-                                    {'  '} &middot; {'  '}
-                                </span>
+                            <span style={{display: this.props.task.date_due ? 'inline' : 'none'}}>
+                                <FaRegCalendar style={{fontSize: '.9rem'}} /> { this.props.task.date_due }
+                            </span>
+                        </div>
+                    </span>
+                </div>
 
-                                <span style={{display: this.props.task.date_due ? 'inline' : 'none'}}>
-                                    <FaRegCalendar style={{fontSize: '.9rem'}} /> { this.props.task.date_due }
-                                </span>
-                            </div>
-                        </span>
-                    </div>
-
-                    <div>
-                        { this.renderImportant() }
-                    </div>
+                <div>
+                    { this.renderImportant() }
                 </div>
             </div>
         );
