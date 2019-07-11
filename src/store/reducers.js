@@ -1,4 +1,5 @@
 import C from '../constants';
+import { getDate, getCurrentDate } from '../getDate';
 import { combineReducers } from 'redux';
 
 const listTitle = (state="My Day", action) => 
@@ -23,6 +24,20 @@ const tasks = (state=[], action) => {
                 ...state,
                 task(null, action)
             ]
+        
+        case C.LOAD_TASKS :
+            return state.map(task =>
+                task.my_day && task.date_created === getCurrentDate(getDate()) ?
+                    {
+                        ...task,
+                        my_day: true
+                    }
+                    :
+                    {
+                        ...task,
+                        my_day: false
+                    }
+                )
         
         case C.EDIT_TASK_STATUS_COMPLETE :
             return state.map(task =>

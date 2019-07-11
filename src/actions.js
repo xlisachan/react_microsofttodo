@@ -5,6 +5,10 @@ export const getListTitle = title => ({
     payload: title
 })
 
+export const loadTasks = () => ({
+    type: C.LOAD_TASKS,
+})
+
 export const toggleCompleted = id => ({
     type: C.EDIT_TASK_STATUS_COMPLETE,
     payload: id
