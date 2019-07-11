@@ -5,12 +5,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import HeaderList from '../containers/Side/ListTitles';
+import ListTitles from '../containers/Side/ListTitles';
 import Header from '../containers/Main/Header';
 import ListBody from '../containers/Main/ListBody';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
+        background: '#eee'
     },
     content: {
         flexGrow: 1,
@@ -52,7 +53,7 @@ export default function ResponsiveDrawer(props) {
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
-    function handleDrawerToggle() {
+    const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     }
 
@@ -60,11 +61,11 @@ export default function ResponsiveDrawer(props) {
         <div>
             <div className={classes.toolbar} />
             
-            <HeaderList
+            <ListTitles
+                tasks={ props.tasks }
                 sideList={ ['My Day', 'Important', 'Planned', 'Tasks'] }
                 sideIcons={ listIcons }
             />
-
         </div>
     );
 
@@ -78,7 +79,6 @@ export default function ResponsiveDrawer(props) {
             <nav className={classes.drawer} aria-label="Mailbox folders">
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Hidden smUp implementation="css">
-                
                     <Drawer
                         container={container}
                         variant="temporary"
@@ -94,11 +94,9 @@ export default function ResponsiveDrawer(props) {
                     >
                         {drawer}
                     </Drawer>
-                    
                 </Hidden>
 
                 <Hidden xsDown implementation="css">
-
                     <Drawer
                         classes={{
                             paper: classes.drawerPaper,
@@ -109,16 +107,13 @@ export default function ResponsiveDrawer(props) {
                         
                         {drawer}
                     </Drawer>
-
                 </Hidden>
             </nav>
 
             <main className={classes.content}>
-
                 <div className={classes.toolbar} />
 
-                <ListBody />
-
+                <ListBody tasks={ props.tasks } />
             </main>
         </div>
     );

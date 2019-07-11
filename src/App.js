@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadTasks } from './actions';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 
-const App = () => {
-    return (
-        <ResponsiveDrawer />
-    );
+class App extends Component {
+    componentDidMount() {
+        this.props.loadTasks();
+    }
+    
+    render() {
+        return (
+            <ResponsiveDrawer tasks={ this.props.tasks } />
+        );
+    }
 }
- 
-export default App;
+
+const mapStateToProps = state => ({
+    tasks: state.tasks
+})
+
+export default connect(mapStateToProps, { loadTasks })(App);
