@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
-class ListTitles extends Component {
-
-    headerStyle = (text) => {
+const ListTitles = ({tasks, listTitle, getListTitle=f=>f, sideList, sideIcons}) => {
+    const headerStyle = text => {
         return {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'space-between', 
-            backgroundColor: this.props.listTitle === text ? 'gainsboro' : null
+            backgroundColor: listTitle === text ? 'gainsboro' : null
         }
     }
 
-    iconStyle = () => {
+    const iconStyle = () => {
         return {
             marginRight: -15, 
             fontSize: '1.5rem', 
@@ -20,8 +20,8 @@ class ListTitles extends Component {
         }
     }
 
-    numberOfTasks = (text) => {
-        const numOfTasks = this.props.tasks.filter(task =>
+    const numberOfTasks = text => {
+        const numOfTasks = tasks.filter(task =>
             task[`${ text.toLowerCase().replace(/ /g,"_") }`]
         ).length
         
@@ -33,30 +33,35 @@ class ListTitles extends Component {
             null
     }
     
-    render() {
-        const { getListTitle=f=>f, sideList, sideIcons } = this.props;
-        return (
-            <List>
-                { sideList.map((text, index) => (
-                    <ListItem button key={text}
-                        style={ this.headerStyle(text) }
-                        onClick={() => getListTitle(text)}>
+    return (
+        <List>
+            { sideList.map((text, index) => (
+                <ListItem button key={text}
+                    style={ headerStyle(text) }
+                    onClick={() => getListTitle(text)}>
 
-                        <div style={{display: 'flex', alignItems: 'center'}}>
-                            <ListItemIcon style={ this.iconStyle() }>
-                                { sideIcons[index] }
-                            </ListItemIcon>
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <ListItemIcon style={ iconStyle() }>
+                            { sideIcons[index] }
+                        </ListItemIcon>
 
-                            <ListItemText primary={text} />
-                        </div>
+                        <ListItemText primary={text} />
+                    </div>
 
-                        { this.numberOfTasks(text) }
+                    { numberOfTasks(text) }
 
-                    </ListItem>
-                ))}
-            </List>
-        );
-    }
+                </ListItem>
+            ))}
+        </List>
+    );
+}
+
+ListTitles.propTypes = {
+    tasks: PropTypes.array.isRequired,
+    listTitle: PropTypes.string.isRequired,
+    getListTitle: PropTypes.func.isRequired,
+    sideList: PropTypes.array.isRequired,
+    sideIcons: PropTypes.array.isRequired
 }
  
 export default ListTitles;

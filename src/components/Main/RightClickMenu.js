@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import ListItem from '../../containers/Main/ListItem';
 import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar, FaRegTrashAlt } from 'react-icons/fa';
 
-class RightClickMenu extends Component {
-    switchMyDay = () =>
-        <MenuItem onClick={() => this.props.onToggleMyDay(this.props.task.task_id)}>
-            { this.props.task.my_day ?
+const RightClickMenu = ({task, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
+    const switchMyDay = () =>
+        <MenuItem onClick={() => onToggleMyDay(task.task_id)}>
+            { task.my_day ?
                 <div>
                     <FaRegSun style={{margin: '0 5px 3px 0'}}/>
                     <span>Remove from My Day</span>
@@ -19,9 +20,9 @@ class RightClickMenu extends Component {
             }
         </MenuItem>
 
-    switchComplete = () => 
-        <MenuItem onClick={() => this.props.onToggleComplete(this.props.task.task_id)}>
-            { this.props.task.completedStatus ?
+    const switchComplete = () => 
+        <MenuItem onClick={() => onToggleComplete(task.task_id)}>
+            { task.completedStatus ?
                 <div>
                     <FaRegCheckCircle style={{margin: '0 5px 3px 0'}}/>
                     <span>Mark as not completed</span>
@@ -34,9 +35,9 @@ class RightClickMenu extends Component {
             }
         </MenuItem>
 
-    switchImportant = () =>
-        <MenuItem onClick={() => this.props.onToggleImportant(this.props.task.task_id)}>
-            { this.props.task.importantStatus ?
+    const switchImportant = () =>
+        <MenuItem onClick={() => onToggleImportant(task.task_id)}>
+            { task.importantStatus ?
                 <div>
                     <FaRegStar style={{margin: '0 5px 3px 0'}}/>
                     <span>Remove importance</span>
@@ -49,37 +50,42 @@ class RightClickMenu extends Component {
             }
         </MenuItem>
     
-    removeTask = () =>
-        <MenuItem onClick={() => this.props.onRemoveTask(this.props.task.task_id)}>
+    const removeTask = () =>
+        <MenuItem onClick={() => onRemoveTask(task.task_id)}>
             <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
             <span>Delete task</span>
         </MenuItem>
 
-    render() {
-        const { task } = this.props;
-        return(
-            <div>
-                <ContextMenuTrigger id={`menuitem_ + ${task.task_id}`}>
-                    <ListItem
-                        id={ task.task_id}
-                        task={ task }                            
-                    />
-                </ContextMenuTrigger>
+    return (
+        <div>
+            <ContextMenuTrigger id={`menuitem_ + ${task.task_id}`}>
+                <ListItem
+                    id={ task.task_id}
+                    task={ task }
+                />
+            </ContextMenuTrigger>
 
-                <ContextMenu id={`menuitem_ + ${task.task_id}`}>
-                    { this.switchMyDay() }
+            <ContextMenu id={`menuitem_ + ${task.task_id}`}>
+                { switchMyDay() }
 
-                    { this.switchComplete() }
-                    
-                    { this.switchImportant() }
+                { switchComplete() }
+                
+                { switchImportant() }
 
-                    <MenuItem divider />
+                <MenuItem divider />
 
-                    { this.removeTask() }
-                </ContextMenu>
-            </div>
-        )
-    }
+                { removeTask() }
+            </ContextMenu>
+        </div>
+    )
+}
+
+RightClickMenu.propTypes = {
+    task: PropTypes.object.isRequired,
+    onToggleComplete: PropTypes.func.isRequired,
+    onToggleImportant: PropTypes.func.isRequired,
+    onToggleMyDay: PropTypes.func.isRequired,
+    onRemoveTask: PropTypes.func.isRequired
 }
 
 export default RightClickMenu;
