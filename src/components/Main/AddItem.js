@@ -1,33 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import { getDate, getCurrentDate }  from '../../getDate';
 import uuid from 'uuid';
 
-class AddTask extends Component {
-    state = {
-        item: ""
-    }
+const AddTask = ({listTitle, onAddTask=f=>f}) => {
+    const [item, setItem] = useState('');
 
-    addTask = e => {
-        this.setState({
-            item : e.target.value,
-        })
-    }
-
-    handleButtonChange = () => {
-        return this.state.item.length > 0 ? 
-            <FaRegCircle style={{color: 'gray'}}/> 
-            :
+    const handleButtonChange = () => {
+        return !item ? 
             <FaPlus style={{color: 'royalblue'}} />
+            :
+            <FaRegCircle style={{color: 'gray'}} /> 
     }
 
-    onSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
+        if(!item) return
 
-        if (this.state.item && this.props.listTitle === "My Day") {
-            this.props.onAddTask({
+        if (item && listTitle === "My Day") {
+            onAddTask({
                 task_id: uuid.v4(), 
-                item: this.state.item, 
+                item: item, 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "", 
@@ -38,10 +32,10 @@ class AddTask extends Component {
                 important: false, 
                 tasks: true
             });
-        } else if (this.state.item && this.props.listTitle === "Important") {
-            this.props.onAddTask({
+        } else if (item && listTitle === "Important") {
+            onAddTask({
                 task_id: uuid.v4(), 
-                item: this.state.item, 
+                item: item, 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -52,10 +46,10 @@ class AddTask extends Component {
                 important: true, 
                 tasks: true
             });
-        } else if (this.state.item && this.props.listTitle === "Planned") {
-            this.props.onAddTask({
+        } else if (item && listTitle === "Planned") {
+            onAddTask({
                 task_id: uuid.v4(), 
-                item: this.state.item, 
+                item: item, 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -66,10 +60,10 @@ class AddTask extends Component {
                 important: false, 
                 tasks: true
             });
-        } else if (this.state.item && this.props.listTitle === "Tasks") {
-            this.props.onAddTask({
+        } else if (item && listTitle === "Tasks") {
+            onAddTask({
                 task_id: uuid.v4(), 
-                item: this.state.item, 
+                item: item, 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -80,10 +74,10 @@ class AddTask extends Component {
                 important: false, 
                 tasks: true
             });
-        } else if (this.state.item) {
-            this.props.onAddTask({
+        } else if (item) {
+            onAddTask({
                 task_id: uuid.v4(), 
-                item: this.state.item, 
+                item: item, 
                 date_created_full: new Date(), 
                 date_created: getCurrentDate(getDate()), 
                 date_due: "",
@@ -96,30 +90,31 @@ class AddTask extends Component {
             });
         }
 
-        this.setState({
-            item: ""
-        });
+        setItem('');
     }
 
-    render() {
-        return (
-            <form className="add-form" onSubmit={ this.onSubmit }>
+    return (
+        <form className="add-form" onSubmit={ onSubmit }>
 
-                <button className="add-btn" type="submit">
-                    { this.handleButtonChange() }
-                </button>
-                
-                <input
-                    style={{flex: '10', padding: 5, border: 'none'}}
-                    type="text"
-                    name="item"
-                    placeholder="Add a task"
-                    value={ this.state.item }
-                    onChange={ this.addTask }
-                />
-            </form>
-        );
-    }
+            <button className="add-btn" type="submit">
+                { handleButtonChange() }
+            </button>
+            
+            <input
+                style={{flex: '10', padding: 5, border: 'none'}}
+                type="text"
+                name="item"
+                placeholder="Add a task"
+                value={ item }
+                onChange={ e => setItem(e.target.value) }
+            />
+        </form>
+    );
+}
+
+AddTask.propTypes = {
+    listTitle: PropTypes.string.isRequired,
+    onAddTask: PropTypes.func.isRequired
 }
 
 export default AddTask;
