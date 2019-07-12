@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = ({listTitle, todaysDate}) => {
     return (
@@ -14,6 +15,11 @@ const Header = ({listTitle, todaysDate}) => {
             </div>
         </header>
     );
+}
+
+Header.propTypes = {
+    listTitle: PropTypes.string.isRequired,
+    todaysDate: PropTypes.string
 }
 
 export default Header;
