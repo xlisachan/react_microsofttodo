@@ -9,12 +9,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 
     onAddTask({
-            task_id, item, list, date_created_full, date_created, date_due, 
+            task_id, item, date_created, date_due, date_due_display,
             completedStatus, importantStatus, my_day, planned, important, tasks
         }) {
         dispatch(
             addTask(
-                task_id, item, list, date_created_full, date_created, date_due, 
+                task_id, item, date_created, date_due, date_due_display, 
                 completedStatus, importantStatus, my_day, planned, important, tasks
             )
         )

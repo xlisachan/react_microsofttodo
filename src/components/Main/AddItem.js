@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
-import { getDate, getCurrentDate }  from '../../getDate';
+import { numFormat, displayFormat, getCurrentDateObj }  from '../../getDate';
 import uuid from 'uuid';
 
 const AddTask = ({listTitle, onAddTask=f=>f}) => {
@@ -21,10 +21,10 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
         if (item && listTitle === "My Day") {
             onAddTask({
                 task_id: uuid.v4(), 
-                item: item, 
-                date_created_full: new Date(), 
-                date_created: getCurrentDate(getDate()), 
+                item, 
+                date_created: numFormat(getCurrentDateObj()), 
                 date_due: "", 
+                date_due_display: "",
                 completedStatus: false, 
                 importantStatus: false, 
                 my_day: true, 
@@ -35,10 +35,10 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
         } else if (item && listTitle === "Important") {
             onAddTask({
                 task_id: uuid.v4(), 
-                item: item, 
-                date_created_full: new Date(), 
-                date_created: getCurrentDate(getDate()), 
+                item, 
+                date_created: numFormat(getCurrentDateObj()), 
                 date_due: "",
+                date_due_display: "",
                 completedStatus: false, 
                 importantStatus: true, 
                 my_day: false, 
@@ -49,10 +49,10 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
         } else if (item && listTitle === "Planned") {
             onAddTask({
                 task_id: uuid.v4(), 
-                item: item, 
-                date_created_full: new Date(), 
-                date_created: getCurrentDate(getDate()), 
-                date_due: "",
+                item, 
+                date_created: numFormat(getCurrentDateObj()), 
+                date_due: numFormat(getCurrentDateObj()),
+                date_due_display: displayFormat(getCurrentDateObj()),
                 completedStatus: false, 
                 importantStatus: false, 
                 my_day: false, 
@@ -63,10 +63,10 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
         } else if (item && listTitle === "Tasks") {
             onAddTask({
                 task_id: uuid.v4(), 
-                item: item, 
-                date_created_full: new Date(), 
-                date_created: getCurrentDate(getDate()), 
+                item, 
+                date_created: numFormat(getCurrentDateObj()), 
                 date_due: "",
+                date_due_display: "",
                 completedStatus: false, 
                 importantStatus: false, 
                 my_day: false, 
@@ -77,10 +77,10 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
         } else if (item) {
             onAddTask({
                 task_id: uuid.v4(), 
-                item: item, 
-                date_created_full: new Date(), 
-                date_created: getCurrentDate(getDate()), 
+                item, 
+                date_created: numFormat(getCurrentDateObj()), 
                 date_due: "",
+                date_due_display: "",
                 completedStatus: false, 
                 importantStatus: false, 
                 my_day: false, 
