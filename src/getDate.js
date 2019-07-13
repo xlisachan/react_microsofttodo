@@ -1,4 +1,4 @@
-export const getDate = () => {
+export const getCurrentDateObj = () => {
     const weekdays = {
         '0': 'Sunday',
         '1': 'Monday',
@@ -11,29 +11,30 @@ export const getDate = () => {
     }
 
     const months = {
-        '0': 'January',
-        '1': 'February',
-        '2': 'March',
-        '3': 'April',
-        '4': 'May',
-        '5': 'June',
-        '6': 'July',
-        '7': 'August',
-        '8': 'September',
-        '9': 'October',
-        '10': 'November',
-        '11': 'December'
+        '1': 'January',
+        '2': 'February',
+        '3': 'March',
+        '4': 'April',
+        '5': 'May',
+        '6': 'June',
+        '7': 'July',
+        '8': 'August',
+        '9': 'September',
+        '10': 'October',
+        '11': 'November',
+        '12': 'December'
     }
 
-    const newDate = new Date();
-    const weekday = newDate.getDay();
-    const month = newDate.getMonth();
-    const day = newDate.getDate();
-    const year = newDate.getFullYear();
+    let newDate = new Date(),
+        weekday = newDate.getDay(),
+        month = newDate.getMonth() + 1,
+        day = newDate.getDate(),
+        year = newDate.getFullYear();
 
     const date = {
         weekday: weekdays[weekday],
         month: months[month],
+        monthNum: month,
         day,
         year
     };
@@ -41,10 +42,15 @@ export const getDate = () => {
     return date;
 }
 
-export const getHeaderDate = date => {
+export const headerFormat = date => {
     return date.weekday + ', ' + date.month + ' ' + date.day ;
 }
 
-export const getCurrentDate = date => {
-    return date.weekday.substr(0,3) + ' ' + date.month.substr(0,3) + ' ' + date.day + ' ' + date.year;
+export const numFormat = date => {
+    let setMonth = '0' + date.monthNum
+    return date.year + '-' + setMonth + '-' + date.day;
+}
+
+export const displayFormat = date => {
+    return date.weekday.substr(0,3) + ', ' + date.month.substr(0,3) + ' ' + date.day; 
 }
