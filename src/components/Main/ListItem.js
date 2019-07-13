@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
+import { numFormat, getCurrentDateObj } from '../../getDate';
 
 const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const listItem = () => {
@@ -43,6 +44,15 @@ const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>
             />
     }
 
+    const plannedDate = () =>
+        <span style={{
+                display: task.date_due_display ? 'inline' : 'none', 
+                color: task.date_due <= numFormat(getCurrentDateObj()) ? 'crimson' : null
+            }}>
+
+            <FaRegCalendar /> { task.date_due_display }
+        </span>
+
     return ( 
         <div className="list-item">
             <div style={{display: 'flex', alignItems: 'center'}}>
@@ -66,17 +76,15 @@ const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>
                             Tasks
                         </span>
                         
-                        <span style={{display: (listTitle !== "Tasks" && task.tasks && task.date_due) ? 'inline' : 'none' }}>
+                        <span style={{display: (listTitle !== "Tasks" && task.tasks && task.date_due_display) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 
-                        <span style={{ display: (listTitle !== "My Day" && listTitle === null && task.date_due && task.my_day) ? 'inline' : 'none' }}>
+                        <span style={{ display: (listTitle !== "My Day" && listTitle === null && task.date_due_display && task.my_day) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 
-                        <span style={{display: task.date_due ? 'inline' : 'none'}}>
-                            <FaRegCalendar style={{fontSize: '.9rem'}} /> { task.date_due }
-                        </span>
+                        { plannedDate() }
                     </div>
                 </span>
             </div>

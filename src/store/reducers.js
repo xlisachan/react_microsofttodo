@@ -1,5 +1,5 @@
 import C from '../constants';
-import { getDate, getCurrentDate } from '../getDate';
+import { numFormat, getCurrentDateObj } from '../getDate';
 import { combineReducers } from 'redux';
 
 const listTitle = (state="My Day", action) => 
@@ -27,7 +27,7 @@ const tasks = (state=[], action) => {
         
         case C.LOAD_TASKS :
             return state.map(task =>
-                task.my_day && task.date_created === getCurrentDate(getDate()) ?
+                task.my_day && task.date_created === numFormat(getCurrentDateObj) ?
                     {
                         ...task,
                         my_day: true
@@ -40,22 +40,37 @@ const tasks = (state=[], action) => {
                 )
         
         case C.EDIT_TASK_STATUS_COMPLETE :
-            return state.map(task =>
-                task.task_id === action.payload ?
-                    task.importantStatus ?
-                        { 
+            return state.map(task => {
+                if (task.task_id === action.payload) {
+                    if (task.importantStatus && task.date_due) {
+                        return {
+                            ...task,
+                            important: !task.important,
+                            planned: !task.planned,
+                            completedStatus: !task.completedStatus
+                        }
+                    } else if (task.importantStatus) {
+                        return {
                             ...task,
                             important: !task.important,
                             completedStatus: !task.completedStatus
                         }
-                        :
-                        {
+                    } else if (task.date_due) {
+                        return {
+                            ...task,
+                            planned: !task.planned,
+                            completedStatus: !task.completedStatus
+                        }
+                    } else {
+                        return {
                             ...task,
                             completedStatus: !task.completedStatus
                         }
-                    :
-                    task
-                )
+                    }
+                } else {
+                    return task
+                }
+            })
 
         case C.EDIT_TASK_STATUS_IMPORTANT :
             return state.map(task =>
