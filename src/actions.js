@@ -46,3 +46,12 @@ export const removeTask = id => ({
     type: C.REMOVE_TASK,
     payload: id
 })
+
+export const changeQuery = query => ({
+    type: C.CHANGE_QUERY,
+    payload: query
+})
+
+export const clearQuery = () => ({
+    type: C.CLEAR_QUERY
+})
