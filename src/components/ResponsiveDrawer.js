@@ -8,6 +8,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import ListTitles from '../containers/Side/ListTitles';
 import Header from '../containers/Main/Header';
 import ListBody from '../containers/Main/ListBody';
+import Searchbar from '../containers/Side/Searchbar';
+
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
 const drawerWidth = 200;
@@ -60,7 +62,7 @@ export default function ResponsiveDrawer(props) {
     const drawer = (
         <div>
             <div className={classes.toolbar} />
-            
+            <Searchbar />
             <ListTitles
                 tasks={ props.tasks }
                 sideList={ ['My Day', 'Important', 'Planned', 'Tasks'] }
@@ -72,9 +74,6 @@ export default function ResponsiveDrawer(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-                <Header />
-            </AppBar>
 
             <nav className={classes.drawer} aria-label="Mailbox folders">
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -109,6 +108,10 @@ export default function ResponsiveDrawer(props) {
                     </Drawer>
                 </Hidden>
             </nav>
+
+            <AppBar position="fixed" className={classes.appBar}>
+                <Header />
+            </AppBar>
 
             <main className={classes.content}>
                 <div className={classes.toolbar} />
