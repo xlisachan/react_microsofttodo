@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
-const ListTitles = ({tasks, listTitle, getListTitle=f=>f, sideList, sideIcons}) => {
+const ListTitles = ({tasks, listTitle, onClick=f=>f, sideList, sideIcons}) => {
     const headerStyle = text => {
         return {
             display: 'flex', 
@@ -38,7 +38,7 @@ const ListTitles = ({tasks, listTitle, getListTitle=f=>f, sideList, sideIcons}) 
             { sideList.map((text, index) => (
                 <ListItem button key={text}
                     style={ headerStyle(text) }
-                    onClick={() => getListTitle(text)}>
+                    onClick={() => onClick(text)}>
 
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <ListItemIcon style={ iconStyle() }>
@@ -49,7 +49,6 @@ const ListTitles = ({tasks, listTitle, getListTitle=f=>f, sideList, sideIcons}) 
                     </div>
 
                     { numberOfTasks(text) }
-
                 </ListItem>
             ))}
         </List>
@@ -59,7 +58,7 @@ const ListTitles = ({tasks, listTitle, getListTitle=f=>f, sideList, sideIcons}) 
 ListTitles.propTypes = {
     tasks: PropTypes.array.isRequired,
     listTitle: PropTypes.string.isRequired,
-    getListTitle: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     sideList: PropTypes.array.isRequired,
     sideIcons: PropTypes.array.isRequired
 }
