@@ -1,56 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ListTitles from '../containers/Side/ListTitles';
-import Header from '../containers/Main/Header';
-import ListBody from '../containers/Main/ListBody';
-import Searchbar from '../containers/Side/Searchbar';
-
-import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
+import Sidebar from '../containers/Side/Sidebar';
+import Main from '../containers/Main/Main';
 
 const drawerWidth = 200;
 
-const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
-
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-    },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
             flexShrink: 0,
         },
     },
-    appBar: {
-        marginLeft: drawerWidth,
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-        },
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
-            display: 'none',
-        },
-    },
-    toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
         background: '#eee'
     },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
 }));
 
-export default function ResponsiveDrawer(props) {
-    const { container } = props;
+const ResponsiveDrawer = (props) => {
+    const { container, tasks } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -58,18 +31,6 @@ export default function ResponsiveDrawer(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     }
-
-    const drawer = (
-        <div>
-            <div className={classes.toolbar} />
-            <Searchbar />
-            <ListTitles
-                tasks={ props.tasks }
-                sideList={ ['My Day', 'Important', 'Planned', 'Tasks'] }
-                sideIcons={ listIcons }
-            />
-        </div>
-    );
 
     return (
         <div className={classes.root}>
@@ -91,7 +52,7 @@ export default function ResponsiveDrawer(props) {
                             keepMounted: true, // Better open performance on mobile.
                         }}
                     >
-                        {drawer}
+                        <Sidebar />
                     </Drawer>
                 </Hidden>
 
@@ -104,20 +65,12 @@ export default function ResponsiveDrawer(props) {
                         open
                         >
                         
-                        {drawer}
+                        <Sidebar />
                     </Drawer>
                 </Hidden>
             </nav>
 
-            <AppBar position="fixed" className={classes.appBar}>
-                <Header />
-            </AppBar>
-
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
-
-                <ListBody tasks={ props.tasks } />
-            </main>
+            <Main tasks={ tasks }/>
         </div>
     );
 }
@@ -127,3 +80,5 @@ ResponsiveDrawer.propTypes = {
   // You won't need it on your project.
   container: PropTypes.object,
 };
+
+export default ResponsiveDrawer;
