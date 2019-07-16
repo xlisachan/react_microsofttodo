@@ -9,14 +9,33 @@ class App extends Component {
     }
     
     render() {
+        const { query, tasks, listTitle} = this.props;
+        let filteredTasks = [];
+
+        query ?
+            tasks.forEach(task => {
+                if (task.item.toLowerCase().indexOf(query) !== -1) {
+                    filteredTasks.push(task);
+                }
+            })
+            :
+            filteredTasks = tasks.filter(task =>
+                task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
+            )
+
         return (
-            <ResponsiveDrawer tasks={ this.props.tasks } />
+            <ResponsiveDrawer
+                query={ query }
+                tasks={ filteredTasks }
+            />
         );
     }
 }
 
 const mapStateToProps = state => ({
-    tasks: state.tasks
+    query: state.query,
+    tasks: state.tasks,
+    listTitle: state.listTitle
 })
 
 export default connect(mapStateToProps, { loadTasks })(App);
