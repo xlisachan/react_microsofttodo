@@ -70,6 +70,15 @@ input::placeholder {
   border-bottom: 1px solid gainsboro;
 }
 
+.no-match {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+
 /* context menu */
 .react-contextmenu {
   background-color: whitesmoke;
