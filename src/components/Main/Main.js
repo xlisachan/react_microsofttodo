@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Header from '../../containers/Main/Header';
 import ListBody from '../../containers/Main/ListBody';
+import NoMatch from './NoMatch';
 
 const drawerWidth = 200;
 
@@ -25,9 +26,13 @@ const Main = ({query, tasks}) => {
     const classes = useStyles();
 
     return(
-        query ? 
+        query ?
             <div style={{flexGrow: 1}}>
-                <ListBody tasks={ tasks } />
+                { tasks.length > 0 ?
+                    <ListBody tasks={ tasks } />
+                    :
+                    <NoMatch />
+                }
             </div>
             :
             <div style={{flexGrow: 1}}>
