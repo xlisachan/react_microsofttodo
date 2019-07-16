@@ -2,7 +2,7 @@ import ListBody from '../../components/Main/ListBody';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-    listTitle: state.listTitle,
+    query: state.query
 })
 
 export default connect(mapStateToProps)(ListBody);

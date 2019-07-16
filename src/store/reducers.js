@@ -110,7 +110,7 @@ const tasks = (state=[], action) => {
     }
 }
 
-const query = (state=null, action) => {
+const query = (state='', action) => {
 	switch(action.type) {
         case C.CHANGE_QUERY :
             return action.payload
