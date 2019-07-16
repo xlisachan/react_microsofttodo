@@ -10,6 +10,9 @@ import Main from '../containers/Main/Main';
 const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
