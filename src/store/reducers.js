@@ -123,11 +123,23 @@ const query = (state='', action) => {
     }
 }
 
+const orderBy = (state="createdDate", action) => 
+	(action.type === C.SET_ORDERBY) ? 
+		action.payload :
+        state
+
+const orderDir = (state="asc", action) => 
+    (action.type === C.SET_ORDERDIR) ? 
+        action.payload :
+        state
+
 const rootReducer = combineReducers({
     listTitle,
     moreInfo,
     tasks,
-    query
+    query,
+    orderBy,
+    orderDir
 })
 
 export default rootReducer;

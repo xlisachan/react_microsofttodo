@@ -1,5 +1,7 @@
 {
     "listTitle": "My Day", 
-    "moreInfo": [],
-    "tasks": []
+    "tasks": [],
+    "query": "",
+    "orderBy": "date_created",
+    "orderDir": "asc"
 }
