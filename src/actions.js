@@ -55,3 +55,8 @@ export const changeQuery = query => ({
 export const clearQuery = () => ({
     type: C.CLEAR_QUERY
 })
+
+export const changeOrder = orderBy => ({
+    type: C.SET_ORDERBY,
+    payload: orderBy
+})

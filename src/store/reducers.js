@@ -123,7 +123,7 @@ const query = (state='', action) => {
     }
 }
 
-const orderBy = (state="createdDate", action) => 
+const orderBy = (state="date_created", action) => 
 	(action.type === C.SET_ORDERBY) ? 
 		action.payload :
         state
