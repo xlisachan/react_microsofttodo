@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HeaderButton from './HeaderButton';
 
 const Header = ({listTitle, todaysDate}) => {
     return (
@@ -13,6 +14,8 @@ const Header = ({listTitle, todaysDate}) => {
                     { todaysDate }
                 </span>
             </div>
+
+            <HeaderButton />
         </header>
     );
 }
