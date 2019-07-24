@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ResponsiveDrawer = (props) => {
-    const { container, tasks } = props;
+    const { container } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -73,7 +73,7 @@ const ResponsiveDrawer = (props) => {
                 </Hidden>
             </nav>
 
-            <Main tasks={ tasks }/>
+            <Main />
         </div>
     );
 }
@@ -81,8 +81,7 @@ const ResponsiveDrawer = (props) => {
 ResponsiveDrawer.propTypes = {
   // Injected by the documentation to work in an iframe.
   // You won't need it on your project.
-  container: PropTypes.object,
-  tasks: PropTypes.array
+  container: PropTypes.object
 };
 
 export default ResponsiveDrawer;
