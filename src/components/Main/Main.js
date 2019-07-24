@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Header from '../../containers/Main/Header';
+import Header from '../../containers/Main/Header/Header';
 import ListBody from '../../containers/Main/ListBody';
 import NoMatch from './NoMatch';
 
