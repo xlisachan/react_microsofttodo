@@ -134,6 +134,23 @@ const lists = (state=[], action) => {
                     list
             )
         
+        case C.SET_ORDERDIR :
+            return state.map(list => 
+                list.name === action.listTitle ?
+                    list.orderDir === 'asc' ?
+                        {
+                            ...list,
+                            orderDir: 'desc'
+                        }
+                        :
+                        {
+                            ...list,
+                            orderDir: 'asc'
+                        }
+                    :
+                    list
+            )
+        
         default :
             return state
     }

@@ -61,3 +61,8 @@ export const changeOrder = (orderBy, listTitle) => ({
     payload: orderBy,
     listTitle
 })
+
+export const changeDir = (listTitle) => ({
+    type: C.SET_ORDERDIR,
+    listTitle
+})
