@@ -27,7 +27,10 @@ const tasks = (state=[], action) => {
         
         case C.LOAD_TASKS :
             return state.map(task =>
-                task.my_day && task.date_created === numFormat(getCurrentDateObj) ?
+                (
+                    task.date_created === numFormat(getCurrentDateObj()) ||
+                    task.date_due === numFormat(getCurrentDateObj()) 
+                )?
                     {
                         ...task,
                         my_day: true
