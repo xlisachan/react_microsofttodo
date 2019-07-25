@@ -11,6 +11,7 @@ const constants = {
     CLEAR_QUERY: "CLEAR_QUERY",
     SET_ORDERBY: "SET_ORDERBY",
     SET_ORDERDIR: "SET_ORDERDIR",
+    RESET_ORDERDIR: "RESET_ORDERDIR"
 }
 
 export default constants;

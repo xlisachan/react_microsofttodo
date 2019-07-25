@@ -62,7 +62,12 @@ export const changeOrder = (orderBy, listTitle) => ({
     listTitle
 })
 
-export const changeDir = (listTitle) => ({
+export const changeDir = listTitle => ({
     type: C.SET_ORDERDIR,
+    listTitle
+})
+
+export const resetChangeDir = listTitle => ({
+    type: C.RESET_ORDERDIR,
     listTitle
 })

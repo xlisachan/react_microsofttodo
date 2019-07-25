@@ -128,7 +128,8 @@ const lists = (state=[], action) => {
                 list.name === action.listTitle ?
                     {
                         ...list,
-                        orderBy: action.payload
+                        orderBy: action.payload,
+                        sorted: true
                     }
                     :
                     list
@@ -140,13 +141,27 @@ const lists = (state=[], action) => {
                     list.orderDir === 'asc' ?
                         {
                             ...list,
-                            orderDir: 'desc'
+                            orderDir: 'desc',
+                            sorted: true
                         }
                         :
                         {
                             ...list,
-                            orderDir: 'asc'
+                            orderDir: 'asc',
+                            sorted: true
                         }
+                    :
+                    list
+            )
+        
+        case C.RESET_ORDERDIR :
+            return state.map(list => 
+                list.name === action.listTitle ?
+                    {
+                        ...list,
+                        orderDir: 'asc',
+                        sorted: false
+                    }
                     :
                     list
             )
