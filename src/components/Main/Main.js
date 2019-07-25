@@ -27,9 +27,11 @@ const Main = ({query, tasks, lists, listTitle}) => {
 
     let filteredTasks = [],
         order,
-        selectedList = lists.filter(list => list.name === listTitle);
+        selectedList = lists.filter(list => list.name === listTitle),
+        orderBy = selectedList[0].orderBy,
+        orderDir = selectedList[0].orderDir;
 
-    selectedList[0].orderDir === 'asc' ? order = 1 : order = -1;
+    orderDir === 'asc' ? order = 1 : order = -1;
 
     query ?
         tasks.forEach(task => {
@@ -42,11 +44,11 @@ const Main = ({query, tasks, lists, listTitle}) => {
             task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
         )
         .sort((a,b) => {
-            if (a[selectedList[0].orderBy].toLowerCase() < b[selectedList[0].orderBy].toLowerCase()) {
-                return -1 * order
-            } else {
-                return 1 * order
-            }
+            return (orderBy === 'item' || orderBy === 'date_due' || orderBy === 'date_created') ?
+                (a[orderBy].toLowerCase() < b[orderBy].toLowerCase()) ? -1 * order : 1 * order
+                :
+                (orderDir === 'asc') ?
+                    b[orderBy] - a[orderBy] : a[orderBy] - b[orderBy]
         })
 
     const renderMainSection = () => {
