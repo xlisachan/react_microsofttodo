@@ -5,8 +5,7 @@ const mapStateToProps = state => ({
     query: state.query,
     tasks: state.tasks,
     listTitle: state.listTitle,
-    orderBy: state.orderBy,
-    orderDir: state.orderDir
+    lists: state.lists
 })
 
 export default connect(mapStateToProps)(Main);

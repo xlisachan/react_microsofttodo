@@ -22,13 +22,14 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Main = ({query, tasks, listTitle, orderBy, orderDir}) => {
+const Main = ({query, tasks, lists, listTitle}) => {
     const classes = useStyles();
 
-    let filteredTasks = [];
-    let order;
+    let filteredTasks = [],
+        order,
+        selectedList = lists.filter(list => list.name === listTitle);
 
-    orderDir === 'asc' ? order = 1 : order = -1;
+    selectedList[0].orderDir === 'asc' ? order = 1 : order = -1;
 
     query ?
         tasks.forEach(task => {
@@ -41,15 +42,15 @@ const Main = ({query, tasks, listTitle, orderBy, orderDir}) => {
             task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
         )
         .sort((a,b) => {
-            if (a[orderBy].toLowerCase() < b[orderBy].toLowerCase()) {
+            if (a[selectedList[0].orderBy].toLowerCase() < b[selectedList[0].orderBy].toLowerCase()) {
                 return -1 * order
             } else {
                 return 1 * order
             }
         })
 
-    return(
-        query ?
+    const renderMainSection = () => {
+        return query ?
             <div style={{flexGrow: 1}}>
                 { filteredTasks.length > 0 ?
                     <ListBody tasks={ filteredTasks } />
@@ -69,6 +70,10 @@ const Main = ({query, tasks, listTitle, orderBy, orderDir}) => {
                     <ListBody tasks={ filteredTasks } />
                 </main>
             </div>
+    }
+
+    return (
+        renderMainSection()
     )
 }
 
@@ -76,8 +81,7 @@ Main.propTypes = {
     query: PropTypes.string,
     tasks: PropTypes.array.isRequired,
     listTitle: PropTypes.string,
-    orderBy: PropTypes.string,
-    orderDir: PropTypes.string
+    lists: PropTypes.array
 }
 
 export default Main;
