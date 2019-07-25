@@ -36,9 +36,17 @@ input::placeholder {
   color: white;
 }
 
+.sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .3rem 3rem .3rem 2rem;
+  font-size: .8rem;
+}
+
 .main-container {
   position: relative;
-  top: 40px;
+  top: 25px;
 }
 
 .add-form {
