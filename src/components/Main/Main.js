@@ -64,7 +64,12 @@ const Main = ({query, tasks, lists, listTitle}) => {
                     <Header />
                 </AppBar>
 
-                <main className={classes.content}>
+                <main 
+                    className={classes.content}
+                    style={{ 
+                        position: selectedList[0].sorted ? 'relative' : null, 
+                        top: selectedList[0].sorted ? 30 : null
+                    }}>
                     <div className={classes.toolbar} />
 
                     <ListBody tasks={ filteredTasks } />
