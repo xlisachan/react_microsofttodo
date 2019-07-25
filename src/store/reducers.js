@@ -110,6 +110,35 @@ const tasks = (state=[], action) => {
     }
 }
 
+const list = (state={}, action) =>
+    (action.type === C.ADD_LIST) ?
+        action.payload :
+        state
+
+const lists = (state=[], action) => {
+    switch(action.type) {
+        case C.ADD_LIST :
+            return [
+                ...state,
+                list(null, action)
+            ]
+        
+        case C.SET_ORDERBY :
+            return state.map(list => 
+                list.name === action.listTitle ?
+                    {
+                        ...list,
+                        orderBy: action.payload
+                    }
+                    :
+                    list
+            )
+        
+        default :
+            return state
+    }
+}
+
 const query = (state='', action) => {
 	switch(action.type) {
         case C.CHANGE_QUERY :
@@ -123,23 +152,12 @@ const query = (state='', action) => {
     }
 }
 
-const orderBy = (state="date_created", action) => 
-	(action.type === C.SET_ORDERBY) ? 
-		action.payload :
-        state
-
-const orderDir = (state="asc", action) => 
-    (action.type === C.SET_ORDERDIR) ? 
-        action.payload :
-        state
-
 const rootReducer = combineReducers({
     listTitle,
     moreInfo,
     tasks,
-    query,
-    orderBy,
-    orderDir
+    lists,
+    query
 })
 
 export default rootReducer;

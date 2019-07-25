@@ -1,7 +1,35 @@
 {
-    "listTitle": "My Day", 
+    "listTitle": "My Day",
     "tasks": [],
-    "query": "",
-    "orderBy": "date_created",
-    "orderDir": "asc"
+    "lists": [
+        {
+            "id": 0,
+            "name": "My Day",
+            "orderBy": "date_created",
+            "orderDir": "asc",
+            "default": true
+        },
+        {
+            "id": 1,
+            "name": "Important",
+            "orderBy": "date_created",
+            "orderDir": "asc",
+            "default": true
+        },
+        {
+            "id": 2,
+            "name": "Planned",
+            "orderBy": "date_created",
+            "orderDir": "asc",
+            "default": true
+        },
+        {
+            "id": 3,
+            "name": "Tasks",
+            "orderBy": "date_created",
+            "orderDir": "asc",
+            "default": true
+        }
+    ],
+    "query": ""
 }
