@@ -14,7 +14,7 @@ const ListBody = ({query, tasks}) => {
                 />
             )}
 
-        { query ? null : <AddItem /> }
+            { query ? null : <AddItem /> }
         </div>
     );
 }
