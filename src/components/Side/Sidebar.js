@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck, FaSearch, FaTimesCircle } from 'react-icons/fa';
+import { FaSearch, FaTimesCircle } from 'react-icons/fa';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import ListTitles from '../../containers/Side/ListTitles';
-
-const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
 const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
@@ -98,11 +96,7 @@ const Sidebar = ({getListTitle=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
                 { renderClearButton() }
             </div>
 
-            <ListTitles
-                sideList={ ['My Day', 'Important', 'Planned', 'Tasks'] }
-                sideIcons={ listIcons }
-                onClick={ handleClick }
-            />
+            <ListTitles onClick={ handleClick } />
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
     listTitle: state.listTitle,
+    lists: state.lists,
     tasks: state.tasks
 })
 

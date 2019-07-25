@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 
-const ListTitles = ({tasks, listTitle, onClick=f=>f, sideList, sideIcons}) => {
+const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
+
+const ListTitles = ({tasks, lists, listTitle, onClick=f=>f, sideList, sideIcons}) => {
     const headerStyle = text => {
         return {
             display: 'flex', 
@@ -15,7 +18,7 @@ const ListTitles = ({tasks, listTitle, onClick=f=>f, sideList, sideIcons}) => {
     const iconStyle = () => {
         return {
             marginRight: -15, 
-            fontSize: '1.5rem', 
+            fontSize: '1.3rem', 
             color: 'royalblue'
         }
     }
@@ -35,20 +38,20 @@ const ListTitles = ({tasks, listTitle, onClick=f=>f, sideList, sideIcons}) => {
     
     return (
         <List>
-            { sideList.map((text, index) => (
-                <ListItem button key={text}
-                    style={ headerStyle(text) }
-                    onClick={() => onClick(text)}>
+            { lists.map((list, index) => (
+                <ListItem button key={list.name + '_' + list.id}
+                    style={ headerStyle(list.name) }
+                    onClick={() => onClick(list.name)}>
 
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <ListItemIcon style={ iconStyle() }>
-                            { sideIcons[index] }
+                            { listIcons[index] }
                         </ListItemIcon>
 
-                        <ListItemText primary={text} />
+                        <ListItemText primary={list.name} />
                     </div>
 
-                    { numberOfTasks(text) }
+                    { numberOfTasks(list.name) } 
                 </ListItem>
             ))}
         </List>
@@ -57,10 +60,9 @@ const ListTitles = ({tasks, listTitle, onClick=f=>f, sideList, sideIcons}) => {
 
 ListTitles.propTypes = {
     tasks: PropTypes.array.isRequired,
+    lists: PropTypes.array.isRequired,
     listTitle: PropTypes.string.isRequired,
     onClick: PropTypes.func,
-    sideList: PropTypes.array.isRequired,
-    sideIcons: PropTypes.array.isRequired
 }
  
 export default ListTitles;
