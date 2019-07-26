@@ -71,3 +71,8 @@ export const resetChangeDir = listTitle => ({
     type: C.RESET_ORDERDIR,
     listTitle
 })
+
+export const toggleHide = listTitle => ({
+    type: C.TOGGLE_HIDE,
+    listTitle
+})

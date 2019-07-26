@@ -169,6 +169,17 @@ const lists = (state=[], action) => {
                     list
             )
         
+        case C.TOGGLE_HIDE :
+            return state.map(list => 
+                list.name === action.listTitle ?
+                    {
+                        ...list,
+                        hideCompleted: !list.hideCompleted
+                    }
+                    :
+                    list
+            )
+        
         default :
             return state
     }

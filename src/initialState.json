@@ -8,6 +8,7 @@
             "orderBy": "date_created",
             "orderDir": "asc",
             "sorted": false,
+            "hideCompleted": false,
             "default": true
         },
         {
@@ -16,6 +17,7 @@
             "orderBy": "date_created",
             "orderDir": "asc",
             "sorted": false,
+            "hideCompleted": false,
             "default": true
         },
         {
@@ -24,6 +26,7 @@
             "orderBy": "date_created",
             "orderDir": "asc",
             "sorted": false,
+            "hideCompleted": false,
             "default": true
         },
         {
@@ -32,6 +35,7 @@
             "orderBy": "date_created",
             "orderDir": "asc",
             "sorted": false,
+            "hideCompleted": false,
             "default": true
         }
     ],
