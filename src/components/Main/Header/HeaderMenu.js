@@ -26,13 +26,18 @@ class HeaderMenu extends Component {
         });
     }
 
+    formatColor = color => {
+        return color ?
+            'rgb(' + color.join(',') + ')' : null
+    }
+
     handleSort = (item) => {
         const { listTitle, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
 
         item.id === 'hideTasks' || item.id === 'showTasks' ?
             onToggleHide(listTitle)
             :
-            item.id === `color_${item.color}` ?
+            item.icon === 'lens' ?
                 onChangeBgColor(item.color, listTitle)
                 :
                 onChangeOrder(item.id, listTitle);
@@ -99,7 +104,7 @@ class HeaderMenu extends Component {
                             justifyContent: 'space-between'
                         }}
                         onClick={() => this.handleSort(item)}>
-                            <Icon style={{color: item.color, marginRight: '.5rem', fontSize: item.size}}>
+                            <Icon style={{color: this.formatColor(item.color), marginRight: '.5rem', fontSize: item.size}}>
                                 { item.icon }
                             </Icon>
                     

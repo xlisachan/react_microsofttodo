@@ -15,11 +15,15 @@ const ListTitles = ({tasks, lists, listTitle, onClick=f=>f}) => {
         }
     }
 
+    const formatColor = color => {
+        return 'rgb(' + color.join(',') + ')';
+    }
+
     const iconStyle = color => {
         return {
             marginRight: -15, 
             fontSize: '1.3rem',
-            color: color
+            color: formatColor(color)
         }
     }
 
