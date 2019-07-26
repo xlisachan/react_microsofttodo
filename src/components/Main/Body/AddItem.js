@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
-import { numFormat, displayFormat, getCurrentDateObj }  from '../../getDate';
+import { numFormat, displayFormat, getCurrentDateObj }  from '../../../getDate';
 import uuid from 'uuid';
 
 const AddTask = ({listTitle, onAddTask=f=>f}) => {

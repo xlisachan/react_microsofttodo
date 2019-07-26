@@ -1,6 +1,6 @@
-import AddItem from '../../components/Main/AddItem';
+import AddItem from '../../../components/Main/Body/AddItem';
 import { connect } from 'react-redux';
-import { addTask } from '../../actions';
+import { addTask } from '../../../actions';
 
 const mapStateToProps = state => ({
     listTitle: state.listTitle

@@ -1,4 +1,4 @@
-import ListBody from '../../components/Main/ListBody';
+import ListBody from '../../../components/Main/Body/ListBody';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({

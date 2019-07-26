@@ -1,6 +1,6 @@
-import RightClickMenu from '../../components/Main/RightClickMenu';
+import RightClickMenu from '../../../components/Main/Body/RightClickMenu';
 import { connect } from 'react-redux';
-import { toggleMyDay, toggleCompleted, toggleImportant, removeTask } from '../../actions'; 
+import { toggleMyDay, toggleCompleted, toggleImportant, removeTask } from '../../../actions'; 
 
 const mapDispatchToProps = dispatch => ({
     

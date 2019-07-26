@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RightClickMenu from '../../containers/Main/RightClickMenu';
-import AddItem from '../../containers/Main/AddItem';
+import RightClickMenu from '../../../containers/Main/Body/RightClickMenu';
+import AddItem from '../../../containers/Main/Body/AddItem';
 
 const ListBody = ({query, tasks}) => {
     return (

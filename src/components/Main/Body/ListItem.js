@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
-import { numFormat, getCurrentDateObj } from '../../getDate';
+import { numFormat, getCurrentDateObj } from '../../../getDate';
 
 const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const listItem = () => {

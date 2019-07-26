@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
-import ListItem from '../../containers/Main/ListItem';
+import ListItem from '../../../containers/Main/Body/ListItem';
 import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar, FaRegTrashAlt } from 'react-icons/fa';
 
 const RightClickMenu = ({task, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
