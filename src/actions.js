@@ -76,3 +76,9 @@ export const toggleHide = listTitle => ({
     type: C.TOGGLE_HIDE,
     listTitle
 })
+
+export const changeBgColor = (color, listTitle) => ({
+    type: C.SET_BGCOLOR,
+    payload: color,
+    listTitle
+})

@@ -12,7 +12,8 @@ const constants = {
     SET_ORDERBY: "SET_ORDERBY",
     SET_ORDERDIR: "SET_ORDERDIR",
     RESET_ORDERDIR: "RESET_ORDERDIR",
-    TOGGLE_HIDE: "TOGGLE_HIDE"
+    TOGGLE_HIDE: "TOGGLE_HIDE",
+    SET_BGCOLOR: "SET_BGCOLOR"
 }
 
 export default constants;

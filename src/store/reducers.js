@@ -180,6 +180,17 @@ const lists = (state=[], action) => {
                     list
             )
         
+        case C.SET_BGCOLOR :
+            return state.map(list => 
+                list.name === action.listTitle ?
+                    {
+                        ...list,
+                        color: action.payload
+                    }
+                    :
+                    list
+            )
+
         default :
             return state
     }
