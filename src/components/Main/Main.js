@@ -29,7 +29,8 @@ const Main = ({query, tasks, lists, listTitle}) => {
         order,
         selectedList = lists.filter(list => list.name === listTitle),
         orderBy = selectedList[0].orderBy,
-        orderDir = selectedList[0].orderDir;
+        orderDir = selectedList[0].orderDir,
+        hideCompleted = selectedList[0].hideCompleted;
 
     orderDir === 'asc' ? order = 1 : order = -1;
 
@@ -50,6 +51,7 @@ const Main = ({query, tasks, lists, listTitle}) => {
                 (orderDir === 'asc') ?
                     b[orderBy] - a[orderBy] : a[orderBy] - b[orderBy]
         })
+        .filter(task => hideCompleted ? !task.completedStatus : task)
 
     const renderMainSection = () => {
         return query ?
