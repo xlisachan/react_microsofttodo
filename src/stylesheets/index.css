@@ -32,7 +32,6 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(80, 40, 250);
   color: white;
 }
 

@@ -15,9 +15,16 @@ const Header = ({lists, listTitle}) => {
         return selectedList[0].sorted ? <SortBar /> : null
     }
 
+    const setBgColor = () => {
+        const bgColor = selectedList[0].color;
+        return bgColor;
+    }
+
     return (
         <div>
-            <header className="header">
+            <header 
+                className="header"
+                style={{backgroundColor: setBgColor() }}>
                 <div>
                     <h2 style={{ fontWeight: 'bold'}}>
                         { listTitle }
