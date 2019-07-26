@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ListItemText, Menu, MenuItem } from '@material-ui/core';
-import { FaChevronRight } from 'react-icons/fa';
+import Icon from '@material-ui/core/Icon';
+import { FaCaretRight } from 'react-icons/fa';
 import todoMenu from './todoMenu';
 
 class HeaderMenu extends Component {
@@ -55,8 +56,13 @@ class HeaderMenu extends Component {
                             }}
                             onClick={e => this.handleSubItemClick(e, item)}>
                         
+                            <Icon style={{marginRight: '.5rem', fontSize: '1rem'}}>
+                                { item.icon }
+                            </Icon>
+
                             <ListItemText primary={ item.caption } />
-                            <FaChevronRight />
+
+                            <FaCaretRight />
                         </MenuItem>
 
                         { 
@@ -89,6 +95,9 @@ class HeaderMenu extends Component {
                             display: 'flex',
                             justifyContent: 'space-between'
                         }}>
+                            <Icon style={{marginRight: '.5rem', fontSize: '1rem'}}>
+                                { item.icon }
+                            </Icon>
                     
                             <ListItemText 
                                 primary={item.caption} 
