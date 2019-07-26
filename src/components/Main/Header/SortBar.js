@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaChevronUp, FaChevronDown, FaTimes } from 'react-icons/fa';
 
-const SortBar = ({lists, listTitle, onChangeDir=f=>f, onClear=f=>f}) => {
+const SortBar = ({barColor, lists, listTitle, onChangeDir=f=>f, onClear=f=>f}) => {
     const selectedList = lists.filter(list => list.name === listTitle)
 
     const getOrderBy = () => {
@@ -26,7 +26,8 @@ const SortBar = ({lists, listTitle, onChangeDir=f=>f, onClear=f=>f}) => {
     }
 
     return (
-        <div className="sort-bar">
+        <div className="sort-bar"
+            style={{ backgroundColor: barColor }}>
             <div onClick={() => onChangeDir(listTitle)}>
                 Sorted { getOrderBy() } { getDirIcon() }
             </div>
@@ -40,7 +41,8 @@ SortBar.propTypes = {
     lists: PropTypes.array,
     listTitle: PropTypes.string,
     onChangeDir: PropTypes.func,
-    onClear: PropTypes.func
+    onClear: PropTypes.func,
+    barColor: PropTypes.string.isRequired
 }
 
 export default SortBar;

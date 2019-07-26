@@ -12,19 +12,24 @@ const Header = ({lists, listTitle}) => {
     }
     
     const renderSortBar = () => {
-        return selectedList[0].sorted ? <SortBar /> : null
+        return selectedList[0].sorted ? <SortBar barColor={ secondaryColor() } /> : null
     }
 
-    const setBgColor = () => {
-        const bgColor = selectedList[0].color;
-        return bgColor;
+    const formatColor = () => {
+        return 'rgb(' + selectedList[0].color.join(',') + ')';
+    }
+
+    const secondaryColor = () => {
+        const newArr = selectedList[0].color.map(col => parseInt(col * .6));
+        const newColor = 'rgb(' + newArr.join(',') + ')';
+        return newColor;
     }
 
     return (
         <div>
             <header 
                 className="header"
-                style={{backgroundColor: setBgColor() }}>
+                style={{backgroundColor: formatColor() }}>
                 <div>
                     <h2 style={{ fontWeight: 'bold'}}>
                         { listTitle }
@@ -35,7 +40,7 @@ const Header = ({lists, listTitle}) => {
                     </span>
                 </div>
 
-                <HeaderButton />
+                <HeaderButton buttonColor={ secondaryColor() } />
             </header>
             
             { renderSortBar() }
