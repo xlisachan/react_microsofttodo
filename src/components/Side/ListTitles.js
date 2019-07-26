@@ -5,7 +5,7 @@ import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-ic
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const ListTitles = ({tasks, lists, listTitle, onClick=f=>f, sideList, sideIcons}) => {
+const ListTitles = ({tasks, lists, listTitle, onClick=f=>f}) => {
     const headerStyle = text => {
         return {
             display: 'flex', 
@@ -15,11 +15,11 @@ const ListTitles = ({tasks, lists, listTitle, onClick=f=>f, sideList, sideIcons}
         }
     }
 
-    const iconStyle = () => {
+    const iconStyle = color => {
         return {
             marginRight: -15, 
-            fontSize: '1.3rem', 
-            color: 'royalblue'
+            fontSize: '1.3rem',
+            color: color
         }
     }
 
@@ -44,7 +44,7 @@ const ListTitles = ({tasks, lists, listTitle, onClick=f=>f, sideList, sideIcons}
                     onClick={() => onClick(list.name)}>
 
                     <div style={{display: 'flex', alignItems: 'center'}}>
-                        <ListItemIcon style={ iconStyle() }>
+                        <ListItemIcon style={ iconStyle(list.color) }>
                             { listIcons[index] }
                         </ListItemIcon>
 
