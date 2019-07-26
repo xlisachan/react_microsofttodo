@@ -1,6 +1,6 @@
 import HeaderMenu from '../../../components/Main/Header/HeaderMenu';
 import { connect } from 'react-redux';
-import { changeOrder, toggleHide } from '../../../actions';
+import { changeBgColor, changeOrder, toggleHide } from '../../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -8,6 +8,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+
+    onChangeBgColor(color, listTitle) {
+        dispatch(
+            changeBgColor(color, listTitle)
+        )
+    },
 
     onChangeOrder(order, listTitle) {
         dispatch(

@@ -27,16 +27,19 @@ class HeaderMenu extends Component {
     }
 
     handleSort = (item) => {
-        const { listTitle, onToggleHide=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
+        const { listTitle, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
 
         item.id === 'hideTasks' || item.id === 'showTasks' ?
             onToggleHide(listTitle)
             :
-            onChangeOrder(item.id, listTitle);
-            this.setState({
-                subMenuOpen: false
-            });
-            onClose();
+            item.id === `color_${item.color}` ?
+                onChangeBgColor(item.color, listTitle)
+                :
+                onChangeOrder(item.id, listTitle);
+                this.setState({
+                    subMenuOpen: false
+                });
+                onClose();
     }
 
     renderMenuItems = children => {
@@ -48,7 +51,7 @@ class HeaderMenu extends Component {
         return children.map(item => {
             if (item.children) {
                 return (listTitle !== 'Planned' || item.id !== "sortTasks") ?
-                    <div key={ item.caption }>
+                    <div key={ item.id }>
                         <MenuItem
                             style={{
                                 display: 'flex',
@@ -56,7 +59,7 @@ class HeaderMenu extends Component {
                             }}
                             onClick={e => this.handleSubItemClick(e, item)}>
                         
-                            <Icon style={{marginRight: '.5rem', fontSize: '1rem'}}>
+                            <Icon style={{marginRight: '.5rem', fontSize: item.size}}>
                                 { item.icon }
                             </Icon>
 
@@ -94,14 +97,14 @@ class HeaderMenu extends Component {
                         style={{
                             display: 'flex',
                             justifyContent: 'space-between'
-                        }}>
-                            <Icon style={{marginRight: '.5rem', fontSize: '1rem'}}>
+                        }}
+                        onClick={() => this.handleSort(item)}>
+                            <Icon style={{color: item.color, marginRight: '.5rem', fontSize: item.size}}>
                                 { item.icon }
                             </Icon>
                     
                             <ListItemText 
                                 primary={item.caption} 
-                                onClick={() => this.handleSort(item)}
                             />
                     </MenuItem>
                     :
@@ -130,7 +133,8 @@ HeaderMenu.propTypes = {
     open: PropTypes.bool.isRequired,
     anchorElement: PropTypes.any,
     onClose: PropTypes.func.isRequired,
-    onChangeOrder: PropTypes.func
+    onChangeOrder: PropTypes.func,
+    onChangeBgColor: PropTypes.func
 };
 
 export default HeaderMenu;
