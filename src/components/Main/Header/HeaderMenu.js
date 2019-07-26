@@ -26,19 +26,23 @@ class HeaderMenu extends Component {
     }
 
     handleSort = (item) => {
-        const { onChangeOrder=f=>f, onClose=f=>f } = this.props;
+        const { listTitle, onToggleHide=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
 
-        onChangeOrder(item.id, this.props.listTitle);
-
-        this.setState({
-            subMenuOpen: false
-        });
-
-        onClose();
+        item.id === 'hideTasks' || item.id === 'showTasks' ?
+            onToggleHide(listTitle)
+            :
+            onChangeOrder(item.id, listTitle);
+            this.setState({
+                subMenuOpen: false
+            });
+            onClose();
     }
 
     renderMenuItems = children => {
-        const { listTitle } = this.props;
+        const { lists, listTitle } = this.props;
+
+        const selectedList = lists.filter(list => list.name === listTitle),
+              hideCompleted = selectedList[0].hideCompleted;
 
         return children.map(item => {
             if (item.children) {
@@ -74,10 +78,10 @@ class HeaderMenu extends Component {
 
             return (
                 (
-                    (listTitle === 'My Day' && item.id !== 'my_day') ||
-                    (listTitle === 'Important' && (item.id !== 'importantStatus' && item.id !== 'completedStatus')) ||
-                    (listTitle === 'Planned' || (item.id === 'hideTasks' && item.id === 'showTasks')) ||
-                    (listTitle === 'Tasks')
+                    ((listTitle === 'My Day' && item.id !== 'my_day') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (listTitle === 'Important' && (item.id !== 'importantStatus' && item.id !== 'completedStatus') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (listTitle === 'Planned' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (listTitle === 'Tasks' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks')))
                 ) ?
                     <MenuItem
                         key={item.id}
@@ -112,6 +116,7 @@ class HeaderMenu extends Component {
 }
 
 HeaderMenu.propTypes = {
+    lists: PropTypes.array,
     listTitle: PropTypes.string,
     open: PropTypes.bool.isRequired,
     anchorElement: PropTypes.any,
