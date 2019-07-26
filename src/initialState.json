@@ -9,7 +9,7 @@
             "orderDir": "asc",
             "sorted": false,
             "hideCompleted": false,
-            "color": "#5028FA",
+            "color": [80,40,250],
             "default": true
         },
         {
@@ -19,7 +19,7 @@
             "orderDir": "asc",
             "sorted": false,
             "hideCompleted": false,
-            "color": "#5028FA",
+            "color": [80,40,250],
             "default": true
         },
         {
@@ -29,7 +29,7 @@
             "orderDir": "asc",
             "sorted": false,
             "hideCompleted": false,
-            "color": "#5028FA",
+            "color": [80,40,250],
             "default": true
         },
         {
@@ -39,7 +39,7 @@
             "orderDir": "asc",
             "sorted": false,
             "hideCompleted": false,
-            "color": "#5028FA",
+            "color": [80,40,250],
             "default": true
         }
     ],
