@@ -31,13 +31,13 @@ export const toggleMoreInfo = task => ({
 
 export const addTask = (
         task_id, item, date_created, date_due, date_due_display,
-        completedStatus=false, importantStatus, my_day, planned, important, tasks=true
+        completedStatus, importantStatus, my_day, planned, important, tasks, list_id
     ) => dispatch => {
         dispatch({
             type: C.ADD_TASK,
             payload: {
                 task_id, item, date_created, date_due, date_due_display,
-                completedStatus, importantStatus, my_day, planned, important, tasks
+                completedStatus, importantStatus, my_day, planned, important, tasks, list_id
             }
         })
 }
@@ -82,3 +82,21 @@ export const changeBgColor = (color, listTitle) => ({
     payload: color,
     listTitle
 })
+
+export const addList = (
+    id, 
+    name, 
+    orderBy, 
+    orderDir, 
+    sorted, 
+    hideCompleted, 
+    color, 
+    defaultList
+    ) => dispatch => {
+    dispatch({
+        type: C.ADD_LIST,
+        payload: {
+            id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList
+        }
+    })
+}

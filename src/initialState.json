@@ -10,7 +10,7 @@
             "sorted": false,
             "hideCompleted": false,
             "color": [80,40,250],
-            "default": true
+            "defaultList": true
         },
         {
             "id": 1,
@@ -20,7 +20,7 @@
             "sorted": false,
             "hideCompleted": false,
             "color": [80,40,250],
-            "default": true
+            "defaultList": true
         },
         {
             "id": 2,
@@ -30,7 +30,7 @@
             "sorted": false,
             "hideCompleted": false,
             "color": [80,40,250],
-            "default": true
+            "defaultList": true
         },
         {
             "id": 3,
@@ -40,7 +40,7 @@
             "sorted": false,
             "hideCompleted": false,
             "color": [80,40,250],
-            "default": true
+            "defaultList": true
         }
     ],
     "query": ""
