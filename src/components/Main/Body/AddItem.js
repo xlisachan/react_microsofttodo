@@ -4,7 +4,7 @@ import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import { numFormat, displayFormat, getCurrentDateObj }  from '../../../getDate';
 import uuid from 'uuid';
 
-const AddTask = ({listTitle, onAddTask=f=>f}) => {
+const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
     const [item, setItem] = useState('');
 
     const handleButtonChange = () => {
@@ -13,6 +13,8 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
             :
             <FaRegCircle style={{color: 'gray'}} /> 
     }
+
+    const selectedList = lists.filter(list => list.name === listTitle)
 
     const onSubmit = e => {
         e.preventDefault();
@@ -30,7 +32,8 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
                 my_day: true, 
                 planned: false, 
                 important: false, 
-                tasks: true
+                tasks: true,
+                list_id: 'tasks'
             });
         } else if (item && listTitle === "Important") {
             onAddTask({
@@ -44,7 +47,8 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
                 my_day: false, 
                 planned: false, 
                 important: true, 
-                tasks: true
+                tasks: true,
+                list_id: 'tasks'
             });
         } else if (item && listTitle === "Planned") {
             onAddTask({
@@ -58,7 +62,8 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
                 my_day: false, 
                 planned: true, 
                 important: false, 
-                tasks: true
+                tasks: true,
+                list_id: 'tasks'
             });
         } else if (item && listTitle === "Tasks") {
             onAddTask({
@@ -72,9 +77,10 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
                 my_day: false, 
                 planned: false, 
                 important: false, 
-                tasks: true
+                tasks: true,
+                list_id: 'tasks'
             });
-        } else if (item) {
+        } else {
             onAddTask({
                 task_id: uuid.v4(), 
                 item, 
@@ -86,7 +92,8 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
                 my_day: false, 
                 planned: false, 
                 important: false, 
-                tasks: true
+                tasks: false,
+                list_id: selectedList[0].id
             });
         }
 
@@ -113,6 +120,7 @@ const AddTask = ({listTitle, onAddTask=f=>f}) => {
 }
 
 AddTask.propTypes = {
+    lists: PropTypes.array.isRequired,
     listTitle: PropTypes.string.isRequired,
     onAddTask: PropTypes.func.isRequired
 }
