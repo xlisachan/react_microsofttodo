@@ -51,7 +51,8 @@ class HeaderMenu extends Component {
         const { lists, listTitle } = this.props;
 
         const selectedList = lists.filter(list => list.name === listTitle),
-              hideCompleted = selectedList[0].hideCompleted;
+              hideCompleted = selectedList[0].hideCompleted,
+              defaultList = selectedList[0].defaultList;
 
         return children.map(item => {
             if (item.children) {
@@ -95,7 +96,8 @@ class HeaderMenu extends Component {
                     ((listTitle === 'My Day' && item.id !== 'my_day') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
                     (listTitle === 'Important' && (item.id !== 'importantStatus' && item.id !== 'completedStatus') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
                     (listTitle === 'Planned' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
-                    (listTitle === 'Tasks' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks')))
+                    (listTitle === 'Tasks' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (!defaultList && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks')))
                 ) ?
                     <MenuItem
                         key={item.id}

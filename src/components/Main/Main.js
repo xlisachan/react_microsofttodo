@@ -41,9 +41,9 @@ const Main = ({query, tasks, lists, listTitle}) => {
             }
         })
         :
-        filteredTasks = tasks.filter(task =>
-            task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`]
-        )
+        filteredTasks = tasks.filter(task => {
+            return task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`] || task.list_id === selectedList[0].id
+        })
         .sort((a,b) => {
             return (orderBy === 'item' || orderBy === 'date_due' || orderBy === 'date_created') ?
                 (a[orderBy].toLowerCase() < b[orderBy].toLowerCase()) ? -1 * order : 1 * order
