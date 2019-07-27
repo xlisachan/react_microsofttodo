@@ -4,6 +4,7 @@ import { FaSearch, FaTimesCircle } from 'react-icons/fa';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import ListTitles from '../../containers/Side/ListTitles';
+import AddList from '../../containers/Side/AddList';
 
 const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
@@ -97,6 +98,8 @@ const Sidebar = ({getListTitle=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
             </div>
 
             <ListTitles onClick={ handleClick } />
+
+            <AddList />
         </div>
     );
 }
