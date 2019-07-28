@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck, FaList } from 'react-icons/fa';
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const ListTitles = ({tasks, lists, listTitle, onClick=f=>f}) => {
+const TitleRow = ({list, index, listTitle, tasks, onClick=f=>f}) => {
     const headerStyle = text => {
         return {
             display: 'flex', 
@@ -45,48 +45,29 @@ const ListTitles = ({tasks, lists, listTitle, onClick=f=>f}) => {
             null
     }
 
-    const defaultLists = lists.filter(list => list.defaultList)
-    const customLists = lists.filter(list => !list.defaultList)
-
-    const renderListRow= (list, index) => {
-        return (
-            <ListItem button key={list.name + '_' + list.id}
-                style={ headerStyle(list.name) }
-                onClick={() => onClick(list.name)}>
-
-                <div style={{display: 'flex', alignItems: 'center'}}>
-                    <ListItemIcon style={ iconStyle(list.color) }>
-                        { setListIcon(list, index) }
-                    </ListItemIcon>
-
-                    <ListItemText primary={list.name} />
-                </div>
-
-                { numberOfTasks(list.id, list.name) } 
-            </ListItem>
-        )
-    }
-
     return (
-        <List>
-            { defaultLists.map((list, index) => (
-                renderListRow(list, index)
-            ))}
+        <ListItem button
+            style={ headerStyle(list.name) }
+            onClick={() => onClick(list.name)}>
 
-            <Divider />
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <ListItemIcon style={ iconStyle(list.color) }>
+                    { setListIcon(list, index) }
+                </ListItemIcon>
 
-            { customLists.map((list, index) => (
-                renderListRow(list, index)
-            ))}
-        </List>
+                <ListItemText primary={list.name} />
+            </div>
+
+            { numberOfTasks(list.id, list.name) } 
+        </ListItem>
     );
 }
 
-ListTitles.propTypes = {
+TitleRow.propTypes = {
+    list: PropTypes.any,
+    index: PropTypes.any,
     tasks: PropTypes.array.isRequired,
-    lists: PropTypes.array.isRequired,
     listTitle: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
+    onClick: PropTypes.func
 }
- 
-export default ListTitles;
+export default TitleRow;

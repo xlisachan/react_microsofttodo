@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FaSearch, FaTimesCircle } from 'react-icons/fa';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
-import ListTitles from '../../containers/Side/ListTitles';
+import TitleList from '../../containers/Side/TitleList';
 import AddList from '../../containers/Side/AddList';
 
 const useStyles = makeStyles(theme => ({
@@ -97,7 +97,7 @@ const Sidebar = ({getListTitle=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
                 { renderClearButton() }
             </div>
 
-            <ListTitles onClick={ handleClick } />
+            <TitleList onClick={ handleClick } />
 
             <AddList />
         </div>
