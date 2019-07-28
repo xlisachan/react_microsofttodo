@@ -14,7 +14,8 @@ const constants = {
     RESET_ORDERDIR: "RESET_ORDERDIR",
     TOGGLE_HIDE: "TOGGLE_HIDE",
     SET_BGCOLOR: "SET_BGCOLOR",
-    ADD_LIST: "ADD_LIST"
+    ADD_LIST: "ADD_LIST",
+    SET_LISTNO: "SET_LISTNO"
 }
 
 export default constants;
