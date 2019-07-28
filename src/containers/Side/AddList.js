@@ -2,6 +2,10 @@ import AddList from '../../components/Side/AddList';
 import { connect } from 'react-redux';
 import { addList } from '../../actions';
 
+const mapStateToProps = state => ({
+    lists: state.lists
+})
+
 const mapDispatchToProps = dispatch => ({
     
     onAddList({id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}) {
@@ -12,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(null, mapDispatchToProps)(AddList);
+export default connect(mapStateToProps, mapDispatchToProps)(AddList);

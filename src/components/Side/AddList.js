@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
 import { FaPlus } from 'react-icons/fa';
 import { ListItemText } from '@material-ui/core';
 
-class AddList extends Component {
-    state={ count: 0 }
+const AddList = ({lists, onAddList=f=>f})  => {
+    const setListName = () => {
+        const listNo = lists.filter(list => !list.defaultList).length
 
-    setListName = () => {
-        this.setState({
-            count: parseInt(this.state.count + 1)
-        }) 
-        return this.state.count === 0 ? "Untitled List" : `Untitled List ${this.state.count}`
+        return listNo > 0 ? `Untitled List ${listNo}` : "Untitled List"
     }
 
-    handleClick = () => {
+    const handleClick = () => {
         const newList = {
             id: uuid.v4(),
-            name: this.setListName(),
+            name: setListName(),
             orderBy: 'date_created',
             orderDir: 'asc',
             sorted: false,
@@ -26,21 +23,20 @@ class AddList extends Component {
             defaultList: false
         }
 
-        this.props.onAddList(newList)
+        onAddList(newList)
     }
 
-    render() {
-        return (
-            <div className="add-list" onClick={ this.handleClick }>
-                <FaPlus style={{marginRight: 23}} />
+    return (
+        <div className="add-list" onClick={ handleClick }>
+            <FaPlus style={{marginRight: 23}} />
 
-                <ListItemText primary="New List" />
-            </div>
-        );
-    }
+            <ListItemText primary="New List" />
+        </div>
+    );
 }
 
 AddList.propTypes = {
+    lists: PropTypes.array.isRequired,
     onAddList: PropTypes.func.isRequired
 }
 
