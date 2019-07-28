@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider, List } from '@material-ui/core';
 import TitleRow from '../../containers/Side/TitleRow';
+import RightClickMenuSide from '../../containers/Side/RightClickMenuSide';
 
 const TitleList = ({lists, onClick=f=>f}) => {
     const defaultLists = lists.filter(list => list.defaultList)
@@ -20,11 +21,10 @@ const TitleList = ({lists, onClick=f=>f}) => {
 
             <Divider />
 
-            { customLists.map((list, index) => (
-                <TitleRow
+            { customLists.map(list => (
+                <RightClickMenuSide
                     key={list.name + '_' + list.id}
                     list={ list }
-                    index={ index }
                     onClick={ onClick }
                 />
             ))}
