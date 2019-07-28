@@ -105,3 +105,8 @@ export const setListNo = num => ({
     type: C.SET_LISTNO,
     payload: num
 })
+
+export const removeList = id => ({
+    type: C.REMOVE_LIST,
+    payload: id
+})

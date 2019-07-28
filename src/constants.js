@@ -15,7 +15,8 @@ const constants = {
     TOGGLE_HIDE: "TOGGLE_HIDE",
     SET_BGCOLOR: "SET_BGCOLOR",
     ADD_LIST: "ADD_LIST",
-    SET_LISTNO: "SET_LISTNO"
+    SET_LISTNO: "SET_LISTNO",
+    REMOVE_LIST: "REMOVE_LIST"
 }
 
 export default constants;

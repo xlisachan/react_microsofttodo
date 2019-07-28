@@ -131,6 +131,9 @@ const lists = (state=[], action) => {
                 list(null, action)
             ]
         
+        case C.REMOVE_LIST :
+            return state.filter(list => list.id !== action.payload)
+
         case C.SET_ORDERBY :
             return state.map(list => 
                 list.name === action.listTitle ?
