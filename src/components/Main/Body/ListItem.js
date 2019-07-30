@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
 import { numFormat, getCurrentDateObj } from '../../../getDate';
 
-const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+const ListItem = ({task, lists, selectedId, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+    const selectedList = lists.filter(list => list.id === selectedId);
+    const name = selectedList[0].name;
+
     const listItem = () => {
         return {
             color: task.completedStatus ? 'dimgray' : 'black',
@@ -64,23 +67,23 @@ const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>
                     </div>
 
                     <div style={ listItemDetail() }>
-                        <span style={{color: 'royalblue', display: listTitle !== "My Day" && task.my_day === true ? 'inline' : 'none'}}>
+                        <span style={{color: 'royalblue', display: name !== "My Day" && task.my_day === true ? 'inline' : 'none'}}>
                             <FaRegSun style={{fontSize: '.9rem'}} /> My Day
                         </span>
 
-                        <span style={{display: (listTitle !== "My Day" && listTitle !== "Tasks" && task.tasks && task.my_day) ? 'inline' : 'none'}}>
+                        <span style={{display: (name !== "My Day" && name !== "Tasks" && task.tasks && task.my_day) ? 'inline' : 'none'}}>
                             {'  '} &middot; {'  '}
                         </span>
 
-                        <span style={{display: listTitle !== "Tasks" && task.tasks ? 'inline' : 'none'}}>
+                        <span style={{display: name !== "Tasks" && task.tasks ? 'inline' : 'none'}}>
                             Tasks
                         </span>
                         
-                        <span style={{display: (listTitle !== "Tasks" && task.tasks && task.date_due_display) ? 'inline' : 'none' }}>
+                        <span style={{display: (name !== "Tasks" && task.tasks && task.date_due_display) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 
-                        <span style={{ display: (listTitle !== "My Day" && listTitle === null && task.date_due_display && task.my_day) ? 'inline' : 'none' }}>
+                        <span style={{ display: (name !== "My Day" && task.date_due_display && task.my_day) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 
@@ -97,8 +100,9 @@ const ListItem = ({task, listTitle, onToggleComplete=f=>f, onToggleImportant=f=>
 }
 
 ListItem.propTypes = {
+    lists: PropTypes.array.isRequired,
+    selectedId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
-    listTitle: PropTypes.string.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired
 }

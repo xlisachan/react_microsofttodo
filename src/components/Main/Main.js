@@ -22,12 +22,13 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Main = ({query, tasks, lists, listTitle}) => {
+const Main = ({lists, query, selectedId, tasks}) => {
     const classes = useStyles();
 
     let filteredTasks = [],
         order,
-        selectedList = lists.filter(list => list.name === listTitle),
+        selectedList = lists.filter(list => list.id === selectedId),
+        name = selectedList[0].name,
         orderBy = selectedList[0].orderBy,
         orderDir = selectedList[0].orderDir,
         hideCompleted = selectedList[0].hideCompleted;
@@ -42,7 +43,7 @@ const Main = ({query, tasks, lists, listTitle}) => {
         })
         :
         filteredTasks = tasks.filter(task => {
-            return task[`${ listTitle.toLowerCase().replace(/ /g,"_") }`] || task.list_id === selectedList[0].id
+            return task[`${ name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === selectedId
         })
         .sort((a,b) => {
             return (orderBy === 'item' || orderBy === 'date_due' || orderBy === 'date_created') ?
@@ -87,10 +88,10 @@ const Main = ({query, tasks, lists, listTitle}) => {
 }
 
 Main.propTypes = {
+    lists: PropTypes.array.isRequired,
     query: PropTypes.string,
-    tasks: PropTypes.array.isRequired,
-    listTitle: PropTypes.string,
-    lists: PropTypes.array
+    selectedId: PropTypes.string.isRequired,
+    tasks: PropTypes.array.isRequired
 }
 
 export default Main;

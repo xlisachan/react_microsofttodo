@@ -4,7 +4,7 @@ import { addTask } from '../../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    listTitle: state.listTitle
+    selectedId: state.selectedId
 })
 
 const mapDispatchToProps = dispatch => ({

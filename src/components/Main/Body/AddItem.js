@@ -4,7 +4,7 @@ import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import { numFormat, displayFormat, getCurrentDateObj }  from '../../../getDate';
 import uuid from 'uuid';
 
-const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
+const AddItem = ({lists, selectedId, onAddTask=f=>f}) => {
     const [item, setItem] = useState('');
 
     const handleButtonChange = () => {
@@ -14,13 +14,14 @@ const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
             <FaRegCircle style={{color: 'gray'}} /> 
     }
 
-    const selectedList = lists.filter(list => list.name === listTitle)
+    const selectedList = lists.filter(list => list.id === selectedId);
+    const name = selectedList[0].name
 
     const onSubmit = e => {
         e.preventDefault();
         if(!item) return
 
-        if (item && listTitle === "My Day") {
+        if (item && name === "My Day") {
             onAddTask({
                 task_id: uuid.v4(), 
                 item, 
@@ -35,7 +36,7 @@ const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
                 tasks: true,
                 list_id: 'tasks'
             });
-        } else if (item && listTitle === "Important") {
+        } else if (item && name === "Important") {
             onAddTask({
                 task_id: uuid.v4(), 
                 item, 
@@ -50,7 +51,7 @@ const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
                 tasks: true,
                 list_id: 'tasks'
             });
-        } else if (item && listTitle === "Planned") {
+        } else if (item && name === "Planned") {
             onAddTask({
                 task_id: uuid.v4(), 
                 item, 
@@ -65,7 +66,7 @@ const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
                 tasks: true,
                 list_id: 'tasks'
             });
-        } else if (item && listTitle === "Tasks") {
+        } else if (item && name === "Tasks") {
             onAddTask({
                 task_id: uuid.v4(), 
                 item, 
@@ -119,10 +120,10 @@ const AddTask = ({lists, listTitle, onAddTask=f=>f}) => {
     );
 }
 
-AddTask.propTypes = {
+AddItem.propTypes = {
     lists: PropTypes.array.isRequired,
-    listTitle: PropTypes.string.isRequired,
+    selectedId: PropTypes.any.isRequired,
     onAddTask: PropTypes.func.isRequired
 }
 
-export default AddTask;
+export default AddItem;

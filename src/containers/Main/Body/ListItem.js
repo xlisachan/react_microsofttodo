@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { toggleCompleted, toggleImportant } from '../../../actions'; 
 
 const mapStateToProps = state => ({
-    listTitle: state.listTitle
+    lists: state.lists,
+    selectedId: state.selectedId
 })
 
 const mapDispatchToProps = dispatch => ({
