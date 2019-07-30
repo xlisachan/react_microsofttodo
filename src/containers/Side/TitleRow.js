@@ -2,7 +2,8 @@ import TitleRow from '../../components/Side/TitleRow';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-    listTitle: state.listTitle,
+    lists: state.lists,
+    selectedId: state.selectedId,
     tasks: state.tasks
 })
 

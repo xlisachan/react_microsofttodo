@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Sidebar = ({getListTitle=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => {
+const Sidebar = ({onSelectedId=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => {
     const classes = useStyles();
     const [searchItem, setSearchItem] = useState('');
 
@@ -56,8 +56,8 @@ const Sidebar = ({getListTitle=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
         onClearQuery();
     }
 
-    const handleClick = text => {
-        getListTitle(text)
+    const handleClick = id => {
+        onSelectedId(id)
         _searchInput.value = '';
         setSearchItem('');
         onClearQuery();
@@ -105,7 +105,7 @@ const Sidebar = ({getListTitle=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
 }
 
 Sidebar.propTypes = {
-    getListTitle: PropTypes.func,
+    onSelectedId: PropTypes.func,
     onChangeQuery: PropTypes.func,
     onClearQuery: PropTypes.func
 }

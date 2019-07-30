@@ -5,13 +5,16 @@ import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck, FaList } from '
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const TitleRow = ({list, index, listTitle, tasks, onClick=f=>f}) => {
+const TitleRow = ({list, index, lists, selectedId, tasks, onClick=f=>f}) => {
+    const selectedList = lists.filter(list => list.id === selectedId);
+    const name = selectedList[0].name;
+
     const headerStyle = text => {
         return {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'space-between', 
-            backgroundColor: listTitle === text ? 'gainsboro' : null
+            backgroundColor: name === text ? 'gainsboro' : null
         }
     }
 
@@ -48,7 +51,7 @@ const TitleRow = ({list, index, listTitle, tasks, onClick=f=>f}) => {
     return (
         <ListItem button
             style={ headerStyle(list.name) }
-            onClick={() => onClick(list.name)}>
+            onClick={() => onClick(list.id)}>
 
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <ListItemIcon style={ iconStyle(list.color) }>
@@ -66,8 +69,9 @@ const TitleRow = ({list, index, listTitle, tasks, onClick=f=>f}) => {
 TitleRow.propTypes = {
     list: PropTypes.any,
     index: PropTypes.any,
+    lists: PropTypes.array.isRequired,
+    selectedId: PropTypes.string.isRequired,
     tasks: PropTypes.array.isRequired,
-    listTitle: PropTypes.string.isRequired,
     onClick: PropTypes.func
 }
 export default TitleRow;

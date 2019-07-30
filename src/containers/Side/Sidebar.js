@@ -1,12 +1,12 @@
 import Sidebar from '../../components/Side/Sidebar';
 import { connect } from 'react-redux';
-import { getListTitle, changeQuery, clearQuery } from '../../actions';
+import { selectedId, changeQuery, clearQuery } from '../../actions';
 
 const mapDispatchToProps = dispatch => ({
 
-    getListTitle(title) {
+    onSelectedId(id) {
         dispatch(
-            getListTitle(title)
+            selectedId(id)
         )
     },
     
