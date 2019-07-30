@@ -4,24 +4,24 @@ import { changeDir, changeOrder, resetChangeDir } from '../../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    listTitle: state.listTitle
+    selectedId: state.selectedId
 })
 
 const mapDispatchToProps = dispatch => ({
     
-    onChangeDir(listTitle) {
+    onChangeDir(id) {
         dispatch(
-            changeDir(listTitle)
+            changeDir(id)
         )
     },
 
-    onClear(listTitle) {
+    onClear(id) {
         dispatch(
-            changeOrder('date_created', listTitle)
+            changeOrder('date_created', id)
         )
 
         dispatch(
-            resetChangeDir(listTitle)
+            resetChangeDir(id)
         )
     }
     

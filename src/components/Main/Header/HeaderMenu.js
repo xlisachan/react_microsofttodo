@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ListItemText, Menu, MenuItem } from '@material-ui/core';
-import Icon from '@material-ui/core/Icon';
+import { Icon, ListItemText, Menu, MenuItem } from '@material-ui/core';
 import { FaCaretRight } from 'react-icons/fa';
 import todoMenu from './todoMenu';
 
@@ -32,15 +31,15 @@ class HeaderMenu extends Component {
     }
 
     handleSort = (item) => {
-        const { listTitle, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
+        const { selectedId, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
 
         item.id === 'hideTasks' || item.id === 'showTasks' ?
-            onToggleHide(listTitle)
+            onToggleHide(selectedId)
             :
             item.icon === 'lens' ?
-                onChangeBgColor(item.color, listTitle)
+                onChangeBgColor(item.color, selectedId)
                 :
-                onChangeOrder(item.id, listTitle);
+                onChangeOrder(item.id, selectedId);
                 this.setState({
                     subMenuOpen: false
                 });
@@ -48,15 +47,16 @@ class HeaderMenu extends Component {
     }
 
     renderMenuItems = children => {
-        const { lists, listTitle } = this.props;
+        const { lists, selectedId } = this.props;
 
-        const selectedList = lists.filter(list => list.name === listTitle),
+        const selectedList = lists.filter(list => list.id === selectedId),
+              name = selectedList[0].name,
               hideCompleted = selectedList[0].hideCompleted,
               defaultList = selectedList[0].defaultList;
 
         return children.map(item => {
             if (item.children) {
-                return (listTitle !== 'Planned' || item.id !== "sortTasks") ?
+                return (name !== 'Planned' || item.id !== "sortTasks") ?
                     <div key={ item.id }>
                         <MenuItem
                             style={{
@@ -93,10 +93,10 @@ class HeaderMenu extends Component {
 
             return (
                 (
-                    ((listTitle === 'My Day' && item.id !== 'my_day') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
-                    (listTitle === 'Important' && (item.id !== 'importantStatus' && item.id !== 'completedStatus') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
-                    (listTitle === 'Planned' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
-                    (listTitle === 'Tasks' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    ((name === 'My Day' && item.id !== 'my_day') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (name === 'Important' && (item.id !== 'importantStatus' && item.id !== 'completedStatus') && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (name === 'Planned' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
+                    (name === 'Tasks' && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks'))) ||
                     (!defaultList && ((hideCompleted && item.id !== 'hideTasks') || (!hideCompleted && item.id !== 'showTasks')))
                 ) ?
                     <MenuItem
@@ -136,12 +136,13 @@ class HeaderMenu extends Component {
 
 HeaderMenu.propTypes = {
     lists: PropTypes.array,
-    listTitle: PropTypes.string,
+    selectedId: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     anchorElement: PropTypes.any,
     onClose: PropTypes.func.isRequired,
     onChangeOrder: PropTypes.func,
-    onChangeBgColor: PropTypes.func
+    onChangeBgColor: PropTypes.func,
+    onToggleHide: PropTypes.func.isRequired
 };
 
 export default HeaderMenu;

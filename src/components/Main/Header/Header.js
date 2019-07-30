@@ -4,8 +4,9 @@ import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
 import { getCurrentDateObj, headerFormat } from '../../../getDate';
 
-const Header = ({lists, listTitle}) => {
-    const selectedList = lists.filter(list => list.name === listTitle)
+const Header = ({lists, selectedId}) => {
+    const selectedList = lists.filter(list => list.id === selectedId);
+    const name = selectedList[0].name;
     
     const getTodaysDate = () => {
         return headerFormat(getCurrentDateObj());
@@ -32,10 +33,10 @@ const Header = ({lists, listTitle}) => {
                 style={{backgroundColor: formatColor() }}>
                 <div>
                     <h2 style={{ fontWeight: 'bold'}}>
-                        { listTitle }
+                        { name }
                     </h2>
 
-                    <span style={{display: listTitle === "My Day" ? 'inline' : 'none'}}>
+                    <span style={{display: name === "My Day" ? 'inline' : 'none'}}>
                         { getTodaysDate() }
                     </span>
                 </div>
@@ -50,7 +51,7 @@ const Header = ({lists, listTitle}) => {
 
 Header.propTypes = {
     lists: PropTypes.array,
-    listTitle: PropTypes.string.isRequired
+    selectedId: PropTypes.string.isRequired
 }
 
 export default Header;

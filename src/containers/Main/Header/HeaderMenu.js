@@ -4,26 +4,26 @@ import { changeBgColor, changeOrder, toggleHide } from '../../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    listTitle: state.listTitle
+    selectedId: state.selectedId
 })
 
 const mapDispatchToProps = dispatch => ({
 
-    onChangeBgColor(color, listTitle) {
+    onChangeBgColor(color, id) {
         dispatch(
-            changeBgColor(color, listTitle)
+            changeBgColor(color, id)
         )
     },
 
-    onChangeOrder(order, listTitle) {
+    onChangeOrder(order, id) {
         dispatch(
-            changeOrder(order, listTitle)
+            changeOrder(order, id)
         )
     },
 
-    onToggleHide(listTitle) {
+    onToggleHide(id) {
         dispatch(
-            toggleHide(listTitle)
+            toggleHide(id)
         )
     }
 
