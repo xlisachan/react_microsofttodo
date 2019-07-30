@@ -2,7 +2,7 @@ import C from '../constants';
 import { numFormat, getCurrentDateObj } from '../getDate';
 import { combineReducers } from 'redux';
 
-const selectedId = (state=0, action) => 
+const selectedId = (state="0", action) => 
 	(action.type === C.SELECTED_ID) ? 
 		action.payload :
         state
