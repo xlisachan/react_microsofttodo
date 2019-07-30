@@ -34,10 +34,9 @@ const TitleRow = ({list, index, lists, selectedId, tasks, onClick=f=>f}) => {
         return list.defaultList ? listIcons[index] : <FaList />
     }
 
-    const numberOfTasks = (id, text) => {
+    const numberOfTasks = (id, name) => {
         const numOfTasks = tasks.filter(task =>
-            (task[`${ text.toLowerCase().replace(/ /g,"_") }`] && !task['completedStatus']) || 
-            (task.list_id === id && !task['completedStatus'])
+            ((task[`${ name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === id) && !task.completedStatus)
         ).length
         
         return numOfTasks > 0 ?
