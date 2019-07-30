@@ -4,7 +4,7 @@
     "tasks": [],
     "lists": [
         {
-            "id": 0,
+            "id": "0",
             "name": "My Day",
             "orderBy": "date_created",
             "orderDir": "asc",
@@ -14,7 +14,7 @@
             "defaultList": true
         },
         {
-            "id": 1,
+            "id": "1",
             "name": "Important",
             "orderBy": "date_created",
             "orderDir": "asc",
@@ -24,7 +24,7 @@
             "defaultList": true
         },
         {
-            "id": 2,
+            "id": "2",
             "name": "Planned",
             "orderBy": "date_created",
             "orderDir": "asc",
@@ -34,7 +34,7 @@
             "defaultList": true
         },
         {
-            "id": 3,
+            "id": "3",
             "name": "Tasks",
             "orderBy": "date_created",
             "orderDir": "asc",
