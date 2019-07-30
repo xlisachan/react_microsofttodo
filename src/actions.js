@@ -1,8 +1,8 @@
 import C from './constants';
 
-export const getListTitle = title => ({
-    type: C.SET_TITLE,
-    payload: title
+export const selectedId = id => ({
+    type: C.SELECTED_ID,
+    payload: id
 })
 
 export const loadTasks = () => ({
@@ -56,31 +56,31 @@ export const clearQuery = () => ({
     type: C.CLEAR_QUERY
 })
 
-export const changeOrder = (orderBy, listTitle) => ({
+export const changeOrder = (orderBy, id) => ({
     type: C.SET_ORDERBY,
     payload: orderBy,
-    listTitle
+    id
 })
 
-export const changeDir = listTitle => ({
+export const changeDir = id => ({
     type: C.SET_ORDERDIR,
-    listTitle
+    id
 })
 
-export const resetChangeDir = listTitle => ({
+export const resetChangeDir = id => ({
     type: C.RESET_ORDERDIR,
-    listTitle
+    id
 })
 
-export const toggleHide = listTitle => ({
+export const toggleHide = id => ({
     type: C.TOGGLE_HIDE,
-    listTitle
+    id
 })
 
-export const changeBgColor = (color, listTitle) => ({
+export const changeBgColor = (color, id) => ({
     type: C.SET_BGCOLOR,
     payload: color,
-    listTitle
+    id
 })
 
 export const addList = (

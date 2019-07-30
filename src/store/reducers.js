@@ -2,8 +2,8 @@ import C from '../constants';
 import { numFormat, getCurrentDateObj } from '../getDate';
 import { combineReducers } from 'redux';
 
-const listTitle = (state="My Day", action) => 
-	(action.type === C.SET_TITLE) ? 
+const selectedId = (state=0, action) => 
+	(action.type === C.SELECTED_ID) ? 
 		action.payload :
         state
 
@@ -136,7 +136,7 @@ const lists = (state=[], action) => {
 
         case C.SET_ORDERBY :
             return state.map(list => 
-                list.name === action.listTitle ?
+                list.id === action.id ?
                     {
                         ...list,
                         orderBy: action.payload,
@@ -148,7 +148,7 @@ const lists = (state=[], action) => {
         
         case C.SET_ORDERDIR :
             return state.map(list => 
-                list.name === action.listTitle ?
+                list.id === action.id ?
                     list.orderDir === 'asc' ?
                         {
                             ...list,
@@ -167,7 +167,7 @@ const lists = (state=[], action) => {
         
         case C.RESET_ORDERDIR :
             return state.map(list => 
-                list.name === action.listTitle ?
+                list.id === action.id ?
                     {
                         ...list,
                         orderDir: 'asc',
@@ -179,7 +179,7 @@ const lists = (state=[], action) => {
         
         case C.TOGGLE_HIDE :
             return state.map(list => 
-                list.name === action.listTitle ?
+                list.id === action.id ?
                     {
                         ...list,
                         hideCompleted: !list.hideCompleted
@@ -190,7 +190,7 @@ const lists = (state=[], action) => {
         
         case C.SET_BGCOLOR :
             return state.map(list => 
-                list.name === action.listTitle ?
+                list.id === action.id ?
                     {
                         ...list,
                         color: action.payload
@@ -218,7 +218,7 @@ const query = (state='', action) => {
 }
 
 const rootReducer = combineReducers({
-    listTitle,
+    selectedId,
     listNo,
     moreInfo,
     tasks,

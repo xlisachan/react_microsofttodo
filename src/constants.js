@@ -1,5 +1,5 @@
 const constants = {
-    SET_TITLE: "SET_TITLE",
+    SELECTED_ID: "SELECTED_ID",
     SET_MOREINFO: "SET_MOREINFO",
     LOAD_TASKS: "LOAD_TASKS",
     ADD_TASK: "ADD_TASK",
