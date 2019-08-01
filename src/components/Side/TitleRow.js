@@ -36,7 +36,7 @@ const TitleRow = ({list, index, lists, selectedId, tasks, onClick=f=>f}) => {
 
     const numberOfTasks = (id, name) => {
         const numOfTasks = tasks.filter(task =>
-            ((task[`${ name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === id) && !task.completedStatus)
+            ((task[`${name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === id) && !task.completedStatus)
         ).length
         
         return numOfTasks > 0 ?
