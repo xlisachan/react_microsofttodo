@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = state => ({
     lists: state.lists,
     query: state.query,
-    selectedId: state.selectedId,
+    selectedListId: state.selectedListId,
     tasks: state.tasks
 })
 

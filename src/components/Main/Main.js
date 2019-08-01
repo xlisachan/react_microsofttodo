@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Main = ({lists, query, selectedId, tasks}) => {
+const Main = ({lists, query, selectedListId, tasks}) => {
     const classes = useStyles();
 
     let filteredTasks = [],
         order,
-        selectedList = lists.filter(list => list.id === selectedId),
+        selectedList = lists.filter(list => list.id === selectedListId),
         name = selectedList[0].name,
         orderBy = selectedList[0].orderBy,
         orderDir = selectedList[0].orderDir,
@@ -43,7 +43,7 @@ const Main = ({lists, query, selectedId, tasks}) => {
         })
         :
         filteredTasks = tasks.filter(task => {
-            return task[`${ name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === selectedId
+            return task[`${ name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === selectedListId
         })
         .sort((a,b) => {
             return (orderBy === 'item' || orderBy === 'date_due' || orderBy === 'date_created') ?
@@ -90,7 +90,7 @@ const Main = ({lists, query, selectedId, tasks}) => {
 Main.propTypes = {
     lists: PropTypes.array.isRequired,
     query: PropTypes.string,
-    selectedId: PropTypes.string.isRequired,
+    selectedListId: PropTypes.string.isRequired,
     tasks: PropTypes.array.isRequired
 }
 
