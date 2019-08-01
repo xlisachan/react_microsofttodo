@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
 import { numFormat, getCurrentDateObj } from '../../../getDate';
 
-const ListItem = ({task, lists, selectedId, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
-    const selectedList = lists.filter(list => list.id === selectedId);
+const ListItem = ({task, lists, selectedListId, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+    const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
     const listItem = () => {
@@ -101,7 +101,7 @@ const ListItem = ({task, lists, selectedId, onToggleComplete=f=>f, onToggleImpor
 
 ListItem.propTypes = {
     lists: PropTypes.array.isRequired,
-    selectedId: PropTypes.string.isRequired,
+    selectedListId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired

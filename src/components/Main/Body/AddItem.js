@@ -4,7 +4,7 @@ import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import { numFormat, displayFormat, getCurrentDateObj }  from '../../../getDate';
 import uuid from 'uuid';
 
-const AddItem = ({lists, selectedId, onAddTask=f=>f}) => {
+const AddItem = ({lists, selectedListId, onAddTask=f=>f}) => {
     const [item, setItem] = useState('');
 
     const handleButtonChange = () => {
@@ -14,7 +14,7 @@ const AddItem = ({lists, selectedId, onAddTask=f=>f}) => {
             <FaRegCircle style={{color: 'gray'}} /> 
     }
 
-    const selectedList = lists.filter(list => list.id === selectedId);
+    const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name
 
     const onSubmit = e => {
@@ -122,7 +122,7 @@ const AddItem = ({lists, selectedId, onAddTask=f=>f}) => {
 
 AddItem.propTypes = {
     lists: PropTypes.array.isRequired,
-    selectedId: PropTypes.any.isRequired,
+    selectedListId: PropTypes.any.isRequired,
     onAddTask: PropTypes.func.isRequired
 }
 
