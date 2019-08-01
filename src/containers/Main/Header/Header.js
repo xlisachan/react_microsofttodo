@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    selectedId: state.selectedId
+    selectedListId: state.selectedListId
 })
 
 export default connect(mapStateToProps)(Header);

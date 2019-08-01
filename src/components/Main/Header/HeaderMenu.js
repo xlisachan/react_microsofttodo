@@ -31,15 +31,15 @@ class HeaderMenu extends Component {
     }
 
     handleSort = (item) => {
-        const { selectedId, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
+        const { selectedListId, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f, onClose=f=>f } = this.props;
 
         item.id === 'hideTasks' || item.id === 'showTasks' ?
-            onToggleHide(selectedId)
+            onToggleHide(selectedListId)
             :
             item.icon === 'lens' ?
-                onChangeBgColor(item.color, selectedId)
+                onChangeBgColor(item.color, selectedListId)
                 :
-                onChangeOrder(item.id, selectedId);
+                onChangeOrder(item.id, selectedListId);
                 this.setState({
                     subMenuOpen: false
                 });
@@ -47,9 +47,9 @@ class HeaderMenu extends Component {
     }
 
     renderMenuItems = children => {
-        const { lists, selectedId } = this.props;
+        const { lists, selectedListId } = this.props;
 
-        const selectedList = lists.filter(list => list.id === selectedId),
+        const selectedList = lists.filter(list => list.id === selectedListId),
               name = selectedList[0].name,
               hideCompleted = selectedList[0].hideCompleted,
               defaultList = selectedList[0].defaultList;
@@ -136,7 +136,7 @@ class HeaderMenu extends Component {
 
 HeaderMenu.propTypes = {
     lists: PropTypes.array,
-    selectedId: PropTypes.string.isRequired,
+    selectedListId: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     anchorElement: PropTypes.any,
     onClose: PropTypes.func.isRequired,

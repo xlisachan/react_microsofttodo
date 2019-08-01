@@ -4,46 +4,43 @@ import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
 import { getCurrentDateObj, headerFormat } from '../../../getDate';
 
-const Header = ({lists, selectedId}) => {
-    const selectedList = lists.filter(list => list.id === selectedId);
+const Header = ({lists, selectedListId}) => {
+    const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
-    
-    const getTodaysDate = () => {
-        return headerFormat(getCurrentDateObj());
-    }
-    
-    const renderSortBar = () => {
-        return selectedList[0].sorted ? <SortBar barColor={ secondaryColor() } /> : null
-    }
+
+    const getTodaysDate = () =>
+        <span style={{display: name === "My Day" ? 'block' : 'none'}}>
+            { headerFormat(getCurrentDateObj()) }
+        </span>
 
     const formatColor = () => {
         return 'rgb(' + selectedList[0].color.join(',') + ')';
-    }
+    };
 
     const secondaryColor = () => {
         const newArr = selectedList[0].color.map(col => parseInt(col * .6));
         const newColor = 'rgb(' + newArr.join(',') + ')';
         return newColor;
-    }
+    };
 
+    const renderSortBar = () => {
+        return selectedList[0].sorted ? <SortBar barColor={ secondaryColor() } /> : null
+    };
+        
     return (
         <div>
-            <header 
-                className="header"
-                style={{backgroundColor: formatColor() }}>
+            <header className="header" style={{backgroundColor: formatColor()}}>
                 <div>
                     <h2 style={{ fontWeight: 'bold'}}>
                         { name }
                     </h2>
 
-                    <span style={{display: name === "My Day" ? 'inline' : 'none'}}>
-                        { getTodaysDate() }
-                    </span>
+                    { getTodaysDate() }
                 </div>
 
                 <HeaderButton buttonColor={ secondaryColor() } />
             </header>
-            
+
             { renderSortBar() }
         </div>
     );
@@ -51,7 +48,7 @@ const Header = ({lists, selectedId}) => {
 
 Header.propTypes = {
     lists: PropTypes.array,
-    selectedId: PropTypes.string.isRequired
+    selectedListId: PropTypes.string.isRequired
 }
 
 export default Header;
