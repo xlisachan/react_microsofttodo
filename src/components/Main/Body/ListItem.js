@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
 import { numFormat, getCurrentDateObj } from '../../../getDate';
 
-const ListItem = ({task, lists, selectedListId, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTaskId=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
+
+    const listStyle = id => {
+        return {
+            borderRadius: 10,
+            backgroundColor: id === selectedTaskId ? '#eee' : null
+        }
+    }
 
     const listItem = () => {
         return {
@@ -57,7 +64,10 @@ const ListItem = ({task, lists, selectedListId, onToggleComplete=f=>f, onToggleI
         </span>
 
     return ( 
-        <div className="list-item">
+        <div className="list-item"
+            style={ listStyle(task.task_id) }
+            onClick={() => onSetSelectedTaskId(task.task_id)}
+            >
             <div style={{display: 'flex', alignItems: 'center'}}>
                 { renderCompleted() }
 
@@ -102,7 +112,9 @@ const ListItem = ({task, lists, selectedListId, onToggleComplete=f=>f, onToggleI
 ListItem.propTypes = {
     lists: PropTypes.array.isRequired,
     selectedListId: PropTypes.string.isRequired,
+    seletectedTaskId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
+    onSetSelectedTaskId: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired
 }

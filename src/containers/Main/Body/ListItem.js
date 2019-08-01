@@ -1,10 +1,11 @@
 import ListItem from '../../../components/Main/Body/ListItem';
 import { connect } from 'react-redux';
-import { toggleCompleted, toggleImportant } from '../../../actions'; 
+import { toggleCompleted, toggleImportant, selectedTaskId } from '../../../actions'; 
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    selectedListId: state.selectedListId
+    selectedListId: state.selectedListId,
+    selectedTaskId: state.selectedTaskId
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -18,6 +19,12 @@ const mapDispatchToProps = dispatch => ({
     onToggleImportant(id) {
         dispatch(
             toggleImportant(id)
+        )
+    },
+
+    onSetSelectedTaskId(id) {
+        dispatch(
+            selectedTaskId(id)
         )
     }
 
