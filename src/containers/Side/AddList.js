@@ -1,9 +1,9 @@
 import AddList from '../../components/Side/AddList';
 import { connect } from 'react-redux';
-import { addList, setListNo } from '../../actions';
+import { addList } from '../../actions';
 
 const mapStateToProps = state => ({
-    listNo: state.listNo,
+    lists: state.lists,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -11,12 +11,6 @@ const mapDispatchToProps = dispatch => ({
     onAddList({id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}) {
         dispatch(
             addList(id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList)
-        )
-    },
-
-    onSetListNo(num) {
-        dispatch(
-            setListNo(num)
         )
     }
 

@@ -4,11 +4,19 @@ import uuid from 'uuid';
 import { FaPlus } from 'react-icons/fa';
 import { ListItemText } from '@material-ui/core';
 
-const AddList = ({listNo, onAddList=f=>f, onSetListNo=f=>f})  => {
-    const setListName = () => {
-        onSetListNo(listNo + 1)
+const AddList = ({lists, onAddList=f=>f})  => {
+    const namesOnList = lists.map(list => list.name);
 
-        return listNo !== 0 ? `Untitled List ${listNo}` : "Untitled List"
+    const setListName = () => {
+        let subName = "Untitled List";
+        let num = 1;
+
+        while (namesOnList.includes(subName)) {
+            subName = `Untitled List ${num}`;
+            num++;
+        }
+
+        return subName;
     }
 
     const handleClick = () => {
@@ -36,9 +44,8 @@ const AddList = ({listNo, onAddList=f=>f, onSetListNo=f=>f})  => {
 }
 
 AddList.propTypes = {
-    listNo: PropTypes.number.isRequired,
+    lists: PropTypes.array.isRequired,
     onAddList: PropTypes.func.isRequired,
-    onSetListNo: PropTypes.func.isRequired
 }
 
 export default AddList;
