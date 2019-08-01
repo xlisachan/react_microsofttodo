@@ -1,5 +1,6 @@
 {
-    "selectedId": "0",
+    "selectedListId": "0",
+    "selectedTaskId": "",
     "tasks": [],
     "lists": [
         {

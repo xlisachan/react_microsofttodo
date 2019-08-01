@@ -1,7 +1,12 @@
 import C from './constants';
 
-export const selectedId = id => ({
-    type: C.SELECTED_ID,
+export const selectedListId = id => ({
+    type: C.SELECTED_LISTID,
+    payload: id
+})
+
+export const selectedTaskId = id => ({
+    type: C.SELECTED_TASKID,
     payload: id
 })
 

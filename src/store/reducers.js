@@ -2,9 +2,14 @@ import C from '../constants';
 import { numFormat, getCurrentDateObj } from '../getDate';
 import { combineReducers } from 'redux';
 
-const selectedId = (state="0", action) => 
-	(action.type === C.SELECTED_ID) ? 
+const selectedListId = (state="0", action) => 
+	(action.type === C.SELECTED_LISTID) ? 
 		action.payload :
+        state
+
+const selectedTaskId = (state="", action) => 
+    (action.type === C.SELECTED_TASKID) ? 
+        action.payload :
         state
 
 const moreInfo = (state=[], action) =>
@@ -213,7 +218,8 @@ const query = (state='', action) => {
 }
 
 const rootReducer = combineReducers({
-    selectedId,
+    selectedListId,
+    selectedTaskId,
     moreInfo,
     tasks,
     lists,
