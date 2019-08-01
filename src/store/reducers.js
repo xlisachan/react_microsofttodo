@@ -7,11 +7,6 @@ const selectedId = (state="0", action) =>
 		action.payload :
         state
 
-const listNo = (state=0, action) => 
-    (action.type === C.SET_LISTNO) ? 
-        action.payload :
-        state
-
 const moreInfo = (state=[], action) =>
     (action.type === C.SET_MOREINFO) ?
         action.payload :
@@ -219,7 +214,6 @@ const query = (state='', action) => {
 
 const rootReducer = combineReducers({
     selectedId,
-    listNo,
     moreInfo,
     tasks,
     lists,
