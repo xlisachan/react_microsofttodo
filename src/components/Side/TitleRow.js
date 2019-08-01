@@ -5,8 +5,8 @@ import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck, FaList } from '
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const TitleRow = ({list, index, lists, selectedId, tasks, onClick=f=>f}) => {
-    const selectedList = lists.filter(list => list.id === selectedId);
+const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onSetSelectedListId=f=>f}) => {
+    const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
     const headerStyle = text => {
@@ -16,6 +16,11 @@ const TitleRow = ({list, index, lists, selectedId, tasks, onClick=f=>f}) => {
             justifyContent: 'space-between', 
             backgroundColor: name === text ? 'gainsboro' : null
         }
+    }
+
+    const handleClick = () => {
+        onSetSelectedListId(list.id);
+        onClick();
     }
 
     const formatColor = color => {
@@ -50,7 +55,7 @@ const TitleRow = ({list, index, lists, selectedId, tasks, onClick=f=>f}) => {
     return (
         <ListItem button
             style={ headerStyle(list.name) }
-            onClick={() => onClick(list.id)}>
+            onClick={ handleClick }>
 
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <ListItemIcon style={ iconStyle(list.color) }>
@@ -69,7 +74,7 @@ TitleRow.propTypes = {
     list: PropTypes.any,
     index: PropTypes.any,
     lists: PropTypes.array.isRequired,
-    selectedId: PropTypes.string.isRequired,
+    selectedListId: PropTypes.string.isRequired,
     tasks: PropTypes.array.isRequired,
     onClick: PropTypes.func
 }

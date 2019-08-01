@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Sidebar = ({onSelectedId=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => {
+const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f}) => {
     const classes = useStyles();
     const [searchItem, setSearchItem] = useState('');
 
@@ -51,13 +51,6 @@ const Sidebar = ({onSelectedId=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
     }
 
     const clearSearch = () => {
-        _searchInput.value = '';
-        setSearchItem('');
-        onClearQuery();
-    }
-
-    const handleClick = id => {
-        onSelectedId(id)
         _searchInput.value = '';
         setSearchItem('');
         onClearQuery();
@@ -97,7 +90,7 @@ const Sidebar = ({onSelectedId=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
                 { renderClearButton() }
             </div>
 
-            <TitleList onClick={ handleClick } />
+            <TitleList onClick={ clearSearch } />
 
             <AddList />
         </div>
@@ -105,7 +98,6 @@ const Sidebar = ({onSelectedId=f=>f, onChangeQuery=f=>f, onClearQuery=f=>f}) => 
 }
 
 Sidebar.propTypes = {
-    onSelectedId: PropTypes.func,
     onChangeQuery: PropTypes.func,
     onClearQuery: PropTypes.func
 }
