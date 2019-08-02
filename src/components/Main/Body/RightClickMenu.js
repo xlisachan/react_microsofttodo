@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import ListItem from '../../../containers/Main/Body/ListItem';
-import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar, FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar } from 'react-icons/fa';
+import DeleteModal from '../../DeleteModal';
 
 const RightClickMenu = ({task, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
     const switchMyDay = () =>
@@ -50,22 +51,27 @@ const RightClickMenu = ({task, onToggleMyDay=f=>f, onToggleComplete=f=>f, onTogg
             }
         </MenuItem>
     
-    const removeTask = () =>
-        <MenuItem onClick={() => onRemoveTask(task.task_id)}>
-            <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
-            <span>Delete task</span>
+    const renderRemoveTask = () =>
+        <MenuItem>
+            <DeleteModal 
+                todo={ 'task' }
+                item={ task }
+                name={ task.item }
+                id={ task.task_id }
+                onClick={() => onRemoveTask(task.task_id)}
+            />
         </MenuItem>
 
     return (
         <div>
-            <ContextMenuTrigger id={`menuitem_ + ${task.task_id}`}>
+            <ContextMenuTrigger id={`menuitem_${task.task_id}`}>
                 <ListItem
                     id={ task.task_id}
                     task={ task }
                 />
             </ContextMenuTrigger>
 
-            <ContextMenu id={`menuitem_ + ${task.task_id}`}>
+            <ContextMenu id={`menuitem_${task.task_id}`}>
                 { switchMyDay() }
 
                 { switchComplete() }
@@ -74,7 +80,8 @@ const RightClickMenu = ({task, onToggleMyDay=f=>f, onToggleComplete=f=>f, onTogg
 
                 <MenuItem divider />
 
-                { removeTask() }
+                { renderRemoveTask() }
+
             </ContextMenu>
         </div>
     )
