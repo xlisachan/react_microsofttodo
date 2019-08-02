@@ -8,26 +8,32 @@ const TitleList = ({lists, onClick=f=>f}) => {
     const defaultLists = lists.filter(list => list.defaultList)
     const customLists = lists.filter(list => !list.defaultList)
 
+    const renderDefaultLists = () =>
+        defaultLists.map((list, index) => (
+            <TitleRow
+                key={list.name + '_' + list.id}
+                list={ list }
+                index={ index }
+                onClick={ onClick }
+            />
+        ))
+
+    const renderCustomLists = () =>
+        customLists.map(list => (
+            <RightClickMenuSide
+                key={list.name + '_' + list.id}
+                list={ list }
+                onClick={ onClick }
+            />
+        ))
+
     return (
         <List>
-            { defaultLists.map((list, index) => (
-                <TitleRow
-                    key={list.name + '_' + list.id}
-                    list={ list }
-                    index={ index }
-                    onClick={ onClick }
-                />
-            ))}
+            { renderDefaultLists() }
 
             <Divider />
 
-            { customLists.map(list => (
-                <RightClickMenuSide
-                    key={list.name + '_' + list.id}
-                    list={ list }
-                    onClick={ onClick }
-                />
-            ))}
+            { renderCustomLists() }
         </List>
     );
 }

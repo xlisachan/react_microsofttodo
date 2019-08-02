@@ -4,15 +4,17 @@ import RightClickMenu from '../../../containers/Main/Body/RightClickMenu';
 import AddItem from '../../../containers/Main/Body/AddItem';
 
 const ListBody = ({query, tasks}) => {
+    const renderTasks = () =>
+        tasks.map(task =>
+            <RightClickMenu
+                key={ task.task_id }
+                task={ task }
+            />
+        )
+
     return (
         <div className="main-container">
-            { tasks.map(task =>
-                <RightClickMenu
-                    key={ task.task_id }
-                    id={ task.task_id }
-                    task={ task }
-                />
-            )}
+            { renderTasks() }
 
             { query ? null : <AddItem /> }
         </div>
