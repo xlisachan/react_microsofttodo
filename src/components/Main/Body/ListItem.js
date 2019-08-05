@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ListItemMUI from '@material-ui/core/ListItem';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
 import { numFormat, getCurrentDateObj } from '../../../getDate';
 
@@ -9,7 +10,15 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
 
     const listStyle = id => {
         return {
-            borderRadius: 10,
+            width: '100%',
+            height: 60,
+            margin: '0 auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '10px 20px',
+            borderBottom: '1px solid gainsboro',
+            borderRadius: id === selectedTaskId ? 10 : null,
             backgroundColor: id === selectedTaskId ? '#eee' : null
         }
     }
@@ -64,7 +73,7 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
         </span>
 
     return ( 
-        <div className="list-item"
+        <ListItemMUI button
             style={ listStyle(task.task_id) }
             onClick={() => onSetSelectedTaskId(task.task_id)}
             >
@@ -105,14 +114,14 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
             <div>
                 { renderImportant() }
             </div>
-        </div>
+        </ListItemMUI>
     );
 }
 
 ListItem.propTypes = {
     lists: PropTypes.array.isRequired,
     selectedListId: PropTypes.string.isRequired,
-    seletectedTaskId: PropTypes.string.isRequired,
+    selectedTaskId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
     onSetSelectedTaskId: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
