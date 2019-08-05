@@ -1,6 +1,6 @@
 import TitleRow from '../../components/Side/TitleRow';
 import { connect } from 'react-redux';
-import { selectedListId } from '../../actions';
+import { selectedListId, setPlaceholder, selectedTaskId } from '../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -10,9 +10,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 
-    onSetSelectedListId(id) {
+    onSetSelectedList(id, title) {
         dispatch(
             selectedListId(id)
+        )
+
+        dispatch(
+            setPlaceholder(title)
+        )
+
+        dispatch(
+            selectedTaskId('')
         )
     }
 
