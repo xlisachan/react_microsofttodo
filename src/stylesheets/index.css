@@ -35,6 +35,14 @@ input::placeholder {
   color: white;
 }
 
+.edit-input {
+  width: 90%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  color: white;
+  border: none;
+}
+
 .sort-bar {
   display: flex;
   align-items: center;
