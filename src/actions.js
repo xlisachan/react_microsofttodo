@@ -11,7 +11,7 @@ export const selectedTaskId = id => ({
 })
 
 export const loadTasks = () => ({
-    type: C.LOAD_TASKS,
+    type: C.LOAD_TASKS
 })
 
 export const toggleCompleted = id => ({
@@ -109,4 +109,23 @@ export const addList = (
 export const removeList = id => ({
     type: C.REMOVE_LIST,
     payload: id
+})
+
+export const renameList = (id, newName) => ({
+    type: C.RENAME_LIST,
+    payload: id,
+    newName
+})
+
+export const editTitle = () => ({
+    type: C.EDIT_TITLE
+})
+
+export const submitTitle = () => ({
+    type: C.SUBMIT_TITLE
+})
+
+export const setPlaceholder = title => ({
+    type: C.SET_PLACEHOLDER,
+    payload: title
 })

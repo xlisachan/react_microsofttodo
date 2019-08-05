@@ -2,6 +2,24 @@ import C from '../constants';
 import { numFormat, getCurrentDateObj } from '../getDate';
 import { combineReducers } from 'redux';
 
+const open = (state=false, action) => {
+    switch(action.type) {
+        case C.EDIT_TITLE :
+            return true
+        
+        case C.SUBMIT_TITLE :
+            return false
+        
+        default :
+            return false
+    }
+}
+
+const placeholder = (state="My Day", action) =>
+    (action.type === C.SET_PLACEHOLDER) ?
+        action.payload :
+        state
+     
 const selectedListId = (state="0", action) => 
 	(action.type === C.SELECTED_LISTID) ? 
 		action.payload :
@@ -134,6 +152,17 @@ const lists = (state=[], action) => {
         case C.REMOVE_LIST :
             return state.filter(list => list.id !== action.payload)
 
+        case C.RENAME_LIST :
+            return state.map(list => 
+                list.id === action.payload ?
+                {
+                    ...list,
+                    name: action.newName
+                }
+                :
+                list
+            )
+
         case C.SET_ORDERBY :
             return state.map(list => 
                 list.id === action.id ?
@@ -218,6 +247,8 @@ const query = (state='', action) => {
 }
 
 const rootReducer = combineReducers({
+    open,
+    placeholder,
     selectedListId,
     selectedTaskId,
     moreInfo,

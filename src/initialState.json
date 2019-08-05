@@ -1,4 +1,6 @@
 {
+    "open": false,
+    "placeholder": "My Day",
     "selectedListId": "0",
     "selectedTaskId": "",
     "tasks": [],
