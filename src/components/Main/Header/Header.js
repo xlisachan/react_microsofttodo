@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HeaderName from '../../../containers/Main/Header/HeaderName';
 import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
 import { getCurrentDateObj, headerFormat } from '../../../getDate';
@@ -31,9 +32,7 @@ const Header = ({lists, selectedListId}) => {
         <div>
             <header className="header" style={{backgroundColor: formatColor()}}>
                 <div>
-                    <h2 style={{ fontWeight: 'bold'}}>
-                        { name }
-                    </h2>
+                    <HeaderName />
 
                     { getTodaysDate() }
                 </div>
