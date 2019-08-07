@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f}) => {
+const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onEditClick=f=>f}) => {
     const classes = useStyles();
     const [searchItem, setSearchItem] = useState('');
 
@@ -90,7 +90,10 @@ const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f}) => {
                 { renderClearButton() }
             </div>
 
-            <TitleList onClick={ clearSearch } />
+            <TitleList 
+                onClick={ clearSearch }
+                onEditClick={ onEditClick }
+            />
 
             <AddList />
         </div>
@@ -99,7 +102,8 @@ const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f}) => {
 
 Sidebar.propTypes = {
     onChangeQuery: PropTypes.func,
-    onClearQuery: PropTypes.func
+    onClearQuery: PropTypes.func,
+    onEditClick: PropTypes.func
 }
 
 export default Sidebar;
