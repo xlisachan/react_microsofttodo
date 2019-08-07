@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameList=f=>f}) => {
+    let inputEl = null;
     const classes = useStyles();
 
     const handleClickAway = () => {
@@ -57,6 +58,10 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
         }
     };
 
+    const editClick = () => {
+        inputEl.select();
+    }
+
     return (
         <ClickAwayListener onClickAway={ handleClickAway }>
             <div className={classes.root}>
@@ -67,12 +72,12 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
                         <Drawer open variant="permanent"
                             classes={{paper: classes.drawerPaper}}>
 
-                            <Sidebar />
+                            <Sidebar onEditClick={ editClick } />
                         </Drawer>
                     </Hidden>
                 </nav>
 
-                <Main />
+                <Main ref={input => inputEl = input} />
             </div>
         </ClickAwayListener>
     );
