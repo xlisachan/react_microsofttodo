@@ -8,4 +8,4 @@ const mapStateToProps = state => ({
     tasks: state.tasks
 })
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, null, null, {forwardRef: true})(Main);

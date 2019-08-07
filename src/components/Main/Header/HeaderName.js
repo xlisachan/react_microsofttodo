@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderName = ({lists, placeholder, selectedListId, onSetPlaceholder=f=>f}) => { 
+const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onSetPlaceholder=f=>f}, ref) => { 
     const selectedList = lists.filter(list => list.id === selectedListId);
     const defaultList = selectedList[0].defaultList;
     
@@ -12,6 +12,7 @@ const HeaderName = ({lists, placeholder, selectedListId, onSetPlaceholder=f=>f})
                     placeholder
                     :
                     <input
+                        ref={ref}
                         type="text"
                         className="edit-input"
                         value={ placeholder }
@@ -26,7 +27,7 @@ const HeaderName = ({lists, placeholder, selectedListId, onSetPlaceholder=f=>f})
     return (
         renderListTitle()
     )
-}
+})
 
 HeaderName.propTypes = {
     lists: PropTypes.array.isRequired,

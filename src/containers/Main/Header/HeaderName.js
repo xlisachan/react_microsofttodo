@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderName);
+export default connect(mapStateToProps, mapDispatchToProps, null, {forwardRef: true})(HeaderName);

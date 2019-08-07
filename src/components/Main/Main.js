@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Main = ({lists, query, selectedListId, tasks}) => {
+const Main = React.forwardRef(({lists, query, selectedListId, tasks}, ref) => {
     const classes = useStyles();
 
     let filteredTasks = [],
@@ -66,7 +66,7 @@ const Main = ({lists, query, selectedListId, tasks}) => {
             :
             <div style={{flexGrow: 1}}>
                 <AppBar position="fixed" className={classes.appBar}>
-                    <Header />
+                    <Header ref={ref} />
                 </AppBar>
 
                 <main 
@@ -85,7 +85,7 @@ const Main = ({lists, query, selectedListId, tasks}) => {
     return (
         renderMainSection()
     )
-}
+})
 
 Main.propTypes = {
     lists: PropTypes.array.isRequired,

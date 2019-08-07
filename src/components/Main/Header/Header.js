@@ -5,7 +5,7 @@ import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
 import { getCurrentDateObj, headerFormat } from '../../../getDate';
 
-const Header = ({lists, selectedListId}) => {
+const Header = React.forwardRef(({lists, selectedListId}, ref) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
@@ -32,7 +32,7 @@ const Header = ({lists, selectedListId}) => {
         <div>
             <header className="header" style={{backgroundColor: formatColor()}}>
                 <div>
-                    <HeaderName />
+                    <HeaderName ref={ref} />
 
                     { getTodaysDate() }
                 </div>
@@ -43,7 +43,7 @@ const Header = ({lists, selectedListId}) => {
             { renderSortBar() }
         </div>
     );
-}
+})
 
 Header.propTypes = {
     lists: PropTypes.array,

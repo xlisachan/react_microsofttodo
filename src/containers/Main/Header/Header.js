@@ -6,4 +6,4 @@ const mapStateToProps = state => ({
     selectedListId: state.selectedListId
 })
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, null, null, {forwardRef: true})(Header);
