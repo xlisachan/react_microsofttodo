@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const DeleteModal = ({name, id, todo, onClick=f=>f}) => {
+const DeleteModal = ({id, more, name, todo, onClick=f=>f}) => {
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -44,7 +44,7 @@ const DeleteModal = ({name, id, todo, onClick=f=>f}) => {
         <div>
             <div id={`${todo}_${id}`} onClick={handleOpen}>
                 <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
-                <span>Delete {todo}</span>
+                { more ? null : <span>Delete {todo}</span> }
             </div>
             
             <Modal
