@@ -102,7 +102,7 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
                             {'  '} &middot; {'  '}
                         </span>
 
-                        <span style={{ display: (name !== "My Day" && task.date_due_display && task.my_day) ? 'inline' : 'none' }}>
+                        <span style={{ display: (name === "Tasks" && task.date_due_display && task.my_day) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 
