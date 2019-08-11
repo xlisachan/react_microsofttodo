@@ -29,11 +29,6 @@ export const toggleMyDay = id => ({
     payload: id
 })
 
-export const toggleMoreInfo = task => ({
-    type: C.SET_MOREINFO,
-    payload: task
-})
-
 export const addTask = (
         task_id, item, date_created, date_due, date_due_display,
         completedStatus, importantStatus, my_day, planned, important, tasks, list_id
@@ -128,4 +123,13 @@ export const submitTitle = () => ({
 export const setPlaceholder = title => ({
     type: C.SET_PLACEHOLDER,
     payload: title
+})
+
+// SECTION - MORE
+export const openMore = () => ({
+    type: C.OPEN_MORE
+})
+
+export const closeMore = () => ({
+    type: C.CLOSE_MORE
 })

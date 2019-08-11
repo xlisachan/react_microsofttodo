@@ -30,11 +30,6 @@ const selectedTaskId = (state="", action) =>
         action.payload :
         state
 
-const moreInfo = (state=[], action) =>
-    (action.type === C.SET_MOREINFO) ?
-        action.payload :
-        state
-
 const task = (state={}, action) =>
     (action.type === C.ADD_TASK) ?
         action.payload :
@@ -246,15 +241,29 @@ const query = (state='', action) => {
     }
 }
 
+// SECTION - MORE
+const toggleMore = (state=false, action) => {
+    switch (action.type) {
+        case C.OPEN_MORE :
+            return true
+
+        case C.CLOSE_MORE :
+            return false
+
+        default:
+            return false
+    }
+}
+
 const rootReducer = combineReducers({
     open,
     placeholder,
     selectedListId,
     selectedTaskId,
-    moreInfo,
     tasks,
     lists,
-    query
+    query,
+    toggleMore
 })
 
 export default rootReducer;

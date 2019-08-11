@@ -2,7 +2,7 @@
     "open": false,
     "placeholder": "My Day",
     "selectedListId": "0",
-    "selectedTaskId": "",
+    "selectedTaskId": "0",
     "tasks": [],
     "lists": [
         {
@@ -46,5 +46,6 @@
             "defaultList": true
         }
     ],
-    "query": ""
+    "query": "",
+    "toggleMore": false
 }
