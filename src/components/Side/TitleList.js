@@ -32,7 +32,7 @@ const TitleList = ({lists, onClick=f=>f, onEditClick=f=>f}) => {
         <List>
             { renderDefaultLists() }
 
-            <Divider />
+            <Divider style={{margin: 10}} />
 
             { renderCustomLists() }
         </List>
