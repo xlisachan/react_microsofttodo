@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListItemMUI from '@material-ui/core/ListItem';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
-import { numFormat, getCurrentDateObj } from '../../../getDate';
+import { getCurrentDate } from '../../../getDate';
+import Moment from 'react-moment';
 
 const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTaskId=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
@@ -65,11 +66,16 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
 
     const plannedDate = () =>
         <span style={{
-                display: task.date_due_display ? 'inline' : 'none', 
-                color: task.date_due <= numFormat(getCurrentDateObj()) ? 'crimson' : null
+                display: task.date_due ? 'inline' : 'none', 
+                color: task.date_due <= getCurrentDate() ? 'crimson' : null
             }}>
 
-            <FaRegCalendar style={{margin: '0px 2px 2px 0px'}} /> { task.date_due_display }
+            <FaRegCalendar style={{margin: '0px 3px 2px 0px'}} /> 
+            <Moment
+                date={ task.date_due }
+                parse="YYYY-MM-DD"
+                format="ddd, MMM D"
+            />
         </span>
 
     return ( 
@@ -98,11 +104,11 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
                             Tasks
                         </span>
                         
-                        <span style={{display: (name !== "Tasks" && task.tasks && task.date_due_display) ? 'inline' : 'none' }}>
+                        <span style={{display: (name !== "Tasks" && task.tasks && task.date_due) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 
-                        <span style={{ display: (name === "Tasks" && task.date_due_display && task.my_day) ? 'inline' : 'none' }}>
+                        <span style={{ display: (name === "Tasks" && task.date_due && task.my_day) ? 'inline' : 'none' }}>
                             {'  '} &middot; {'  '}
                         </span>
 

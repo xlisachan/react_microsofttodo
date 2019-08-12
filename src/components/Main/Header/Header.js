@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import { getCurrentDate } from '../../../getDate';
 import HeaderName from '../../../containers/Main/Header/HeaderName';
 import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
-import { getCurrentDateObj, headerFormat } from '../../../getDate';
 
 const Header = React.forwardRef(({lists, selectedListId}, ref) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
@@ -11,7 +12,11 @@ const Header = React.forwardRef(({lists, selectedListId}, ref) => {
 
     const getTodaysDate = () =>
         <span style={{display: name === "My Day" ? 'block' : 'none'}}>
-            { headerFormat(getCurrentDateObj()) }
+            <Moment
+                date={getCurrentDate()}
+                parse="YYYY-MM-DD"
+                format="dddd, MMMM DD"
+            />
         </span>
 
     const formatColor = () => {
