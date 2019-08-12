@@ -29,8 +29,8 @@ const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onSe
 
     const iconStyle = color => {
         return {
-            marginRight: -15, 
-            fontSize: '1.3rem',
+            marginRight: -25, 
+            fontSize: '1.2rem',
             color: formatColor(color)
         }
     }

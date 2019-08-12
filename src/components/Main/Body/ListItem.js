@@ -69,7 +69,7 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetSelectedTas
                 color: task.date_due <= numFormat(getCurrentDateObj()) ? 'crimson' : null
             }}>
 
-            <FaRegCalendar /> { task.date_due_display }
+            <FaRegCalendar style={{margin: '0px 2px 2px 0px'}} /> { task.date_due_display }
         </span>
 
     return ( 
