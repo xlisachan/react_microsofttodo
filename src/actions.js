@@ -30,13 +30,13 @@ export const toggleMyDay = id => ({
 })
 
 export const addTask = (
-        task_id, item, date_created, date_due, date_due_display,
+        task_id, item, date_completed, date_created, date_due,
         completedStatus, importantStatus, my_day, planned, important, tasks, list_id
     ) => dispatch => {
         dispatch({
             type: C.ADD_TASK,
             payload: {
-                task_id, item, date_created, date_due, date_due_display,
+                task_id, item, date_completed, date_created, date_due,
                 completedStatus, importantStatus, my_day, planned, important, tasks, list_id
             }
         })

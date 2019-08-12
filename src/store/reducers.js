@@ -1,5 +1,5 @@
 import C from '../constants';
-import { numFormat, getCurrentDateObj } from '../getDate';
+import { getCurrentDate } from '../getDate';
 import { combineReducers } from 'redux';
 
 const open = (state=false, action) => {
@@ -46,8 +46,8 @@ const tasks = (state=[], action) => {
         case C.LOAD_TASKS :
             return state.map(task =>
                 (
-                    task.date_created === numFormat(getCurrentDateObj()) ||
-                    task.date_due === numFormat(getCurrentDateObj()) 
+                    task.date_created === getCurrentDate() ||
+                    task.date_due === getCurrentDate() 
                 )?
                     {
                         ...task,
@@ -64,28 +64,68 @@ const tasks = (state=[], action) => {
             return state.map(task => {
                 if (task.task_id === action.payload) {
                     if (task.importantStatus && task.date_due) {
-                        return {
-                            ...task,
-                            important: !task.important,
-                            planned: !task.planned,
-                            completedStatus: !task.completedStatus
+                        if (task.completedStatus) {
+                            return {
+                                ...task,
+                                important: !task.important,
+                                planned: !task.planned,
+                                completedStatus: !task.completedStatus,
+                                date_completed: ""
+                            }
+                        } else {
+                            return {
+                                ...task,
+                                important: !task.important,
+                                planned: !task.planned,
+                                completedStatus: !task.completedStatus,
+                                date_completed: getCurrentDate()
+                            }
                         }
                     } else if (task.importantStatus) {
-                        return {
-                            ...task,
-                            important: !task.important,
-                            completedStatus: !task.completedStatus
+                        if (task.completedStatus) {
+                            return {
+                                ...task,
+                                important: !task.important,
+                                completedStatus: !task.completedStatus,
+                                date_completed: ""
+                            }
+                        } else {
+                            return {
+                                ...task,
+                                important: !task.important,
+                                completedStatus: !task.completedStatus,
+                                date_completed: getCurrentDate()
+                            }
                         }
                     } else if (task.date_due) {
-                        return {
-                            ...task,
-                            planned: !task.planned,
-                            completedStatus: !task.completedStatus
+                        if (task.completedStatus) {
+                            return {
+                                ...task,
+                                planned: !task.planned,
+                                completedStatus: !task.completedStatus,
+                                date_completed: ""
+                            }
+                        } else {
+                            return {
+                                ...task,
+                                planned: !task.planned,
+                                completedStatus: !task.completedStatus,
+                                date_completed: getCurrentDate()
+                            }
                         }
                     } else {
-                        return {
-                            ...task,
-                            completedStatus: !task.completedStatus
+                        if (task.completedStatus) {
+                            return {
+                                ...task,
+                                completedStatus: !task.completedStatus,
+                                date_completed: ""
+                            }
+                        } else {
+                            return {
+                                ...task,
+                                completedStatus: !task.completedStatus,
+                                date_completed: getCurrentDate()
+                            }
                         }
                     }
                 } else {
