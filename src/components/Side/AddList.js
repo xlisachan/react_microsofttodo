@@ -36,7 +36,7 @@ const AddList = ({lists, onAddList=f=>f})  => {
 
     return (
         <div className="add-list" onClick={ handleClick }>
-            <FaPlus style={{marginRight: 23}} />
+            <FaPlus style={{marginRight: 15}} />
 
             <ListItemText primary="New List" />
         </div>

@@ -95,14 +95,10 @@ input::placeholder {
 }
 
 .add-list {
-  width: 100%;
-  height: 60;
-  margin: 0px auto;
   position: fixed;
   bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 10px 20px;
   color: royalblue;
 }
