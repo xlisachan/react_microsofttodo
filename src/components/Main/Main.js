@@ -140,7 +140,7 @@ const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore,
                     />
                 </main>
 
-                <MoreSection open={ toggleMore } />
+                <MoreSection />
             </div>
     }
 
