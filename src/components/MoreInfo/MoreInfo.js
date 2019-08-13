@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Divider, Drawer, Hidden, IconButton } from '@material-ui/core';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { makeStyles } from '@material-ui/core/styles';
+import { Divider, Drawer, Hidden } from '@material-ui/core';
 import TopSection from '../../containers/MoreInfo/TopSection';
+import BottomSection from '../../containers/MoreInfo/BottomSection';
 
 const drawerWidth = 250;
 
@@ -26,9 +26,8 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const MoreInfo = ({toggleMore, onCloseMore=f=>f}) => {
+const More = ({toggleMore}) => {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
         <Hidden smDown implementation="css">
@@ -48,18 +47,15 @@ const MoreInfo = ({toggleMore, onCloseMore=f=>f}) => {
 
                     <Divider />
 
-                    <IconButton onClick={() => onCloseMore() }>
-                        {theme.direction === 'rtl' ? <FaChevronLeft /> : <FaChevronRight />}
-                    </IconButton>
+                    <BottomSection />
                 </div>
             </Drawer>
         </Hidden>
     )
 }
 
-MoreInfo.propTypes = {
-    toggleMore: PropTypes.bool.isRequired,
-    onCloseMore: PropTypes.func.isRequired
+More.propTypes = {
+    toggleMore: PropTypes.bool.isRequired
 }
 
-export default MoreInfo;
+export default More;
