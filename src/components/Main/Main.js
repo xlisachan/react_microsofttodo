@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore, onCloseMore=f=>f, onOpenMore=f=>f}, ref) => {
+const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore, onOpenMore=f=>f}, ref) => {
     const classes = useStyles();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('md'));

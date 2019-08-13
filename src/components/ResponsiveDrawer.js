@@ -86,7 +86,6 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
 ResponsiveDrawer.propTypes = {
   // Injected by the documentation to work in an iframe.
   // You won't need it on your project.
-  container: PropTypes.object,
   lists: PropTypes.array.isRequired,
   open: PropTypes.bool.isRequired,
   placeholder: PropTypes.string.isRequired,
