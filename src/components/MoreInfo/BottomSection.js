@@ -5,8 +5,9 @@ import { ListItem } from '@material-ui/core';
 import Moment from 'react-moment';
 import DeleteModal from '../DeleteModal';
 
-const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f}) => {
+const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f, onRemoveTask}) => {
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+        if (!selectedTask[0]) return null
 
     const bottomStyle = () => {
         return {
@@ -53,7 +54,7 @@ const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f}) => {
                 item={ selectedTask[0].item }
                 name={ selectedTask[0].item }
                 id={ selectedTask[0].task_id }
-                onClick={() => console.log(selectedTask[0].task_id)}
+                onClick={() => onRemoveTask(selectedTask[0].task_id)}
             />
         </ListItem>
     );
@@ -62,7 +63,8 @@ const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f}) => {
 BottomSection.propTypes = {
     selectedTaskId: PropTypes.string,
     tasks: PropTypes.array,
-    onCloseMore: PropTypes.func.isRequired
+    onCloseMore: PropTypes.func.isRequired,
+    onRemoveTask: PropTypes.func.isRequired
 }
  
 export default BottomSection;

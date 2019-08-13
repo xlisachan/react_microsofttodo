@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
 
-const TopSection = ({tasks, selectedTaskId, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+const TopSection = ({selectedTaskId, tasks, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+    if (!selectedTask[0]) return null;
 
     const topStyle = () => {
         return {
@@ -27,6 +28,10 @@ const TopSection = ({tasks, selectedTaskId, onToggleComplete=f=>f, onToggleImpor
             />
     }
 
+    const renderTodoItem = () => {
+        return <p className="more-list-title">{selectedTask[0].item}</p>
+    }
+
     const renderImportant = () => {
         return selectedTask[0].importantStatus ? 
             <FaStar 
@@ -44,7 +49,7 @@ const TopSection = ({tasks, selectedTaskId, onToggleComplete=f=>f, onToggleImpor
         <ListItem style={ topStyle() }>
             <div style={{display: 'flex'}}>
                 { renderCompleted() }
-                <p className="more-list-title">{selectedTask[0].item}</p>
+                { renderTodoItem() }
             </div>
 
             { renderImportant() }
@@ -53,7 +58,7 @@ const TopSection = ({tasks, selectedTaskId, onToggleComplete=f=>f, onToggleImpor
 }
 
 TopSection.propTypes = {
-    selectedTaskId: PropTypes.string.isRequired,
+    selectedTaskId: PropTypes.string,
     tasks: PropTypes.array.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired
