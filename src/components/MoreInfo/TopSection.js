@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import { List, ListItem } from '@material-ui/core';
 import AddItem from '../../containers/AddItem';
+import DeleteModal from '../DeleteModal';
 
-const TopSection = ({selectedTaskId, tasks, onAddStep=f=>f, onRemoveStep=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
+const TopSection = ({selectedTaskId, tasks, onRemoveStep=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
     const [currentStep, setCurrentStep] = useState(null);
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
     if (!selectedTask[0]) return null;
@@ -76,6 +77,14 @@ const TopSection = ({selectedTaskId, tasks, onAddStep=f=>f, onRemoveStep=f=>f, o
                             { renderCompleted('step', step.completedStatus, selectedTask[0].task_id, onToggleStep, step.id) }
                             <span style={ stepStyle(step) }>{step.step}</span>
                         </div>
+
+                        <DeleteModal 
+                            id={ step.id }
+                            location={ 'more-top' }
+                            name={ step.step }
+                            todo={ 'step' }
+                            onClick={() => onRemoveStep(selectedTask[0].task_id, step.id)}
+                        />
                     </ListItem>
                 )}
             </List>
@@ -103,8 +112,10 @@ const TopSection = ({selectedTaskId, tasks, onAddStep=f=>f, onRemoveStep=f=>f, o
 TopSection.propTypes = {
     selectedTaskId: PropTypes.string,
     tasks: PropTypes.array.isRequired,
+    onRemoveStep: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
-    onToggleImportant: PropTypes.func.isRequired
+    onToggleImportant: PropTypes.func.isRequired,
+    onToggleStep: PropTypes.func.isRequired
 }
 
 export default TopSection;
