@@ -130,3 +130,9 @@ export const addStep = (completedStatus, id, step, taskId) => dispatch => {
         taskId
     })
 }
+
+export const toggleStep = (taskId, stepId) => ({
+    type: C.EDIT_STEP_STATUS_COMPLETE,
+    payload: taskId,
+    stepId
+})

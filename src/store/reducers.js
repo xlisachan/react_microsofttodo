@@ -184,7 +184,26 @@ const tasks = (state=[], action) => {
                     :
                     task
                 )
-
+        
+        case C.EDIT_STEP_STATUS_COMPLETE :
+            return state.map(task =>
+                task.task_id === action.payload ?
+                    {
+                        ...task,
+                        steps: task.steps.map(step =>
+                            step.id === action.stepId ?
+                                {
+                                    ...step,
+                                    completedStatus: !step.completedStatus
+                                }
+                                :
+                                step
+                        )
+                    }
+                    :
+                    task
+                )
+            
         default:
             return state
     }
