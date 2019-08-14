@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RightClickMenu from '../../../containers/Main/Body/RightClickMenu';
-import AddItem from '../../../containers/Main/Body/AddItem';
+import AddItem from '../../../containers/AddItem';
 
 const ListBody = ({query, tasks, onClick=f=>f}) => {
     const renderTasks = () =>
@@ -17,7 +17,7 @@ const ListBody = ({query, tasks, onClick=f=>f}) => {
         <div className="main-container">
             { renderTasks() }
 
-            { query ? null : <AddItem /> }
+            { query ? null : <AddItem addItem={'task'} placeholder={'Add a task'} /> }
         </div>
     );
 }
