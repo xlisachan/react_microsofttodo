@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState }from 'react';
 import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
-import { ListItem } from '@material-ui/core';
+import { List, ListItem } from '@material-ui/core';
+import AddItem from '../../containers/AddItem';
 
-const TopSection = ({selectedTaskId, tasks, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+const TopSection = ({selectedTaskId, tasks, onAddStep=f=>f, onRemoveStep=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
+    const [currentStep, setCurrentStep] = useState(null);
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
     if (!selectedTask[0]) return null;
 
@@ -11,20 +13,38 @@ const TopSection = ({selectedTaskId, tasks, onToggleComplete=f=>f, onToggleImpor
         return {
             display: 'flex',
             alignItems: 'flex-start',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            paddingBottom: 0
         }
     }
 
-    const renderCompleted = () => {
-        return selectedTask[0].completedStatus ? 
+    const stepContainer = (id) => {
+        return {
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: currentStep === id ? '#eee' : null
+        }
+    }
+
+    const stepStyle = (step) => {
+        return {
+            color: step.completedStatus ? 'dimgray' : 'black',
+            textDecoration: step.completedStatus ? 'line-through' : 'none'
+        }
+    }
+
+    const renderCompleted = (item, status, taskId, func, stepId) => {
+        return status ? 
             <FaCheckCircle
-                style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}}
-                onClick={() => onToggleComplete(selectedTask[0].task_id)}
+                style={{fontSize: item==='task' ? '1.5rem': '1.2rem', color: 'limegreen', marginRight: item==='task' ? 15 : 18}}
+                onClick={() => func(taskId, stepId)}
             />
             :
             <FaRegCircle
-                style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}}
-                onClick={() => onToggleComplete(selectedTask[0].task_id)}
+                style={{fontSize: item==='task' ? '1.5rem': '1.2rem', color: 'gray', marginRight: item==='task' ? 15 : 18}}
+                onClick={() => func(taskId, stepId)}
             />
     }
 
@@ -45,15 +65,38 @@ const TopSection = ({selectedTaskId, tasks, onToggleComplete=f=>f, onToggleImpor
             />
     }
 
-    return (
-        <ListItem style={ topStyle() }>
-            <div style={{display: 'flex'}}>
-                { renderCompleted() }
-                { renderTodoItem() }
-            </div>
+    const renderSteps = () => {
+        if (selectedTask[0].steps.length === 0) return null;
+        
+        return (
+            <List style={{padding: '0px 4px 0px 2px'}}>
+                {selectedTask[0].steps.map(step => 
+                    <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => setCurrentStep(step.id)}>
+                        <div>
+                            { renderCompleted('step', step.completedStatus, selectedTask[0].task_id, onToggleStep, step.id) }
+                            <span style={ stepStyle(step) }>{step.step}</span>
+                        </div>
+                    </ListItem>
+                )}
+            </List>
+        )
+    }
 
-            { renderImportant() }
-        </ListItem>
+    return (
+        <div>
+            <ListItem style={ topStyle() }>
+                <div style={{display: 'flex'}}>
+                    { renderCompleted('task', selectedTask[0].completedStatus, selectedTask[0].task_id, onToggleComplete) }
+                    { renderTodoItem() }
+                </div>
+
+                { renderImportant() }
+            </ListItem>
+
+            { renderSteps() }
+
+            <AddItem addItem={'step'} placeholder={selectedTask[0].steps.length > 0 ? 'Next Step' : 'Add step'} />
+        </div>
     );
 }
 

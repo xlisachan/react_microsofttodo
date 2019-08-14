@@ -1,6 +1,6 @@
 import TopSection from '../../components/MoreInfo/TopSection';
 import { connect } from 'react-redux';
-import { addStep, openMore, toggleCompleted, toggleImportant } from '../../actions'; 
+import { addStep, openMore, toggleCompleted, toggleImportant, toggleStep } from '../../actions'; 
 
 const mapStateToProps = state => ({
     selectedTaskId: state.selectedTaskId,
@@ -37,7 +37,17 @@ const mapDispatchToProps = dispatch => ({
         dispatch(
             openMore()
         )
-    }
+    },
+
+    onToggleStep(taskId, stepId) {
+        dispatch(
+            toggleStep(taskId, stepId)
+        )
+
+        dispatch(
+            openMore()
+        )
+    },
 
 })
 
