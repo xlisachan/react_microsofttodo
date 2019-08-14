@@ -35,6 +35,11 @@ const task = (state={}, action) =>
         action.payload :
         state
 
+const step = (state={}, action) =>
+    (action.type === C.ADD_STEP) ?
+        action.payload :
+        state
+
 const tasks = (state=[], action) => {
     switch(action.type) {
         case C.ADD_TASK :
@@ -166,6 +171,20 @@ const tasks = (state=[], action) => {
         case C.REMOVE_TASK :
             return state.filter(task => task.task_id !== action.payload)
             
+        case C.ADD_STEP :
+            return state.map(task =>
+                task.task_id === action.taskId ?
+                    {
+                        ...task,
+                        steps: [
+                            ...task.steps,
+                            step({}, action)
+                        ]
+                    }
+                    :
+                    task
+                )
+
         default:
             return state
     }

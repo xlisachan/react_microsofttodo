@@ -23,7 +23,8 @@ const constants = {
     
     // SECTION - MORE
     OPEN_MORE: "OPEN_MORE",
-    CLOSE_MORE: "CLOSE_MORE"
+    CLOSE_MORE: "CLOSE_MORE",
+    ADD_STEP: "ADD_STEP"
 }
 
 export default constants;

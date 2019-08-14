@@ -31,13 +31,13 @@ export const toggleMyDay = id => ({
 
 export const addTask = (
         task_id, item, date_completed, date_created, date_due,
-        completedStatus, importantStatus, my_day, planned, important, tasks, list_id
+        completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
     ) => dispatch => {
         dispatch({
             type: C.ADD_TASK,
             payload: {
                 task_id, item, date_completed, date_created, date_due,
-                completedStatus, importantStatus, my_day, planned, important, tasks, list_id
+                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
             }
         })
 }
@@ -83,21 +83,10 @@ export const changeBgColor = (color, id) => ({
     id
 })
 
-export const addList = (
-    id, 
-    name, 
-    orderBy, 
-    orderDir, 
-    sorted, 
-    hideCompleted, 
-    color, 
-    defaultList
-    ) => dispatch => {
+export const addList = (id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList) => dispatch => {
     dispatch({
         type: C.ADD_LIST,
-        payload: {
-            id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList
-        }
+        payload: {id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}
     })
 }
 
@@ -133,3 +122,11 @@ export const openMore = () => ({
 export const closeMore = () => ({
     type: C.CLOSE_MORE
 })
+
+export const addStep = (completedStatus, id, step, taskId) => dispatch => {
+    dispatch({
+        type: C.ADD_STEP,
+        payload: {completedStatus, id, step, taskId},
+        taskId
+    })
+}
