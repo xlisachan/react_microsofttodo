@@ -203,6 +203,17 @@ const tasks = (state=[], action) => {
                     :
                     task
                 )
+
+        case C.REMOVE_STEP :
+            return state.map(task =>
+                task.task_id === action.payload ?
+                    {
+                        ...task,
+                        steps: task.steps.filter(step => step.id !== action.stepId)
+                    }
+                    :
+                    task
+                )
             
         default:
             return state

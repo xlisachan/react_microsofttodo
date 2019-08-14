@@ -136,3 +136,9 @@ export const toggleStep = (taskId, stepId) => ({
     payload: taskId,
     stepId
 })
+
+export const removeStep = (taskId, stepId) => ({
+    type: C.REMOVE_STEP,
+    payload: taskId,
+    stepId
+})
