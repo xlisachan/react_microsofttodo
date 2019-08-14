@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Modal, DialogActions, Button } from '@material-ui/core';
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegTrashAlt, FaTimes } from 'react-icons/fa';
 
 const getModalStyle = () => {
     const top = 50;
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const DeleteModal = ({id, more, name, todo, onClick=f=>f}) => {
+const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -43,8 +43,18 @@ const DeleteModal = ({id, more, name, todo, onClick=f=>f}) => {
     return (
         <div>
             <div id={`${todo}_${id}`} onClick={handleOpen}>
-                <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
-                { more ? null : <span>Delete {todo}</span> }
+                
+                { location === 'more-bottom' ? 
+                    <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
+                    :
+                    location === 'more-top' ?
+                        <span><FaTimes /></span>
+                        :
+                        <div>
+                            <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
+                            <span>Delete {todo}</span>
+                        </div>
+                }
             </div>
             
             <Modal

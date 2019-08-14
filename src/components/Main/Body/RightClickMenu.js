@@ -54,11 +54,10 @@ const RightClickMenu = ({task, onClick=f=>f, onToggleMyDay=f=>f, onToggleComplet
     const renderRemoveTask = () =>
         <MenuItem>
             <DeleteModal 
-                more={ false }
-                todo={ 'task' }
-                item={ task }
-                name={ task.item }
                 id={ task.task_id }
+                location={ 'main-rightclick' }
+                name={ task.item }
+                todo={ 'task' }
                 onClick={() => onRemoveTask(task.task_id)}
             />
         </MenuItem>

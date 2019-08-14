@@ -28,11 +28,10 @@ const RightClickMenuSide = ({list, tasks, onClick=f=>f, onEditClick=f=>f, onRemo
     const renderRemoveList = () =>
         <MenuItem>
             <DeleteModal
-                more={ false }
-                todo={ 'list'}
-                item={ list }
-                name={ list.name }
                 id={ list.id }
+                location={ 'side-rightclick' }
+                name={ list.name }
+                todo={ 'list'}
                 onClick={() => removeAll()}
             />
         </MenuItem>

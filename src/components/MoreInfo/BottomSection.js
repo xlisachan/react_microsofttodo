@@ -49,11 +49,10 @@ const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f, onRemoveTask}) 
             { bottomText() }
 
             <DeleteModal 
-                more= { true }
-                todo={ 'task' }
-                item={ selectedTask[0].item }
-                name={ selectedTask[0].item }
                 id={ selectedTask[0].task_id }
+                location= { 'more-bottom' }
+                name={ selectedTask[0].item }
+                todo={ 'task' }
                 onClick={() => onRemoveTask(selectedTask[0].task_id)}
             />
         </ListItem>
