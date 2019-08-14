@@ -9,11 +9,29 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
+    const itemStyle = () => {
+        if (addItem === 'task') {
+            return {
+                margin: '0 auto',
+                height: 60,
+                padding: '10px 14px',
+                borderBottom: '1px solid gainsboro'
+            }
+        } else {
+            return {
+                margin: '3px 0 10px 0',
+                height: 30,
+                padding: '10px 12px',
+                borderBottom: 'none'
+            }
+        }
+    }
+
     const handleButtonChange = () => {
         return !item ? 
-            <FaPlus style={{color: 'royalblue'}} />
+            <FaPlus style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'royalblue'}} />
             :
-            <FaRegCircle style={{color: 'gray'}} /> 
+            <FaRegCircle style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'gray'}} /> 
     }
 
     const onSubmit = e => {
@@ -119,7 +137,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
     }
 
     return (
-        <form className="add-form" onSubmit={ onSubmit }>
+        <form className="add-form" style={ itemStyle() } onSubmit={ onSubmit }>
             <button className="add-btn" type="submit">
                 { handleButtonChange() }
             </button>
