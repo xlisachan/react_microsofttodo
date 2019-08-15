@@ -1,9 +1,14 @@
 {
     "open": false,
-    "placeholder": "My Day",
-    "selectedListId": "0",
-    "selectedTaskId": "0",
-    "tasks": [],
+    "query": "",
+    "toggleMore": false,
+    "current": {
+        "listId": "0",
+        "listTitle": "My Day",
+        "taskId": "",
+        "taskItem": "",
+        "taskSteps": []
+    },
     "lists": [
         {
             "id": "0",
@@ -46,6 +51,5 @@
             "defaultList": true
         }
     ],
-    "query": "",
-    "toggleMore": false
+    "tasks": []
 }

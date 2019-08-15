@@ -1,15 +1,54 @@
 import C from './constants';
 
-export const selectedListId = id => ({
-    type: C.SELECTED_LISTID,
+// CURRENT
+export const setListId = id => ({
+    type: C.SET_LISTID,
     payload: id
 })
 
-export const selectedTaskId = id => ({
-    type: C.SELECTED_TASKID,
+export const setList = title => ({
+    type: C.SET_LIST,
+    payload: title
+})
+
+export const setTaskId = id => ({
+    type: C.SET_TASKID,
     payload: id
 })
 
+export const setTask = task => ({
+    type: C.SET_TASK,
+    payload: task
+})
+
+// LIST
+export const addList = (id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList) => dispatch => {
+    dispatch({
+        type: C.ADD_LIST,
+        payload: {id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}
+    })
+}
+
+export const removeList = id => ({
+    type: C.REMOVE_LIST,
+    payload: id
+})
+
+export const renameList = (id, newName) => ({
+    type: C.RENAME_LIST,
+    payload: id,
+    newName
+})
+
+export const editTitle = () => ({
+    type: C.EDIT_TITLE
+})
+
+export const submitTitle = () => ({
+    type: C.SUBMIT_TITLE
+})
+
+// TASKS
 export const loadTasks = () => ({
     type: C.LOAD_TASKS
 })
@@ -47,6 +86,7 @@ export const removeTask = id => ({
     payload: id
 })
 
+// SEARCH
 export const changeQuery = query => ({
     type: C.CHANGE_QUERY,
     payload: query
@@ -56,6 +96,7 @@ export const clearQuery = () => ({
     type: C.CLEAR_QUERY
 })
 
+// SORTBAR
 export const changeOrder = (orderBy, id) => ({
     type: C.SET_ORDERBY,
     payload: orderBy,
@@ -83,37 +124,6 @@ export const changeBgColor = (color, id) => ({
     id
 })
 
-export const addList = (id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList) => dispatch => {
-    dispatch({
-        type: C.ADD_LIST,
-        payload: {id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}
-    })
-}
-
-export const removeList = id => ({
-    type: C.REMOVE_LIST,
-    payload: id
-})
-
-export const renameList = (id, newName) => ({
-    type: C.RENAME_LIST,
-    payload: id,
-    newName
-})
-
-export const editTitle = () => ({
-    type: C.EDIT_TITLE
-})
-
-export const submitTitle = () => ({
-    type: C.SUBMIT_TITLE
-})
-
-export const setPlaceholder = title => ({
-    type: C.SET_PLACEHOLDER,
-    payload: title
-})
-
 // SECTION - MORE
 export const openMore = () => ({
     type: C.OPEN_MORE
@@ -137,8 +147,21 @@ export const toggleStep = (taskId, stepId) => ({
     stepId
 })
 
+export const updateStep = (taskId, stepId, newName) => ({
+    type: C.EDIT_STEP_STATUS_COMPLETE,
+    payload: newName,
+    taskId,
+    stepId,
+})
+
 export const removeStep = (taskId, stepId) => ({
     type: C.REMOVE_STEP,
     payload: taskId,
     stepId
+})
+
+export const updateTask = (taskId, newTask) => ({
+    type: C.UPDATE_TASK,
+    payload: newTask,
+    taskId
 })

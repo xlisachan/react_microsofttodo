@@ -15,28 +15,71 @@ const open = (state=false, action) => {
     }
 }
 
-const placeholder = (state="My Day", action) =>
-    (action.type === C.SET_PLACEHOLDER) ?
-        action.payload :
-        state
-     
-const selectedListId = (state="0", action) => 
-	(action.type === C.SELECTED_LISTID) ? 
-		action.payload :
-        state
+const query = (state='', action) => {
+	switch(action.type) {
+        case C.CHANGE_QUERY :
+            return action.payload
+        
+        case C.CLEAR_QUERY :
+            return ''
+        
+        default :
+            return state
+    }
+}
 
-const selectedTaskId = (state="", action) => 
-    (action.type === C.SELECTED_TASKID) ? 
+// SECTION - MORE
+const toggleMore = (state=false, action) => {
+    switch (action.type) {
+        case C.OPEN_MORE :
+            return true
+
+        case C.CLOSE_MORE :
+            return false
+
+        default:
+            return false
+    }
+}
+
+const current = (state={listId: "0", listTitle: "My Day", taskId: "", taskItem: "", taskSteps: []}, action) => {
+    switch (action.type) {
+        case C.SET_LISTID :
+            return {
+                ...state,
+                listId: action.payload
+            }
+
+        case C.SET_LIST :
+            return {
+                ...state,
+                listTitle: action.payload
+            }
+        
+        case C.SET_TASK :
+            return {
+                ...state,
+                taskItem: action.payload
+            }
+
+        case C.SET_TASKID :
+            return {
+                ...state,
+                taskId: action.payload
+            }
+
+        default : 
+            return state
+    }
+}
+
+const step = (state={}, action) =>
+    (action.type === C.ADD_STEP) ?
         action.payload :
         state
 
 const task = (state={}, action) =>
     (action.type === C.ADD_TASK) ?
-        action.payload :
-        state
-
-const step = (state={}, action) =>
-    (action.type === C.ADD_STEP) ?
         action.payload :
         state
 
@@ -168,6 +211,17 @@ const tasks = (state=[], action) => {
                     task
             )            
             
+        case C.UPDATE_TASK :
+            return state.map(task =>
+                task.task_id === action.taskId ?
+                    {
+                        ...task,
+                        item: action.payload
+                    }
+                    :
+                    task
+            )    
+
         case C.REMOVE_TASK :
             return state.filter(task => task.task_id !== action.payload)
             
@@ -195,6 +249,25 @@ const tasks = (state=[], action) => {
                                 {
                                     ...step,
                                     completedStatus: !step.completedStatus
+                                }
+                                :
+                                step
+                        )
+                    }
+                    :
+                    task
+                )
+
+        case C.UPDATE_STEP :
+            return state.map(task =>
+                task.task_id === action.taskId ?
+                    {
+                        ...task,
+                        steps: task.steps.map(step =>
+                            step.id === action.stepId ?
+                                {
+                                    ...step,
+                                    step: action.payload
                                 }
                                 :
                                 step
@@ -317,42 +390,13 @@ const lists = (state=[], action) => {
     }
 }
 
-const query = (state='', action) => {
-	switch(action.type) {
-        case C.CHANGE_QUERY :
-            return action.payload
-        
-        case C.CLEAR_QUERY :
-            return ''
-        
-        default :
-            return state
-    }
-}
-
-// SECTION - MORE
-const toggleMore = (state=false, action) => {
-    switch (action.type) {
-        case C.OPEN_MORE :
-            return true
-
-        case C.CLOSE_MORE :
-            return false
-
-        default:
-            return false
-    }
-}
-
 const rootReducer = combineReducers({
     open,
-    placeholder,
-    selectedListId,
-    selectedTaskId,
-    tasks,
-    lists,
     query,
-    toggleMore
+    toggleMore,
+    current,
+    lists,
+    tasks,
 })
 
 export default rootReducer;
