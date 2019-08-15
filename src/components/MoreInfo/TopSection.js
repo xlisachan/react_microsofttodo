@@ -5,17 +5,17 @@ import { List, ListItem } from '@material-ui/core';
 import AddItem from '../../containers/AddItem';
 import DeleteModal from '../DeleteModal';
 
-const TopSection = ({selectedTaskId, tasks, onRemoveStep=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
-    const [currentStep, setCurrentStep] = useState(null);
+const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
+    const [currentStepId, setCurrentStepId] = useState(null);
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+
     if (!selectedTask[0]) return null;
 
     const topStyle = () => {
         return {
             display: 'flex',
             alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            paddingBottom: 0
+            justifyContent: 'space-between'
         }
     }
 
@@ -25,7 +25,7 @@ const TopSection = ({selectedTaskId, tasks, onRemoveStep=f=>f, onToggleComplete=
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            backgroundColor: currentStep === id ? '#eee' : null
+            backgroundColor: currentStepId === id ? '#eee' : null
         }
     }
 
@@ -50,7 +50,14 @@ const TopSection = ({selectedTaskId, tasks, onRemoveStep=f=>f, onToggleComplete=
     }
 
     const renderTodoItem = () => {
-        return <p className="more-list-title">{selectedTask[0].item}</p>
+        return (
+            <textarea 
+                type="text"
+                className="more-list-title"
+                value={ currentTask }
+                onChange={e => onSetTask(selectedTask[0].task_id, e.target.value)}
+            />
+        )
     }
 
     const renderImportant = () => {
@@ -72,8 +79,8 @@ const TopSection = ({selectedTaskId, tasks, onRemoveStep=f=>f, onToggleComplete=
         return (
             <List style={{padding: '0px 4px 0px 2px'}}>
                 {selectedTask[0].steps.map(step => 
-                    <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => setCurrentStep(step.id)}>
-                        <div>
+                    <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => setCurrentStepId(step.id)}>
+                        <div style={{display: 'flex', alignItems: 'center'}}>
                             { renderCompleted('step', step.completedStatus, selectedTask[0].task_id, onToggleStep, step.id) }
                             <span style={ stepStyle(step) }>{step.step}</span>
                         </div>
@@ -110,9 +117,11 @@ const TopSection = ({selectedTaskId, tasks, onRemoveStep=f=>f, onToggleComplete=
 }
 
 TopSection.propTypes = {
+    currentTask: PropTypes.string.isRequired,
     selectedTaskId: PropTypes.string,
     tasks: PropTypes.array.isRequired,
     onRemoveStep: PropTypes.func.isRequired,
+    onSetTask: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired,
     onToggleStep: PropTypes.func.isRequired

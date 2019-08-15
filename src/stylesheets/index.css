@@ -13,16 +13,21 @@ code {
     monospace;
 }
 
-input {
+input, textarea {
   background: transparent;
+  border: none;
 }
 
-button:focus, input:focus {
+button:focus, input:focus, textarea:focus {
   outline: none;
 }
 
 input::placeholder {
   color: royalblue;
+}
+
+textarea { 
+  resize: none;
 }
 
 .header {
@@ -101,6 +106,8 @@ input::placeholder {
 
 .more-list-title{
   width: 130px;
+  background: transparent;
+  border: none;
   font-weight: bold;
   white-space: pre-wrap;      /* CSS3 */   
   white-space: -moz-pre-wrap; /* Firefox */    
