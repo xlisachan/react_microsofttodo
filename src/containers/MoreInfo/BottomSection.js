@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { closeMore, removeTask } from '../../actions';
 
 const mapStateToProps = state => ({
-    selectedTaskId: state.selectedTaskId,
+    selectedTaskId: state.current["taskId"],
     tasks: state.tasks
 })
 

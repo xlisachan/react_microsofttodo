@@ -4,7 +4,7 @@ import { changeDir, changeOrder, resetChangeDir } from '../../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    selectedListId: state.selectedListId
+    selectedListId: state.current["listId"]
 })
 
 const mapDispatchToProps = dispatch => ({

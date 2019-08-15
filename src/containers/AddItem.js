@@ -4,8 +4,8 @@ import { addStep, addTask, openMore } from '../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
-    selectedListId: state.selectedListId,
-    selectedTaskId: state.selectedTaskId
+    selectedListId: state.current["listId"],
+    selectedTaskId: state.current["taskId"]
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -31,7 +31,6 @@ const mapDispatchToProps = dispatch => ({
             openMore()
         )
     }
-
 
 })
 

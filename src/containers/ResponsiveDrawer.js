@@ -1,19 +1,19 @@
 import ResponsiveDrawer from '../components/ResponsiveDrawer';
 import { connect } from 'react-redux';
-import { renameList, submitTitle, setPlaceholder } from '../actions';
+import { renameList, submitTitle, setList } from '../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
     open: state.open,
-    placeholder: state.placeholder,
-    selectedListId: state.selectedListId
+    placeholder: state.current["listTitle"],
+    selectedListId: state.current["listId"]
 })
 
 const mapDispatchToProps = dispatch => ({
 
     onRenameList(id, name) {
         dispatch(
-            setPlaceholder(name)
+            setList(name)
         )
 
         dispatch(

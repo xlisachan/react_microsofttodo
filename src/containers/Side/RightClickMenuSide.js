@@ -1,6 +1,6 @@
 import RightClickMenuSide from '../../components/Side/RightClickMenuSide';
 import { connect } from 'react-redux';
-import { removeList, removeTask, selectedListId, setPlaceholder } from '../../actions';
+import { removeList, removeTask, setListId, setList } from '../../actions';
 
 const mapStateToProps = state => ({
     tasks: state.tasks
@@ -14,11 +14,11 @@ const mapDispatchToProps = dispatch => ({
         )
 
         dispatch(
-            selectedListId('0')
+            setListId('0')
         )
 
         dispatch(
-            setPlaceholder('My Day')
+            setList('My Day')
         )
     },
 

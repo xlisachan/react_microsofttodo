@@ -5,7 +5,7 @@ import { closeMore, openMore } from '../../actions';
 const mapStateToProps = state => ({
     lists: state.lists,
     query: state.query,
-    selectedListId: state.selectedListId,
+    selectedListId: state.current["listId"],
     tasks: state.tasks,
     toggleMore: state.toggleMore
 })

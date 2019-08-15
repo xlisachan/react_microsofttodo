@@ -1,19 +1,19 @@
 import HeaderName from '../../../components/Main/Header/HeaderName';
 import { connect } from 'react-redux';
-import { editTitle, setPlaceholder } from '../../../actions';
+import { editTitle, setList } from '../../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
     open: state.open,
-    placeholder: state.placeholder,
-    selectedListId: state.selectedListId,
+    placeholder: state.current["listTitle"],
+    selectedListId: state.current["listId"],
 })
 
 const mapDispatchToProps = dispatch => ({
     
-    onSetPlaceholder(name) {
+    onSetList(title) {
         dispatch(
-            setPlaceholder(name)
+            setList(title)
         )
 
         dispatch(
