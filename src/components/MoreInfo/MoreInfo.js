@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const More = ({toggleMore}) => {
+const More = ({open, onClose=f=>f}) => {
     const classes = useStyles();
 
     return (
@@ -35,7 +35,7 @@ const More = ({toggleMore}) => {
                 className={classes.drawer}
                 variant="persistent"
                 anchor="right"
-                open={toggleMore}
+                open={ open }
                 classes={{
                     paper: classes.drawerPaper,
                 }}>
@@ -47,7 +47,7 @@ const More = ({toggleMore}) => {
 
                     <Divider />
 
-                    <BottomSection />
+                    <BottomSection onClose={ onClose } />
                 </div>
             </Drawer>
         </Hidden>
@@ -55,7 +55,8 @@ const More = ({toggleMore}) => {
 }
 
 More.propTypes = {
-    toggleMore: PropTypes.bool.isRequired
+    open: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired
 }
 
 export default More;

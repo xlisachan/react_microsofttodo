@@ -1,6 +1,6 @@
 import AddItem from '../components/AddItem';
 import { connect } from 'react-redux';
-import { addStep, addTask, openMore } from '../actions';
+import { addStep, addTask } from '../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -25,10 +25,6 @@ const mapDispatchToProps = dispatch => ({
     onAddStep({completedStatus, id, step, task_id}) {
         dispatch(
             addStep(completedStatus, id, step, task_id)
-        )
-
-        dispatch(
-            openMore()
         )
     }
 

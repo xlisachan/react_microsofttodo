@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ClickAwayListener, CssBaseline, Drawer, Hidden} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { ClickAwayListener, CssBaseline, Drawer, Hidden, useMediaQuery} from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Sidebar from '../containers/Side/Sidebar';
 import Main from '../containers/Main/Main';
 
@@ -26,6 +26,19 @@ const useStyles = makeStyles(theme => ({
 const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameList=f=>f}) => {
     let inputEl = null;
     const classes = useStyles();
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
+
+    const [openDrawer, setOpen] = React.useState(false)
+
+    const handleDrawerOpen = () => {
+        if (!matches) return
+        setOpen(true);
+    }
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    }
 
     const handleClickAway = () => {
         const namesOnList = lists.map(list => list.name);
@@ -72,12 +85,20 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
                         <Drawer open variant="permanent"
                             classes={{paper: classes.drawerPaper}}>
 
-                            <Sidebar onEditClick={ editClick } />
+                            <Sidebar 
+                                onClose={ handleDrawerClose }
+                                onEditClick={ editClick }
+                            />
                         </Drawer>
                     </Hidden>
                 </nav>
 
-                <Main ref={input => inputEl = input} />
+                <Main
+                    ref={input => inputEl = input}
+                    open={ openDrawer }
+                    onOpen={ handleDrawerOpen }
+                    onClose={ handleDrawerClose }
+                />
             </div>
         </ClickAwayListener>
     );

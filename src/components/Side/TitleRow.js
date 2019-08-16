@@ -5,7 +5,7 @@ import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck, FaList } from '
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onSetList=f=>f}) => {
+const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onClose=f=>f, onSetList=f=>f}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
@@ -21,6 +21,7 @@ const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onSe
     const handleClick = () => {
         onSetList(list.id, list.name);
         onClick();
+        onClose();
     }
 
     const formatColor = color => {
@@ -77,6 +78,7 @@ TitleRow.propTypes = {
     selectedListId: PropTypes.string.isRequired,
     tasks: PropTypes.array.isRequired,
     onClick: PropTypes.func,
+    onClose: PropTypes.func.isRequired,
     onSetList: PropTypes.func.isRequired
 }
 export default TitleRow;

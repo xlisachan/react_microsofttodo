@@ -1,12 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { AppBar, CssBaseline, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, CssBaseline } from '@material-ui/core';
 import Header from '../../containers/Main/Header/Header';
 import ListBody from '../../containers/Main/Body/ListBody';
 import NoMatch from './Body/NoMatch';
-import MoreSection from '../../containers/MoreInfo/MoreInfo';
+import MoreSection from '../MoreInfo/MoreInfo';
 
 const drawerWidth = 250;
 
@@ -61,16 +61,8 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore, onOpenMore=f=>f}, ref) => {
+const Main = React.forwardRef(({lists, query, selectedListId, tasks, open, onClose=f=>f, onOpen=f=>f}, ref) => {
     const classes = useStyles();
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('md'));
-
-    const handleDrawerOpen = () => {
-        if (!matches) return
-
-        onOpenMore();
-    }
 
     let filteredTasks = [],
         order,
@@ -117,7 +109,7 @@ const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore,
                 <AppBar
                     position="fixed"
                     className={clsx(classes.appBar, {
-                        [classes.appBarShift]: toggleMore,
+                        [classes.appBarShift]: open,
                     })}>
 
                     <Header ref={ref} />
@@ -125,7 +117,7 @@ const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore,
                 </AppBar>
 
                 <main className={clsx(classes.content, {
-                        [classes.contentShift]: toggleMore,
+                        [classes.contentShift]: open,
                     })}
                     style={{
                         position: selectedList[0].sorted ? 'relative' : null, 
@@ -136,11 +128,11 @@ const Main = React.forwardRef(({lists, query, selectedListId, tasks, toggleMore,
 
                     <ListBody 
                         tasks={ filteredTasks } 
-                        onClick={ handleDrawerOpen } 
+                        onClick={ onOpen } 
                     />
                 </main>
 
-                <MoreSection />
+                <MoreSection open={ open } onClose={ onClose } />
             </div>
     }
 
@@ -153,10 +145,10 @@ Main.propTypes = {
     lists: PropTypes.array.isRequired,
     query: PropTypes.string,
     selectedListId: PropTypes.string.isRequired,
-    toggleMore: PropTypes.bool.isRequired,
     tasks: PropTypes.array.isRequired,
-    onCloseMore: PropTypes.func.isRequired,
-    onOpenMore: PropTypes.func.isRequired
+    open: PropTypes.bool.isRequired,
+    onOpen: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
 }
 
 export default Main;

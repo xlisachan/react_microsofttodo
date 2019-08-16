@@ -5,7 +5,7 @@ import { ListItem } from '@material-ui/core';
 import Moment from 'react-moment';
 import DeleteModal from '../DeleteModal';
 
-const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f, onRemoveTask}) => {
+const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
         if (!selectedTask[0]) return null
 
@@ -44,7 +44,7 @@ const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f, onRemoveTask}) 
 
     return (
         <ListItem style={ bottomStyle() }>
-            <FaChevronRight onClick={()=> onCloseMore()} />
+            <FaChevronRight onClick={()=> onClose()} />
 
             { bottomText() }
 
@@ -62,7 +62,7 @@ const BottomSection = ({selectedTaskId, tasks, onCloseMore=f=>f, onRemoveTask}) 
 BottomSection.propTypes = {
     selectedTaskId: PropTypes.string,
     tasks: PropTypes.array,
-    onCloseMore: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
     onRemoveTask: PropTypes.func.isRequired
 }
  

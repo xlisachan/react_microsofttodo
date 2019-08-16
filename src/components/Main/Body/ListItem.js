@@ -5,7 +5,7 @@ import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar 
 import { getCurrentDate } from '../../../getDate';
 import Moment from 'react-moment';
 
-const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+const ListItem = ({task, lists, selectedListId, selectedTaskId, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
@@ -78,10 +78,15 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onSetTask=f=>f, 
             />
         </span>
 
+    const handleClick = () => {
+        onSetTask(task.task_id, task.item, task.steps);
+        onClick();
+    }
+
     return ( 
         <ListItemMUI button
             style={ listStyle(task.task_id) }
-            onClick={() => onSetTask(task.task_id, task.item)}
+            onClick={() => handleClick()}
             >
             <div style={{display: 'flex', alignItems: 'center'}}>
                 { renderCompleted() }
@@ -129,6 +134,7 @@ ListItem.propTypes = {
     selectedListId: PropTypes.string.isRequired,
     selectedTaskId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
     onSetTask: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired

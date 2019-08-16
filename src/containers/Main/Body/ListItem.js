@@ -1,6 +1,6 @@
 import ListItem from '../../../components/Main/Body/ListItem';
 import { connect } from 'react-redux';
-import { openMore, toggleCompleted, toggleImportant, setTaskId, setTask } from '../../../actions'; 
+import { setTaskId, setTask, toggleCompleted, toggleImportant } from '../../../actions'; 
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -29,10 +29,6 @@ const mapDispatchToProps = dispatch => ({
 
         dispatch(
             setTask(task)
-        )
-
-        dispatch(
-            openMore()
         )
     }
 

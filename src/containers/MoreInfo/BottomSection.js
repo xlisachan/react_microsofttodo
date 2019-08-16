@@ -1,6 +1,6 @@
 import BottomSection from '../../components/MoreInfo/BottomSection';
 import { connect } from 'react-redux';
-import { closeMore, removeTask } from '../../actions';
+import { removeTask } from '../../actions';
 
 const mapStateToProps = state => ({
     selectedTaskId: state.current["taskId"],
@@ -8,12 +8,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
-    onCloseMore() {
-        dispatch(
-            closeMore()
-        )
-    },
 
     onRemoveTask(id) {
         dispatch(
