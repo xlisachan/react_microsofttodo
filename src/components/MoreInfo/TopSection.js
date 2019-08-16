@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Textarea from 'react-textarea-autosize';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
@@ -6,8 +6,7 @@ import { List, ListItem } from '@material-ui/core';
 import AddItem from '../../containers/AddItem';
 import DeleteModal from '../DeleteModal';
 
-const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
-    const [currentStepId, setCurrentStepId] = useState(null);
+const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
 
     if (!selectedTask[0]) return null;
@@ -26,7 +25,7 @@ const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSe
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            backgroundColor: currentStepId === id ? '#eee' : null
+            backgroundColor: currentStep.id === id ? '#eee' : null
         }
     }
 
@@ -78,10 +77,13 @@ const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSe
         
         return (
             <List style={{padding: '0px 4px 0px 2px'}}>
-                {selectedTask[0].steps.map(step => 
-                    <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => setCurrentStepId(step.id)}>
+                {currentSteps.map(step => 
+                    <ListItem key={`${step.step}_${step.id}`} 
+                        style={ stepContainer(step.id) } 
+                        onClick={() => onSetStep(step.completedStatus, step.id, step.step, selectedTaskId)}>
+                        
                         <div style={{display: 'flex', alignItems: 'center'}}>
-                            { renderCompleted('step', step.completedStatus, selectedTask[0].task_id, onToggleStep, step.id) }
+                            { renderCompleted('step', step.completedStatus, selectedTaskId, onToggleStep, step.id) }
                             <span style={ stepStyle(step) }>{step.step}</span>
                         </div>
 
@@ -117,10 +119,13 @@ const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSe
 }
 
 TopSection.propTypes = {
+    currentStep: PropTypes.object.isRequired,
+    currentSteps: PropTypes.array.isRequired,
     currentTask: PropTypes.string.isRequired,
     selectedTaskId: PropTypes.string,
     tasks: PropTypes.array.isRequired,
     onRemoveStep: PropTypes.func.isRequired,
+    onSetStep: PropTypes.func.isRequired,
     onSetTask: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired,
