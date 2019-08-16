@@ -66,7 +66,6 @@ const RightClickMenu = ({task, onClick=f=>f, onToggleMyDay=f=>f, onToggleComplet
         <div>
             <ContextMenuTrigger id={`menuitem_${task.task_id}`}>
                 <ListItem
-                    id={ task.task_id}
                     task={ task }
                     onClick={ onClick }
                 />

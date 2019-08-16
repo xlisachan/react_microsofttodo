@@ -20,7 +20,6 @@ const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onSetL
                     />
                 }
             </h2>
-            
         )
     }
 
