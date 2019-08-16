@@ -40,19 +40,34 @@ const current = (state={listId: "0", listTitle: "My Day", taskId: "", taskItem: 
         case C.SET_LIST :
             return {
                 ...state,
-                listTitle: action.payload
+                listTitle: action.payload,
+                item: "list"
             }
         
         case C.SET_TASK :
             return {
                 ...state,
-                taskItem: action.payload
+                taskItem: action.payload,
+                item: "task"
             }
 
         case C.SET_TASKID :
             return {
                 ...state,
                 taskId: action.payload
+            }
+
+        case C.SET_STEPS :
+            return {
+                ...state,
+                taskSteps: action.payload,
+                item: "step"
+            }
+        
+        case C.CLEAR_ITEM :
+            return {
+                ...state,
+                item: ""
             }
 
         default : 

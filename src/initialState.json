@@ -6,7 +6,8 @@
         "listTitle": "My Day",
         "taskId": "",
         "taskItem": "",
-        "taskSteps": []
+        "taskSteps": [],
+        "item": ""
     },
     "lists": [
         {

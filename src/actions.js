@@ -21,6 +21,15 @@ export const setTask = task => ({
     payload: task
 })
 
+export const setSteps = steps => ({
+    type: C.SET_STEPS,
+    payload: steps
+})
+
+export const clearItem = () => ({
+    type: C.CLEAR_ITEM
+})
+
 // LIST
 export const addList = (id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList) => dispatch => {
     dispatch({
