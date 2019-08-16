@@ -26,6 +26,10 @@ export const setSteps = steps => ({
     payload: steps
 })
 
+export const clearCurrentTask = () => ({
+    type: C.CLEAR_CURRENT_TASK
+})
+
 export const clearItem = () => ({
     type: C.CLEAR_ITEM
 })

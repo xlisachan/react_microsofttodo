@@ -29,7 +29,7 @@ const query = (state='', action) => {
 }
 
 // SECTION - MORE
-const current = (state={listId: "0", listTitle: "My Day", taskId: "", taskItem: "", taskSteps: []}, action) => {
+const current = (state={}, action) => {
     switch (action.type) {
         case C.SET_LISTID :
             return {
@@ -60,8 +60,16 @@ const current = (state={listId: "0", listTitle: "My Day", taskId: "", taskItem: 
         case C.SET_STEPS :
             return {
                 ...state,
-                taskSteps: action.payload,
-                item: "step"
+                taskSteps: action.payload
+            }
+        
+        case C.CLEAR_CURRENT_TASK :
+            return {
+                ...state,
+                taskId: "",
+                taskItem: "",
+                taskStep: {},
+                taskSteps: []
             }
         
         case C.CLEAR_ITEM :
