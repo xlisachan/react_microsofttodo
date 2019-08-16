@@ -75,6 +75,15 @@ const current = (state={}, action) => {
                 taskSteps: action.payload
             }
         
+        case C.ADD_STEP :
+            return {
+                ...state,
+                taskSteps: [
+                    ...state.taskSteps,
+                    step({}, action)
+                ]
+            }
+        
         case C.CLEAR_CURRENT_TASK :
             return {
                 ...state,
