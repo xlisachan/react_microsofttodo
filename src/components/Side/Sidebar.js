@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onEditClick=f=>f}) => {
+const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
     const classes = useStyles();
     const [searchItem, setSearchItem] = useState('');
 
@@ -92,6 +92,7 @@ const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onEditClick=f=>f}) => {
 
             <TitleList 
                 onClick={ clearSearch }
+                onClose={ onClose }
                 onEditClick={ onEditClick }
             />
 

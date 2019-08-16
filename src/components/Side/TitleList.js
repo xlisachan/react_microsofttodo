@@ -4,7 +4,7 @@ import { Divider, List } from '@material-ui/core';
 import TitleRow from '../../containers/Side/TitleRow';
 import RightClickMenuSide from '../../containers/Side/RightClickMenuSide';
 
-const TitleList = ({lists, onClick=f=>f, onEditClick=f=>f}) => {
+const TitleList = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
     const defaultLists = lists.filter(list => list.defaultList)
     const customLists = lists.filter(list => !list.defaultList)
 
@@ -15,6 +15,7 @@ const TitleList = ({lists, onClick=f=>f, onEditClick=f=>f}) => {
                 list={ list }
                 index={ index }
                 onClick={ onClick }
+                onClose={ onClose }
             />
         ))
 
@@ -25,6 +26,7 @@ const TitleList = ({lists, onClick=f=>f, onEditClick=f=>f}) => {
                 list={ list }
                 onClick={ onClick }
                 onEditClick={ onEditClick }
+                onClose={ onClose }
             />
         ))
 

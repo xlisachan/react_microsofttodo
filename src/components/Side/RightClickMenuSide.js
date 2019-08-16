@@ -5,7 +5,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import TitleRow from '../../containers/Side/TitleRow';
 import DeleteModal from '../DeleteModal';
 
-const RightClickMenuSide = ({list, tasks, onClick=f=>f, onEditClick=f=>f, onRemoveList=f=>f, onRemoveTask=f=>f}) => {
+const RightClickMenuSide = ({list, tasks, onClick=f=>f, onClose=f=>f, onEditClick=f=>f, onRemoveList=f=>f, onRemoveTask=f=>f}) => {
 
     const renderRenameList = () =>
         <MenuItem onClick={() => onEditClick()}>
@@ -42,6 +42,7 @@ const RightClickMenuSide = ({list, tasks, onClick=f=>f, onEditClick=f=>f, onRemo
                 <TitleRow
                     list={ list }
                     onClick={ onClick }
+                    onClose={ onClose }
                 />
             </ContextMenuTrigger>
 
@@ -57,6 +58,7 @@ const RightClickMenuSide = ({list, tasks, onClick=f=>f, onEditClick=f=>f, onRemo
 RightClickMenuSide.propTypes = {
     list: PropTypes.any,
     onClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
     tasks: PropTypes.array.isRequired,
     onRemoveList: PropTypes.func.isRequired,
