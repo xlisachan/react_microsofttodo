@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import PropTypes from 'prop-types';
+import Textarea from 'react-textarea-autosize';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import { List, ListItem } from '@material-ui/core';
 import AddItem from '../../containers/AddItem';
@@ -51,7 +52,7 @@ const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSe
 
     const renderTodoItem = () => {
         return (
-            <textarea 
+            <Textarea 
                 className="more-list-title"
                 value={ currentTask }
                 onChange={e => onSetTask(e.target.value)}
