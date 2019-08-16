@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameList=f=>f}) => {
+const ResponsiveDrawer = ({currentTask, item, lists, open, placeholder, selectedListId, selectedTaskId, tasks, onRenameList=f=>f, onUpdateTask=f=>f}) => {
     let inputEl = null;
     const classes = useStyles();
     const theme = useTheme();
@@ -43,8 +43,9 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
     const handleClickAway = () => {
         const namesOnList = lists.map(list => list.name);
         const regex=/^\s+$/;
+        const selectedTask = tasks.filter(task => task.task_id === selectedTaskId)
 
-        if (open) {
+        if (open && item === 'list') {
             if (regex.test(placeholder) || placeholder === '') {
                 let subName = "Untitled List"
                 let num = 1
@@ -67,6 +68,13 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
                     num++
                 }
                 onRenameList(selectedListId, subName);
+            }
+        } else if (open && item === 'task') {
+            if (currentTask === '') {
+                let subTask = selectedTask[0].item
+                onUpdateTask(selectedTaskId, subTask);
+            } else {
+                onUpdateTask(selectedTaskId, currentTask);
             }
         }
     };
@@ -107,11 +115,16 @@ const ResponsiveDrawer = ({lists, open, placeholder, selectedListId, onRenameLis
 ResponsiveDrawer.propTypes = {
   // Injected by the documentation to work in an iframe.
   // You won't need it on your project.
+  currentTask: PropTypes.string.isRequired,
+  item: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
   open: PropTypes.bool.isRequired,
   placeholder: PropTypes.string.isRequired,
   selectedListId: PropTypes.string.isRequired,
-  onRenameList: PropTypes.func.isRequired
+  selectedTaskId: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
+  onRenameList: PropTypes.func.isRequired,
+  onUpdateTask: PropTypes.func.isRequired
 };
 
 export default ResponsiveDrawer;

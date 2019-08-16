@@ -52,10 +52,9 @@ const TopSection = ({currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSe
     const renderTodoItem = () => {
         return (
             <textarea 
-                type="text"
                 className="more-list-title"
                 value={ currentTask }
-                onChange={e => onSetTask(selectedTask[0].task_id, e.target.value)}
+                onChange={e => onSetTask(e.target.value)}
             />
         )
     }
