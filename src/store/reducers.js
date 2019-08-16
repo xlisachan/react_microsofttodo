@@ -84,6 +84,12 @@ const current = (state={}, action) => {
                 taskSteps: []
             }
         
+        case C.CLEAR_STEP :
+            return {
+                ...state,
+                taskStep: {}
+            }
+        
         case C.CLEAR_ITEM :
             return {
                 ...state,

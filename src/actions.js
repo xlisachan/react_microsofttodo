@@ -36,6 +36,10 @@ export const clearCurrentTask = () => ({
     type: C.CLEAR_CURRENT_TASK
 })
 
+export const clearStep = () => ({
+    type: C.CLEAR_STEP
+})
+
 export const clearItem = () => ({
     type: C.CLEAR_ITEM
 })
