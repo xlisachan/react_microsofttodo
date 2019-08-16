@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
+const Sidebar = ({onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
     const classes = useStyles();
     const [searchItem, setSearchItem] = useState('');
 
@@ -53,7 +53,7 @@ const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onClose=f=>f, onEditCli
     const clearSearch = () => {
         _searchInput.value = '';
         setSearchItem('');
-        onClearQuery();
+        onClear();
     }
 
     const renderClearButton = () => {
@@ -103,7 +103,7 @@ const Sidebar = ({onChangeQuery=f=>f, onClearQuery=f=>f, onClose=f=>f, onEditCli
 
 Sidebar.propTypes = {
     onChangeQuery: PropTypes.func,
-    onClearQuery: PropTypes.func,
+    onClear: PropTypes.func.isRequired,
     onEditClick: PropTypes.func
 }
 

@@ -1,6 +1,6 @@
 import Sidebar from '../../components/Side/Sidebar';
 import { connect } from 'react-redux';
-import { changeQuery, clearQuery } from '../../actions';
+import { changeQuery, clearQuery, clearCurrentTask } from '../../actions';
 
 const mapDispatchToProps = dispatch => ({
 
@@ -10,9 +10,13 @@ const mapDispatchToProps = dispatch => ({
         )
     },
 
-    onClearQuery() {
+    onClear() {
         dispatch(
             clearQuery()
+        )
+
+        dispatch(
+            clearCurrentTask()
         )
     }
 
