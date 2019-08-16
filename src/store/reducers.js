@@ -57,6 +57,18 @@ const current = (state={}, action) => {
                 taskId: action.payload
             }
 
+        case C.SET_STEP :
+            return {
+                ...state,
+                taskStep: action.payload,
+                taskSteps: state.taskSteps.map(step =>
+                    step.id === action.id ?
+                        action.payload
+                        :
+                        step
+                )
+            }
+                
         case C.SET_STEPS :
             return {
                 ...state,

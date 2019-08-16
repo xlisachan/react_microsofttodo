@@ -21,6 +21,12 @@ export const setTask = task => ({
     payload: task
 })
 
+export const setStep = (completedStatus, id, step, taskId) => ({
+    type: C.SET_STEP,
+    payload: {completedStatus, id, step, taskId},
+    id
+})
+
 export const setSteps = steps => ({
     type: C.SET_STEPS,
     payload: steps
