@@ -125,14 +125,6 @@ export const changeBgColor = (color, id) => ({
 })
 
 // SECTION - MORE
-export const openMore = () => ({
-    type: C.OPEN_MORE
-})
-
-export const closeMore = () => ({
-    type: C.CLOSE_MORE
-})
-
 export const addStep = (completedStatus, id, step, taskId) => dispatch => {
     dispatch({
         type: C.ADD_STEP,

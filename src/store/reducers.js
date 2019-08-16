@@ -29,19 +29,6 @@ const query = (state='', action) => {
 }
 
 // SECTION - MORE
-const toggleMore = (state=false, action) => {
-    switch (action.type) {
-        case C.OPEN_MORE :
-            return true
-
-        case C.CLOSE_MORE :
-            return false
-
-        default:
-            return false
-    }
-}
-
 const current = (state={listId: "0", listTitle: "My Day", taskId: "", taskItem: "", taskSteps: []}, action) => {
     switch (action.type) {
         case C.SET_LISTID :
@@ -393,7 +380,6 @@ const lists = (state=[], action) => {
 const rootReducer = combineReducers({
     open,
     query,
-    toggleMore,
     current,
     lists,
     tasks,
