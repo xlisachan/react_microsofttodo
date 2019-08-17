@@ -84,6 +84,15 @@ const current = (state={}, action) => {
                 ]
             }
         
+        case C.REMOVE_STEP :
+            return {
+                ...state,
+                taskStep: {},
+                taskSteps: [
+                    ...state.taskSteps.filter(step => step.id !== action.stepId)
+                ]
+            }
+
         case C.CLEAR_CURRENT_TASK :
             return {
                 ...state,
