@@ -72,19 +72,25 @@ const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tas
             />
     }
 
+    const getPlaceholder = (step) => {
+        const el = currentSteps.filter(selected => selected.id === step.id)
+        
+        return el[0].step
+    }
+
     const renderSteps = () => {
         if (selectedTask[0].steps.length === 0) return null;
         
         return (
             <List style={{padding: '0px 4px 0px 2px'}}>
-                {currentSteps.map(step => 
+                {selectedTask[0].steps.map(step => 
                     <ListItem key={`${step.step}_${step.id}`} 
                         style={ stepContainer(step.id) } 
                         onClick={() => onSetStep(step.completedStatus, step.id, step.step, selectedTaskId)}>
                         
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             { renderCompleted('step', step.completedStatus, selectedTaskId, onToggleStep, step.id) }
-                            <span style={ stepStyle(step) }>{step.step}</span>
+                            <span style={ stepStyle(step) }>{getPlaceholder(step)}</span>
                         </div>
 
                         <DeleteModal 
@@ -92,7 +98,7 @@ const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tas
                             location={ 'more-top' }
                             name={ step.step }
                             todo={ 'step' }
-                            onClick={() => onRemoveStep(selectedTask[0].task_id, step.id)}
+                            onClick={() => onRemoveStep(selectedTaskId, step.id)}
                         />
                     </ListItem>
                 )}
