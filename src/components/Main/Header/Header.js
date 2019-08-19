@@ -36,7 +36,7 @@ const Header = React.forwardRef(({lists, selectedListId}, ref) => {
     return (
         <div>
             <header className="header" style={{backgroundColor: formatColor()}}>
-                <div>
+                <div style={{width: '100%'}}>
                     <HeaderName ref={ref} />
 
                     { getTodaysDate() }
