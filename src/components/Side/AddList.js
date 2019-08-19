@@ -4,7 +4,7 @@ import uuid from 'uuid';
 import { FaPlus } from 'react-icons/fa';
 import { ListItemText } from '@material-ui/core';
 
-const AddList = ({lists, onAddList=f=>f})  => {
+const AddList = ({lists, onAddList=f=>f, onEditClick=f=>f})  => {
     const namesOnList = lists.map(list => list.name);
 
     const setListName = () => {
@@ -31,7 +31,8 @@ const AddList = ({lists, onAddList=f=>f})  => {
             defaultList: false
         }
 
-        onAddList(newList)
+        onAddList(newList);
+        onEditClick();
     }
 
     return (
@@ -46,6 +47,7 @@ const AddList = ({lists, onAddList=f=>f})  => {
 AddList.propTypes = {
     lists: PropTypes.array.isRequired,
     onAddList: PropTypes.func.isRequired,
+    onEditClick: PropTypes.func.isRequired
 }
 
 export default AddList;

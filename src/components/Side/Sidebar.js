@@ -96,7 +96,7 @@ const Sidebar = ({onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=
                 onEditClick={ onEditClick }
             />
 
-            <AddList />
+            <AddList onEditClick={ onEditClick } />
         </div>
     );
 }
