@@ -6,7 +6,7 @@ import { List, ListItem } from '@material-ui/core';
 import AddItem from '../../containers/AddItem';
 import DeleteModal from '../DeleteModal';
 
-const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f}) => {
+const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onToggleStep=f=>f, onUpdateTask=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
 
     if (!selectedTask[0]) return null;
@@ -49,13 +49,39 @@ const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tas
             />
     }
 
+    const onSubmit = (e, step) => {
+        e.preventDefault();
+
+        if (step) {
+            onSetStep(step.completedStatus, step.id, e.target.value, selectedTaskId)
+        } else {
+            if (currentTask === '') {
+                let subTask = selectedTask[0].item
+                onUpdateTask(selectedTaskId, subTask);
+            } else {
+                onUpdateTask(selectedTaskId, currentTask);
+            }
+        }
+    }
+
+    const onEnterPress = e => {
+        if (e.which === 13 && e.target.id==="currentTask" && !e.shiftKey) {
+            e.preventDefault();
+            onSubmit(e);
+        }
+    }
+
     const renderTodoItem = () => {
         return (
-            <Textarea 
-                className="more-list-title"
-                value={ currentTask }
-                onChange={e => onSetTask(e.target.value)}
-            />
+            <form onSubmit={onSubmit}>
+                <Textarea
+                    id="currentTask"
+                    className="more-list-title"
+                    value={ currentTask }
+                    onChange={e => onSetTask(e.target.value)}
+                    onKeyDown={e => onEnterPress(e)}
+                />
+            </form>
         )
     }
 
@@ -90,7 +116,11 @@ const TopSection = ({currentStep, currentSteps, currentTask, selectedTaskId, tas
                         
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             { renderCompleted('step', step.completedStatus, selectedTaskId, onToggleStep, step.id) }
-                            <span style={ stepStyle(step) }>{getPlaceholder(step)}</span>
+                            <Textarea
+                                style={ stepStyle(step) }
+                                value={getPlaceholder(step)}
+                                onChange={e => onSetStep(step.completedStatus, step.id, e.target.value, selectedTaskId)}
+                            />
                         </div>
 
                         <DeleteModal 
@@ -135,7 +165,8 @@ TopSection.propTypes = {
     onSetTask: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired,
-    onToggleStep: PropTypes.func.isRequired
+    onToggleStep: PropTypes.func.isRequired,
+    onUpdateTask: PropTypes.func.isRequired
 }
 
 export default TopSection;
