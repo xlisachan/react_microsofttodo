@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onRenameList=f=>f, onSetList=f=>f}, ref) => { 
-    const selectedList = lists.filter(list => list.id === selectedListId);
+const HeaderName = React.forwardRef(({currentList, lists, onRenameList=f=>f, onSetList=f=>f}, ref) => { 
+    const selectedList = lists.filter(list => list.id === currentList.id);
     const defaultList = selectedList[0].defaultList;
     
     const onSubmit = e => {
@@ -11,7 +11,7 @@ const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onRena
         const namesOnList = lists.map(list => list.name);
         const regex=/^\s+$/;
 
-        if (regex.test(placeholder) || placeholder === '') {
+        if (regex.test(currentList.title) || currentList.title === '') {
             let subName = "Untitled List"
             let num = 1
             
@@ -19,18 +19,18 @@ const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onRena
                 subName = `Untitled List (${num})`;
                 num++
             }
-            onRenameList(selectedListId, subName);
-        } else if (!namesOnList.includes(placeholder)){
-            onRenameList(selectedListId, placeholder);
-        } else if (namesOnList.includes(placeholder)) {
-            let subName = placeholder;
+            onRenameList(currentList.id, subName);
+        } else if (!namesOnList.includes(currentList.title)){
+            onRenameList(currentList.id, currentList.title);
+        } else if (namesOnList.includes(currentList.title)) {
+            let subName = currentList.title;
             let num = 1;
 
             while (namesOnList.includes(subName)) {
                 subName = `${subName} (${num})`
                 num++
             }
-            onRenameList(selectedListId, subName);
+            onRenameList(currentList.id, subName);
         }
     }
 
@@ -39,13 +39,13 @@ const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onRena
             <form onSubmit={ onSubmit }>
                 <h2 style={{fontWeight: 'bold'}} >
                     { defaultList ?
-                        placeholder
+                        currentList.title
                         :
                         <input
                             ref={ref}
                             type="text"
                             className="edit-input"
-                            value={ placeholder }
+                            value={ currentList.title }
                             onChange={e => onSetList(e.target.value)}
                         />
                     }
@@ -60,9 +60,8 @@ const HeaderName = React.forwardRef(({lists, placeholder, selectedListId, onRena
 })
 
 HeaderName.propTypes = {
+    currentList: PropTypes.object.isRequired,
     lists: PropTypes.array.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    selectedListId: PropTypes.string.isRequired,
     onRenameList: PropTypes.func.isRequired,
     onSetList: PropTypes.func.isRequired
 }

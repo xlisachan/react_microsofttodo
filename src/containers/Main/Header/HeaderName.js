@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { editTitle, renameList, setList, submitTitle, clearItem } from '../../../actions';
 
 const mapStateToProps = state => ({
-    lists: state.lists,
-    placeholder: state.current["listTitle"],
-    selectedListId: state.current["listId"],
+    currentList: state.current.list,
+    lists: state.lists
 })
 
 const mapDispatchToProps = dispatch => ({
