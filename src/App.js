@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadTasks } from './actions';
-import ResponsiveDrawer from './containers/ResponsiveDrawer';
+import ResponsiveDrawer from './components/ResponsiveDrawer';
 
 class App extends Component {
     componentDidMount() {
