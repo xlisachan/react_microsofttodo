@@ -54,10 +54,7 @@ const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onCl
     }
 
     return (
-        <ListItem button
-            style={ headerStyle(list.name) }
-            onClick={ handleClick }>
-
+        <ListItem style={ headerStyle(list.name) } onClick={ handleClick }>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <ListItemIcon style={ iconStyle(list.color) }>
                     { setListIcon(list, index) }

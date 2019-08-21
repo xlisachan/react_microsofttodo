@@ -84,10 +84,7 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onClick=f=>f, on
     }
 
     return ( 
-        <ListItemMUI button
-            style={ listStyle(task.task_id) }
-            onClick={() => handleClick()}
-            >
+        <ListItemMUI style={ listStyle(task.task_id) } onClick={() => handleClick()}>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 { renderCompleted() }
 
