@@ -21,23 +21,15 @@ export const setTask = task => ({
     payload: task
 })
 
-export const setStep = (completedStatus, id, step, taskId) => ({
+export const setStep = (id, step) => ({
     type: C.SET_STEP,
-    payload: {completedStatus, id, step, taskId},
+    payload: {id, step},
     id
 })
 
 export const setSteps = steps => ({
     type: C.SET_STEPS,
     payload: steps
-})
-
-export const clearCurrentTask = () => ({
-    type: C.CLEAR_CURRENT_TASK
-})
-
-export const clearStep = () => ({
-    type: C.CLEAR_STEP
 })
 
 export const clearItem = () => ({
@@ -162,11 +154,11 @@ export const toggleStep = (taskId, stepId) => ({
     stepId
 })
 
-export const updateStep = (taskId, stepId, newName) => ({
-    type: C.EDIT_STEP_STATUS_COMPLETE,
-    payload: newName,
-    taskId,
-    stepId,
+export const updateStep = (id, step, taskId) => ({
+    type: C.UPDATE_STEP,
+    payload: step, 
+    id,
+    taskId
 })
 
 export const removeStep = (taskId, stepId) => ({

@@ -2,11 +2,18 @@
     "open": false,
     "query": "",
     "current": {
-        "listId": "0",
-        "listTitle": "My Day",
-        "taskId": "",
-        "taskItem": "",
-        "taskStep": {},
+        "list":{
+            "id": "0",
+            "title": "My Day"
+        },
+        "task": {
+            "id": "",
+            "task": ""
+        },
+        "step": {
+            "id":"",
+            "step":""
+        },
         "taskSteps": [],
         "item": ""
     },

@@ -34,39 +34,65 @@ const current = (state={}, action) => {
         case C.SET_LISTID :
             return {
                 ...state,
-                listId: action.payload
+                list: {
+                    ...state.list,
+                    id: action.payload
+                }
             }
 
         case C.SET_LIST :
             return {
                 ...state,
-                listTitle: action.payload,
+                list: {
+                    ...state.list,
+                    title: action.payload
+                },
+                task: {
+                    id: "",
+                    task: ""
+                },
+                step: {
+                    id: "",
+                    step:""
+                },
+                taskSteps: [],
                 item: "list"
             }
         
-        case C.SET_TASK :
-            return {
-                ...state,
-                taskItem: action.payload,
-                item: "task"
-            }
-
         case C.SET_TASKID :
             return {
                 ...state,
-                taskId: action.payload
+                task: {
+                    ...state.task,
+                    id: action.payload
+                }
+            }
+
+        case C.SET_TASK :
+            return {
+                ...state,
+                task: {
+                    ...state.task,
+                    task: action.payload
+                },
+                step: {
+                    id: "",
+                    step: ""
+                },
+                item: "task"
             }
 
         case C.SET_STEP :
             return {
                 ...state,
-                taskStep: action.payload,
+                step: action.payload,
                 taskSteps: state.taskSteps.map(step =>
                     step.id === action.id ?
                         action.payload
                         :
                         step
-                )
+                ),
+                item: "step"
             }
                 
         case C.SET_STEPS :
@@ -82,30 +108,6 @@ const current = (state={}, action) => {
                     ...state.taskSteps,
                     step({}, action)
                 ]
-            }
-        
-        case C.REMOVE_STEP :
-            return {
-                ...state,
-                taskStep: {},
-                taskSteps: [
-                    ...state.taskSteps.filter(step => step.id !== action.stepId)
-                ]
-            }
-
-        case C.CLEAR_CURRENT_TASK :
-            return {
-                ...state,
-                taskId: "",
-                taskItem: "",
-                taskStep: {},
-                taskSteps: []
-            }
-        
-        case C.CLEAR_STEP :
-            return {
-                ...state,
-                taskStep: {}
             }
         
         case C.CLEAR_ITEM :
@@ -310,7 +312,7 @@ const tasks = (state=[], action) => {
                     {
                         ...task,
                         steps: task.steps.map(step =>
-                            step.id === action.stepId ?
+                            step.id === action.id ?
                                 {
                                     ...step,
                                     step: action.payload
