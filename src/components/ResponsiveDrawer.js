@@ -51,9 +51,7 @@ const ResponsiveDrawer = () => {
 
             <nav className={classes.drawer} aria-label="Todo Lists">
                 <Hidden xsDown implementation="css">
-                    <Drawer open variant="permanent"
-                        classes={{paper: classes.drawerPaper}}>
-
+                    <Drawer open variant="permanent" classes={{paper: classes.drawerPaper}}>
                         <Sidebar
                             onClose={ handleDrawerClose }
                             onEditClick={ editClick }

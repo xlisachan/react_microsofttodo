@@ -27,13 +27,6 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
         }
     }
 
-    const handleButtonChange = () => {
-        return !item ? 
-            <FaPlus style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'royalblue'}} />
-            :
-            <FaRegCircle style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'gray'}} /> 
-    }
-
     const onSubmit = e => {
         e.preventDefault();
         if(!item) return
@@ -136,10 +129,16 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
         setItem('');
     }
 
+    const addButton = () =>
+        <FaPlus style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'royalblue'}} />
+
+    const statusButton = () =>
+        <FaRegCircle style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'gray'}} /> 
+
     return (
         <form className="add-form" style={ itemStyle() } onSubmit={ onSubmit }>
             <button className="add-btn" type="submit">
-                { handleButtonChange() }
+                { !item ?  addButton() : statusButton() }
             </button>
             
             <input
