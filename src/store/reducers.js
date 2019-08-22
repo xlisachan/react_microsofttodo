@@ -259,7 +259,7 @@ const tasks = (state=[], action) => {
                     task
             )            
             
-        case C.EDIT_TASK_DATE_DUE :
+        case C.REMOVE_TASK_DATE_DUE :
             return state.map(task =>
                 task.task_id === action.payload ?
                 {

@@ -84,7 +84,7 @@ export const toggleMyDay = id => ({
 })
 
 export const removeDateDue = id => ({
-    type: C.EDIT_TASK_DATE_DUE,
+    type: C.REMOVE_TASK_DATE_DUE,
     payload: id
 })
 
