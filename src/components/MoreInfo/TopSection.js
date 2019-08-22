@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Textarea from 'react-textarea-autosize';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
-import { List, ListItem } from '@material-ui/core';
-import AddItem from '../../containers/AddItem';
-import Step from '../../containers/MoreInfo/Step';
+import { ListItem } from '@material-ui/core';
 
 const TopSection = ({currentTask, tasks, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
@@ -16,19 +14,6 @@ const TopSection = ({currentTask, tasks, onSetTask=f=>f, onToggleComplete=f=>f, 
             alignItems: 'flex-start',
             justifyContent: 'space-between'
         }
-    }
-
-    const renderCompleted = () => {
-        return selectedTask[0].completedStatus ? 
-            <FaCheckCircle
-                style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}}
-                onClick={() => onToggleComplete(selectedTask[0].task_id)}
-            />
-            :
-            <FaRegCircle
-                style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}}
-                onClick={() => onToggleComplete(selectedTask[0].task_id)}
-            />
     }
 
     const onSubmit = e => {
@@ -49,60 +34,40 @@ const TopSection = ({currentTask, tasks, onSetTask=f=>f, onToggleComplete=f=>f, 
         }
     }
 
-    const renderTodoItem = () => {
-        return (
-            <form onSubmit={onSubmit}>
-                <Textarea
-                    type="text"
-                    className="more-list-title"
-                    value={ currentTask.task }
-                    onChange={e => onSetTask(e.target.value)}
-                    onKeyDown={e => onEnterPress(e)}
-                />
-            </form>
-        )
-    }
+    const renderCompleted = () =>
+        <FaCheckCircle style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}} />
 
-    const renderImportant = () => {
-        return selectedTask[0].importantStatus ? 
-            <FaStar 
-                style={{fontSize: '1.5rem', color: 'royalblue'}}
-                onClick={() => onToggleImportant(selectedTask[0].task_id)}
-            />
-            :
-            <FaRegStar
-                style={{fontSize: '1.5rem', color: 'gray'}}
-                onClick={() => onToggleImportant(selectedTask[0].task_id)}
-            />
-    }
+    const renderNotCompleted = () =>
+        <FaRegCircle style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}} />
 
-    const renderSteps = () => {
-        if (selectedTask[0].steps.length === 0) return null;
-        
-        return (
-            <List style={{padding: '0px 4px 0px 2px'}}>
-                { selectedTask[0].steps.map(step =>
-                    <Step key={`step_${step.id}`} step={ step } />
-                )}
-            </List>
-        )
-    }
+    const renderImportant = () =>
+        <FaStar style={{fontSize: '1.5rem', color: 'royalblue'}} />
+    
+    const renderNotImportant = () =>
+        <FaRegStar style={{fontSize: '1.5rem', color: 'gray'}} />
 
     return (
-        <div>
-            <ListItem style={ topStyle() }>
-                <div style={{display: 'flex'}}>
-                    { renderCompleted() }
-                    { renderTodoItem() }
-                </div>
+        <ListItem style={ topStyle() }>
+            <div style={{display: 'flex'}}>
+                <span onClick={() => onToggleComplete(selectedTask[0].task_id)}>
+                    { selectedTask[0].completedStatus ?  renderCompleted() : renderNotCompleted() }
+                </span>
 
-                { renderImportant() }
-            </ListItem>
+                <form onSubmit={onSubmit}>
+                    <Textarea
+                        type="text"
+                        className="more-list-title"
+                        value={ currentTask.task }
+                        onChange={e => onSetTask(e.target.value)}
+                        onKeyDown={e => onEnterPress(e)}
+                    />
+                </form>
+            </div>
 
-            { renderSteps() }
-
-            <AddItem addItem={'step'} placeholder={selectedTask[0].steps.length > 0 ? 'Next Step' : 'Add step'} />
-        </div>
+            <span onClick={() => onToggleImportant(selectedTask[0].task_id)}>
+                { selectedTask[0].importantStatus ? renderImportant() : renderNotImportant() }
+            </span>
+        </ListItem>
     );
 }
 
