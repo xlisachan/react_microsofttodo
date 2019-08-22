@@ -18,26 +18,18 @@ const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onCl
         }
     }
 
-    const handleClick = () => {
-        onSetList(list.id, list.name);
-        onClick();
-        onClose();
-    }
-
-    const formatColor = color => {
-        return 'rgb(' + color.join(',') + ')';
-    }
-
     const iconStyle = color => {
         return {
             marginRight: -25, 
             fontSize: '1.2rem',
-            color: formatColor(color)
+            color: 'rgb(' + color.join(',') + ')'
         }
     }
 
-    const setListIcon = (list, index) => {
-        return list.defaultList ? listIcons[index] : <FaList />
+    const handleClick = () => {
+        onSetList(list.id, list.name);
+        onClick();
+        onClose();
     }
 
     const numberOfTasks = (id, name) => {
@@ -57,7 +49,7 @@ const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onCl
         <ListItem style={ headerStyle(list.name) } onClick={ handleClick }>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <ListItemIcon style={ iconStyle(list.color) }>
-                    { setListIcon(list, index) }
+                    { list.defaultList ? listIcons[index] : <FaList /> }
                 </ListItemIcon>
 
                 <ListItemText primary={list.name} />

@@ -56,16 +56,6 @@ const Sidebar = ({onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=
         onClear();
     }
 
-    const renderClearButton = () => {
-        return !searchItem ?
-            null
-            :
-            <FaTimesCircle 
-                style={{fontSize: '1rem'}}
-                onClick={ clearSearch }
-            />
-    }
-
     return (
         <div>
             <div className={classes.toolbar} />
@@ -87,14 +77,12 @@ const Sidebar = ({onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=
                     onChange={ handleChange }
                 />
 
-                { renderClearButton() }
+                { !searchItem ? 
+                    null : <FaTimesCircle style={{fontSize: '1rem'}} onClick={ clearSearch } />
+                }
             </div>
 
-            <TitleList 
-                onClick={ clearSearch }
-                onClose={ onClose }
-                onEditClick={ onEditClick }
-            />
+            <TitleList onClick={ clearSearch } onClose={ onClose } onEditClick={ onEditClick } />
 
             <AddList onEditClick={ onEditClick } />
         </div>

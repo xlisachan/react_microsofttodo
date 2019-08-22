@@ -6,35 +6,16 @@ import TitleRow from '../../containers/Side/TitleRow';
 import DeleteModal from '../DeleteModal';
 
 const RightClickMenuSide = ({list, tasks, onClick=f=>f, onClose=f=>f, onEditClick=f=>f, onRemoveList=f=>f, onRemoveTask=f=>f}) => {
-
-    const renderRenameList = () =>
-        <MenuItem onClick={() => onEditClick()}>
-            <FaRegEdit style={{margin: '0 5px 3px 0'}} />
-            <span>Rename list</span>
-        </MenuItem>
-    
     const removeTasks = () => {
         const listTasks = tasks.filter(task => task.list_id === list.id);
 
-        listTasks.forEach(task => 
-            onRemoveTask(task.task_id))
+        listTasks.forEach(task => onRemoveTask(task.task_id))
     }
 
     const removeAll = () => {
         removeTasks();
         onRemoveList(list.id);
     }
-
-    const renderRemoveList = () =>
-        <MenuItem>
-            <DeleteModal
-                id={ list.id }
-                location={ 'side-rightclick' }
-                name={ list.name }
-                todo={ 'list'}
-                onClick={() => removeAll()}
-            />
-        </MenuItem>
 
     return (
         <div>
@@ -47,9 +28,20 @@ const RightClickMenuSide = ({list, tasks, onClick=f=>f, onClose=f=>f, onEditClic
             </ContextMenuTrigger>
 
             <ContextMenu id={list.id}>
-                { renderRenameList() }
+                <MenuItem onClick={() => onEditClick()}>
+                    <FaRegEdit style={{margin: '0 5px 3px 0'}} />
+                    <span>Rename list</span>
+                </MenuItem>
 
-                { renderRemoveList() }
+                <MenuItem>
+                    <DeleteModal
+                        id={ list.id }
+                        location={ 'side-rightclick' }
+                        name={ list.name }
+                        todo={ 'list'}
+                        onClick={() => removeAll()}
+                    />
+                </MenuItem>
             </ContextMenu>
         </div>
     );
