@@ -15,6 +15,11 @@ const ListDetails = ({lists, selectedListId, task}) => {
         }
     }
 
+    const getListName = () => {
+        const arr = lists.filter(list => list.id === task.list_id);
+        return arr[0].name;
+    }
+
     const completedTask = () => {
         return numOfCompletedSteps() === task.steps.length ? <FaCheck style={{fontSize: '.7rem'}} /> : null
     }
@@ -45,6 +50,10 @@ const ListDetails = ({lists, selectedListId, task}) => {
         {
             "id": "tasks",
             "text": "Tasks"
+        },
+        {
+            "id": "custom",
+            "text": getListName()
         },
         {
             "id": "step",

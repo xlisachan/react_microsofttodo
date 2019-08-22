@@ -6,10 +6,11 @@ import { getCurrentDate } from '../../../getDate';
 const Detail = ({el, name, task}) => {
     return (
         (el.id === "my_day" && task.my_day === true && name !== "My Day") ||
+        (el.id === "custom" && task.tasks === false && name !== el.text) ||
         (el.id === "tasks" && task.tasks === true && name !== "Tasks") ||
         (el.id === "step" && task.steps.length > 0) ||
         (el.id === "planned" && task.date_due)
-        )?
+        ) ?
             <li className="list-detail" 
                 style={{
                     color: (el.id === 'my_day' || (el.id === 'planned' && task.date_due === getCurrentDate()))? 'royalblue' : el.id === 'planned' && task.date_due < getCurrentDate() ? 'crimson' : null
