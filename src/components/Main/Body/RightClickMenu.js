@@ -5,7 +5,7 @@ import ListItem from '../../../containers/Main/Body/ListItem';
 import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import DeleteModal from '../../DeleteModal';
 
-const RightClickMenu = ({task, onClick=f=>f, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
+const RightClickMenu = ({task, onClick=f=>f, onClose=f=>f, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
     const switchMyDay = () =>
         <MenuItem onClick={() => onToggleMyDay(task.task_id)}>
             { task.my_day ?
@@ -51,6 +51,11 @@ const RightClickMenu = ({task, onClick=f=>f, onToggleMyDay=f=>f, onToggleComplet
             }
         </MenuItem>
     
+    const onRemove = () => {
+        onRemoveTask(task.task_id);
+        onClose();
+    }
+    
     const renderRemoveTask = () =>
         <MenuItem>
             <DeleteModal 
@@ -58,7 +63,7 @@ const RightClickMenu = ({task, onClick=f=>f, onToggleMyDay=f=>f, onToggleComplet
                 location={ 'main-rightclick' }
                 name={ task.item }
                 todo={ 'task' }
-                onClick={() => onRemoveTask(task.task_id)}
+                onClick={() => onRemove()}
             />
         </MenuItem>
 
@@ -90,6 +95,7 @@ const RightClickMenu = ({task, onClick=f=>f, onToggleMyDay=f=>f, onToggleComplet
 RightClickMenu.propTypes = {
     task: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired,
     onToggleMyDay: PropTypes.func.isRequired,

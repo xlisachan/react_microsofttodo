@@ -128,7 +128,8 @@ const Main = React.forwardRef(({lists, query, selectedListId, tasks, open, onClo
 
                     <ListBody 
                         tasks={ filteredTasks } 
-                        onClick={ onOpen } 
+                        onClick={ onOpen }
+                        onClose={ onClose }
                     />
                 </main>
 
