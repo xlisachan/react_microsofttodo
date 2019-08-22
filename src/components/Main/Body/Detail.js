@@ -10,7 +10,10 @@ const Detail = ({el, name, task}) => {
         (el.id === "step" && task.steps.length > 0) ||
         (el.id === "planned" && task.date_due)
         )?
-            <li className="list-detail" style={{color: el.id === 'my_day' ? 'royalblue' : el.id === 'planned' && task.date_due <= getCurrentDate() ? 'crimson' : null }}>
+            <li className="list-detail" 
+                style={{
+                    color: (el.id === 'my_day' || (el.id === 'planned' && task.date_due === getCurrentDate()))? 'royalblue' : el.id === 'planned' && task.date_due < getCurrentDate() ? 'crimson' : null
+                }}>
                 {el.icon ? <Icon style={{fontSize: 'small', marginRight: 3, paddingTop: 1}}>{el.icon}</Icon> : null}
                 {el.text}
             </li>
