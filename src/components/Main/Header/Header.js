@@ -30,7 +30,7 @@ const Header = React.forwardRef(({lists, selectedListId}, ref) => {
                         <Moment
                             date={getCurrentDate()}
                             parse="YYYY-MM-DD"
-                            format="dddd, MMMM DD"
+                            format="dddd, MMMM D"
                         />
                     </span>
                 </div>
