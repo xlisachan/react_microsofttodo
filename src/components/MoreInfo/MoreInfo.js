@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Drawer, Hidden } from '@material-ui/core';
 import TopSection from '../../containers/MoreInfo/TopSection';
+import MoreMyDay from '../../containers/MoreInfo/MoreMyDay';
 import BottomSection from '../../containers/MoreInfo/BottomSection';
 
 const drawerWidth = 250;
@@ -44,6 +45,10 @@ const More = ({open, onClose=f=>f}) => {
                     <div className={classes.toolbar} />
 
                     <TopSection />
+
+                    <Divider />
+
+                    <MoreMyDay onClose={ onClose }/>
 
                     <Divider />
 
