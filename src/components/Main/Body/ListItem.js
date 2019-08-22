@@ -4,7 +4,6 @@ import ListDetails from './ListDetails';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 
 const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
-
     const listStyle = id => {
         return {
             borderRadius: id === selectedTaskId ? 10 : null,
@@ -19,41 +18,29 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
         }
     }
 
-    const renderCompleted = () => {
-        return task.completedStatus ? 
-            <FaCheckCircle
-                style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}}
-                onClick={() => onToggleComplete(task.task_id)}
-            />
-            :
-            <FaRegCircle
-                style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}}
-                onClick={() => onToggleComplete(task.task_id)}
-            />
-    }
-
-    const renderImportant = () => {
-        return task.importantStatus ? 
-            <FaStar 
-                style={{fontSize: '1.5rem', color: 'royalblue'}}
-                onClick={() => onToggleImportant(task.task_id)}
-            />
-            :
-            <FaRegStar
-                style={{fontSize: '1.5rem', color: 'gray'}}
-                onClick={() => onToggleImportant(task.task_id)}
-            />
-    }
-
     const handleClick = () => {
         onSetTask(task.task_id, task.item, task.steps);
         onClick();
     }
 
+    const renderCompleted = () =>
+        <FaCheckCircle style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}} />
+    
+    const renderNotCompleted = () =>
+        <FaRegCircle style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}} />
+
+    const renderImportant = () =>
+        <FaStar style={{fontSize: '1.5rem', color: 'royalblue'}} />
+    
+    const renderNotImportant = () =>
+        <FaRegStar style={{fontSize: '1.5rem', color: 'gray'}} />
+
     return ( 
         <div className="list-item" style={ listStyle(task.task_id) } onClick={() => handleClick()}>
             <div style={{display: 'flex', alignItems: 'center'}}>
-                { renderCompleted() }
+                <span onClick={() => onToggleComplete(task.task_id)}>
+                    { task.completedStatus ? renderCompleted() : renderNotCompleted()}
+                </span>
 
                 <span>
                     <div style={ listItem() }>
@@ -68,9 +55,9 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
                 </span>
             </div>
 
-            <div>
-                { renderImportant() }
-            </div>
+            <span onClick={() => onToggleImportant(task.task_id)}>
+                { task.importantStatus ? renderImportant() : renderNotImportant() }
+            </span>
         </div>
     );
 }
