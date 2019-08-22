@@ -5,8 +5,8 @@ import { ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
 import DeleteModal from '../DeleteModal';
 
-const Step = ({currentStep, currentSteps, selectedTaskId, step, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
-    const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
+    const selectedTask = tasks.filter(task => task.task_id === currentTaskId);
     if (!selectedTask[0]) return null;
 
     const stepContainer = id => {
@@ -26,12 +26,12 @@ const Step = ({currentStep, currentSteps, selectedTaskId, step, tasks, onRemoveS
         return step.completedStatus ? 
             <FaCheckCircle
                 style={{fontSize: '1.2rem', color: 'limegreen', marginRight: 18}}
-                onClick={() => onToggleStep(selectedTaskId, step.id)}
+                onClick={() => onToggleStep(selectedTask[0].task_id, step.id)}
             />
             :
             <FaRegCircle
                 style={{fontSize: '1.2rem', color: 'gray', marginRight: 18}}
-                onClick={() => onToggleStep(selectedTaskId, step.id)}
+                onClick={() => onToggleStep(selectedTask[0].task_id, step.id)}
             />
     }
 
@@ -40,9 +40,9 @@ const Step = ({currentStep, currentSteps, selectedTaskId, step, tasks, onRemoveS
 
         if (currentStep.step === '') {
             let subStep = currentStep[0].step;
-            onUpdateStep(currentStep.id, subStep, selectedTaskId)
+            onUpdateStep(currentStep.id, subStep, selectedTask[0].task_id)
         } else {
-            onUpdateStep(currentStep.id, currentStep.step, selectedTaskId);
+            onUpdateStep(currentStep.id, currentStep.step, selectedTask[0].task_id);
         }
     }
 
@@ -82,7 +82,7 @@ const Step = ({currentStep, currentSteps, selectedTaskId, step, tasks, onRemoveS
                 location={ 'more-top' }
                 name={ step.step }
                 todo={ 'step' }
-                onClick={() => onRemoveStep(selectedTaskId, step.id)}
+                onClick={() => onRemoveStep(selectedTask[0].task_id, step.id)}
             />
         </ListItem>
     );
@@ -91,8 +91,9 @@ const Step = ({currentStep, currentSteps, selectedTaskId, step, tasks, onRemoveS
 Step.propTypes = {
     currentStep: PropTypes.object.isRequired,
     currentSteps: PropTypes.array.isRequired,
-    selectedTaskId: PropTypes.string,
-    tasks: PropTypes.array.isRequired,
+    currentTaskId: PropTypes.string.isRequired,
+    step:PropTypes.object.isRequired,
+    tasks:PropTypes.array.isRequired,
     onRemoveStep: PropTypes.func.isRequired,
     onSetStep: PropTypes.func.isRequired,
     onToggleStep: PropTypes.func.isRequired,
