@@ -22,19 +22,6 @@ const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveSt
         }
     }
 
-    const renderCompleted = () => {
-        return step.completedStatus ? 
-            <FaCheckCircle
-                style={{fontSize: '1.2rem', color: 'limegreen', marginRight: 18}}
-                onClick={() => onToggleStep(selectedTask[0].task_id, step.id)}
-            />
-            :
-            <FaRegCircle
-                style={{fontSize: '1.2rem', color: 'gray', marginRight: 18}}
-                onClick={() => onToggleStep(selectedTask[0].task_id, step.id)}
-            />
-    }
-
     const onSubmit = e => {
         e.preventDefault();
 
@@ -60,13 +47,18 @@ const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveSt
         return el[0].step
     }
 
-    return (
-        <ListItem key={`${step.step}_${step.id}`} 
-            style={ stepContainer(step.id) } 
-            onClick={() => onSetStep(step.id, step.step)}>
+    const renderCompleted = () =>
+        <FaCheckCircle style={{fontSize: '1.2rem', color: 'limegreen', marginRight: 18}} />
+    
+    const renderNotCompleted = () =>
+        <FaRegCircle style={{fontSize: '1.2rem', color: 'gray', marginRight: 18}} />
 
+    return (
+        <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => onSetStep(step.id, step.step)}>
             <div style={{display: 'flex', alignItems: 'center'}}>
-                { renderCompleted() }
+                <span onClick={() => onToggleStep(selectedTask[0].task_id, step.id)}>
+                    { step.completedStatus ?  renderCompleted() : renderNotCompleted() }
+                </span>
                 
                 <Textarea
                     style={ stepStyle(step) }
