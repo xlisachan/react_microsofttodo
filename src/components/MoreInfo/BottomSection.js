@@ -7,7 +7,7 @@ import DeleteModal from '../DeleteModal';
 
 const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
-        if (!selectedTask[0]) return null
+    if (!selectedTask[0]) return null;
 
     const bottomStyle = () => {
         return {
@@ -21,32 +21,31 @@ const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f})
         }
     }  
 
-    const bottomText = () => {
-        return selectedTask[0].completedStatus ?
-            <span style={{fontSize: '.75rem'}}>
-                Completed {' '}
-                <Moment
-                    date={selectedTask[0].date_completed}
-                    parse="YYYY-MM-DD"
-                    format="ddd, MMM D"
-                />
-            </span>
-            :
-            <span style={{fontSize: '.75rem'}}>
-                Created {' '}
-                <Moment
-                    date={selectedTask[0].date_created}
-                    parse="YYYY-MM-DD"
-                    format="ddd, MMM D"
-                />
-            </span>
-    }
+    const renderCompleted = () =>
+        <span style={{fontSize: '.75rem'}}>
+            Completed {' '}
+            <Moment
+                date={selectedTask[0].date_completed}
+                parse="YYYY-MM-DD"
+                format="ddd, MMM D"
+            />
+        </span>
+    
+    const renderCreated = () =>
+        <span style={{fontSize: '.75rem'}}>
+            Created {' '}
+            <Moment
+                date={selectedTask[0].date_created}
+                parse="YYYY-MM-DD"
+                format="ddd, MMM D"
+            />
+        </span>
 
     return (
         <ListItem style={ bottomStyle() }>
             <FaChevronRight onClick={()=> onClose()} />
 
-            { bottomText() }
+            { selectedTask[0].completedStatus ?  renderCompleted() : renderCreated() }
 
             <DeleteModal 
                 id={ selectedTask[0].task_id }
