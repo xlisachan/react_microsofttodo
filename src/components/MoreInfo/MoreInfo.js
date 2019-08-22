@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Drawer, Hidden } from '@material-ui/core';
 import TopSection from '../../containers/MoreInfo/TopSection';
+import MoreSteps from '../../containers/MoreInfo/MoreSteps';
 import MoreMyDay from '../../containers/MoreInfo/MoreMyDay';
 import BottomSection from '../../containers/MoreInfo/BottomSection';
 
@@ -46,9 +47,11 @@ const More = ({open, onClose=f=>f}) => {
 
                     <TopSection />
 
+                    <MoreSteps />
+
                     <Divider />
 
-                    <MoreMyDay onClose={ onClose }/>
+                    <MoreMyDay onClose={ onClose } />
 
                     <Divider />
 
