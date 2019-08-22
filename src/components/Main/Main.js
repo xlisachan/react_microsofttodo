@@ -64,6 +64,13 @@ const useStyles = makeStyles(theme => ({
 const Main = React.forwardRef(({lists, query, selectedListId, tasks, open, onClose=f=>f, onOpen=f=>f}, ref) => {
     const classes = useStyles();
 
+    const mainStyle = () => {
+        return {
+            position: selectedList[0].sorted ? 'relative' : null, 
+            top: selectedList[0].sorted ? 30 : null
+        }
+    }
+
     let filteredTasks = [],
         order,
         selectedList = lists.filter(list => list.id === selectedListId),
@@ -93,53 +100,44 @@ const Main = React.forwardRef(({lists, query, selectedListId, tasks, open, onClo
         })
         .filter(task => hideCompleted ? !task.completedStatus : task)
 
-    const renderMainSection = () => {
-        return query ?
-            <div style={{flexGrow: 1}}>
-                { filteredTasks.length > 0 ?
-                    <ListBody tasks={ filteredTasks } />
-                    :
-                    <NoMatch />
-                }
-            </div>
-            :
-            <div style={{flexGrow: 1}} className={classes.root}>
-                <CssBaseline />
-                
-                <AppBar
-                    position="fixed"
-                    className={clsx(classes.appBar, {
-                        [classes.appBarShift]: open,
-                    })}>
+    const searchResults = () =>
+        <div>
+            <ListBody tasks={ filteredTasks } onClick={ onOpen } onClose={ onClose } />
 
-                    <Header ref={ref} />
+            <MoreSection open={ open } onClose={ onClose } />
+        </div>
 
-                </AppBar>
+    const renderSearchResults = () =>
+        <div style={{flexGrow: 1}}>
+            { filteredTasks.length > 0 ? searchResults() : <NoMatch /> }
+        </div>
+    
+    const renderToDoList = () =>
+        <div style={{flexGrow: 1}} className={classes.root}>
+            <CssBaseline />
+            
+            <AppBar position="fixed"
+                className={clsx(classes.appBar, {
+                    [classes.appBarShift]: open,
+                })}>
 
-                <main className={clsx(classes.content, {
-                        [classes.contentShift]: open,
-                    })}
-                    style={{
-                        position: selectedList[0].sorted ? 'relative' : null, 
-                        top: selectedList[0].sorted ? 30 : null
-                    }}>
+                <Header ref={ref} />
+            </AppBar>
 
-                    <div className={classes.drawerHeader} />
+            <main style={ mainStyle() }
+                className={clsx(classes.content, {
+                    [classes.contentShift]: open,
+                })}>
 
-                    <ListBody 
-                        tasks={ filteredTasks } 
-                        onClick={ onOpen }
-                        onClose={ onClose }
-                    />
-                </main>
+                <div className={classes.drawerHeader} />
 
-                <MoreSection open={ open } onClose={ onClose } />
-            </div>
-    }
+                <ListBody tasks={ filteredTasks } onClick={ onOpen } onClose={ onClose } />
+            </main>
 
-    return (
-        renderMainSection()
-    )
+            <MoreSection open={ open } onClose={ onClose } />
+        </div>
+
+    return query ? renderSearchResults() : renderToDoList()
 })
 
 Main.propTypes = {
