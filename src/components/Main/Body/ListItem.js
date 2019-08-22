@@ -1,24 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListItemMUI from '@material-ui/core/ListItem';
-import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar, FaRegSun, FaRegCalendar } from 'react-icons/fa';
-import { getCurrentDate } from '../../../getDate';
-import Moment from 'react-moment';
+import ListDetails from './ListDetails';
+import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 
-const ListItem = ({task, lists, selectedListId, selectedTaskId, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
-    const selectedList = lists.filter(list => list.id === selectedListId);
-    const name = selectedList[0].name;
+const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
 
     const listStyle = id => {
         return {
-            width: '100%',
-            height: 60,
-            margin: '0 auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '10px 20px',
-            borderBottom: '1px solid gainsboro',
             borderRadius: id === selectedTaskId ? 10 : null,
             backgroundColor: id === selectedTaskId ? '#eee' : null
         }
@@ -28,13 +16,6 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onClick=f=>f, on
         return {
             color: task.completedStatus ? 'dimgray' : 'black',
             textDecoration: task.completedStatus ? 'line-through' : 'none'
-        }
-    }
-
-    const listItemDetail = () => {
-        return {
-            fontSize: '.8rem',
-            color: task.completedStatus ? 'darkgray' : 'dimgray'
         }
     }
 
@@ -64,27 +45,13 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onClick=f=>f, on
             />
     }
 
-    const plannedDate = () =>
-        <span style={{
-                display: task.date_due ? 'inline' : 'none', 
-                color: task.date_due <= getCurrentDate() ? 'crimson' : null
-            }}>
-
-            <FaRegCalendar style={{margin: '0px 3px 2px 0px'}} /> 
-            <Moment
-                date={ task.date_due }
-                parse="YYYY-MM-DD"
-                format="ddd, MMM D"
-            />
-        </span>
-
     const handleClick = () => {
         onSetTask(task.task_id, task.item, task.steps);
         onClick();
     }
 
     return ( 
-        <ListItemMUI style={ listStyle(task.task_id) } onClick={() => handleClick()}>
+        <div className="list-item" style={ listStyle(task.task_id) } onClick={() => handleClick()}>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 { renderCompleted() }
 
@@ -93,36 +60,18 @@ const ListItem = ({task, lists, selectedListId, selectedTaskId, onClick=f=>f, on
                         { task.item }
                     </div>
 
-                    <div style={ listItemDetail() }>
-                        <span style={{color: 'royalblue', display: name !== "My Day" && task.my_day === true ? 'inline' : 'none'}}>
-                            <FaRegSun style={{fontSize: '.9rem'}} /> My Day
-                        </span>
-
-                        <span style={{display: (name !== "My Day" && name !== "Tasks" && task.tasks && task.my_day) ? 'inline' : 'none'}}>
-                            {'  '} &middot; {'  '}
-                        </span>
-
-                        <span style={{display: name !== "Tasks" && task.tasks ? 'inline' : 'none'}}>
-                            Tasks
-                        </span>
-                        
-                        <span style={{display: (name !== "Tasks" && task.tasks && task.date_due) ? 'inline' : 'none' }}>
-                            {'  '} &middot; {'  '}
-                        </span>
-
-                        <span style={{ display: (name === "Tasks" && task.date_due && task.my_day) ? 'inline' : 'none' }}>
-                            {'  '} &middot; {'  '}
-                        </span>
-
-                        { plannedDate() }
-                    </div>
+                    <ListDetails
+                        lists={ lists }
+                        selectedListId={ selectedListId }
+                        task={ task }
+                    />
                 </span>
             </div>
 
             <div>
                 { renderImportant() }
             </div>
-        </ListItemMUI>
+        </div>
     );
 }
 
