@@ -83,6 +83,11 @@ export const toggleMyDay = id => ({
     payload: id
 })
 
+export const removeDateDue = id => ({
+    type: C.EDIT_TASK_DATE_DUE,
+    payload: id
+})
+
 export const addTask = (
         task_id, item, date_completed, date_created, date_due,
         completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps

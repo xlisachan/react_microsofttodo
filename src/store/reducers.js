@@ -259,6 +259,17 @@ const tasks = (state=[], action) => {
                     task
             )            
             
+        case C.EDIT_TASK_DATE_DUE :
+            return state.map(task =>
+                task.task_id === action.payload ?
+                {
+                    ...task,
+                    date_due: ""
+                }
+                :
+                task
+            )
+
         case C.UPDATE_TASK :
             return state.map(task =>
                 task.task_id === action.taskId ?
