@@ -97,6 +97,7 @@ ul {
 li.list-detail::before {
   content: "\2022";
   color: gray;
+  padding-right: 10px
 }
 
 li.list-detail:first-child::before {
