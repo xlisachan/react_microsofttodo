@@ -56,7 +56,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     planned: false, 
                     important: false, 
                     tasks: true,
-                    list_id: 'tasks',
+                    list_id: '3',
                     steps: []
                 });
             } else if (name === "Important") {
@@ -72,7 +72,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     planned: false, 
                     important: true, 
                     tasks: true,
-                    list_id: 'tasks',
+                    list_id: '3',
                     steps: []
                 });
             } else if (name === "Planned") {
@@ -88,7 +88,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     planned: true, 
                     important: false, 
                     tasks: true,
-                    list_id: 'tasks',
+                    list_id: '3',
                     steps: []
                 });
             } else if (name === "Tasks") {
@@ -104,7 +104,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     planned: false, 
                     important: false, 
                     tasks: true,
-                    list_id: 'tasks',
+                    list_id: '3',
                     steps: []
                 });
             } else {
