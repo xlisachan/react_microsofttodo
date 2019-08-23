@@ -130,10 +130,10 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
     }
 
     const addButton = () =>
-        <FaPlus className="list-icon blue" />
+        <FaPlus style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} className="blue" />
 
     const statusButton = () =>
-        <FaRegCircle className="list-icon gray" /> 
+        <FaRegCircle style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} className="gray" /> 
 
     return (
         <form className="add-form align-center" style={ itemStyle() } onSubmit={ onSubmit }>
