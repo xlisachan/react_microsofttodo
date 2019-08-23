@@ -264,7 +264,8 @@ const tasks = (state=[], action) => {
                 task.task_id === action.payload ?
                 {
                     ...task,
-                    date_due: ""
+                    date_due: "",
+                    planned: false
                 }
                 :
                 task
