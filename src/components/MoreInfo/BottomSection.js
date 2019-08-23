@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import moment from 'moment';
 import { FaChevronRight } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
-import Moment from 'react-moment';
 import DeleteModal from '../DeleteModal';
 
 const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f}) => {
@@ -19,26 +20,34 @@ const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f})
             position: 'fixed',
             bottom: 10
         }
-    }  
+    }
 
-    const renderCompleted = () =>
-        <span style={{fontSize: '.75rem'}}>
-            Completed {' '}
-            <Moment
-                date={selectedTask[0].date_completed}
+    const getFormattedDate = (inputDate) => {
+        let formattedDate;
+        if (inputDate === moment(new Date()).format('YYYY-MM-DD')) {
+            formattedDate = 'Today';
+        } else if (inputDate === moment(new Date()).add(1, 'days').format('YYYY-MM-DD')) {
+            formattedDate = 'Tomorrow';
+        } else if (inputDate === moment(new Date()).add(-1, 'days').format('YYYY-MM-DD')) {
+            formattedDate = 'Yesterday';
+        } else {
+            formattedDate = <Moment
+                date={ inputDate }
                 parse="YYYY-MM-DD"
                 format="ddd, MMM D"
             />
+        }
+        return formattedDate;
+    }
+
+    const renderCompleted = () =>
+        <span style={{fontSize: '.75rem'}}>
+            Completed {' '} { getFormattedDate(selectedTask[0].date_completed) }
         </span>
     
     const renderCreated = () =>
         <span style={{fontSize: '.75rem'}}>
-            Created {' '}
-            <Moment
-                date={selectedTask[0].date_created}
-                parse="YYYY-MM-DD"
-                format="ddd, MMM D"
-            />
+            Created {' '} { getFormattedDate(selectedTask[0].date_created) }
         </span>
 
     return (
