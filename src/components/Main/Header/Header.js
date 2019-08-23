@@ -22,7 +22,7 @@ const Header = React.forwardRef(({lists, selectedListId}, ref) => {
 
     return (
         <div>
-            <header className="header" style={{backgroundColor: formatColor()}}>
+            <header className="header align-center space-between" style={{backgroundColor: formatColor()}}>
                 <div style={{width: '100%'}}>
                     <HeaderName ref={ref} />
 

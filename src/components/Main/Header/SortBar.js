@@ -26,7 +26,7 @@ const SortBar = ({barColor, lists, selectedListId, onChangeDir=f=>f, onClear=f=>
     }
 
     return (
-        <div className="sort-bar" style={{ backgroundColor: barColor }}>
+        <div className="sort-bar align-center space-between" style={{ backgroundColor: barColor }}>
             <div onClick={() => onChangeDir(selectedListId)}>
                 Sorted { getOrderBy() } { getDirIcon() }
             </div>

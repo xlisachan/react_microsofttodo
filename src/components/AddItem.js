@@ -136,7 +136,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
         <FaRegCircle style={{fontSize: addItem === 'task' ? null : '1.2rem', color: 'gray'}} /> 
 
     return (
-        <form className="add-form" style={ itemStyle() } onSubmit={ onSubmit }>
+        <form className="add-form align-center" style={ itemStyle() } onSubmit={ onSubmit }>
             <button className="add-btn" type="submit">
                 { !item ?  addButton() : statusButton() }
             </button>

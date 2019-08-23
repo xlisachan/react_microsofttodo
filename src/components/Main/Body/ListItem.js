@@ -36,7 +36,7 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
         <FaRegStar style={{fontSize: '1.5rem', color: 'gray'}} />
 
     return ( 
-        <div className="list-item" style={ listStyle(task.task_id) } onClick={() => handleClick()}>
+        <div className="list-item align-center space-between" style={ listStyle(task.task_id) } onClick={() => handleClick()}>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <span onClick={() => onToggleComplete(task.task_id)}>
                     { task.completedStatus ? renderCompleted() : renderNotCompleted()}
