@@ -55,7 +55,7 @@ const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveSt
 
     return (
         <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => onSetStep(step.id, step.step)}>
-            <div style={{display: 'flex', alignItems: 'center'}}>
+            <div className="align-center">
                 <span onClick={() => onToggleStep(selectedTask[0].task_id, step.id)}>
                     { step.completedStatus ?  renderCompleted() : renderNotCompleted() }
                 </span>
