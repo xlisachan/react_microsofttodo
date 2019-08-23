@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaCheck } from 'react-icons/fa';
 import Moment from 'react-moment';
+import moment from 'moment';
 import Detail from './Detail';
 
 const ListDetails = ({lists, selectedListId, task}) => {
@@ -31,14 +32,26 @@ const ListDetails = ({lists, selectedListId, task}) => {
         return count;
     }
 
-    const getPlannedDate = () => {
-        return !task.date_due ?
-            null :
-            <Moment
+    const getFormattedDate = () => {
+        let formattedDate;
+        if (task.date_due === moment(new Date()).format('YYYY-MM-DD')) {
+            formattedDate = 'Today';
+        } else if (task.date_due === moment(new Date()).add(1, 'days').format('YYYY-MM-DD')) {
+            formattedDate = 'Tomorrow';
+        } else if (task.date_due === moment(new Date()).add(-1, 'days').format('YYYY-MM-DD')) {
+            formattedDate = 'Yesterday';
+        } else {
+            formattedDate = <Moment
                 date={ task.date_due }
                 parse="YYYY-MM-DD"
                 format="ddd, MMM D"
             />
+        }
+        return formattedDate;
+    }
+    
+    const getPlannedDate = () => {
+        return !task.date_due ? null : getFormattedDate()
     }
 
     const details = [
