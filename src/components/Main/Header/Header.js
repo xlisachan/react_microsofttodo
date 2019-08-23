@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
-import { getCurrentDate } from '../../../getDate';
+import moment from 'moment';
 import HeaderName from '../../../containers/Main/Header/HeaderName';
 import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
@@ -27,11 +26,7 @@ const Header = React.forwardRef(({lists, selectedListId}, ref) => {
                     <HeaderName ref={ref} />
 
                     <span style={{display: name === "My Day" ? 'block' : 'none'}}>
-                        <Moment
-                            date={getCurrentDate()}
-                            parse="YYYY-MM-DD"
-                            format="dddd, MMMM D"
-                        />
+                        { moment(new Date()).format('dddd, MMMM D') }
                     </span>
                 </div>
 

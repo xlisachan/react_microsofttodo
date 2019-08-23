@@ -1,6 +1,8 @@
 import C from '../constants';
-import { getCurrentDate } from '../getDate';
 import { combineReducers } from 'redux';
+import moment from 'moment';
+
+const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
 const open = (state=false, action) => {
     switch(action.type) {
@@ -142,8 +144,8 @@ const tasks = (state=[], action) => {
         case C.LOAD_TASKS :
             return state.map(task =>
                 (
-                    task.date_created === getCurrentDate() ||
-                    task.date_due === getCurrentDate() 
+                    task.date_created === todaysDate ||
+                    task.date_due === todaysDate 
                 )?
                     {
                         ...task,
@@ -174,7 +176,7 @@ const tasks = (state=[], action) => {
                                 important: !task.important,
                                 planned: !task.planned,
                                 completedStatus: !task.completedStatus,
-                                date_completed: getCurrentDate()
+                                date_completed: todaysDate
                             }
                         }
                     } else if (task.importantStatus) {
@@ -190,7 +192,7 @@ const tasks = (state=[], action) => {
                                 ...task,
                                 important: !task.important,
                                 completedStatus: !task.completedStatus,
-                                date_completed: getCurrentDate()
+                                date_completed: todaysDate
                             }
                         }
                     } else if (task.date_due) {
@@ -206,7 +208,7 @@ const tasks = (state=[], action) => {
                                 ...task,
                                 planned: !task.planned,
                                 completedStatus: !task.completedStatus,
-                                date_completed: getCurrentDate()
+                                date_completed: todaysDate
                             }
                         }
                     } else {
@@ -220,7 +222,7 @@ const tasks = (state=[], action) => {
                             return {
                                 ...task,
                                 completedStatus: !task.completedStatus,
-                                date_completed: getCurrentDate()
+                                date_completed: todaysDate
                             }
                         }
                     }

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
-import { getCurrentDate }  from '../getDate';
 import uuid from 'uuid';
 
 const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
     const [item, setItem] = useState('');
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
+    const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
     const itemStyle = () => {
         if (addItem === 'task') {
@@ -48,7 +49,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     task_id: uuid.v4(), 
                     item,
                     date_completed: "",
-                    date_created: getCurrentDate(), 
+                    date_created: todaysDate, 
                     date_due: "", 
                     completedStatus: false, 
                     importantStatus: false, 
@@ -64,7 +65,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     task_id: uuid.v4(), 
                     item, 
                     date_completed: "",
-                    date_created: getCurrentDate(), 
+                    date_created: todaysDate, 
                     date_due: "",
                     completedStatus: false, 
                     importantStatus: true, 
@@ -80,8 +81,8 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     task_id: uuid.v4(), 
                     item, 
                     date_completed: "",
-                    date_created: getCurrentDate(), 
-                    date_due: getCurrentDate(),
+                    date_created: todaysDate, 
+                    date_due: todaysDate,
                     completedStatus: false, 
                     importantStatus: false, 
                     my_day: false, 
@@ -96,7 +97,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     task_id: uuid.v4(), 
                     item, 
                     date_completed: "",
-                    date_created: getCurrentDate(), 
+                    date_created: todaysDate, 
                     date_due: "",
                     completedStatus: false, 
                     importantStatus: false, 
@@ -112,7 +113,7 @@ const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, o
                     task_id: uuid.v4(), 
                     item, 
                     date_completed: "",
-                    date_created: getCurrentDate(), 
+                    date_created: todaysDate, 
                     date_due: "",
                     completedStatus: false, 
                     importantStatus: false, 
