@@ -32,6 +32,18 @@ textarea {
   resize: none;
 }
 
+.blue {
+  color: royalblue;
+}
+
+.green {
+  color: limegreen;
+}
+
+.gray {
+  color: gray;
+}
+
 .header {
   padding: 1rem 2rem;
   height: 107px;
@@ -75,6 +87,22 @@ textarea {
   margin-right: 5px;
   background: transparent;
   border: none;
+}
+
+.list-icon {
+  font-size: 1.2rem;
+}
+
+.list-icon-left {
+  margin: 0 15px 3px 0;
+}
+
+.list-icon-margin-rt {
+  margin-right: 15px;
+}
+
+.step-margin-rt {
+  margin-right: 18px;
 }
 
 .list-item {

@@ -12,7 +12,7 @@ const Steps = ({selectedTaskId, tasks}) => {
         if (selectedTask[0].steps.length === 0) return null;
         
         return (
-            <List style={{padding: '0px 4px 0px 2px'}}>
+            <List style={{padding: '0px 19px 0px 3px'}}>
                 { selectedTask[0].steps.map(step =>
                     <Step key={`step_${step.id}`} step={ step } selectedTask={ selectedTask } />
                 )}

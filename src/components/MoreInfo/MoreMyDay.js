@@ -15,23 +15,23 @@ const MoreMyDay = ({currentList, currentTask, tasks, onClose=f=>f, onToggleMyDay
     }
 
     const renderRemoveMyDay = () => 
-        <div style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-            <div style={{color: 'royalblue'}}>
-                <FaRegSun style={{fontSize: '1.5rem', margin: '0 15px 3px 0'}}/>
+        <div className="align-center space-between">
+            <div className="blue">
+                <FaRegSun className="list-icon list-icon-left"/>
                 Added to My Day 
             </div>
             
-            <FaTimes style={{fontSize: '1.5rem', color: 'dimgray'}}/>
+            <FaTimes className="list-icon" style={{color: 'dimgray'}}/>
         </div>
 
     const renderAddMyDay = () =>
         <div style={{color: 'dimgray'}}>
-            <FaRegSun style={{fontSize: '1.5rem', margin: '0 15px 3px 0'}}/>
+            <FaRegSun className="list-icon list-icon-left" />
             <span>Add to My Day</span>
         </div>
 
     return (
-        <ListItem style={{margin: '10px 0'}} onClick={handleClick}>
+        <ListItem style={{margin: '10px 3px'}} onClick={handleClick}>
             { selectedTask[0].my_day ? renderRemoveMyDay() : renderAddMyDay() }
         </ListItem>
     );

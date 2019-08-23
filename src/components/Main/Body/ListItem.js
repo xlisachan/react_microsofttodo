@@ -24,16 +24,16 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
     }
 
     const renderCompleted = () =>
-        <FaCheckCircle style={{fontSize: '1.5rem', color: 'limegreen', marginRight: 15}} />
+        <FaCheckCircle className="list-icon green list-icon-margin-rt" />
     
     const renderNotCompleted = () =>
-        <FaRegCircle style={{fontSize: '1.5rem', color: 'gray', marginRight: 15}} />
+        <FaRegCircle className="list-icon list-icon-margin-rt gray" />
 
     const renderImportant = () =>
-        <FaStar style={{fontSize: '1.5rem', color: 'royalblue'}} />
+        <FaStar className="list-icon blue" />
     
     const renderNotImportant = () =>
-        <FaRegStar style={{fontSize: '1.5rem', color: 'gray'}} />
+        <FaRegStar className="list-icon gray" />
 
     return ( 
         <div className="list-item align-center space-between" style={ listStyle(task.task_id) } onClick={() => handleClick()}>

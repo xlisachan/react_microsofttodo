@@ -48,10 +48,10 @@ const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveSt
     }
 
     const renderCompleted = () =>
-        <FaCheckCircle style={{fontSize: '1.2rem', color: 'limegreen', marginRight: 18}} />
+        <FaCheckCircle className="list-icon step-margin-rt green" />
     
     const renderNotCompleted = () =>
-        <FaRegCircle style={{fontSize: '1.2rem', color: 'gray', marginRight: 18}} />
+        <FaRegCircle className="list-icon step-margin-rt gray" />
 
     return (
         <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => onSetStep(step.id, step.step)}>

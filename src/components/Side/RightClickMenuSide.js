@@ -29,7 +29,7 @@ const RightClickMenuSide = ({list, tasks, onClick=f=>f, onClose=f=>f, onEditClic
 
             <ContextMenu id={list.id}>
                 <MenuItem onClick={() => onEditClick()}>
-                    <FaRegEdit style={{margin: '0 5px 3px 0'}} />
+                    <FaRegEdit className="list-icon" style={{margin: '0 5px 3px 0'}} />
                     <span>Rename list</span>
                 </MenuItem>
 

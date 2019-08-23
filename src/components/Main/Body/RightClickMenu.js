@@ -8,37 +8,37 @@ import DeleteModal from '../../DeleteModal';
 const RightClickMenu = ({task, onClick=f=>f, onClose=f=>f, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
     const renderRemoveMyDay = () =>
         <div>
-            <FaRegSun style={{margin: '0 5px 3px 0'}}/>
+            <FaRegSun className="list-icon" style={{margin: '0 5px 3px 0'}}/>
             <span>Remove from My Day</span>
         </div>
     
     const renderAddMyDay = () =>
         <div>
-            <FaRegSun style={{margin: '0 5px 3px 0'}}/>
+            <FaRegSun className="list-icon" style={{margin: '0 5px 3px 0'}}/>
             <span>Add to My Day</span>
         </div>
 
     const renderMarkNotCompleted = () => 
         <div>
-            <FaRegCheckCircle style={{margin: '0 5px 3px 0'}}/>
+            <FaRegCheckCircle className="list-icon" style={{margin: '0 5px 3px 0'}}/>
             <span>Mark as not completed</span>
         </div>
 
     const renderMarkCompleted = () =>
         <div>
-            <FaCheckCircle style={{margin: '0 5px 3px 0'}}/>
+            <FaCheckCircle className="list-icon" style={{margin: '0 5px 3px 0'}}/>
             <span>Mark as completed</span>
         </div>
 
     const renderRemoveImportance = () =>
         <div>
-            <FaRegStar style={{margin: '0 5px 3px 0'}}/>
+            <FaRegStar className="list-icon" style={{margin: '0 5px 3px 0'}}/>
             <span>Remove importance</span>
         </div>
     
     const renderMarkImportant = () =>
         <div>
-            <FaStar style={{margin: '0 5px 3px 0'}}/>
+            <FaStar className="list-icon" style={{margin: '0 5px 3px 0'}}/>
             <span>Mark as important</span>
         </div>
     
