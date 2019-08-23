@@ -11,6 +11,7 @@ const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveSt
 
     const stepContainer = id => {
         return {
+            padding: '8px 16px',
             backgroundColor: currentStep.id === id ? '#eee' : null
         }
     }

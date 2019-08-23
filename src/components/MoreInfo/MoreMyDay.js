@@ -16,16 +16,16 @@ const MoreMyDay = ({currentList, currentTask, tasks, onClose=f=>f, onToggleMyDay
 
     const renderRemoveMyDay = () => 
         <div className="align-center space-between">
-            <div className="blue">
+            <div className="align-center blue">
                 <FaRegSun className="list-icon list-icon-left"/>
                 Added to My Day 
             </div>
             
-            <FaTimes className="list-icon" style={{color: 'dimgray'}}/>
+            <FaTimes style={{color: 'dimgray'}}/>
         </div>
 
     const renderAddMyDay = () =>
-        <div style={{color: 'dimgray'}}>
+        <div className="align-center" style={{color: 'dimgray'}}>
             <FaRegSun className="list-icon list-icon-left" />
             <span>Add to My Day</span>
         </div>
