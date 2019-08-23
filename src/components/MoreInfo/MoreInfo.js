@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Drawer, Hidden } from '@material-ui/core';
 import TopSection from '../../containers/MoreInfo/TopSection';
-import MoreSteps from '../../containers/MoreInfo/MoreSteps';
-import MoreMyDay from '../../containers/MoreInfo/MoreMyDay';
+import MoreSteps from '../../containers/MoreInfo/Steps/MoreSteps';
+import MoreMyDay from '../../containers/MoreInfo/MyDay/MoreMyDay';
 import BottomSection from '../../containers/MoreInfo/BottomSection';
 
 const drawerWidth = 250;

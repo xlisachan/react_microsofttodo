@@ -1,4 +1,4 @@
-import MoreSteps from '../../components/MoreInfo/MoreSteps';
+import MoreSteps from '../../../components/MoreInfo/Steps/MoreSteps';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({

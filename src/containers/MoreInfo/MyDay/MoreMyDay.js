@@ -1,6 +1,6 @@
-import MoreMyDay from '../../components/MoreInfo/MoreMyDay';
+import MoreMyDay from '../../../components/MoreInfo/MyDay/MoreMyDay';
 import { connect } from 'react-redux';
-import { toggleMyDay } from '../../actions';
+import { toggleMyDay } from '../../../actions';
 
 const mapStateToProps = state => ({
     currentList: state.current.list["title"],

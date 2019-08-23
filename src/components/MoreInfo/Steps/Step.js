@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
-import DeleteModal from '../DeleteModal';
+import DeleteModal from '../../DeleteModal';
 
 const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
     const selectedTask = tasks.filter(task => task.task_id === currentTaskId);

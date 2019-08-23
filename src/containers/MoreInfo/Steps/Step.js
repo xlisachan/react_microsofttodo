@@ -1,6 +1,6 @@
-import Step from '../../components/MoreInfo/Step';
+import Step from '../../../components/MoreInfo/Steps/Step';
 import { connect } from 'react-redux';
-import { clearItem, editTitle, removeStep, setStep, submitTitle, toggleStep, updateStep } from '../../actions'; 
+import { clearItem, editTitle, removeStep, setStep, submitTitle, toggleStep, updateStep } from '../../../actions'; 
 
 const mapStateToProps = state => ({
     currentStep: state.current.step,
