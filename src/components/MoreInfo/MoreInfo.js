@@ -5,6 +5,7 @@ import { Divider, Drawer, Hidden } from '@material-ui/core';
 import TopSection from '../../containers/MoreInfo/TopSection';
 import MoreSteps from '../../containers/MoreInfo/Steps/MoreSteps';
 import MoreMyDay from '../../containers/MoreInfo/MyDay/MoreMyDay';
+import MorePlanned from './Planned/MorePlanned';
 import BottomSection from '../../containers/MoreInfo/BottomSection';
 
 const drawerWidth = 250;
@@ -52,6 +53,10 @@ const More = ({open, onClose=f=>f}) => {
                     <Divider />
 
                     <MoreMyDay onClose={ onClose } />
+
+                    <Divider />
+
+                    <MorePlanned />
 
                     <Divider />
 
