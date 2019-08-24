@@ -46,6 +46,11 @@ const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f})
             Created {' '} { getFormattedDate(selectedTask[0].date_created) }
         </span>
 
+    const onRemove = (id) => {
+        onRemoveTask(id);
+        onClose();
+    }
+
     return (
         <ListItem style={ bottomStyle() }>
             <FaChevronRight onClick={()=> onClose()} />
@@ -57,7 +62,7 @@ const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f})
                 location= { 'more-bottom' }
                 name={ selectedTask[0].item }
                 todo={ 'task' }
-                onClick={() => onRemoveTask(selectedTask[0].task_id)}
+                onClick={() => onRemove(selectedTask[0].task_id)}
             />
         </ListItem>
     );
