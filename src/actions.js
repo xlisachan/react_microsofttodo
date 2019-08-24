@@ -96,13 +96,13 @@ export const addDateDue = (id, date) => ({
 
 export const addTask = (
         task_id, item, date_completed, date_created, date_due,
-        completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
+        completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
     ) => dispatch => {
         dispatch({
             type: C.ADD_TASK,
             payload: {
                 task_id, item, date_completed, date_created, date_due,
-                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
+                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
             }
         })
 }

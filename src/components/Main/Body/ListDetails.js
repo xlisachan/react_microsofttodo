@@ -72,6 +72,11 @@ const ListDetails = ({lists, selectedListId, task}) => {
             "id": "planned",
             "icon": "calendar_today",
             "text": getPlannedDate()
+        },
+        {
+            "id": "note",
+            "icon": "bookmark_border",
+            "text": "Note"
         }
     ];
 

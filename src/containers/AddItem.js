@@ -12,12 +12,12 @@ const mapDispatchToProps = dispatch => ({
 
     onAddTask({
             task_id, item, date_completed, date_created, date_due,
-            completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
+            completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
         }) {
         dispatch(
             addTask(
                 task_id, item, date_completed, date_created, date_due, 
-                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
+                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
             )
         )
     },
