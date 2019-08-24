@@ -88,6 +88,12 @@ export const removeDateDue = id => ({
     payload: id
 })
 
+export const addDateDue = (id, date) => ({
+    type: C.ADD_TASK_DATE_DUE,
+    payload: id,
+    date
+})
+
 export const addTask = (
         task_id, item, date_completed, date_created, date_due,
         completedStatus, importantStatus, my_day, planned, important, tasks, list_id, steps
