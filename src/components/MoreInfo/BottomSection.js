@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
 import moment from 'moment';
 import { FaChevronRight } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
@@ -31,12 +30,9 @@ const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f})
         } else if (inputDate === moment(new Date()).add(-1, 'days').format('YYYY-MM-DD')) {
             formattedDate = 'Yesterday';
         } else {
-            formattedDate = <Moment
-                date={ inputDate }
-                parse="YYYY-MM-DD"
-                format="ddd, MMM D"
-            />
+            formattedDate = moment(inputDate).format('ddd, MMM D')
         }
+        
         return formattedDate;
     }
 
