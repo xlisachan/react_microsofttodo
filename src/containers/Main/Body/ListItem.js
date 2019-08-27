@@ -1,6 +1,6 @@
 import ListItem from '../../../components/Main/Body/ListItem';
 import { connect } from 'react-redux';
-import { setTaskId, setTask, setSteps, toggleCompleted, toggleImportant } from '../../../actions'; 
+import { setNote, setTaskId, setTask, setSteps, toggleCompleted, toggleImportant } from '../../../actions'; 
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
         )
     },
 
-    onSetTask(id, task, steps) {
+    onSetTask(id, task, steps, note) {
         dispatch(
             setTaskId(id)
         )
@@ -33,6 +33,10 @@ const mapDispatchToProps = dispatch => ({
 
         dispatch(
             setSteps(steps)
+        )
+
+        dispatch(
+            setNote(note)
         )
     }
 

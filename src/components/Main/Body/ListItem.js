@@ -19,7 +19,7 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
     }
 
     const handleClick = () => {
-        onSetTask(task.task_id, task.item, task.steps);
+        onSetTask(task.task_id, task.item, task.steps, task.note);
         onClick();
     }
 
