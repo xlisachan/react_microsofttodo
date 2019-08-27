@@ -32,6 +32,11 @@ export const setSteps = steps => ({
     payload: steps
 })
 
+export const setNote = note => ({
+    type: C.SET_NOTE,
+    payload: note,
+})
+
 export const clearItem = () => ({
     type: C.CLEAR_ITEM
 })
@@ -181,5 +186,11 @@ export const removeStep = (taskId, stepId) => ({
 export const updateTask = (taskId, newTask) => ({
     type: C.UPDATE_TASK,
     payload: newTask,
+    taskId
+})
+
+export const updateNote = (taskId, note) => ({
+    type: C.UPDATE_NOTE,
+    payload: note,
     taskId
 })

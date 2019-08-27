@@ -58,6 +58,7 @@ const current = (state={}, action) => {
                     step:""
                 },
                 taskSteps: [],
+                note: "",
                 item: "list"
             }
         
@@ -81,6 +82,7 @@ const current = (state={}, action) => {
                     id: "",
                     step: ""
                 },
+                note: "",
                 item: "task"
             }
 
@@ -101,6 +103,12 @@ const current = (state={}, action) => {
             return {
                 ...state,
                 taskSteps: action.payload
+            }
+        
+        case C.SET_NOTE :
+            return {
+                ...state,
+                note: action.payload
             }
         
         case C.ADD_STEP :
@@ -296,6 +304,17 @@ const tasks = (state=[], action) => {
                     task
             )    
 
+        case C.SET_NOTE :
+            return state.map(task =>
+                task.task_id === action.id ?
+                {
+                    ...task,
+                    note: action.payload
+                }
+                :
+                task
+            )
+
         case C.REMOVE_TASK :
             return state.filter(task => task.task_id !== action.payload)
             
@@ -362,6 +381,16 @@ const tasks = (state=[], action) => {
                     task
                 )
             
+        case C.UPDATE_NOTE :
+            return state.map(task =>
+                task.task_id === action.taskId ?
+                    {
+                        ...task,
+                        note: action.payload
+                    }
+                    :
+                    task
+                )
         default:
             return state
     }

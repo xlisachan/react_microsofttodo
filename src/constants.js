@@ -7,6 +7,7 @@ const constants = {
     SET_STEP: "SET_STEP",
     SET_STEPS: "SET_STEPS",
     SET_ITEM: "SET_ITEM",
+    SET_NOTE: "SET_NOTE",
     CLEAR_ITEM: "CLEAR_ITEM",
 
     // LIST
@@ -42,7 +43,8 @@ const constants = {
     ADD_STEP: "ADD_STEP",
     REMOVE_STEP: "REMOVE_STEP",
     EDIT_STEP_STATUS_COMPLETE: "EDIT_STEP_STATUS_COMPLETE",
-    UPDATE_STEP: "UPDATE_STEP"
+    UPDATE_STEP: "UPDATE_STEP",
+    UPDATE_NOTE: "UPDATE_NOTE",
 }
 
 export default constants;
