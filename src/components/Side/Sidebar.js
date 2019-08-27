@@ -25,7 +25,7 @@ const Sidebar = ({onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=
 
             <TitleList onClick={ clearSearch } onClose={ onClose } onEditClick={ onEditClick } />
 
-            <AddList onEditClick={ onEditClick } />
+            <AddList onEditClick={ onEditClick } onClose={ onClose } />
         </div>
     );
 }
