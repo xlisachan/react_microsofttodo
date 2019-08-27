@@ -6,7 +6,7 @@ import { AppBar, CssBaseline } from '@material-ui/core';
 import Header from '../../containers/Main/Header/Header';
 import ListBody from '../../containers/Main/Body/ListBody';
 import NoMatch from './Body/NoMatch';
-import MoreSection from '../MoreInfo/MoreInfo';
+import MoreSection from '../../containers/MoreInfo/MoreInfo';
 
 const drawerWidth = 250;
 
