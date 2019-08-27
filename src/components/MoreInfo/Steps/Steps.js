@@ -4,10 +4,9 @@ import { List } from '@material-ui/core';
 import Step from '../../../containers/MoreInfo/Steps/Step';
 import AddItem from '../../../containers/AddItem';
 
-const Steps = ({selectedTaskId, tasks}) => {
-    const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+const Steps = ({selectedTask}) => {
     if (!selectedTask[0]) return null;
-
+    
     const renderSteps = () => {
         if (selectedTask[0].steps.length === 0) return null;
         
@@ -31,8 +30,7 @@ const Steps = ({selectedTaskId, tasks}) => {
 }
 
 Steps.propTypes = {
-    selectedTaskId: PropTypes.string.isRequired,
-    tasks: PropTypes.array.isRequired
+    selectedTask: PropTypes.array.isRequired
 }
  
 export default Steps;

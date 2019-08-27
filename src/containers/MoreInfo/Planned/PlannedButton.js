@@ -2,11 +2,6 @@ import PlannedButton from '../../../components/MoreInfo/Planned/PlannedButton';
 import { connect } from 'react-redux';
 import { removeDateDue } from '../../../actions';
 
-const mapStateToProps = state => ({
-    selectedTaskId: state.current.task["id"],
-    tasks: state.tasks
-})
-
 const mapDispatchToProps = dispatch => ({
 
     onRemoveDateDue(id) {
@@ -17,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlannedButton);
+export default connect(null, mapDispatchToProps)(PlannedButton);

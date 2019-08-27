@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { FaRegCalendar, FaTimes } from 'react-icons/fa';
 
-const PlannedButton = ({selectedTaskId, tasks, onClick=f=>f, onRemoveDateDue=f=>f}) => {
-    const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+const PlannedButton = ({selectedTask, onClick=f=>f, onRemoveDateDue=f=>f}) => {
     if (!selectedTask[0]) return null;
 
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
@@ -45,8 +44,7 @@ const PlannedButton = ({selectedTaskId, tasks, onClick=f=>f, onRemoveDateDue=f=>
 }
 
 PlannedButton.propTypes = {
-    selectedTaskId: PropTypes.string.isRequired,
-    tasks: PropTypes.array.isRequired,
+    selectedTask: PropTypes.array.isRequired,
     onClick: PropTypes.func.isRequired,
     onRemoveDateDue: PropTypes.func.isRequired
 }

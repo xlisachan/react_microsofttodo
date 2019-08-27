@@ -2,11 +2,6 @@ import TopSection from '../../components/MoreInfo/TopSection';
 import { connect } from 'react-redux';
 import { clearItem, editTitle, setTask, submitTitle, toggleCompleted, toggleImportant, updateTask } from '../../actions'; 
 
-const mapStateToProps = state => ({
-    currentTask: state.current.task,
-    tasks: state.tasks
-})
-
 const mapDispatchToProps = dispatch => ({
     
     onToggleComplete(id) {
@@ -51,4 +46,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopSection);
+export default connect(null, mapDispatchToProps)(TopSection);

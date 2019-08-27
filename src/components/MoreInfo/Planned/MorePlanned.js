@@ -3,9 +3,10 @@ import { ListItem } from '@material-ui/core';
 import PlannedButton from '../../../containers/MoreInfo/Planned/PlannedButton';
 import PlannedMenu from '../../../containers/MoreInfo/Planned/PlannedMenu';
 
-const Planned = () => {
+const Planned = ({selectedTask, tasks}) => {
     const [anchorEl, setAnchorEl] = useState(null);
 
+    if (!selectedTask[0]) return null;
 
     const handleButtonClick = e => {
         setAnchorEl(e.currentTarget);
@@ -17,12 +18,14 @@ const Planned = () => {
 
     return (
         <ListItem style={{margin: '10px 3px'}}>
-            <PlannedButton onClick={ handleButtonClick } />
+            <PlannedButton selectedTask={ selectedTask } onClick={ handleButtonClick } />
 
             <PlannedMenu
                 open={ Boolean(anchorEl) }
                 onClose={ handleMenuClose }
                 anchorEl={ anchorEl }
+                selectedTask={ selectedTask }
+                tasks={ tasks }
             />
         </ListItem>
     );

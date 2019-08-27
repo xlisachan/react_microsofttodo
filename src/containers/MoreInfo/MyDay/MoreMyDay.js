@@ -4,8 +4,6 @@ import { toggleMyDay } from '../../../actions';
 
 const mapStateToProps = state => ({
     currentList: state.current.list["title"],
-    currentTask: state.current.task,
-    tasks: state.tasks
 })
 
 const mapDispatchToProps = dispatch => ({

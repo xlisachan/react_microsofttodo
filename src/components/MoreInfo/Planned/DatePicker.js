@@ -5,13 +5,13 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 import moment from 'moment';
 
-const MaterialUIPickers = ({selectedTaskId, tasks, onAddDateDue=f=>f, onClose=f=>f}) => {
+const MaterialUIPickers = ({selectedTask, tasks, onAddDateDue=f=>f, onClose=f=>f}) => {
     const [selectedDate, setSelectedDate] = React.useState(new Date());
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
         
-        const arr = tasks.filter(task => task.task_id === selectedTaskId);
+        const arr = tasks.filter(task => task.task_id === selectedTask[0].task_id);
         const taskId = arr[0].task_id;
         const newDate = moment(date).format('YYYY-MM-DD');
 
@@ -37,7 +37,7 @@ const MaterialUIPickers = ({selectedTaskId, tasks, onAddDateDue=f=>f, onClose=f=
 }
 
 MaterialUIPickers.propTypes = {
-    selectedTaskId: PropTypes.string.isRequired,
+    selectedTask: PropTypes.array.isRequired,
     tasks: PropTypes.array.isRequired,
     onAddDateDue: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired

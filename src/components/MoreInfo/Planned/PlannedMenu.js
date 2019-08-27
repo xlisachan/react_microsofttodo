@@ -27,8 +27,8 @@ class PlannedMenu extends Component {
     }
     
     handleSort = (item) => {
-        const { selectedTaskId, tasks, onAddDateDue=f=>f, onClose=f=>f } = this.props;
-        const arr = tasks.filter(task => task.task_id === selectedTaskId);
+        const { selectedTask, tasks, onAddDateDue=f=>f, onClose=f=>f } = this.props;
+        const arr = tasks.filter(task => task.task_id === selectedTask[0].task_id);
         const taskId = arr[0].task_id;
         const newDate = moment(new Date()).add(item.num, 'days').format('YYYY-MM-DD');
 
@@ -37,14 +37,14 @@ class PlannedMenu extends Component {
     }
 
     renderMenuItems = children => {
-        const { selectedTaskId, tasks, onAddDateDue=f=>f, onClose=f=>f } = this.props;
+        const { selectedTask, tasks, onAddDateDue=f=>f, onClose=f=>f } = this.props;
 
         return children.map(item => {
             if (item.children) {
                 return (
                     <MenuItem key={item.id}>
                         <DatePicker
-                            selectedTaskId={ selectedTaskId }
+                            selectedTask={ selectedTask }
                             tasks={ tasks }
                             onAddDateDue={ onAddDateDue }
                             onClose={ onClose }
@@ -90,7 +90,7 @@ PlannedMenu.propTypes = {
     open: PropTypes.bool.isRequired,
     anchorElement: PropTypes.any,
     onClose: PropTypes.func.isRequired,
-    selectedTaskId: PropTypes.string.isRequired,
+    selectedTask: PropTypes.array.isRequired,
     tasks: PropTypes.array.isRequired,
     onAddDateDue: PropTypes.func.isRequired
 }

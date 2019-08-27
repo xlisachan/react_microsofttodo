@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { FaRegSun, FaTimes } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
 
-const MoreMyDay = ({currentList, currentTask, tasks, onClose=f=>f, onToggleMyDay=f=>f}) => {
-    const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
+const MoreMyDay = ({currentList, selectedTask, onClose=f=>f, onToggleMyDay=f=>f}) => {
     if (!selectedTask[0]) return null;
 
     const handleClick = () => {
         if (currentList === "My Day"){
             onClose();
         }
-        onToggleMyDay(currentTask.id);
+        onToggleMyDay(selectedTask[0].task_id);
     }
 
     const renderRemoveMyDay = () => 
@@ -39,8 +38,7 @@ const MoreMyDay = ({currentList, currentTask, tasks, onClose=f=>f, onToggleMyDay
 
 MoreMyDay.propTypes = {
     currentList: PropTypes.string.isRequired,
-    currentTask: PropTypes.object.isRequired,
-    tasks: PropTypes.array.isRequired,
+    selectedTask: PropTypes.array.isRequired,
     onClose: PropTypes.func.isRequired,
     onToggleMyDay: PropTypes.func.isRequired
 }

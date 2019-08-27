@@ -5,8 +5,6 @@ import { clearItem, editTitle, removeStep, setStep, submitTitle, toggleStep, upd
 const mapStateToProps = state => ({
     currentStep: state.current.step,
     currentSteps: state.current.taskSteps,
-    currentTaskId: state.current.task["id"],
-    tasks: state.tasks
 })
 
 const mapDispatchToProps = dispatch => ({

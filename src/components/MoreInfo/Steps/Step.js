@@ -5,10 +5,7 @@ import { ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
 import DeleteModal from '../../DeleteModal';
 
-const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
-    const selectedTask = tasks.filter(task => task.task_id === currentTaskId);
-    if (!selectedTask[0]) return null;
-
+const Step = ({currentStep, currentSteps, selectedTask, step, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
     const stepContainer = id => {
         return {
             padding: '8px 16px',
@@ -84,9 +81,8 @@ const Step = ({currentStep, currentSteps, currentTaskId, step, tasks, onRemoveSt
 Step.propTypes = {
     currentStep: PropTypes.object.isRequired,
     currentSteps: PropTypes.array.isRequired,
-    currentTaskId: PropTypes.string.isRequired,
-    step:PropTypes.object.isRequired,
-    tasks:PropTypes.array.isRequired,
+    selectedTask: PropTypes.array.isRequired,
+    step: PropTypes.object.isRequired,
     onRemoveStep: PropTypes.func.isRequired,
     onSetStep: PropTypes.func.isRequired,
     onToggleStep: PropTypes.func.isRequired,

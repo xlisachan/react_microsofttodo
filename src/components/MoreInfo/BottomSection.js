@@ -5,8 +5,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
 import DeleteModal from '../DeleteModal';
 
-const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f}) => {
-    const selectedTask = tasks.filter(task => task.task_id === selectedTaskId);
+const BottomSection = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {
     if (!selectedTask[0]) return null;
 
     const bottomStyle = () => {
@@ -69,8 +68,7 @@ const BottomSection = ({selectedTaskId, tasks, onClose=f=>f, onRemoveTask=f=>f})
 }
 
 BottomSection.propTypes = {
-    selectedTaskId: PropTypes.string,
-    tasks: PropTypes.array,
+    selectedTask: PropTypes.array.isRequired,
     onClose: PropTypes.func.isRequired,
     onRemoveTask: PropTypes.func.isRequired
 }

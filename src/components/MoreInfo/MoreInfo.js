@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Drawer, Hidden } from '@material-ui/core';
 import TopSection from '../../containers/MoreInfo/TopSection';
-import MoreSteps from '../../containers/MoreInfo/Steps/MoreSteps';
+import Steps from './Steps/Steps';
 import MoreMyDay from '../../containers/MoreInfo/MyDay/MoreMyDay';
 import MorePlanned from './Planned/MorePlanned';
 import BottomSection from '../../containers/MoreInfo/BottomSection';
@@ -29,8 +29,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const More = ({open, onClose=f=>f}) => {
-    const classes = useStyles();
+const More = ({currentTask, tasks, open, onClose=f=>f}) => {
+    const classes = useStyles()
+    const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
 
     return (
         <Hidden smDown implementation="css">
@@ -46,21 +47,21 @@ const More = ({open, onClose=f=>f}) => {
                 <div className={classes.drawerHeader}>
                     <div className={classes.toolbar} />
 
-                    <TopSection />
+                    <TopSection currentTask={ currentTask } selectedTask={ selectedTask } />
 
-                    <MoreSteps />
-
-                    <Divider />
-
-                    <MoreMyDay onClose={ onClose } />
+                    <Steps selectedTask={ selectedTask } />
 
                     <Divider />
 
-                    <MorePlanned />
+                    <MoreMyDay selectedTask={ selectedTask } onClose={ onClose } />
 
                     <Divider />
 
-                    <BottomSection onClose={ onClose } />
+                    <MorePlanned selectedTask={ selectedTask } tasks={ tasks } />
+
+                    <Divider />
+
+                    <BottomSection selectedTask={ selectedTask } onClose={ onClose } />
                 </div>
             </Drawer>
         </Hidden>

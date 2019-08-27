@@ -4,8 +4,7 @@ import Textarea from 'react-textarea-autosize';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import { ListItem } from '@material-ui/core';
 
-const TopSection = ({currentTask, tasks, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
-    const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
+const TopSection = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
     if (!selectedTask[0]) return null;
 
     const topStyle = () => {
@@ -73,7 +72,7 @@ const TopSection = ({currentTask, tasks, onSetTask=f=>f, onToggleComplete=f=>f, 
 
 TopSection.propTypes = {
     currentTask: PropTypes.object.isRequired,
-    tasks: PropTypes.array.isRequired,
+    selectedTask: PropTypes.array.isRequired,
     onSetTask: PropTypes.func.isRequired,
     onToggleComplete: PropTypes.func.isRequired,
     onToggleImportant: PropTypes.func.isRequired,
