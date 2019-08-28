@@ -12,7 +12,7 @@ const Detail = ({el, name, task}) => {
         (el.id === "tasks" && task.tasks === true && name !== "Tasks") ||
         (el.id === "step" && task.steps.length > 0) ||
         (el.id === "planned" && task.date_due) ||
-        (el.id === "note" && task.note.length > 0)
+        (el.id === "note" && task.note !== "")
         ) ?
             <li className="list-detail" 
                 style={{
