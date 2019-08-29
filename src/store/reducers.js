@@ -39,20 +39,11 @@ const current = (state={}, action) => {
                 note: ""
             }
         
-        case C.SET_TASKID :
-            return {
-                ...state,
-                task: {
-                    ...state.task,
-                    id: action.payload
-                }
-            }
-
         case C.SET_TASK :
             return {
                 ...state,
                 task: {
-                    ...state.task,
+                    id: action.id,
                     task: action.payload
                 },
                 step: {

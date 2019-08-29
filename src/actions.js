@@ -7,14 +7,10 @@ export const setList = (id, title) => ({
     id
 })
 
-export const setTaskId = id => ({
-    type: C.SET_TASKID,
-    payload: id
-})
-
-export const setTask = (task, note, steps) => ({
+export const setTask = (id, task, note, steps) => ({
     type: C.SET_TASK,
     payload: task,
+    id,
     note,
     steps
 })
