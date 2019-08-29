@@ -16,9 +16,10 @@ export const setTaskId = id => ({
     payload: id
 })
 
-export const setTask = task => ({
+export const setTask = (task, note) => ({
     type: C.SET_TASK,
-    payload: task
+    payload: task,
+    note
 })
 
 export const setStep = (id, step) => ({

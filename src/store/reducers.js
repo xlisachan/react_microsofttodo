@@ -82,7 +82,7 @@ const current = (state={}, action) => {
                     id: "",
                     step: ""
                 },
-                note: "",
+                note: action.note,
                 item: "task"
             }
 
