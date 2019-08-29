@@ -1,6 +1,6 @@
 import TopSection from '../../components/MoreInfo/TopSection';
 import { connect } from 'react-redux';
-import { clearItem, editTitle, setTask, submitTitle, toggleCompleted, toggleImportant, updateTask } from '../../actions'; 
+import { setTask, toggleCompleted, toggleImportant, updateTask } from '../../actions'; 
 
 const mapDispatchToProps = dispatch => ({
     
@@ -20,10 +20,6 @@ const mapDispatchToProps = dispatch => ({
         dispatch(
             setTask(task)
         )
-
-        dispatch(
-            editTitle()
-        )
     },
 
     onUpdateTask(id, task) {
@@ -33,14 +29,6 @@ const mapDispatchToProps = dispatch => ({
 
         dispatch(
             updateTask(id, task)
-        )
-
-        dispatch(
-            submitTitle()
-        )
-
-        dispatch(
-            clearItem()
         )
     }
 

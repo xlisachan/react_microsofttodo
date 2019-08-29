@@ -1,6 +1,6 @@
 import Step from '../../../components/MoreInfo/Steps/Step';
 import { connect } from 'react-redux';
-import { clearItem, editTitle, removeStep, setStep, submitTitle, toggleStep, updateStep } from '../../../actions'; 
+import { removeStep, setStep, toggleStep, updateStep } from '../../../actions'; 
 
 const mapStateToProps = state => ({
     currentStep: state.current.step,
@@ -19,10 +19,6 @@ const mapDispatchToProps = dispatch => ({
         dispatch(
             setStep(id, step)
         )
-
-        dispatch(
-            editTitle()
-        )
     },
 
     onToggleStep(taskId, stepId) {
@@ -38,14 +34,6 @@ const mapDispatchToProps = dispatch => ({
     
         dispatch(
             updateStep(id, step, taskId)
-        )
-    
-        dispatch(
-            submitTitle()
-        )
-    
-        dispatch(
-            clearItem()
         )
     }
 
