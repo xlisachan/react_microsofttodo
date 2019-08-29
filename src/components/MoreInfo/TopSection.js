@@ -57,7 +57,7 @@ const TopSection = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete
                         type="text"
                         className="more-list-title"
                         value={ currentTask.task }
-                        onChange={e => onSetTask(e.target.value)}
+                        onChange={e => onSetTask(currentTask.id, e.target.value)}
                         onKeyDown={e => onEnterPress(e)}
                     />
                 </form>

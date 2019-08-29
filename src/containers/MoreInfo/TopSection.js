@@ -16,15 +16,15 @@ const mapDispatchToProps = dispatch => ({
         )
     },
 
-    onSetTask(task) {
+    onSetTask(id, task) {
         dispatch(
-            setTask(task)
+            setTask(id, task)
         )
     },
 
     onUpdateTask(id, task) {
         dispatch(
-            setTask(task)
+            setTask(id, task)
         )
 
         dispatch(
