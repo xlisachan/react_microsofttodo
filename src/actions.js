@@ -58,6 +58,24 @@ export const loadTasks = () => ({
     type: C.LOAD_TASKS
 })
 
+export const addTask = (
+        task_id, item, date_completed, date_created, date_due,
+        completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
+    ) => dispatch => {
+    dispatch({
+        type: C.ADD_TASK,
+        payload: {
+            task_id, item, date_completed, date_created, date_due,
+            completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
+        }
+    })
+}
+
+export const removeTask = id => ({
+    type: C.REMOVE_TASK,
+    payload: id
+})
+
 export const toggleCompleted = id => ({
     type: C.EDIT_TASK_STATUS_COMPLETE,
     payload: id
@@ -84,22 +102,10 @@ export const addDateDue = (id, date) => ({
     date
 })
 
-export const addTask = (
-        task_id, item, date_completed, date_created, date_due,
-        completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
-    ) => dispatch => {
-        dispatch({
-            type: C.ADD_TASK,
-            payload: {
-                task_id, item, date_completed, date_created, date_due,
-                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
-            }
-        })
-}
-
-export const removeTask = id => ({
-    type: C.REMOVE_TASK,
-    payload: id
+export const updateTask = (taskId, newTask) => ({
+    type: C.UPDATE_TASK,
+    payload: newTask,
+    taskId
 })
 
 // SEARCH
@@ -149,6 +155,12 @@ export const addStep = (completedStatus, id, step, taskId) => dispatch => {
     })
 }
 
+export const removeStep = (taskId, stepId) => ({
+    type: C.REMOVE_STEP,
+    payload: taskId,
+    stepId
+})
+
 export const toggleStep = (taskId, stepId) => ({
     type: C.EDIT_STEP_STATUS_COMPLETE,
     payload: taskId,
@@ -159,18 +171,6 @@ export const updateStep = (id, step, taskId) => ({
     type: C.UPDATE_STEP,
     payload: step, 
     id,
-    taskId
-})
-
-export const removeStep = (taskId, stepId) => ({
-    type: C.REMOVE_STEP,
-    payload: taskId,
-    stepId
-})
-
-export const updateTask = (taskId, newTask) => ({
-    type: C.UPDATE_TASK,
-    payload: newTask,
     taskId
 })
 
