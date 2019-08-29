@@ -61,14 +61,6 @@ export const renameList = (id, newName) => ({
     newName
 })
 
-export const editTitle = () => ({
-    type: C.EDIT_TITLE
-})
-
-export const submitTitle = () => ({
-    type: C.SUBMIT_TITLE
-})
-
 // TASKS
 export const loadTasks = () => ({
     type: C.LOAD_TASKS

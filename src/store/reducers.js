@@ -4,19 +4,6 @@ import moment from 'moment';
 
 const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
-const open = (state=false, action) => {
-    switch(action.type) {
-        case C.EDIT_TITLE :
-            return true
-        
-        case C.SUBMIT_TITLE :
-            return false
-        
-        default :
-            return false
-    }
-}
-
 const query = (state='', action) => {
 	switch(action.type) {
         case C.CHANGE_QUERY :
@@ -494,7 +481,6 @@ const lists = (state=[], action) => {
 }
 
 const rootReducer = combineReducers({
-    open,
     query,
     current,
     lists,
