@@ -4,6 +4,7 @@ import { setListId, setList } from '../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
+    query: state.query,
     selectedListId: state.current.list["id"],
     tasks: state.tasks
 })

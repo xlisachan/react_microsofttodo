@@ -5,7 +5,7 @@ import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck, FaList } from '
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onClose=f=>f, onSetList=f=>f}) => {
+const TitleRow = ({list, index, lists, query, selectedListId, tasks, onClick=f=>f, onClose=f=>f, onSetList=f=>f}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
@@ -27,8 +27,11 @@ const TitleRow = ({list, index, lists, selectedListId, tasks, onClick=f=>f, onCl
     }
 
     const handleClick = () => {
+        if (query) {
+            onClick()
+        }
+
         onSetList(list.id, list.name);
-        onClick();
         onClose();
     }
 
@@ -64,6 +67,7 @@ TitleRow.propTypes = {
     list: PropTypes.any,
     index: PropTypes.any,
     lists: PropTypes.array.isRequired,
+    query: PropTypes.string.isRequired,
     selectedListId: PropTypes.string.isRequired,
     tasks: PropTypes.array.isRequired,
     onClick: PropTypes.func,
