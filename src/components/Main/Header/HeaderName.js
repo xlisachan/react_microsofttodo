@@ -45,7 +45,7 @@ const HeaderName = React.forwardRef(({currentList, lists, onRenameList=f=>f, onS
                         type="text"
                         className="edit-input"
                         value={ currentList.title }
-                        onChange={e => onSetList(e.target.value)}
+                        onChange={e => onSetList(currentList.id, e.target.value)}
                     />
                 </form>
             }

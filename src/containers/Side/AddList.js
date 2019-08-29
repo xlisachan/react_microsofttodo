@@ -1,6 +1,6 @@
 import AddList from '../../components/Side/AddList';
 import { connect } from 'react-redux';
-import { addList, setList, setListId } from '../../actions';
+import { addList, setList } from '../../actions';
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -14,11 +14,7 @@ const mapDispatchToProps = dispatch => ({
         )
 
         dispatch(
-            setListId(id)
-        )
-
-        dispatch(
-            setList(name)
+            setList(id, name)
         )
     }
 

@@ -9,15 +9,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     
-    onSetList(title) {
+    onSetList(id, title) {
         dispatch(
-            setList(title)
+            setList(id, title)
         )
     },
 
     onRenameList(id, name) {
         dispatch(
-            setList(name)
+            setList(id, name)
         )
 
         dispatch(
