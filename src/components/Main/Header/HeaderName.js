@@ -35,11 +35,11 @@ const HeaderName = React.forwardRef(({currentList, lists, onRenameList=f=>f, onS
     }
 
     return (
-        <form onSubmit={ onSubmit }>
-            <h2 style={{fontWeight: 'bold'}} >
-                { defaultList ?
-                    currentList.title
-                    :
+        <h2 style={{fontWeight: 'bold'}} >
+            { defaultList ?
+                currentList.title
+                :
+                <form onSubmit={ onSubmit }>
                     <input
                         ref={ref}
                         type="text"
@@ -47,9 +47,9 @@ const HeaderName = React.forwardRef(({currentList, lists, onRenameList=f=>f, onS
                         value={ currentList.title }
                         onChange={e => onSetList(e.target.value)}
                     />
-                }
-            </h2>
-        </form>
+                </form>
+            }
+        </h2>
     )
 })
 
