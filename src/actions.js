@@ -16,21 +16,17 @@ export const setTaskId = id => ({
     payload: id
 })
 
-export const setTask = (task, note) => ({
+export const setTask = (task, note, steps) => ({
     type: C.SET_TASK,
     payload: task,
-    note
+    note,
+    steps
 })
 
 export const setStep = (id, step) => ({
     type: C.SET_STEP,
     payload: {id, step},
     id
-})
-
-export const setSteps = steps => ({
-    type: C.SET_STEPS,
-    payload: steps
 })
 
 export const setNote = note => ({

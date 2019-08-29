@@ -68,6 +68,7 @@ const current = (state={}, action) => {
                     id: "",
                     step: ""
                 },
+                taskSteps: action.steps,
                 note: action.note
             }
 
@@ -83,12 +84,6 @@ const current = (state={}, action) => {
                 )
             }
                 
-        case C.SET_STEPS :
-            return {
-                ...state,
-                taskSteps: action.payload
-            }
-        
         case C.SET_NOTE :
             return {
                 ...state,
