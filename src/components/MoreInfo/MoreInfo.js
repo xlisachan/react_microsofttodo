@@ -6,6 +6,7 @@ import TopSection from '../../containers/MoreInfo/TopSection';
 import Steps from './Steps/Steps';
 import MoreMyDay from '../../containers/MoreInfo/MyDay/MoreMyDay';
 import MorePlanned from './Planned/MorePlanned';
+import Note from '../../containers/MoreInfo/Note/Note';
 import BottomSection from '../../containers/MoreInfo/BottomSection';
 
 const drawerWidth = 250;
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const More = ({currentTask, tasks, open, onClose=f=>f}) => {
-    const classes = useStyles()
+    const classes = useStyles();
     const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
 
     return (
@@ -60,6 +61,8 @@ const More = ({currentTask, tasks, open, onClose=f=>f}) => {
                     <MorePlanned selectedTask={ selectedTask } tasks={ tasks } />
 
                     <Divider />
+
+                    <Note selectedTask={ selectedTask } />
 
                     <BottomSection selectedTask={ selectedTask } onClose={ onClose } />
                 </div>
