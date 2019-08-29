@@ -45,8 +45,7 @@ const current = (state={}, action) => {
                     step:""
                 },
                 taskSteps: [],
-                note: "",
-                item: "list"
+                note: ""
             }
         
         case C.SET_TASKID :
@@ -69,8 +68,7 @@ const current = (state={}, action) => {
                     id: "",
                     step: ""
                 },
-                note: action.note,
-                item: "task"
+                note: action.note
             }
 
         case C.SET_STEP :
@@ -82,8 +80,7 @@ const current = (state={}, action) => {
                         action.payload
                         :
                         step
-                ),
-                item: "step"
+                )
             }
                 
         case C.SET_STEPS :
@@ -105,12 +102,6 @@ const current = (state={}, action) => {
                     ...state.taskSteps,
                     step({}, action)
                 ]
-            }
-        
-        case C.CLEAR_ITEM :
-            return {
-                ...state,
-                item: ""
             }
 
         default : 
@@ -484,7 +475,7 @@ const rootReducer = combineReducers({
     query,
     current,
     lists,
-    tasks,
+    tasks
 })
 
 export default rootReducer;

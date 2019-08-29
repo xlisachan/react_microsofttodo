@@ -38,10 +38,6 @@ export const setNote = note => ({
     payload: note,
 })
 
-export const clearItem = () => ({
-    type: C.CLEAR_ITEM
-})
-
 // LIST
 export const addList = (id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList) => dispatch => {
     dispatch({

@@ -6,9 +6,7 @@ const constants = {
     SET_TASK: "SET_TASK",
     SET_STEP: "SET_STEP",
     SET_STEPS: "SET_STEPS",
-    SET_ITEM: "SET_ITEM",
     SET_NOTE: "SET_NOTE",
-    CLEAR_ITEM: "CLEAR_ITEM",
 
     // LIST
     ADD_LIST: "ADD_LIST",
