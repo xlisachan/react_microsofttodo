@@ -20,20 +20,11 @@ const query = (state='', action) => {
 // SECTION - MORE
 const current = (state={}, action) => {
     switch (action.type) {
-        case C.SET_LISTID :
-            return {
-                ...state,
-                list: {
-                    ...state.list,
-                    id: action.payload
-                }
-            }
-
         case C.SET_LIST :
             return {
                 ...state,
                 list: {
-                    ...state.list,
+                    id: action.id,
                     title: action.payload
                 },
                 task: {
@@ -97,6 +88,12 @@ const current = (state={}, action) => {
                     ...state.taskSteps,
                     step({}, action)
                 ]
+            }
+
+        case C.REMOVE_STEP :
+            return {
+                ...state,
+                taskSteps: state.taskSteps.filter(step => step.id !== action.stepId)
             }
 
         default : 

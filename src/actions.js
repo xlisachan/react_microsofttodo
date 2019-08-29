@@ -1,14 +1,10 @@
 import C from './constants';
 
 // CURRENT
-export const setListId = id => ({
-    type: C.SET_LISTID,
-    payload: id
-})
-
-export const setList = title => ({
+export const setList = (id, title) => ({
     type: C.SET_LIST,
-    payload: title
+    payload: title,
+    id
 })
 
 export const setTaskId = id => ({

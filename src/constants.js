@@ -1,6 +1,5 @@
 const constants = {
     // CURRENT
-    SET_LISTID: "SET_LISTID",
     SET_LIST: "SET_LIST",
     SET_TASKID: "SET_TASKID",
     SET_TASK: "SET_TASK",
