@@ -2,6 +2,10 @@ import Sidebar from '../../components/Side/Sidebar';
 import { connect } from 'react-redux';
 import { changeQuery, clearQuery } from '../../actions';
 
+const mapStateToProps = state => ({
+    query: state.query
+})
+
 const mapDispatchToProps = dispatch => ({
 
     onChangeQuery(query) {
@@ -18,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(null, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
