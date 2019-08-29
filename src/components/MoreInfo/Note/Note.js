@@ -43,7 +43,7 @@ const Note = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=f=>f}) =>
 }
 
 Note.propTypes = {
-    currentNote: PropTypes.string.isRequired,
+    currentNote: PropTypes.string,
     selectedTask: PropTypes.array.isRequired,
     onSetNote: PropTypes.func.isRequired,
     onUpdateNote: PropTypes.func.isRequired
