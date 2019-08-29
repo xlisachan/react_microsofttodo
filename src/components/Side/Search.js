@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Search = React.forwardRef(({searchItem, onChangeQuery=f=>f, onClear=f=>f}, ref) => {
+const Search = React.forwardRef(({query, onChangeQuery=f=>f, onClear=f=>f}, ref) => {
     const classes = useStyles();
 
     return (
@@ -61,14 +61,14 @@ const Search = React.forwardRef(({searchItem, onChangeQuery=f=>f, onClear=f=>f},
                     onChange={ onChangeQuery }
                 />
 
-                { !searchItem ? null : <FaTimesCircle style={{fontSize: '1rem'}} onClick={ onClear } /> }
+                { !query ? null : <FaTimesCircle style={{fontSize: '1rem'}} onClick={ onClear } /> }
             </div>
         </div>
     );
 })
 
 Search.propTypes = {
-    searchItem: PropTypes.string.isRequired,
+    query: PropTypes.string.isRequired,
     onChangeQuery: PropTypes.func,
     onClear: PropTypes.func.isRequired,
 }
