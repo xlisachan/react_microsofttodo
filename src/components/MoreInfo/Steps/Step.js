@@ -79,8 +79,8 @@ const Step = ({currentStep, currentSteps, selectedTask, step, onRemoveStep=f=>f,
 }
 
 Step.propTypes = {
-    currentStep: PropTypes.object.isRequired,
-    currentSteps: PropTypes.array.isRequired,
+    currentStep: PropTypes.object,
+    currentSteps: PropTypes.array,
     selectedTask: PropTypes.array.isRequired,
     step: PropTypes.object.isRequired,
     onRemoveStep: PropTypes.func.isRequired,
