@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Search = React.forwardRef(({query, onChangeQuery=f=>f, onClear=f=>f}, ref) => {
+const Search = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) => {
     const classes = useStyles();
 
     return (
@@ -58,7 +58,7 @@ const Search = React.forwardRef(({query, onChangeQuery=f=>f, onClear=f=>f}, ref)
                     }}
                     inputProps={{ 'aria-label': 'Search' }}
                     inputRef={ ref }
-                    onChange={ onChangeQuery }
+                    onChange={ onChange }
                 />
 
                 { !query ? null : <FaTimesCircle style={{fontSize: '1rem'}} onClick={ onClear } /> }
@@ -69,7 +69,7 @@ const Search = React.forwardRef(({query, onChangeQuery=f=>f, onClear=f=>f}, ref)
 
 Search.propTypes = {
     query: PropTypes.string.isRequired,
-    onChangeQuery: PropTypes.func,
+    onChange: PropTypes.func,
     onClear: PropTypes.func.isRequired,
 }
 
