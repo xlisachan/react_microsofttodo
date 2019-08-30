@@ -4,7 +4,7 @@ import { setTask, toggleCompleted, toggleImportant } from '../../../actions';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import ListItem from '../../../components/Main/Body/ListItem';
 
-const ListItemContainer = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+const ListItemContainer = ({selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const listStyle = id => {
         return {
             borderRadius: id === selectedTaskId ? 10 : null,
@@ -45,9 +45,7 @@ const ListItemContainer = ({lists, selectedListId, selectedTaskId, task, onClick
 
     return ( 
         <ListItem 
-            lists={ lists }
             renderStatus={ renderStatus }
-            selectedListId={ selectedListId }
             task={ task }
             listStyle={ listStyle }
             listItem={ listItem }
@@ -57,8 +55,6 @@ const ListItemContainer = ({lists, selectedListId, selectedTaskId, task, onClick
 }
 
 const mapStateToProps = state => ({
-    lists: state.lists,
-    selectedListId: state.current.list["id"],
     selectedTaskId: state.current.task["id"]
 })
 

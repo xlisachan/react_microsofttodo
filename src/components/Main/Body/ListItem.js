@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListDetails from './ListDetails';
+import ListDetails from '../../../containers/Main/Body/ListDetails';
 
-const ListItem = ({lists, renderStatus, selectedListId, task, listStyle=f=>f, listItem=f=>f, onClick=f=>f}) => {
+const ListItem = ({renderStatus, task, listStyle=f=>f, listItem=f=>f, onClick=f=>f}) => {
     return ( 
         <div className="list-item align-center space-between" style={ listStyle(task.task_id) } onClick={ onClick }>
             <div style={{display: 'flex', alignItems: 'center'}}>
@@ -15,11 +15,7 @@ const ListItem = ({lists, renderStatus, selectedListId, task, listStyle=f=>f, li
                         { task.item }
                     </div>
 
-                    <ListDetails
-                        lists={ lists }
-                        selectedListId={ selectedListId }
-                        task={ task }
-                    />
+                    <ListDetails task={ task } />
                 </span>
             </div>
 
@@ -31,9 +27,7 @@ const ListItem = ({lists, renderStatus, selectedListId, task, listStyle=f=>f, li
 }
 
 ListItem.propTypes = {
-    lists: PropTypes.array.isRequired,
     renderStatus: PropTypes.object.isRequired,
-    selectedListId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
     listStyle: PropTypes.func.isRequired,
     listItem: PropTypes.func.isRequired,
