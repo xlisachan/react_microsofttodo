@@ -154,6 +154,20 @@ li.list-detail:first-child::before {
   font-weight: bold;
 }
 
+/* sidebar */
+.search-bar {
+  width: 19%;
+  background: #eee;
+  padding-bottom: 20px;
+  position: fixed;
+  z-index: 2;
+}
+
+.list-titles {
+  position: relative;
+  top: 100px;
+}
+
 /* context menu */
 .react-contextmenu {
   background-color: whitesmoke;

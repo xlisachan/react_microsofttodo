@@ -7,9 +7,13 @@ import AddList from '../../containers/Side/AddList';
 const Sidebar = React.forwardRef(({query, onChange=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}, ref) => {
     return (
         <div>
-            <Search ref={ ref } query={ query } onChange={ onChange } onClear={ onClear } />
+            <div className="search-bar">
+                <Search ref={ ref } query={ query } onChange={ onChange } onClear={ onClear } />
+            </div>
 
-            <TitleList onClick={ onClear } onClose={ onClose } onEditClick={ onEditClick } />
+            <div className="list-titles">
+                <TitleList onClick={ onClear } onClose={ onClose } onEditClick={ onEditClick } />
+            </div>
 
             <AddList onEditClick={ onEditClick } onClose={ onClose } />
         </div>
