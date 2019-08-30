@@ -4,32 +4,21 @@ import Search from './Search';
 import TitleList from '../../containers/Side/TitleList';
 import AddList from '../../containers/Side/AddList';
 
-const Sidebar = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
-    let _searchInput;
-
-    const handleChange = e => {
-        onChangeQuery(e.target.value);
-    }
-
-    const clearSearch = () => {
-        _searchInput.value = '';
-        onClear();
-    }
-
+const Sidebar = React.forwardRef(({query, onChange=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}, ref) => {
     return (
         <div>
-            <Search ref={ input => _searchInput = input } query={ query } onChangeQuery={ handleChange } onClear={ clearSearch } />
+            <Search ref={ ref } query={ query } onChange={ onChange } onClear={ onClear } />
 
-            <TitleList onClick={ clearSearch } onClose={ onClose } onEditClick={ onEditClick } />
+            <TitleList onClick={ onClear } onClose={ onClose } onEditClick={ onEditClick } />
 
             <AddList onEditClick={ onEditClick } onClose={ onClose } />
         </div>
     );
-}
+})
 
 Sidebar.propTypes = {
     query: PropTypes.string.isRequired,
-    onChangeQuery: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     onClear: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onEditClick: PropTypes.func
