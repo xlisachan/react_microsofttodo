@@ -5,20 +5,7 @@ import HeaderName from '../../../containers/Main/Header/HeaderName';
 import HeaderButton from './HeaderButton';
 import SortBar from '../../../containers/Main/Header/SortBar';
 
-const Header = React.forwardRef(({lists, selectedListId}, ref) => {
-    const selectedList = lists.filter(list => list.id === selectedListId);
-    const name = selectedList[0].name;
-
-    const formatColor = () => {
-        return 'rgb(' + selectedList[0].color.join(',') + ')';
-    };
-
-    const secondaryColor = () => {
-        const newArr = selectedList[0].color.map(col => parseInt(col * .6));
-        const newColor = 'rgb(' + newArr.join(',') + ')';
-        return newColor;
-    };
-
+const Header = React.forwardRef(({name, selectedList, formatColor=f=>f, secondaryColor=f=>f}, ref) => {
     return (
         <div>
             <header className="header align-center space-between" style={{backgroundColor: formatColor()}}>
@@ -39,8 +26,10 @@ const Header = React.forwardRef(({lists, selectedListId}, ref) => {
 })
 
 Header.propTypes = {
-    lists: PropTypes.array,
-    selectedListId: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    selectedList: PropTypes.array.isRequired,
+    formatColor: PropTypes.func.isRequired,
+    secondaryColor: PropTypes.func.isRequired
 }
 
 export default Header;
