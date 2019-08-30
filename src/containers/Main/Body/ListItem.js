@@ -1,6 +1,60 @@
-import ListItem from '../../../components/Main/Body/ListItem';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setTask, toggleCompleted, toggleImportant } from '../../../actions'; 
+import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
+import ListItem from '../../../components/Main/Body/ListItem';
+
+const ListItemContainer = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
+    const listStyle = id => {
+        return {
+            borderRadius: id === selectedTaskId ? 10 : null,
+            backgroundColor: id === selectedTaskId ? '#eee' : null
+        }
+    }
+
+    const listItem = () => {
+        return {
+            color: task.completedStatus ? 'dimgray' : 'black',
+            textDecoration: task.completedStatus ? 'line-through' : 'none'
+        }
+    }
+
+    const handleClick = () => {
+        onSetTask(task.task_id, task.item, task.steps, task.note);
+        onClick();
+    }
+
+    const completed =
+        <FaCheckCircle className="list-icon green list-icon-margin-rt" onClick={() => onToggleComplete(task.task_id)} />
+    
+    const notCompleted =
+        <FaRegCircle className="list-icon list-icon-margin-rt gray" onClick={() => onToggleComplete(task.task_id)} />
+
+    const important =
+        <FaStar className="list-icon blue" onClick={() => onToggleImportant(task.task_id)} />
+    
+    const notImportant =
+        <FaRegStar className="list-icon gray" onClick={() => onToggleImportant(task.task_id)} />
+
+    const renderStatus = {
+        completed,
+        notCompleted,
+        important,
+        notImportant
+    }
+
+    return ( 
+        <ListItem 
+            lists={ lists }
+            renderStatus={ renderStatus }
+            selectedListId={ selectedListId }
+            task={ task }
+            listStyle={ listStyle }
+            listItem={ listItem }
+            onClick={ handleClick }
+        />
+    );
+}
 
 const mapStateToProps = state => ({
     lists: state.lists,
@@ -32,4 +86,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ListItemContainer);

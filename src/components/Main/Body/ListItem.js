@@ -1,45 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListDetails from './ListDetails';
-import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 
-const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
-    const listStyle = id => {
-        return {
-            borderRadius: id === selectedTaskId ? 10 : null,
-            backgroundColor: id === selectedTaskId ? '#eee' : null
-        }
-    }
-
-    const listItem = () => {
-        return {
-            color: task.completedStatus ? 'dimgray' : 'black',
-            textDecoration: task.completedStatus ? 'line-through' : 'none'
-        }
-    }
-
-    const handleClick = () => {
-        onSetTask(task.task_id, task.item, task.steps, task.note);
-        onClick();
-    }
-
-    const renderCompleted = () =>
-        <FaCheckCircle className="list-icon green list-icon-margin-rt" />
-    
-    const renderNotCompleted = () =>
-        <FaRegCircle className="list-icon list-icon-margin-rt gray" />
-
-    const renderImportant = () =>
-        <FaStar className="list-icon blue" />
-    
-    const renderNotImportant = () =>
-        <FaRegStar className="list-icon gray" />
-
+const ListItem = ({lists, renderStatus, selectedListId, task, listStyle=f=>f, listItem=f=>f, onClick=f=>f}) => {
     return ( 
-        <div className="list-item align-center space-between" style={ listStyle(task.task_id) } onClick={() => handleClick()}>
+        <div className="list-item align-center space-between" style={ listStyle(task.task_id) } onClick={ onClick }>
             <div style={{display: 'flex', alignItems: 'center'}}>
-                <span onClick={() => onToggleComplete(task.task_id)}>
-                    { task.completedStatus ? renderCompleted() : renderNotCompleted()}
+                <span>
+                    { task.completedStatus ? renderStatus.completed : renderStatus.notCompleted}
                 </span>
 
                 <span>
@@ -55,8 +23,8 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
                 </span>
             </div>
 
-            <span onClick={() => onToggleImportant(task.task_id)}>
-                { task.importantStatus ? renderImportant() : renderNotImportant() }
+            <span>
+                { task.importantStatus ? renderStatus.important : renderStatus.notImportant }
             </span>
         </div>
     );
@@ -64,13 +32,12 @@ const ListItem = ({lists, selectedListId, selectedTaskId, task, onClick=f=>f, on
 
 ListItem.propTypes = {
     lists: PropTypes.array.isRequired,
+    renderStatus: PropTypes.object.isRequired,
     selectedListId: PropTypes.string.isRequired,
-    selectedTaskId: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
-    onSetTask: PropTypes.func.isRequired,
-    onToggleComplete: PropTypes.func.isRequired,
-    onToggleImportant: PropTypes.func.isRequired
+    listStyle: PropTypes.func.isRequired,
+    listItem: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 
 export default ListItem;
