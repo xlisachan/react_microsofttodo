@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { changeBgColor, changeOrder, toggleHide } from '../../../actions';
 import { Icon, ListItemText, Menu, MenuItem } from '@material-ui/core';
 import { FaCaretRight } from 'react-icons/fa';
-import HeaderMenu from '../../../components/Main/Header/HeaderMenu';
+import MenuTemplate from '../../../components/MenuTemplate';
+import headerMenu from '../../../components/Main/Header/todoMenu';
 
 const HeaderMenuContainer = ({anchorEl, open, onClose, lists, selectedListId, onToggleHide=f=>f, onChangeBgColor=f=>f, onChangeOrder=f=>f}) => {
     const [subAnchorEl, setAnchor] = useState(null);
@@ -110,8 +111,9 @@ const HeaderMenuContainer = ({anchorEl, open, onClose, lists, selectedListId, on
     };
 
     return (
-        <HeaderMenu 
+        <MenuTemplate 
             anchorEl={ anchorEl }
+            menuArr={ headerMenu }
             open={ open }
             onClose={ onClose }
             renderMenuItems={ renderMenuItems }

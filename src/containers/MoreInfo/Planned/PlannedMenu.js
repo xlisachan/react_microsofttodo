@@ -4,7 +4,8 @@ import DatePicker from '../../../components/MoreInfo/Planned/DatePicker';
 import { connect } from 'react-redux';
 import { addDateDue } from '../../../actions';
 import { Icon, ListItemText, MenuItem } from '@material-ui/core';
-import PlannedMenu from '../../../components/MoreInfo/Planned/PlannedMenu';
+import MenuTemplate from '../../../components/MenuTemplate';
+import dateDueMenu from '../../../components/MoreInfo/Planned/DateMenu';
 
 class PlannedMenuContainer extends Component {
     state={
@@ -76,7 +77,7 @@ class PlannedMenuContainer extends Component {
         const { anchorEl, open, onClose } = this.props;
         
         return (
-            <PlannedMenu anchorEl={ anchorEl } open={ open } onClose={ onClose } renderMenuItems={ this.renderMenuItems } />
+            <MenuTemplate anchorEl={ anchorEl } menuArr={ dateDueMenu } open={ open } onClose={ onClose } renderMenuItems={ this.renderMenuItems } />
         );
     }
 }
