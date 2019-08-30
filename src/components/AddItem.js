@@ -1,172 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import { FaRegCircle, FaPlus } from 'react-icons/fa';
-import uuid from 'uuid';
 
-const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
-    const [item, setItem] = useState('');
-    const selectedList = lists.filter(list => list.id === selectedListId);
-    const name = selectedList[0].name;
-    const todaysDate = moment(new Date()).format('YYYY-MM-DD');
-
-    const itemStyle = () => {
-        if (addItem === 'task') {
-            return {
-                margin: '0 auto',
-                height: 60,
-                padding: '10px 14px',
-                borderBottom: '1px solid gainsboro'
-            }
-        } else {
-            return {
-                margin: '3px 0 10px 0',
-                height: 30,
-                padding: '10px 12px',
-                borderBottom: 'none'
-            }
-        }
-    }
-
-    const onSubmit = e => {
-        e.preventDefault();
-        if(!item) return
-
-        const newStep = {
-            completedStatus: false,
-            id: uuid.v4(),
-            step: item,
-            task_id: selectedTaskId
-        }
-
-        if (addItem === 'step') {
-            onAddStep(newStep);
-        }
-
-        else {
-            if (name === "My Day") {
-                onAddTask({
-                    task_id: uuid.v4(), 
-                    item,
-                    date_completed: "",
-                    date_created: todaysDate, 
-                    date_due: "", 
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: true, 
-                    planned: false, 
-                    important: false, 
-                    tasks: true,
-                    list_id: '3',
-                    note: "",
-                    steps: []
-                });
-            } else if (name === "Important") {
-                onAddTask({
-                    task_id: uuid.v4(), 
-                    item, 
-                    date_completed: "",
-                    date_created: todaysDate, 
-                    date_due: "",
-                    completedStatus: false, 
-                    importantStatus: true, 
-                    my_day: false, 
-                    planned: false, 
-                    important: true, 
-                    tasks: true,
-                    list_id: '3',
-                    note: "",
-                    steps: []
-                });
-            } else if (name === "Planned") {
-                onAddTask({
-                    task_id: uuid.v4(), 
-                    item, 
-                    date_completed: "",
-                    date_created: todaysDate, 
-                    date_due: todaysDate,
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: false, 
-                    planned: true, 
-                    important: false, 
-                    tasks: true,
-                    list_id: '3',
-                    note: "",
-                    steps: []
-                });
-            } else if (name === "Tasks") {
-                onAddTask({
-                    task_id: uuid.v4(), 
-                    item, 
-                    date_completed: "",
-                    date_created: todaysDate, 
-                    date_due: "",
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: false, 
-                    planned: false, 
-                    important: false, 
-                    tasks: true,
-                    list_id: '3',
-                    note: "",
-                    steps: []
-                });
-            } else {
-                onAddTask({
-                    task_id: uuid.v4(), 
-                    item, 
-                    date_completed: "",
-                    date_created: todaysDate, 
-                    date_due: "",
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: false, 
-                    planned: false, 
-                    important: false, 
-                    tasks: false,
-                    list_id: selectedList[0].id,
-                    note: "",
-                    steps: []
-                });
-            }
-        }
-
-        setItem('');
-    }
-
-    const addButton = () =>
-        <FaPlus style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} className="blue" />
-
-    const statusButton = () =>
-        <FaRegCircle style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} className="gray" /> 
-
+const AddItem = React.forwardRef(({item, placeholder, renderButton, itemStyle=f=>f, onChange=f=>f, onSubmit=f=>f}, ref) => {
     return (
         <form className="add-form align-center" style={ itemStyle() } onSubmit={ onSubmit }>
             <button className="add-btn" type="submit">
-                { !item ?  addButton() : statusButton() }
+                { !item ?  renderButton.add : renderButton.status }
             </button>
             
             <input
+                ref={ref}
                 style={{flex: '10', padding: 5, border: 'none'}}
                 type="text"
                 name="item"
                 placeholder={ placeholder }
                 value={ item }
-                onChange={ e => setItem(e.target.value) }
+                onChange={ e => onChange(e.target.value) }
             />
         </form>
     );
-}
+})
 
 AddItem.propTypes = {
-    addItem: PropTypes.string.isRequired,
-    lists: PropTypes.array,
+    item: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    selectedListId: PropTypes.any,
-    selectedTaskId: PropTypes.string,
-    onAddStep: PropTypes.func,
-    onAddTask: PropTypes.func
+    renderButton: PropTypes.object.isRequired,
+    itemStyle: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired
 }
 
 export default AddItem;
