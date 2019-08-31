@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Modal, DialogActions, Button } from '@material-ui/core';
 import { FaRegTrashAlt, FaTimes } from 'react-icons/fa';
@@ -83,6 +84,14 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
             </Modal>
         </div>
     );
+}
+
+DeleteModal.propTypes = {
+    id: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    todo: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 
 export default DeleteModal;

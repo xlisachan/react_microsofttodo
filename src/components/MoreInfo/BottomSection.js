@@ -6,7 +6,7 @@ import DeleteModal from '../DeleteModal';
 
 const BottomSection = ({bottomStyle, renderDate, selectedTask, onClose=f=>f, onRemove=f=>f}) => {
     return (
-        <ListItem style={ bottomStyle() }>
+        <ListItem style={ bottomStyle }>
             <FaChevronRight onClick={onClose} />
 
             { selectedTask[0].completedStatus ?  renderDate.completed : renderDate.created }
@@ -23,9 +23,9 @@ const BottomSection = ({bottomStyle, renderDate, selectedTask, onClose=f=>f, onR
 }
 
 BottomSection.propTypes = {
+    bottomStyle: PropTypes.object.isRequired,
     renderDate: PropTypes.object.isRequired,
     selectedTask: PropTypes.array.isRequired,
-    bottomStyle: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onRemove: PropTypes.func.isRequired
 }

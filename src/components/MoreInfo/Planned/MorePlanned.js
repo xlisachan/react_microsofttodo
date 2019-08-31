@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { ListItem } from '@material-ui/core';
 import PlannedButton from '../../../containers/MoreInfo/Planned/PlannedButton';
 import PlannedMenu from '../../../containers/MoreInfo/Planned/PlannedMenu';
@@ -30,5 +31,10 @@ const Planned = ({selectedTask, tasks}) => {
         </ListItem>
     );
 }
- 
+
+Planned.propTypes = {
+    selectedTask: PropTypes.array.isRequired,
+    tasks: PropTypes.array.isRequired
+}
+
 export default Planned;

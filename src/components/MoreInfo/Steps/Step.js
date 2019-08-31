@@ -4,7 +4,7 @@ import { ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
 import DeleteModal from '../../DeleteModal';
 
-const Step = ({renderStatus, selectedTask, step, stepContainer, stepStyle, getPlaceholder, onEnterPress, onRemoveStep=f=>f, onSetStep=f=>f}) => {
+const Step = ({renderStatus, selectedTask, step, stepContainer=f=>f, stepStyle=f=>f, getPlaceholder=f=>f, onEnterPress=f=>f, onRemoveStep=f=>f, onSetStep=f=>f}) => {
     return (
         <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => onSetStep(step.id, step.step)}>
             <div className="align-center">

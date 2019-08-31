@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from '@material-ui/core';
 
-const MenuTemplate = ({anchorEl, menuArr, open, onClose, renderMenuItems=f=>f}) => {
+const MenuTemplate = ({anchorEl, menuArr, open, onClose=f=>f, renderMenuItems=f=>f}) => {
     return (
         <Menu
             open={ open }
