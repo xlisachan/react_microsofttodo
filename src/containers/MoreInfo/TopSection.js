@@ -7,12 +7,13 @@ import TopSection from '../../components/MoreInfo/TopSection';
 const TopSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
     if (!selectedTask[0]) return null;
 
-    const topStyle = () => {
-        return {
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between'
-        }
+    const topStyle = {
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        position: 'fixed',
+        zIndex: 2,
+        background: '#fafafa'
     }
 
     const onSubmit = e => {
@@ -20,9 +21,9 @@ const TopSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggl
 
         if (currentTask.task === '') {
             let subTask = selectedTask[0].item
-            onUpdateTask(currentTask.id, subTask);
+            onUpdateTask(currentTask.id, subTask, selectedTask[0].note, selectedTask[0].steps);
         } else {
-            onUpdateTask(currentTask.id, currentTask.task);
+            onUpdateTask(currentTask.id, currentTask.task, selectedTask[0].note, selectedTask[0].steps);
         }
     }
 
@@ -81,15 +82,15 @@ const mapDispatchToProps = dispatch => ({
         )
     },
 
-    onSetTask(id, task) {
+    onSetTask(id, task, note, steps) {
         dispatch(
-            setTask(id, task)
+            setTask(id, task, note, steps)
         )
     },
 
-    onUpdateTask(id, task) {
+    onUpdateTask(id, task, note, steps) {
         dispatch(
-            setTask(id, task)
+            setTask(id, task, note, steps)
         )
 
         dispatch(

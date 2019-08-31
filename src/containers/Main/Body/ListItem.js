@@ -20,7 +20,7 @@ const ListItemContainer = ({selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, 
     }
 
     const handleClick = () => {
-        onSetTask(task.task_id, task.item, task.steps, task.note);
+        onSetTask(task.task_id, task.item, task.note, task.steps);
         onClick();
     }
 
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => ({
         )
     },
 
-    onSetTask(id, task, steps, note) {
+    onSetTask(id, task, note, steps) {
 
         dispatch(
             setTask(id, task, note, steps)
