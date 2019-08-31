@@ -7,16 +7,14 @@ import BottomSection from '../../components/MoreInfo/BottomSection';
 const BottomSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {
     if (!selectedTask[0]) return null;
 
-    const bottomStyle = () => {
-        return {
-            width: '95%',
-            padding: '0 10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            position: 'fixed',
-            bottom: 10
-        }
+    const bottomStyle = {
+        width: '95%',
+        padding: '10px 20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        position: 'fixed',
+        bottom: 0
     }
 
     const getFormattedDate = (inputDate) => {
