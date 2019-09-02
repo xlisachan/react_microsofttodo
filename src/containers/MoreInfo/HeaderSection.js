@@ -2,25 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTask, toggleCompleted, toggleImportant, updateTask } from '../../actions'; 
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
-import TopSection from '../../components/MoreInfo/TopSection';
+import HeaderSection from '../../components/MoreInfo/HeaderSection';
 
-const TopSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
+const HeaderSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
     if (!selectedTask[0]) return null;
-
-    const topStyle = {
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        position: 'fixed',
-        zIndex: 2,
-        background: '#fafafa'
-    }
 
     const onSubmit = e => {
         e.preventDefault();
 
         if (currentTask.task === '') {
-            let subTask = selectedTask[0].item
+            let subTask = selectedTask[0].item;
             onUpdateTask(currentTask.id, subTask, selectedTask[0].note, selectedTask[0].steps);
         } else {
             onUpdateTask(currentTask.id, currentTask.task, selectedTask[0].note, selectedTask[0].steps);
@@ -55,18 +46,16 @@ const TopSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggl
     }
 
     return (
-        <TopSection
+        <HeaderSection
             currentTask={ currentTask }
             renderStatus={ renderStatus }
             selectedTask={ selectedTask }
-            topStyle={ topStyle }
             onEnterPress={ onEnterPress }
             onSetTask={ onSetTask }
             onSubmit={ onSubmit }
         />
     );
 }
-
 
 const mapDispatchToProps = dispatch => ({
     
@@ -100,4 +89,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(null, mapDispatchToProps)(TopSectionContainer);
+export default connect(null, mapDispatchToProps)(HeaderSectionContainer);

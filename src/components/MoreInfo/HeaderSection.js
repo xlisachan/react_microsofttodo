@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Textarea from 'react-textarea-autosize';
-import { ListItem } from '@material-ui/core';
 
-const TopSection = ({currentTask, renderStatus, selectedTask, topStyle, onEnterPress=f=>f, onSetTask=f=>f, onSubmit=f=>f}) => {
+const HeaderSection = ({currentTask, renderStatus, selectedTask, onEnterPress=f=>f, onSetTask=f=>f, onSubmit=f=>f}) => {
     return (
-        <ListItem style={ topStyle }>
+        <div className="more-margins more-header">
             <div style={{display: 'flex'}}>
                 <span>
                     { selectedTask[0].completedStatus ?  renderStatus.completed : renderStatus.notCompleted }
@@ -25,18 +24,17 @@ const TopSection = ({currentTask, renderStatus, selectedTask, topStyle, onEnterP
             <span>
                 { selectedTask[0].importantStatus ? renderStatus.important : renderStatus.notImportant }
             </span>
-        </ListItem>
+        </div>
     );
 }
 
-TopSection.propTypes = {
+HeaderSection.propTypes = {
     currentTask: PropTypes.object.isRequired,
     renderStatus: PropTypes.object.isRequired,
     selectedTask: PropTypes.array.isRequired,
-    topStyle: PropTypes.object.isRequired,
     onEnterPress: PropTypes.func.isRequired,
     onSetTask: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
 }
 
-export default TopSection;
+export default HeaderSection;
