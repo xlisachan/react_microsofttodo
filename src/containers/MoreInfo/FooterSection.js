@@ -2,20 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
-import BottomSection from '../../components/MoreInfo/BottomSection';
+import FooterSection from '../../components/MoreInfo/FooterSection';
 
-const BottomSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {
+const FooterSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {
     if (!selectedTask[0]) return null;
-
-    const bottomStyle = {
-        width: '95%',
-        padding: '10px 20px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'fixed',
-        bottom: 0
-    }
 
     const getFormattedDate = (inputDate) => {
         let formattedDate;
@@ -53,8 +43,7 @@ const BottomSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f})
     }
 
     return (
-        <BottomSection 
-            bottomStyle={ bottomStyle }
+        <FooterSection 
             renderDate={ renderDate }
             selectedTask={ selectedTask }
             onClose={ onClose }
@@ -73,4 +62,4 @@ const mapDispatchToProps = dispatch => ({
     
 })
 
-export default connect(null, mapDispatchToProps)(BottomSectionContainer);
+export default connect(null, mapDispatchToProps)(FooterSectionContainer);

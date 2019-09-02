@@ -141,12 +141,14 @@ li.list-detail:first-child::before {
 }
 
 .add-list {
+  width: 199px;
   position: fixed;
   bottom: 0;
   display: flex;
   align-items: center;
   padding: 10px 20px;
   color: royalblue;
+  background: #eee;
 }
 
 .more-list-title{
@@ -156,7 +158,7 @@ li.list-detail:first-child::before {
 
 /* sidebar */
 .search-bar {
-  width: 19%;
+  width: 200px;
   background: #eee;
   padding-bottom: 20px;
   position: fixed;
@@ -166,6 +168,30 @@ li.list-detail:first-child::before {
 .list-titles {
   position: relative;
   top: 100px;
+}
+
+/* more */
+.more-fixed {
+  position: fixed;
+  background: #fafafa;
+  z-index: 1;
+}
+
+.more-margins{
+  width: 235px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.more-header {
+  align-items: flex-start;
+}
+
+.more-footer {
+  bottom: 0;
+  align-items: center;
 }
 
 /* context menu */
