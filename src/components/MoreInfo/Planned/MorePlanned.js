@@ -18,7 +18,7 @@ const Planned = ({selectedTask, tasks}) => {
     }
 
     return (
-        <ListItem style={{margin: '10px 3px'}}>
+        <ListItem style={{margin: '10px 0px'}}>
             <PlannedButton selectedTask={ selectedTask } onClick={ handleButtonClick } />
 
             <PlannedMenu
