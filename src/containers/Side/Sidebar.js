@@ -8,6 +8,7 @@ const SidebarContainer = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f
 
     const handleChange = e => {
         onChangeQuery(e.target.value);
+        onClose();
     }
 
     const clearSearch = () => {
