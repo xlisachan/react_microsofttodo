@@ -102,8 +102,14 @@ const MainContainer = React.forwardRef(({lists, query, selectedListId, tasks, op
         .filter(task => hideCompleted ? !task.completedStatus : task)
 
     const getSearchResults = () =>
-        <div>
-            <ListBody tasks={ filteredTasks } onClick={ onOpen } onClose={ onClose } />
+        <div className={classes.root}>
+            <main style={ mainStyle() }
+                className={clsx(classes.content, {
+                    [classes.contentShift]: open,
+                })}>
+
+                <ListBody tasks={ filteredTasks } onClick={ onOpen } onClose={ onClose } />
+            </main>
 
             <MoreSection open={ open } onClose={ onClose } />
         </div>
