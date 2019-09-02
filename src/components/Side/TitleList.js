@@ -4,7 +4,7 @@ import { Divider, List } from '@material-ui/core';
 
 const TitleList = ({renderLists}) => {
     return (
-        <List style={{height: '82vh', overflow: 'auto'}}>
+        <List style={{height: '82vh', overflow: 'auto', paddingBottom: 60}}>
             { renderLists.defaults() }
 
             <Divider style={{margin: 10}} />
