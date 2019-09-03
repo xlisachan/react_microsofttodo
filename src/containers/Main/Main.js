@@ -152,8 +152,6 @@ const MainContainer = React.forwardRef(({lists, query, selectedListId, tasks, op
     return <Main query={ query } renderMain={ renderMain } />
 })
 
-
-
 const mapStateToProps = state => ({
     lists: state.lists,
     query: state.query,
