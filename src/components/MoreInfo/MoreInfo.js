@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Divider, Drawer, Hidden } from '@material-ui/core';
-import TopSection from '../../containers/MoreInfo/TopSection';
-import Steps from './Steps/Steps';
-import MoreMyDay from '../../containers/MoreInfo/MyDay/MoreMyDay';
-import MorePlanned from './Planned/MorePlanned';
-import Note from '../../containers/MoreInfo/Note/Note';
-import BottomSection from '../../containers/MoreInfo/BottomSection';
+import { Drawer, Hidden } from '@material-ui/core';
+import HeaderSection from '../../containers/MoreInfo/HeaderSection';
+import BodySection from './BodySection';
+import FooterSection from '../../containers/MoreInfo/FooterSection';
 
 const drawerWidth = 250;
 
@@ -46,25 +43,15 @@ const More = ({currentTask, tasks, open, onClose=f=>f}) => {
                 }}>
 
                 <div className={classes.drawerHeader}>
-                    <div className={classes.toolbar} />
+                    <div className="more-fixed">
+                        <div className={classes.toolbar} />
 
-                    <TopSection currentTask={ currentTask } selectedTask={ selectedTask } />
+                        <HeaderSection currentTask={ currentTask } selectedTask={ selectedTask } />
+                    </div>
 
-                    <Steps selectedTask={ selectedTask } />
+                    <BodySection selectedTask={ selectedTask } tasks={ tasks } onClose={ onClose } />
 
-                    <Divider />
-
-                    <MoreMyDay selectedTask={ selectedTask } onClose={ onClose } />
-
-                    <Divider />
-
-                    <MorePlanned selectedTask={ selectedTask } tasks={ tasks } />
-
-                    <Divider />
-
-                    <Note selectedTask={ selectedTask } />
-
-                    <BottomSection selectedTask={ selectedTask } onClose={ onClose } />
+                    <FooterSection selectedTask={ selectedTask } onClose={ onClose } />
                 </div>
             </Drawer>
         </Hidden>
@@ -72,6 +59,8 @@ const More = ({currentTask, tasks, open, onClose=f=>f}) => {
 }
 
 More.propTypes = {
+    currentTask: PropTypes.object.isRequired,
+    tasks: PropTypes.array.isRequired, 
     open: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired
 }
