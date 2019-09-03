@@ -160,7 +160,6 @@ li.list-detail:first-child::before {
 .search-bar {
   width: 200px;
   background: #eee;
-  padding-bottom: 20px;
   position: fixed;
   z-index: 2;
 }
