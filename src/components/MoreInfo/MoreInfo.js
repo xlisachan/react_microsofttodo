@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const More = ({currentTask, tasks, open, onClose=f=>f}) => {
+const More = ({currentTask, topHeight, tasks, open, onClose=f=>f}) => {
     const classes = useStyles();
     const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
 
@@ -43,11 +43,9 @@ const More = ({currentTask, tasks, open, onClose=f=>f}) => {
                 }}>
 
                 <div className={classes.drawerHeader}>
-                    <div className="more-fixed">
-                        <div className={classes.toolbar} />
+                    <div className={classes.toolbar} />
 
-                        <HeaderSection currentTask={ currentTask } selectedTask={ selectedTask } />
-                    </div>
+                    <HeaderSection currentTask={ currentTask } selectedTask={ selectedTask } />
 
                     <BodySection selectedTask={ selectedTask } tasks={ tasks } onClose={ onClose } />
 

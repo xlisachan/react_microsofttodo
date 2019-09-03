@@ -191,6 +191,8 @@ li.list-detail:first-child::before {
 
 .more-footer {
   bottom: 0;
+  margin-bottom: 0;
+  padding: 10px 16px;
   align-items: center;
 }
 
