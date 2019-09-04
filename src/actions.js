@@ -51,13 +51,13 @@ export const loadTasks = () => ({
 })
 
 export const addTask = (
-        task_id, item, date_completed, date_created, date_due,
+        task_id, item, date_completed, date_created, date_due, temp,
         completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
     ) => dispatch => {
     dispatch({
         type: C.ADD_TASK,
         payload: {
-            task_id, item, date_completed, date_created, date_due,
+            task_id, item, date_completed, date_created, date_due, temp,
             completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
         }
     })

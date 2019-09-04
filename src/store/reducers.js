@@ -114,7 +114,8 @@ const tasks = (state=[], action) => {
             return state.map(task =>
                 (
                     task.date_created === todaysDate ||
-                    task.date_due === todaysDate 
+                    task.date_due === todaysDate ||
+                    task.temp === todaysDate
                 )?
                     {
                         ...task,
@@ -222,10 +223,18 @@ const tasks = (state=[], action) => {
         case C.EDIT_TASK_STATUS_MYDAY :
             return state.map(task =>
                 task.task_id === action.payload ?
-                    {
-                        ...task,
-                        my_day: !task.my_day
-                    }
+                    task.my_day === true ?
+                        {
+                            ...task,
+                            my_day: !task.my_day,
+                            temp: ""
+                        }
+                        :
+                        {
+                            ...task,
+                            my_day: !task.my_day,
+                            temp: todaysDate
+                        }
                     :
                     task
             )            
