@@ -63,7 +63,8 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                     tasks: true,
                     list_id: '3',
                     note: "",
-                    steps: []
+                    steps: [],
+                    temp: ""
                 });
             } else if (name === "Important") {
                 onAddTask({
@@ -80,7 +81,8 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                     tasks: true,
                     list_id: '3',
                     note: "",
-                    steps: []
+                    steps: [],
+                    temp: ""
                 });
             } else if (name === "Planned") {
                 onAddTask({
@@ -97,7 +99,8 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                     tasks: true,
                     list_id: '3',
                     note: "",
-                    steps: []
+                    steps: [],
+                    temp: ""
                 });
             } else if (name === "Tasks") {
                 onAddTask({
@@ -114,7 +117,8 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                     tasks: true,
                     list_id: '3',
                     note: "",
-                    steps: []
+                    steps: [],
+                    temp: ""
                 });
             } else {
                 onAddTask({
@@ -131,7 +135,8 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                     tasks: false,
                     list_id: selectedList[0].id,
                     note: "",
-                    steps: []
+                    steps: [],
+                    temp: ""
                 });
             }
         }
@@ -175,12 +180,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 
     onAddTask({
-            task_id, item, date_completed, date_created, date_due,
+            task_id, item, date_completed, date_created, date_due, temp,
             completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
         }) {
         dispatch(
             addTask(
-                task_id, item, date_completed, date_created, date_due, 
+                task_id, item, date_completed, date_created, date_due, temp,
                 completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
             )
         )
