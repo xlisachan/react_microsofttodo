@@ -84,7 +84,10 @@ const MainContainer = React.forwardRef(({lists, query, selectedListId, tasks, op
 
     query ?
         tasks.forEach(task => {
-            if (task.item.toLowerCase().indexOf(query) !== -1) {
+            if (
+                (task.item.toLowerCase().indexOf(query) !== -1) ||
+                (task.note.toLowerCase().indexOf(query) !== -1)
+            ){
                 filteredTasks.push(task);
             }
         })
