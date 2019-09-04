@@ -17,9 +17,6 @@ const saveState = () => {
 const store = storeFactory(initialState);
 store.subscribe(saveState);
 
-window.React = React;
-window.store = store;
-
 ReactDOM.render(
     <Provider store={ store }>
         <App />
