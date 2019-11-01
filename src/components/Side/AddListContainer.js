@@ -1,7 +1,8 @@
 import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { addList, setList } from '../../actions';
+import { addList } from '../../actions/listsActions';
+import { setList } from '../../actions';
 import AddList from './AddList';
 
 const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f})  => {

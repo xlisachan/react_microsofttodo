@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RightClickMenuSide from '../../components/Side/RightClickMenuSide';
+import RightClickMenuSide from '../../components/Side/RightClickMenuSideContainer';
 import TitleRow from './TitleRowContainer';
 import TitleList from './TitleList';
 
