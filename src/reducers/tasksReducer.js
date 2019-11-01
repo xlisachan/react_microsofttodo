@@ -1,108 +1,21 @@
-import C from '../constants';
-import { combineReducers } from 'redux';
+import C from '../actions/constants';
 import moment from 'moment';
 
 const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
-const query = (state='', action) => {
-	switch(action.type) {
-        case C.CHANGE_QUERY :
-            return action.payload
-        
-        case C.CLEAR_QUERY :
-            return ''
-        
-        default :
-            return state
-    }
-}
-
-// SECTION - MORE
-const current = (state={}, action) => {
-    switch (action.type) {
-        case C.SET_LIST :
-            return {
-                ...state,
-                list: {
-                    id: action.id,
-                    title: action.payload
-                },
-                task: {
-                    id: "",
-                    task: ""
-                },
-                step: {
-                    id: "",
-                    step:""
-                },
-                taskSteps: [],
-                note: ""
-            }
-        
-        case C.SET_TASK :
-            return {
-                ...state,
-                task: {
-                    id: action.id,
-                    task: action.payload
-                },
-                step: {
-                    id: "",
-                    step: ""
-                },
-                taskSteps: action.steps,
-                note: action.note
-            }
-
-        case C.SET_STEP :
-            return {
-                ...state,
-                step: action.payload,
-                taskSteps: state.taskSteps.map(step =>
-                    step.id === action.id ?
-                        action.payload
-                        :
-                        step
-                )
-            }
-                
-        case C.SET_NOTE :
-            return {
-                ...state,
-                note: action.payload
-            }
-        
-        case C.ADD_STEP :
-            return {
-                ...state,
-                taskSteps: [
-                    ...state.taskSteps,
-                    step({}, action)
-                ]
-            }
-
-        case C.REMOVE_STEP :
-            return {
-                ...state,
-                taskSteps: state.taskSteps.filter(step => step.id !== action.stepId)
-            }
-
-        default : 
-            return state
-    }
-}
+const initialState = [];
 
 const step = (state={}, action) =>
     (action.type === C.ADD_STEP) ?
         action.payload :
         state
-
+        
 const task = (state={}, action) =>
     (action.type === C.ADD_TASK) ?
         action.payload :
         state
 
-const tasks = (state=[], action) => {
+export default (state=initialState, action) => {
     switch(action.type) {
         case C.ADD_TASK :
             return [
@@ -365,109 +278,3 @@ const tasks = (state=[], action) => {
             return state
     }
 }
-
-const list = (state={}, action) =>
-    (action.type === C.ADD_LIST) ?
-        action.payload :
-        state
-
-const lists = (state=[], action) => {
-    switch(action.type) {
-        case C.ADD_LIST :
-            return [
-                ...state,
-                list(null, action)
-            ]
-        
-        case C.REMOVE_LIST :
-            return state.filter(list => list.id !== action.payload)
-
-        case C.RENAME_LIST :
-            return state.map(list => 
-                list.id === action.payload ?
-                {
-                    ...list,
-                    name: action.newName
-                }
-                :
-                list
-            )
-
-        case C.SET_ORDERBY :
-            return state.map(list => 
-                list.id === action.id ?
-                    {
-                        ...list,
-                        orderBy: action.payload,
-                        sorted: true
-                    }
-                    :
-                    list
-            )
-        
-        case C.SET_ORDERDIR :
-            return state.map(list => 
-                list.id === action.id ?
-                    list.orderDir === 'asc' ?
-                        {
-                            ...list,
-                            orderDir: 'desc',
-                            sorted: true
-                        }
-                        :
-                        {
-                            ...list,
-                            orderDir: 'asc',
-                            sorted: true
-                        }
-                    :
-                    list
-            )
-        
-        case C.RESET_ORDERDIR :
-            return state.map(list => 
-                list.id === action.id ?
-                    {
-                        ...list,
-                        orderDir: 'asc',
-                        sorted: false
-                    }
-                    :
-                    list
-            )
-        
-        case C.TOGGLE_HIDE :
-            return state.map(list => 
-                list.id === action.id ?
-                    {
-                        ...list,
-                        hideCompleted: !list.hideCompleted
-                    }
-                    :
-                    list
-            )
-        
-        case C.SET_BGCOLOR :
-            return state.map(list => 
-                list.id === action.id ?
-                    {
-                        ...list,
-                        color: action.payload
-                    }
-                    :
-                    list
-            )
-
-        default :
-            return state
-    }
-}
-
-const rootReducer = combineReducers({
-    query,
-    current,
-    lists,
-    tasks
-})
-
-export default rootReducer;
