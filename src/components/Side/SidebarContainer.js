@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeQuery, clearQuery } from '../../actions';
+import { changeQuery, clearQuery } from '../../actions/queryActions';
 import Sidebar from './Sidebar';
 
 const SidebarContainer = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
