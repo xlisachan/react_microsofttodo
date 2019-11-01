@@ -1,28 +1,19 @@
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import data from '../initialState.json'
 
-const consoleMessages = store => next => action => {
-    let result;
+const initialState = data;
 
-    console.groupCollapsed(`dispatching action => ${action.type}`);
-    console.log(`tasks`, store.getState().tasks.length);
-    
-    result = next(action);
+const middleware = [thunk];
 
-    let { listTitle, moreInfo, tasks } = store.getState();
-    
-    console.log(`
-        listTitle: ${listTitle},
-        moreInfo: ${JSON.stringify(moreInfo)},
-        tasks: ${JSON.stringify(tasks)}
-    `)
+const store = createStore(
+    rootReducer,
+    initialState,
+    compose(
+        applyMiddleware(...middleware),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+);
 
-    console.groupEnd();
-
-    return result;
-}
-
-export default (initialState={}) => {
-    return applyMiddleware(thunk, consoleMessages)(createStore)(rootReducer, initialState)
-}
+export default store;
