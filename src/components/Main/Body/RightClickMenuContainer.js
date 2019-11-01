@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleMyDay, toggleCompleted, toggleImportant, removeTask } from '../../../actions'; 
+import { toggleMyDay, toggleCompleted, toggleImportant, removeTask } from '../../../actions/tasksActions'; 
 import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import RightClickMenu from './RightClickMenu';
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { addStep, addTask } from '../actions';
+import { addStep, addTask } from '../actions/tasksActions';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import AddItem from './AddItem';
 

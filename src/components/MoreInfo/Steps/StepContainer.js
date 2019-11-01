@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setStep } from '../../../actions/currentActions'; 
-import { removeStep, toggleStep, updateStep } from '../../../actions';
+import { removeStep, toggleStep, updateStep } from '../../../actions/tasksActions';
 import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 import Step from './Step';
 

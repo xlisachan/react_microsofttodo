@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { removeTask } from '../../actions';
+import { removeTask } from '../../actions/tasksActions';
 import FooterSection from './FooterSection';
 
 const FooterSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {

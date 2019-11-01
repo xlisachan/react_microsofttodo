@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadTasks } from './actions';
+import { loadTasks } from './actions/tasksActions';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 
 class App extends Component {

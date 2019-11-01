@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { removeDateDue } from '../../../actions';
+import { removeDateDue } from '../../../actions/tasksActions';
 import { FaRegCalendar, FaTimes } from 'react-icons/fa';
 import PlannedButton from './PlannedButton';
 

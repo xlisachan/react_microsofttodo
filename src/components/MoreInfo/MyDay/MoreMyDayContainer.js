@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleMyDay } from '../../../actions';
+import { toggleMyDay } from '../../../actions/tasksActions';
 import { FaRegSun, FaTimes } from 'react-icons/fa';
 import MoreMyDay from './MoreMyDay';
 
