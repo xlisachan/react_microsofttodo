@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeDir, changeOrder, resetChangeDir } from '../../../actions';
+import { changeDir, changeOrder, resetChangeDir } from '../../../actions/listsActions';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import SortBar from './SortBar';
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { changeBgColor, changeOrder, toggleHide } from '../../../actions';
+import { changeBgColor, changeOrder, toggleHide } from '../../../actions/listsActions';
 import { Icon, ListItemText, Menu, MenuItem } from '@material-ui/core';
 import { FaCaretRight } from 'react-icons/fa';
 import MenuTemplate from '../../MenuTemplate';
