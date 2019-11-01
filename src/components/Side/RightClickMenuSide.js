@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { FaRegEdit } from 'react-icons/fa';
-import TitleRow from '../../containers/Side/TitleRow';
+import TitleRow from './TitleRowContainer';
 import DeleteModal from '../DeleteModal';
 
 const RightClickMenuSide = ({list, onClick=f=>f, onClose=f=>f, onEditClick=f=>f, onRemove=f=>f}) => {

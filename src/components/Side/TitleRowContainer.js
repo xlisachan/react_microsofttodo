@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setList } from '../../actions';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
-import TitleRow from '../../components/Side/TitleRow';
+import TitleRow from './TitleRow';
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 

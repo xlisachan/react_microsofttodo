@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Search from './Search';
-import TitleList from '../../containers/Side/TitleList';
-import AddList from '../../containers/Side/AddList';
+import TitleList from './TitleListContainer';
+import AddList from '../../components/Side/AddListContainer';
 
 const Sidebar = React.forwardRef(({query, onChange=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}, ref) => {
     return (

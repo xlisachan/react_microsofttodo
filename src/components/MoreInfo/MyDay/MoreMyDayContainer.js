@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleMyDay } from '../../../actions';
 import { FaRegSun, FaTimes } from 'react-icons/fa';
-import MoreMyDay from '../../../components/MoreInfo/MyDay/MoreMyDay';
+import MoreMyDay from './MoreMyDay';
 
 const MoreMyDayContainer = ({currentList, selectedTask, onClose=f=>f, onToggleMyDay=f=>f}) => {
     if (!selectedTask[0]) return null;

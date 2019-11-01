@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTask, toggleCompleted, toggleImportant } from '../../../actions'; 
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
-import ListItem from '../../../components/Main/Body/ListItem';
+import ListItem from './ListItem';
 
 const ListItemContainer = ({selectedTaskId, task, onClick=f=>f, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f}) => {
     const listStyle = id => {

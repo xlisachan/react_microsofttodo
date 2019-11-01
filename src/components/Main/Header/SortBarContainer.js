@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeDir, changeOrder, resetChangeDir } from '../../../actions';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
-import SortBar from '../../../components/Main/Header/SortBar';
+import SortBar from './SortBar';
 
 const SortBarContainer = ({barColor, lists, selectedListId, onChangeDir=f=>f, onClear=f=>f}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);

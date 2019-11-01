@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, CssBaseline } from '@material-ui/core';
-import Header from '../../containers/Main/Header/Header';
-import ListBody from '../../containers/Main/Body/ListBody';
-import NoMatch from '../../components/Main/Body/NoMatch';
-import MoreSection from '../../containers/MoreInfo/MoreInfo';
-import Main from '../../components/Main/Main';
+import Header from '../../components/Main/Header/HeaderContainer';
+import ListBody from '../../components/Main/Body/ListBodyContainer';
+import NoMatch from './Body/NoMatch';
+import MoreSection from '../MoreInfo/MoreInfoContainer';
+import Main from './Main';
 
 const drawerWidth = 250;
 

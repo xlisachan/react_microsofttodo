@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleMyDay, toggleCompleted, toggleImportant, removeTask } from '../../../actions'; 
 import { FaRegSun, FaCheckCircle, FaRegCheckCircle, FaStar, FaRegStar } from 'react-icons/fa';
-import RightClickMenu from '../../../components/Main/Body/RightClickMenu';
+import RightClickMenu from './RightClickMenu';
 
 const RightClickMenuContainer = ({task, onClick=f=>f, onClose=f=>f, onToggleMyDay=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onRemoveTask=f=>f}) => {
     const removeMyDay =

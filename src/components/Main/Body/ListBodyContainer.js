@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RightClickMenu from '../../../containers/Main/Body/RightClickMenu';
-import ListBody from '../../../components/Main/Body/ListBody';
+import RightClickMenu from './RightClickMenuContainer';
+import ListBody from './ListBody';
 
 const ListBodyContainer = ({query, tasks, onClick=f=>f, onClose=f=>f}) => {
     const renderTasks = () =>

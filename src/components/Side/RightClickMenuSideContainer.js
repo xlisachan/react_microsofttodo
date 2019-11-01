@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeList, removeTask, setList } from '../../actions';
-import RightClickMenuSide from '../../components/Side/RightClickMenuSide';
+import RightClickMenuSide from './RightClickMenuSide';
 
 const RightClickMenuSideContainer = ({list, tasks, onClick=f=>f, onClose=f=>f, onEditClick=f=>f, onRemoveList=f=>f, onRemoveTask=f=>f}) => {
     const removeTasks = () => {

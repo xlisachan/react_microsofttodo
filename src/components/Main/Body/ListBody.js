@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddItem from '../../../containers/AddItem';
+import AddItem from '../../AddItemContainer';
 
 const ListBody = ({query, renderTasks=f=>f}) => {
     return (

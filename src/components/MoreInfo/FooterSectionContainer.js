@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
-import FooterSection from '../../components/MoreInfo/FooterSection';
+import FooterSection from './FooterSection';
 
 const FooterSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {
     if (!selectedTask[0]) return null;

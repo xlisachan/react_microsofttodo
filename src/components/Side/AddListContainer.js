@@ -2,7 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { addList, setList } from '../../actions';
-import AddList from '../../components/Side/AddList';
+import AddList from './AddList';
 
 const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f})  => {
     const namesOnList = lists.map(list => list.name);

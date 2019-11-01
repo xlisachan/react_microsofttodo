@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTask, toggleCompleted, toggleImportant, updateTask } from '../../actions'; 
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
-import HeaderSection from '../../components/MoreInfo/HeaderSection';
+import HeaderSection from './HeaderSection';
 
 const HeaderSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
     if (!selectedTask[0]) return null;

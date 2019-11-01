@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from '../../../components/Main/Header/Header';
+import Header from './Header';
 
 const HeaderContainer = React.forwardRef(({lists, selectedListId}, ref) => {
     const selectedList = lists.filter(list => list.id === selectedListId);

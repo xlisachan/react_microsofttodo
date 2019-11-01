@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from '@material-ui/core';
-import Step from '../../../containers/MoreInfo/Steps/Step';
-import AddItem from '../../../containers/AddItem';
+import Step from './StepContainer';
+import AddItem from '../../AddItemContainer';
 
 const Steps = ({selectedTask}) => {
     if (!selectedTask[0]) return null;

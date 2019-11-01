@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { removeStep, setStep, toggleStep, updateStep } from '../../../actions'; 
 import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
-import Step from '../../../components/MoreInfo/Steps/Step';
+import Step from './Step';
 
 const StepContainer = ({currentStep, currentSteps, selectedTask, step, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
     const stepContainer = id => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListDetails from '../../../containers/Main/Body/ListDetails';
+import ListDetails from './ListDetailsContainer';
 
 const ListItem = ({renderStatus, task, listStyle=f=>f, listItem=f=>f, onClick=f=>f}) => {
     return ( 

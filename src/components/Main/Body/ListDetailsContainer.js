@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
 import moment from 'moment';
-import Detail from '../../../components/Main/Body/Detail';
-import ListDetails from '../../../components/Main/Body/ListDetails';
+import Detail from './Detail';
+import ListDetails from './ListDetails';
 
 const ListDetailsContainer = ({lists, selectedListId, task}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import HeaderName from '../../../containers/Main/Header/HeaderName';
+import HeaderName from './HeaderNameContainer';
 import HeaderButton from './HeaderButton';
-import SortBar from '../../../containers/Main/Header/SortBar';
+import SortBar from './SortBarContainer';
 
 const Header = React.forwardRef(({name, selectedList, formatColor=f=>f, secondaryColor=f=>f}, ref) => {
     return (

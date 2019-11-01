@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { FaEllipsisH } from 'react-icons/fa';
-import HeaderMenu from '../../../containers/Main/Header/HeaderMenu';
+import HeaderMenu from './HeaderMenuContainer';
 
 const HeaderButton = ({buttonColor}) => {
     const [anchorEl, setAnchorEl] = useState(null);

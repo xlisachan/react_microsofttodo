@@ -4,7 +4,7 @@ import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { addStep, addTask } from '../actions';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
-import AddItem from '../components/AddItem';
+import AddItem from './AddItem';
 
 const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
     const [item, setItem] = useState('');

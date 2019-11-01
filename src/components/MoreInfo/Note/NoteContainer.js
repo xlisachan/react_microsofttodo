@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setNote, updateNote } from '../../../actions';
 import Textarea from 'react-textarea-autosize';
-import Note from '../../../components/MoreInfo/Note/Note';
+import Note from './Note';
 
 const NoteContainer = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=f=>f}) => {
     const [open, setOpen] = React.useState(false);

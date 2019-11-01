@@ -3,7 +3,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { removeDateDue } from '../../../actions';
 import { FaRegCalendar, FaTimes } from 'react-icons/fa';
-import PlannedButton from '../../../components/MoreInfo/Planned/PlannedButton';
+import PlannedButton from './PlannedButton';
 
 const PlannedButtonContainer = ({selectedTask, onClick=f=>f, onRemoveDateDue=f=>f}) => {
     if (!selectedTask[0]) return null;

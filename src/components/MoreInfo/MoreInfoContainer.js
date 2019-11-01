@@ -1,4 +1,4 @@
-import MoreInfo from '../../components/MoreInfo/MoreInfo';
+import MoreInfo from './MoreInfo';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({

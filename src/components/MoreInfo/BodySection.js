@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider } from '@material-ui/core';
 import Steps from './Steps/Steps';
-import MoreMyDay from '../../containers/MoreInfo/MyDay/MoreMyDay';
+import MoreMyDay from './MyDay/MoreMyDayContainer';
 import MorePlanned from './Planned/MorePlanned';
-import Note from '../../containers/MoreInfo/Note/Note';
+import Note from './Note/NoteContainer';
 
 const BodySection = ({selectedTask, tasks, onClose}) => {
     return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RightClickMenuSide from '../../containers/Side/RightClickMenuSide';
-import TitleRow from '../../containers/Side/TitleRow';
-import TitleList from '../../components/Side/TitleList';
+import RightClickMenuSide from '../../components/Side/RightClickMenuSide';
+import TitleRow from './TitleRowContainer';
+import TitleList from './TitleList';
 
 const TitleListContainer = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
     const defaultLists = lists.filter(list => list.defaultList)

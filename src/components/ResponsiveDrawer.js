@@ -1,8 +1,8 @@
 import React from 'react';
 import { CssBaseline, Drawer, Hidden, useMediaQuery} from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Sidebar from '../containers/Side/Sidebar';
-import Main from '../containers/Main/Main';
+import Sidebar from '../components/Side/SidebarContainer';
+import Main from '../components/Main/MainContainer';
 
 const drawerWidth = 200;
 

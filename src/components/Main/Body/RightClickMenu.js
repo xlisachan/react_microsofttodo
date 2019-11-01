@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
-import ListItem from '../../../containers/Main/Body/ListItem';
+import ListItem from './ListItemContainer';
 import DeleteModal from '../../DeleteModal';
 
 const RightClickMenu = ({task, renderStatus, onClick=f=>f, onRemove=f=>f}) => {

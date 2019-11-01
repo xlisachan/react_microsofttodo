@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, Hidden } from '@material-ui/core';
-import HeaderSection from '../../containers/MoreInfo/HeaderSection';
+import HeaderSection from './HeaderSectionContainer';
 import BodySection from './BodySection';
-import FooterSection from '../../containers/MoreInfo/FooterSection';
+import FooterSection from './FooterSectionContainer';
 
 const drawerWidth = 250;
 
