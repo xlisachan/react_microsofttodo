@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTask, toggleCompleted, toggleImportant } from '../../../actions'; 
+import { setTask } from '../../../actions/currentActions';
+import { toggleCompleted, toggleImportant } from '../../../actions'; 
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import ListItem from './ListItem';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setNote, updateNote } from '../../../actions';
+import { setNote } from '../../../actions/currentActions';
+import { updateNote } from '../../../actions';
 import Textarea from 'react-textarea-autosize';
 import Note from './Note';
 

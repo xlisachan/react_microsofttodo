@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { renameList } from '../../../actions/listsActions';
-import { setList } from '../../../actions';
+import { setList } from '../../../actions/currentActions';
 import HeaderName from './HeaderName';
 
 const HeaderNameContainer = React.forwardRef(({currentList, lists, onRenameList=f=>f, onSetList=f=>f}, ref) => { 

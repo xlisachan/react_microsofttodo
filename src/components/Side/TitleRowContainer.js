@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setList } from '../../actions';
+import { setList } from '../../actions/currentActions';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 import TitleRow from './TitleRow';
 

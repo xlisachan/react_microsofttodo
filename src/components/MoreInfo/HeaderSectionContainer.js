@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTask, toggleCompleted, toggleImportant, updateTask } from '../../actions'; 
+import { setTask } from '../../actions/currentActions'; 
+import { toggleCompleted, toggleImportant, updateTask } from '../../actions';
 import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
 import HeaderSection from './HeaderSection';
 
