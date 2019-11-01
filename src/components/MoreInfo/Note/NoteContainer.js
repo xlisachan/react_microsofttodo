@@ -21,23 +21,32 @@ const NoteContainer = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=
         setOpen(false);
     };
 
-    const placeholder =
-        <Textarea
-            placeholder={'Add a Note'}
-            value={ currentNote }
-            onChange={e => onSetNote(e.target.value)}
-        />
+    const placeholder = () => {
+        if (!currentNote) currentNote = "";
+        return (
+            <Textarea
+                placeholder={'Add a Note'}
+                value={ currentNote }
+                onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
+            />
+        );
+    }
 
-    const note =
-        <Textarea
-            value={ currentNote }
-            onChange={e => onSetNote(e.target.value)}
-        />
+    const note = () => {
+        if (!currentNote) currentNote = "";
+        return (
+            <Textarea
+                value={ currentNote }
+                onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
+            />
+        )
+    }
 
     const renderNote = {
         placeholder,
         note
     }
+
     return (
         <Note
             open={ open }

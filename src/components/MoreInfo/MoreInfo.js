@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const More = ({currentTask, topHeight, tasks, open, onClose=f=>f}) => {
+const More = ({currentTask, tasks, open, onClose=f=>f}) => {
     const classes = useStyles();
     const selectedTask = tasks.filter(task => task.task_id === currentTask.id);
 
