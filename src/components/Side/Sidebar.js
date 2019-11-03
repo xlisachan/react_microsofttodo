@@ -1,22 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Drawer, Hidden } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import Search from './Search';
 import TitleList from './TitleListContainer';
 import AddList from '../../components/Side/AddListContainer';
 
+const drawerWidth = 200;
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+    drawer: {
+        [theme.breakpoints.up('sm')]: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+    },
+    drawerPaper: {
+        width: drawerWidth,
+        background: '#eee'
+    },
+}));
+
 const Sidebar = React.forwardRef(({query, onChange=f=>f, onClear=f=>f, onClose=f=>f, onEditClick=f=>f}, ref) => {
+    const classes = useStyles();
+
     return (
-        <div>
-            <div className="search-bar">
-                <Search ref={ ref } query={ query } onChange={ onChange } onClear={ onClear } />
-            </div>
+        <nav className={classes.drawer} aria-label="Todo Lists">
+            <Hidden xsDown implementation="css">
+                <Drawer open variant="permanent" classes={{paper: classes.drawerPaper}}>
+                    <Search ref={ ref } query={ query } onChange={ onChange } onClear={ onClear } />
 
-            <div className="list-titles">
-                <TitleList onClick={ onClear } onClose={ onClose } onEditClick={ onEditClick } />
-            </div>
+                    <TitleList onClick={ onClear } onClose={ onClose } onEditClick={ onEditClick } />
 
-            <AddList onEditClick={ onEditClick } onClose={ onClose } />
-        </div>
+                    <AddList onEditClick={ onEditClick } onClose={ onClose } />
+                </Drawer>
+            </Hidden>
+        </nav>
     );
 })
 

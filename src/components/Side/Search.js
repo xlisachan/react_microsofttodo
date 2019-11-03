@@ -41,7 +41,7 @@ const Search = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) => {
     const classes = useStyles();
 
     return (
-        <div>
+        <div className="search-bar">
             <div className={classes.toolbar} />
 
             <div className={classes.search} style={{width: '90%', margin: 'auto'}}>
