@@ -1,30 +1,11 @@
 import React from 'react';
-import { CssBaseline, Drawer, Hidden, useMediaQuery} from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Sidebar from '../components/Side/SidebarContainer';
-import Main from '../components/Main/MainContainer';
-
-const drawerWidth = 200;
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-    },
-    drawer: {
-        [theme.breakpoints.up('sm')]: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-    },
-    drawerPaper: {
-        width: drawerWidth,
-        background: '#eee'
-    },
-}));
+import { CssBaseline, useMediaQuery} from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import Sidebar from './Side';
+import Main from './Main';
 
 const ResponsiveDrawer = () => {
     let inputEl = null;
-    const classes = useStyles();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -46,19 +27,13 @@ const ResponsiveDrawer = () => {
     }
 
     return (
-        <div className={classes.root}>
+        <div style={{display: 'flex'}}>
             <CssBaseline />
 
-            <nav className={classes.drawer} aria-label="Todo Lists">
-                <Hidden xsDown implementation="css">
-                    <Drawer open variant="permanent" classes={{paper: classes.drawerPaper}}>
-                        <Sidebar
-                            onClose={ handleDrawerClose }
-                            onEditClick={ editClick }
-                        />
-                    </Drawer>
-                </Hidden>
-            </nav>
+            <Sidebar
+                onClose={ handleDrawerClose }
+                onEditClick={ editClick }
+            />
 
             <Main
                 ref={input => inputEl = input}

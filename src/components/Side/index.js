@@ -26,14 +26,13 @@ const SidebarContainer = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f
             onEditClick={ onEditClick }
         />
     )
-}
+};
 
 const mapStateToProps = state => ({
     query: state.query
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-
     onChangeQuery(query) {
         dispatch(
             changeQuery(query)
@@ -45,7 +44,6 @@ const mapDispatchToProps = dispatch => ({
             clearQuery()
         )
     }
-
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {forwardRef: true})(SidebarContainer);
