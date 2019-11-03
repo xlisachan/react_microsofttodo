@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Icon } from '@material-ui/core';
 
-const Detail = ({el, name, task}) => {
+const DetailItem = ({el, name, task}) => {
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
     return (
@@ -24,10 +24,10 @@ const Detail = ({el, name, task}) => {
             : null
 }
 
-Detail.propTypes = {
+DetailItem.propTypes = {
     el: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     task: PropTypes.object.isRequired
 }
 
-export default Detail;
+export default DetailItem;

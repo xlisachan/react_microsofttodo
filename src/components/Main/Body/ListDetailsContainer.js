@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
 import moment from 'moment';
-import Detail from './Detail';
+import DetailItem from './DetailItem';
 import ListDetails from './ListDetails';
 
 const ListDetailsContainer = ({lists, selectedListId, task}) => {
@@ -85,7 +85,7 @@ const ListDetailsContainer = ({lists, selectedListId, task}) => {
         const name = selectedList[0].name;
 
         return arr.map(detail =>
-            <Detail key={detail.id} el= {detail} name={name} task={task} />
+            <DetailItem key={detail.id} el= {detail} name={name} task={task} />
         )
     }
 
