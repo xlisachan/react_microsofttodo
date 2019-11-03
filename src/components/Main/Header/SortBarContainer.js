@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { changeDir, changeOrder, resetChangeDir } from '../../../actions/listsActions';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
@@ -37,6 +38,14 @@ const SortBarContainer = ({barColor, lists, selectedListId, onChangeDir=f=>f, on
             onClear={ onClear }
         />
     )
+}
+    
+SortBarContainer.propTypes = {
+    barColor: PropTypes.string.isRequired,
+    lists: PropTypes.array.isRequired,
+    selectedListId: PropTypes.string.isRequired,
+    onChangeDir: PropTypes.func.isRequired,
+    onClear: PropTypes.func.isRequired
 }
     
 const mapStateToProps = state => ({

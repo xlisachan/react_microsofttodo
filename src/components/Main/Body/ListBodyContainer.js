@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import RightClickMenu from './RightClickMenuContainer';
 import ListBody from './ListBody';
@@ -17,6 +18,13 @@ const ListBodyContainer = ({query, tasks, onClick=f=>f, onClose=f=>f}) => {
     return (
         <ListBody query={ query } renderTasks={ renderTasks } />
     );
+}
+
+ListBodyContainer.propTypes = {
+    query: PropTypes.string,
+    tasks: PropTypes.array,
+    onClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
