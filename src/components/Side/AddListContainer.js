@@ -47,7 +47,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    
     onAddList({id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}) {
         dispatch(
             addList(id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList)
@@ -57,7 +56,6 @@ const mapDispatchToProps = dispatch => ({
             setList(id, name)
         )
     }
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddListContainer);
