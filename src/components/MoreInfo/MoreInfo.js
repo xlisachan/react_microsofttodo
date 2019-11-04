@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, Hidden } from '@material-ui/core';
-import HeaderSection from './HeaderSectionContainer';
-import BodySection from './BodySection';
-import FooterSection from './FooterSectionContainer';
+import HeaderSection from './Header/HeaderSectionContainer';
+import BodySection from './Body/BodySection';
+import FooterSection from './Footer/FooterSectionContainer';
 
 const drawerWidth = 250;
 
@@ -54,13 +54,13 @@ const More = ({currentTask, tasks, open, onClose=f=>f}) => {
             </Drawer>
         </Hidden>
     )
-}
+};
 
 More.propTypes = {
     currentTask: PropTypes.object.isRequired,
     tasks: PropTypes.array.isRequired, 
     open: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired
-}
+};
 
 export default More;
