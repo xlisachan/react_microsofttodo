@@ -65,12 +65,12 @@ const Search = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) => {
             </div>
         </div>
     );
-})
+});
 
 Search.propTypes = {
     query: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     onClear: PropTypes.func.isRequired,
-}
+};
 
 export default Search;

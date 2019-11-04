@@ -11,10 +11,10 @@ const AddList = ({onClick=f=>f})  => {
             <ListItemText primary="New List" />
         </div>
     );
-}
+};
 
 AddList.propTypes = {
     onClick: PropTypes.func.isRequired
-}
+};
 
 export default AddList;

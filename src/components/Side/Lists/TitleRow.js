@@ -17,7 +17,7 @@ const TitleRow = ({list, listIcons, index, headerStyle=f=>f, iconStyle=f=>f, num
             { numberOfTasks(list.id, list.name) } 
         </ListItem>
     );
-}
+};
 
 TitleRow.propTypes = {
     list: PropTypes.any,
@@ -27,5 +27,6 @@ TitleRow.propTypes = {
     iconStyle: PropTypes.func.isRequired,
     numberOfTasks: PropTypes.func.isRequired,
     onClick: PropTypes.func
-}
+};
+
 export default TitleRow;

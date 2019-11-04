@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeList } from '../../actions/listsActions';
-import { setList } from '../../actions/currentActions';
-import { removeTask } from '../../actions/tasksActions';
+import { removeList } from '../../../actions/listsActions';
+import { setList } from '../../../actions/currentActions';
+import { removeTask } from '../../../actions/tasksActions';
 import RightClickMenuSide from './RightClickMenuSide';
 
 const RightClickMenuSideContainer = ({list, tasks, onClick=f=>f, onClose=f=>f, onEditClick=f=>f, onRemoveList=f=>f, onRemoveTask=f=>f}) => {
@@ -26,14 +26,13 @@ const RightClickMenuSideContainer = ({list, tasks, onClick=f=>f, onClose=f=>f, o
             onRemove={ removeAll }
         />
     )
-}
+};
 
 const mapStateToProps = state => ({
     tasks: state.tasks
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-    
     onRemoveList(id) {
         dispatch(
             removeList(id)
@@ -49,7 +48,6 @@ const mapDispatchToProps = dispatch => ({
             removeTask(id)
         )
     }
-
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RightClickMenuSideContainer);

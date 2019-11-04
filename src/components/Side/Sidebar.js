@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Drawer, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Search from './Search';
-import TitleList from './TitleListContainer';
-import AddList from '../../components/Side/AddListContainer';
+import Search from './Search/Search';
+import TitleList from './Lists/TitleListContainer';
+import AddList from '../../components/Side/AddList/AddListContainer';
 
 const drawerWidth = 200;
 
@@ -40,7 +40,7 @@ const Sidebar = React.forwardRef(({query, onChange=f=>f, onClear=f=>f, onClose=f
             </Hidden>
         </nav>
     );
-})
+});
 
 Sidebar.propTypes = {
     query: PropTypes.string.isRequired,
@@ -48,6 +48,6 @@ Sidebar.propTypes = {
     onClear: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onEditClick: PropTypes.func
-}
+};
 
 export default Sidebar;

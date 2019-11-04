@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import RightClickMenuSide from '../../components/Side/RightClickMenuSideContainer';
+import RightClickMenuSide from './RightClickMenuSideContainer';
 import TitleRow from './TitleRowContainer';
 import TitleList from './TitleList';
 
@@ -38,10 +39,17 @@ const TitleListContainer = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f
     return (
         <TitleList renderLists={ renderLists } />
     );
-}
+};
+
+TitleListContainer.propTypes = {
+    lists: PropTypes.array.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onEditClick: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     lists: state.lists,
-})
+});
 
 export default connect(mapStateToProps)(TitleListContainer);

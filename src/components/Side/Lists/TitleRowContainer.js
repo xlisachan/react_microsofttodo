@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setList } from '../../actions/currentActions';
+import { setList } from '../../../actions/currentActions';
 import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 import TitleRow from './TitleRow';
 
@@ -60,23 +61,33 @@ const TitleRowContainer = ({list, index, lists, query, selectedListId, tasks, on
             onClick={ handleClick }
         />
     );
-}
+};
+
+TitleRowContainer.propTypes = {
+    list: PropTypes.object.isRequired,
+    index: PropTypes.number.isRequired,
+    lists: PropTypes.array.isRequired,
+    query: PropTypes.string.isRequired,
+    selectedListId: PropTypes.string.isRequired,
+    tasks: PropTypes.array,
+    onClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onSetList: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     lists: state.lists,
     query: state.query,
     selectedListId: state.current.list["id"],
     tasks: state.tasks
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-
     onSetList(id, title) {
         dispatch(
             setList(id, title)
         )
     }
-
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TitleRowContainer);

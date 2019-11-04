@@ -12,10 +12,10 @@ const TitleList = ({renderLists}) => {
             { renderLists.customs() }
         </List>
     );
-}
+};
 
 TitleList.propTypes = {
     renderLists: PropTypes.object.isRequired
-}
+};
  
 export default TitleList;

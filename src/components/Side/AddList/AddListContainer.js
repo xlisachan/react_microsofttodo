@@ -1,8 +1,9 @@
 import React from 'react';
 import uuid from 'uuid';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addList } from '../../actions/listsActions';
-import { setList } from '../../actions/currentActions';
+import { addList } from '../../../actions/listsActions';
+import { setList } from '../../../actions/currentActions';
 import AddList from './AddList';
 
 const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f})  => {
@@ -40,11 +41,18 @@ const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f
     return (
         <AddList onClick={ handleClick } />
     );
-}
+};
+
+AddListContainer.propTypes = {
+    lists: PropTypes.array.isRequired,
+    onAddList: PropTypes.func.isRequired,
+    onEditClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     lists: state.lists,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     onAddList({id, name, orderBy, orderDir, sorted, hideCompleted, color, defaultList}) {
@@ -56,6 +64,6 @@ const mapDispatchToProps = dispatch => ({
             setList(id, name)
         )
     }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddListContainer);
