@@ -34,13 +34,13 @@ const MaterialUIPickers = ({selectedTask, tasks, onAddDateDue=f=>f, onClose=f=>f
             />
         </MuiPickersUtilsProvider>
     );
-}
+};
 
 MaterialUIPickers.propTypes = {
     selectedTask: PropTypes.array.isRequired,
     tasks: PropTypes.array.isRequired,
     onAddDateDue: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired
-}
+};
 
 export default MaterialUIPickers;

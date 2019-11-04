@@ -30,11 +30,11 @@ const Planned = ({selectedTask, tasks}) => {
             />
         </ListItem>
     );
-}
+};
 
 Planned.propTypes = {
     selectedTask: PropTypes.array.isRequired,
     tasks: PropTypes.array.isRequired
-}
+};
 
 export default Planned;

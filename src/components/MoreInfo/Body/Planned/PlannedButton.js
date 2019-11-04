@@ -1,13 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import { connect } from 'react-redux';
-import { removeDateDue } from '../../../actions/tasksActions';
 import { FaRegCalendar, FaTimes } from 'react-icons/fa';
-import PlannedButton from './PlannedButton';
 
-const PlannedButtonContainer = ({selectedTask, onClick=f=>f, onRemoveDateDue=f=>f}) => {
-    if (!selectedTask[0]) return null;
-
+const PlannedButton = ({selectedTask, onClick=f=>f, onRemoveDateDue=f=>f}) => {
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
     const getDateDue = () => {
@@ -26,12 +22,12 @@ const PlannedButtonContainer = ({selectedTask, onClick=f=>f, onRemoveDateDue=f=>
         return formattedDate;
     }
 
-    const add =
+    const add = 
         <div className="align-center" style={{color: 'dimgray'}} onClick={ onClick }>
             <FaRegCalendar className="list-icon list-icon-margin-rt" />
             <span>Add Due Date</span>
         </div>
-
+        
     const show =
         <div className="align-center space-between">
             <div className="align-center" style={{color: selectedTask[0].date_due < todaysDate ? 'crimson' : 'royalblue'}} onClick={ onClick }>
@@ -42,24 +38,13 @@ const PlannedButtonContainer = ({selectedTask, onClick=f=>f, onRemoveDateDue=f=>
             <FaTimes style={{color: 'dimgray'}} onClick={() => onRemoveDateDue(selectedTask[0].task_id)} />
         </div>
 
-    const renderDateDue={
-        add,
-        show
-    }
+    return !selectedTask[0].date_due ? add : show
+};
 
-    return (
-        <PlannedButton renderDateDue={ renderDateDue } selectedTask={ selectedTask } />
-    )
-}
-
-const mapDispatchToProps = dispatch => ({
-
-    onRemoveDateDue(id) {
-        dispatch(
-            removeDateDue(id)
-        )
-    }
-
-})
-
-export default connect(null, mapDispatchToProps)(PlannedButtonContainer);
+PlannedButton.propTypes = {
+    selectedTask: PropTypes.array.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onRemoveDateDue: PropTypes.func.isRequired
+};
+ 
+export default PlannedButton;

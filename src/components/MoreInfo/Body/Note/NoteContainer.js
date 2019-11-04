@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setNote } from '../../../actions/currentActions';
-import { updateNote } from '../../../actions/tasksActions';
-import Textarea from 'react-textarea-autosize';
+import { setNote } from '../../../../actions/currentActions';
+import { updateNote } from '../../../../actions/tasksActions';
 import Note from './Note';
 
 const NoteContainer = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=f=>f}) => {
@@ -22,49 +22,29 @@ const NoteContainer = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=
         setOpen(false);
     };
 
-    const placeholder = () => {
-        if (!currentNote) currentNote = "";
-        return (
-            <Textarea
-                placeholder={'Add a Note'}
-                value={ currentNote }
-                onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
-            />
-        );
-    }
-
-    const note = () => {
-        if (!currentNote) currentNote = "";
-        return (
-            <Textarea
-                value={ currentNote }
-                onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
-            />
-        )
-    }
-
-    const renderNote = {
-        placeholder,
-        note
-    }
-
     return (
         <Note
-            open={ open }
-            renderNote={ renderNote }
+            currentNote={ currentNote }
             selectedTask={ selectedTask }
             onClick={ handleClick }
             onClickAway={ handleClickAway }
+            onSetNote={onSetNote}
         />
     );
-}
+};
+
+NoteContainer.propTypes = {
+    currentNote: PropTypes.string,
+    selectedTask: PropTypes.array,
+    onSetNote: PropTypes.func.isRequired,
+    onUpdateNote: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     currentNote: state.current.note,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-
     onSetNote(id, note) {
         dispatch(
             setNote(id, note)
@@ -76,7 +56,6 @@ const mapDispatchToProps = dispatch => ({
             updateNote(id, note)
         )
     }
-    
-})
+});
 
 export default (connect)(mapStateToProps, mapDispatchToProps)(NoteContainer)

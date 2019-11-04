@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
-import DeleteModal from '../../DeleteModal';
+import DeleteModal from '../../../DeleteModal';
+import Completed from './Completed';
 
-const Step = ({renderStatus, selectedTask, step, stepContainer=f=>f, stepStyle=f=>f, getPlaceholder=f=>f, onEnterPress=f=>f, onRemoveStep=f=>f, onSetStep=f=>f}) => {
+const Step = ({selectedTask, step, stepContainer=f=>f, stepStyle=f=>f, getPlaceholder=f=>f, onEnterPress=f=>f, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f}) => {
     return (
         <ListItem key={`${step.step}_${step.id}`} style={ stepContainer(step.id) } onClick={() => onSetStep(step.id, step.step)}>
             <div className="align-center">
-                <span>
-                    { step.completedStatus ?  renderStatus.completed : renderStatus.notCompleted }
-                </span>
+                <Completed selectedTask={selectedTask} step={step} onToggleStep={onToggleStep} />
                 
                 <Textarea
                     style={ stepStyle(step) }
@@ -30,18 +29,17 @@ const Step = ({renderStatus, selectedTask, step, stepContainer=f=>f, stepStyle=f
             />
         </ListItem>
     );
-}
+};
 
 Step.propTypes = {
+    selectedTask: PropTypes.array,
     step: PropTypes.object.isRequired,
-    renderStatus: PropTypes.object.isRequired,
-    selectedTask: PropTypes.array.isRequired,
     getPlaceholder: PropTypes.func.isRequired,
     onEnterPress: PropTypes.func.isRequired,
     onRemoveStep: PropTypes.func.isRequired,
     onSetStep: PropTypes.func.isRequired,
     stepContainer: PropTypes.func.isRequired,
     stepStyle: PropTypes.func.isRequired
-}
+};
 
 export default Step;

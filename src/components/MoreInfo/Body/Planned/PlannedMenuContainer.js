@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import moment from 'moment'
 import DatePicker from './DatePicker';
 import { connect } from 'react-redux';
-import { addDateDue } from '../../../actions/tasksActions';
+import { addDateDue } from '../../../../actions/tasksActions';
 import { Icon, ListItemText, MenuItem } from '@material-ui/core';
-import MenuTemplate from '../../MenuTemplate';
+import MenuTemplate from '../../../MenuTemplate';
 import dateDueMenu from './DateMenu';
 
 class PlannedMenuContainer extends Component {
@@ -80,16 +80,14 @@ class PlannedMenuContainer extends Component {
             <MenuTemplate anchorEl={ anchorEl } menuArr={ dateDueMenu } open={ open } onClose={ onClose } renderMenuItems={ this.renderMenuItems } />
         );
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
-    
     onAddDateDue(id, date) {
         dispatch(
             addDateDue(id, date)
         )
     }
-
-})
+});
 
 export default connect(null, mapDispatchToProps)(PlannedMenuContainer);

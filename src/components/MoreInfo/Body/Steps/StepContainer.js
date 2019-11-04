@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setStep } from '../../../actions/currentActions'; 
-import { removeStep, toggleStep, updateStep } from '../../../actions/tasksActions';
-import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
+import { setStep } from '../../../../actions/currentActions'; 
+import { removeStep, toggleStep, updateStep } from '../../../../actions/tasksActions';
 import Step from './Step';
 
 const StepContainer = ({currentStep, currentSteps, selectedTask, step, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {
@@ -45,39 +45,39 @@ const StepContainer = ({currentStep, currentSteps, selectedTask, step, onRemoveS
         return el[0].step
     }
 
-    const completed =
-        <FaCheckCircle className="step-margin-rt green" style={{fontSize: '1rem'}} onClick={() => onToggleStep(selectedTask[0].task_id, step.id)} />
     
-    const notCompleted =
-        <FaRegCircle className="step-margin-rt gray" style={{fontSize: '1rem'}} onClick={() => onToggleStep(selectedTask[0].task_id, step.id)} />
-
-    const renderStatus = {
-        completed,
-        notCompleted
-    }
-
     return (
         <Step
             step={ step }
-            renderStatus={ renderStatus }
             selectedTask={ selectedTask }
             getPlaceholder={ getPlaceholder }
             onEnterPress={ onEnterPress }
             onRemoveStep={ onRemoveStep }
             onSetStep={ onSetStep }
+            onToggleStep={ onToggleStep }
             stepContainer={ stepContainer }
             stepStyle={ stepStyle }
         />
     );
-}
+};
+
+StepContainer.propTypes = {
+    currentStep: PropTypes.object,
+    currentSteps: PropTypes.array,
+    selectedTask: PropTypes.array,
+    step: PropTypes.object,
+    onRemoveStep: PropTypes.func.isRequired,
+    onSetStep: PropTypes.func.isRequired,
+    onToggleStep: PropTypes.func.isRequired,
+    onUpdateStep: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     currentStep: state.current.step,
     currentSteps: state.current.taskSteps,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-
     onRemoveStep(taskId, stepId) {
         dispatch(
             removeStep(taskId, stepId)
@@ -105,7 +105,6 @@ const mapDispatchToProps = dispatch => ({
             updateStep(id, step, taskId)
         )
     }
-
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(StepContainer);
