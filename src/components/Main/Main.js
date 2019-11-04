@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ResultsContainer from './Body/ResultsContainer';
-import TodoList from './Body/TodoList';
+import ResultsContainer from './ResultsContainer';
+import TodoList from './TodoList';
 
 const Main = React.forwardRef(({filteredTasks, open, query, selectedList, onOpen=f=>f, onClose=f=>f}, ref) => {
     return query ? 
@@ -21,7 +21,7 @@ const Main = React.forwardRef(({filteredTasks, open, query, selectedList, onOpen
             onOpen={onOpen}
             onClose={onClose}
         />
-})
+});
 
 Main.propTypes = {
     filteredTasks: PropTypes.array,
@@ -30,6 +30,6 @@ Main.propTypes = {
     selectedList: PropTypes.array,
     onOpen: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired
-}
+};
 
 export default Main;
