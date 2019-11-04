@@ -1,12 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import { connect } from 'react-redux';
-import { removeTask } from '../../actions/tasksActions';
-import FooterSection from './FooterSection';
 
-const FooterSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f}) => {
-    if (!selectedTask[0]) return null;
-
+const Completed = ({selectedTask}) => {
     const getFormattedDate = (inputDate) => {
         let formattedDate;
         if (inputDate === moment(new Date()).format('YYYY-MM-DD')) {
@@ -32,34 +28,13 @@ const FooterSectionContainer = ({selectedTask, onClose=f=>f, onRemoveTask=f=>f})
             Created {' '} { getFormattedDate(selectedTask[0].date_created) }
         </span>
 
-    const renderDate = {
-        completed,
-        created
-    }
-
-    const onRemove = (id) => {
-        onRemoveTask(id);
-        onClose();
-    }
-
     return (
-        <FooterSection 
-            renderDate={ renderDate }
-            selectedTask={ selectedTask }
-            onClose={ onClose }
-            onRemove={ onRemove }
-        />
-    )
-}
+        selectedTask[0].completedStatus ? completed : created
+    );
+};
 
-const mapDispatchToProps = dispatch => ({
-
-    onRemoveTask(id) {
-        dispatch(
-            removeTask(id)
-        )
-    }
-    
-})
-
-export default connect(null, mapDispatchToProps)(FooterSectionContainer);
+Completed.propTypes = {
+    selectedTask: PropTypes.array.isRequired,
+};
+ 
+export default Completed;

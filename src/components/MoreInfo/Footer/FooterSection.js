@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaChevronRight } from 'react-icons/fa';
-import DeleteModal from '../DeleteModal';
+import Completed from './Completed';
+import DeleteModal from '../../DeleteModal';
 
-const FooterSection = ({renderDate, selectedTask, onClose=f=>f, onRemove=f=>f}) => {
+const FooterSection = ({selectedTask, onClose=f=>f, onRemove=f=>f}) => {
     return (
         <div className="more-fixed more-margins more-footer">
             <FaChevronRight onClick={onClose} />
 
-            { selectedTask[0].completedStatus ?  renderDate.completed : renderDate.created }
+            <Completed selectedTask={selectedTask} />
 
             <DeleteModal 
                 id={ selectedTask[0].task_id }
@@ -19,13 +20,12 @@ const FooterSection = ({renderDate, selectedTask, onClose=f=>f, onRemove=f=>f}) 
             />
         </div>
     );
-}
+};
 
 FooterSection.propTypes = {
-    renderDate: PropTypes.object.isRequired,
     selectedTask: PropTypes.array.isRequired,
     onClose: PropTypes.func.isRequired,
     onRemove: PropTypes.func.isRequired
-}
+};
  
 export default FooterSection;
