@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { addStep, addTask } from '../actions/tasksActions';
-import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import AddItem from './AddItem';
 
 const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
@@ -148,37 +148,37 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
         setItem(_newItem.value)
     }
 
-    const add =
-        <FaPlus style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} className="blue" />
-
-    const status = 
-        <FaRegCircle style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} className="gray" /> 
-
-    const renderButton = {
-        add,
-        status
-    }
+    
     return (
         <AddItem 
             ref={input => _newItem = input }
+            addItem={ addItem }
             item={ item }
             placeholder={ placeholder }
-            renderButton={ renderButton }
             itemStyle={ itemStyle }
             onChange={ handleChange }
             onSubmit={ onSubmit }
         />
     )
-}
+};
+
+AddItemContainer.propTypes = {
+    addItem: PropTypes.string.isRequired,
+    lists: PropTypes.array.isRequired,
+    placeholder: PropTypes.any,
+    selectedListId: PropTypes.string.isRequired,
+    selectedTaskId: PropTypes.string.isRequired,
+    onAddStep: PropTypes.func.isRequired,
+    onAddTask: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     lists: state.lists,
     selectedListId: state.current.list["id"],
     selectedTaskId: state.current.task["id"]
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-
     onAddTask({
             task_id, item, date_completed, date_created, date_due, temp,
             completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
@@ -196,7 +196,6 @@ const mapDispatchToProps = dispatch => ({
             addStep(completedStatus, id, step, task_id)
         )
     }
-
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItemContainer);

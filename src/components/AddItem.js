@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddButton from './AddButton';
 
-const AddItem = React.forwardRef(({item, placeholder, renderButton, itemStyle=f=>f, onChange=f=>f, onSubmit=f=>f}, ref) => {
+const AddItem = React.forwardRef(({addItem, item, placeholder, itemStyle=f=>f, onChange=f=>f, onSubmit=f=>f}, ref) => {
     return (
         <form className="add-form align-center" style={ itemStyle() } onSubmit={ onSubmit }>
-            <button className="add-btn" type="submit">
-                { !item ?  renderButton.add : renderButton.status }
-            </button>
+            <AddButton addItem={addItem} item={item} />
             
             <input
                 ref={ref}
@@ -19,15 +18,15 @@ const AddItem = React.forwardRef(({item, placeholder, renderButton, itemStyle=f=
             />
         </form>
     );
-})
+});
 
 AddItem.propTypes = {
+    addItem: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    renderButton: PropTypes.object.isRequired,
     itemStyle: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
-}
+};
 
 export default AddItem;
