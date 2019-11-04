@@ -84,7 +84,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
             </Modal>
         </div>
     );
-}
+};
 
 DeleteModal.propTypes = {
     id: PropTypes.string.isRequired,
@@ -92,6 +92,6 @@ DeleteModal.propTypes = {
     name: PropTypes.string.isRequired,
     todo: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
-}
+};
 
 export default DeleteModal;

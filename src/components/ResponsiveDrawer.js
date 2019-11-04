@@ -43,6 +43,6 @@ const ResponsiveDrawer = () => {
             />
         </div>
     );
-}
+};
 
 export default ResponsiveDrawer;

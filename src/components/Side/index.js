@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { changeQuery, clearQuery } from '../../actions/queryActions';
 import Sidebar from './Sidebar';
@@ -26,6 +27,14 @@ const SidebarContainer = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f
             onEditClick={ onEditClick }
         />
     )
+};
+
+SidebarContainer.propTypes = {
+    query: PropTypes.string,
+    onChangeQuery: PropTypes.func.isRequired,
+    onClear: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onEditClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -12,7 +12,7 @@ const MenuTemplate = ({anchorEl, menuArr, open, onClose=f=>f, renderMenuItems=f=
             { renderMenuItems(menuArr) }
         </Menu>
     );
-}
+};
 
 MenuTemplate.propTypes = {
     open: PropTypes.bool.isRequired,
