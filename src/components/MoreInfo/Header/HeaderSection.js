@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Textarea from 'react-textarea-autosize';
+import Completed from './Status/Completed';
+import Important from './Status/Important';
 
-const HeaderSection = ({currentTask, renderStatus, selectedTask, onEnterPress=f=>f, onSetTask=f=>f, onSubmit=f=>f}) => {
+const HeaderSection = ({currentTask, selectedTask, onEnterPress=f=>f, onSetTask=f=>f, onSubmit=f=>f}) => {
     return (
         <div className="more-margins more-header">
             <div style={{display: 'flex'}}>
-                <span>
-                    { selectedTask[0].completedStatus ?  renderStatus.completed : renderStatus.notCompleted }
-                </span>
+                <Completed selectedTask={selectedTask} />
 
                 <form onSubmit={onSubmit}>
                     <Textarea
@@ -21,20 +21,17 @@ const HeaderSection = ({currentTask, renderStatus, selectedTask, onEnterPress=f=
                 </form>
             </div>
 
-            <span>
-                { selectedTask[0].importantStatus ? renderStatus.important : renderStatus.notImportant }
-            </span>
+            <Important selectedTask={selectedTask} />
         </div>
     );
-}
+};
 
 HeaderSection.propTypes = {
     currentTask: PropTypes.object.isRequired,
-    renderStatus: PropTypes.object.isRequired,
     selectedTask: PropTypes.array.isRequired,
     onEnterPress: PropTypes.func.isRequired,
     onSetTask: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-}
+};
 
 export default HeaderSection;

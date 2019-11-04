@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setTask } from '../../actions/currentActions'; 
-import { toggleCompleted, toggleImportant, updateTask } from '../../actions/tasksActions';
-import { FaCheckCircle, FaRegCircle, FaStar, FaRegStar } from 'react-icons/fa';
+import { setTask } from '../../../actions/currentActions'; 
+import { updateTask } from '../../../actions/tasksActions';
 import HeaderSection from './HeaderSection';
 
-const HeaderSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onToggleComplete=f=>f, onToggleImportant=f=>f, onUpdateTask=f=>f}) => {
+const HeaderSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onUpdateTask=f=>f}) => {
     if (!selectedTask[0]) return null;
 
     const onSubmit = e => {
@@ -26,52 +26,25 @@ const HeaderSectionContainer = ({currentTask, selectedTask, onSetTask=f=>f, onTo
         }
     }
 
-    const completed =
-        <FaCheckCircle className="list-icon list-icon-margin-rt green" onClick={() => onToggleComplete(selectedTask[0].task_id)} />
-
-    const notCompleted =
-        <FaRegCircle className="list-icon list-icon-margin-rt gray" onClick={() => onToggleComplete(selectedTask[0].task_id)} />
-
-    const important =
-        <FaStar className="list-icon blue" onClick={() => onToggleImportant(selectedTask[0].task_id)} />
-    
-    const notImportant =
-        <FaRegStar className="list-icon gray" onClick={() => onToggleImportant(selectedTask[0].task_id)} />
-
-
-    const renderStatus = {
-        completed,
-        notCompleted,
-        important,
-        notImportant
-    }
-
     return (
         <HeaderSection
             currentTask={ currentTask }
-            renderStatus={ renderStatus }
             selectedTask={ selectedTask }
             onEnterPress={ onEnterPress }
             onSetTask={ onSetTask }
             onSubmit={ onSubmit }
         />
     );
+};
+
+HeaderSectionContainer.propTypes = {
+    currentTask: PropTypes.object,
+    selectedTask: PropTypes.array,
+    onSetTask: PropTypes.func.isRequired,
+    onUpdateTask: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({
-    
-    onToggleComplete(id) {
-        dispatch(
-            toggleCompleted(id)
-        )
-    },
-
-    onToggleImportant(id) {
-        dispatch(
-            toggleImportant(id)
-        )
-    },
-
     onSetTask(id, task, note, steps) {
         dispatch(
             setTask(id, task, note, steps)
@@ -87,7 +60,6 @@ const mapDispatchToProps = dispatch => ({
             updateTask(id, task)
         )
     }
-
-})
+});
 
 export default connect(null, mapDispatchToProps)(HeaderSectionContainer);
