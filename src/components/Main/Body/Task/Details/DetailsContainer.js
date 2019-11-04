@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
 import moment from 'moment';
-import DetailItem from './DetailItem';
-import ListDetails from './ListDetails';
+import Detail from './Detail';
+import Details from './Details';
 
-const ListDetailsContainer = ({lists, selectedListId, task}) => {
+const DetailsContainer = ({lists, selectedListId, task}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
 
     const listItemDetail = () => {
@@ -85,22 +86,28 @@ const ListDetailsContainer = ({lists, selectedListId, task}) => {
         const name = selectedList[0].name;
 
         return arr.map(detail =>
-            <DetailItem key={detail.id} el= {detail} name={name} task={task} />
+            <Detail key={detail.id} el= {detail} name={name} task={task} />
         )
     }
 
     return (
-        <ListDetails 
+        <Details 
             details={ details }
             listItemDetail={ listItemDetail }
             renderDetails={ renderDetails }
         />
     );
-}
+};
+
+DetailsContainer.propTypes = {
+    lists: PropTypes.array.isRequired,
+    selectedListId: PropTypes.string.isRequired, 
+    task: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
     lists: state.lists,
     selectedListId: state.current.list["id"]
-})
+});
  
-export default connect(mapStateToProps)(ListDetailsContainer);
+export default connect(mapStateToProps)(DetailsContainer);
