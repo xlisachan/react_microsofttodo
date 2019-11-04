@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeDir, changeOrder, resetChangeDir } from '../../../actions/listsActions';
+import { changeDir, changeOrder, resetChangeDir } from '../../../../actions/listsActions';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import SortBar from './SortBar';
 
-const SortBarContainer = ({barColor, lists, selectedListId, onChangeDir=f=>f, onClear=f=>f}) => {
-    const selectedList = lists.filter(list => list.id === selectedListId);
+const SortBarContainer = ({barColor, lists, selectedList, selectedListId, onChangeDir=f=>f, onClear=f=>f}) => {
+    const currentList = lists.filter(list => list.id === selectedListId);
 
     const getOrderBy = () => {
-        const orderBy = selectedList[0].orderBy;
+        const orderBy = currentList[0].orderBy;
 
         const dict = {
             'importantStatus': 'by importance',
@@ -24,13 +24,14 @@ const SortBarContainer = ({barColor, lists, selectedListId, onChangeDir=f=>f, on
     }
 
     const getDirIcon = () => {
-        return selectedList[0].orderDir === 'asc' ?
+        return currentList[0].orderDir === 'asc' ?
             <FaChevronUp /> : <FaChevronDown />
     }
 
     return (
         <SortBar
             barColor={ barColor }
+            selectedList={ selectedList }
             selectedListId={ selectedListId }
             getOrderBy={ getOrderBy }
             getDirIcon={ getDirIcon }
@@ -38,23 +39,23 @@ const SortBarContainer = ({barColor, lists, selectedListId, onChangeDir=f=>f, on
             onClear={ onClear }
         />
     )
-}
+};
     
 SortBarContainer.propTypes = {
     barColor: PropTypes.string.isRequired,
     lists: PropTypes.array.isRequired,
+    selectedList: PropTypes.array.isRequired,
     selectedListId: PropTypes.string.isRequired,
     onChangeDir: PropTypes.func.isRequired,
     onClear: PropTypes.func.isRequired
-}
+};
     
 const mapStateToProps = state => ({
     lists: state.lists,
     selectedListId: state.current.list["id"]
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-    
     onChangeDir(id) {
         dispatch(
             changeDir(id)
@@ -70,7 +71,6 @@ const mapDispatchToProps = dispatch => ({
             resetChangeDir(id)
         )
     }
-    
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortBarContainer);

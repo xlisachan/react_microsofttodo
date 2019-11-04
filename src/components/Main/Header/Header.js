@@ -1,35 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import HeaderName from './HeaderNameContainer';
-import HeaderButton from './HeaderButton';
-import SortBar from './SortBarContainer';
+import clsx from 'clsx';
+import { AppBar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Title from './Title';
+import SortBar from './SortBar/SortBarContainer';
 
-const Header = React.forwardRef(({name, selectedList, formatColor=f=>f, secondaryColor=f=>f}, ref) => {
+const drawerWidth = 250;
+
+const useStyles = makeStyles(theme => ({
+    appBar: {
+        marginLeft: 200,
+        [theme.breakpoints.up('sm')]: {
+            width: `calc(100% - 200px)`,
+        },
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        [theme.breakpoints.up('md')]: {
+            width: `calc(100% - ${drawerWidth+200}px)`,
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginRight: drawerWidth,
+        },
+    }
+}));
+
+const Header = React.forwardRef(({name, open, selectedList, formatColor=f=>f, secondaryColor=f=>f}, ref) => {
+    const classes = useStyles();
+
     return (
-        <div>
-            <header className="header align-center space-between" style={{backgroundColor: formatColor()}}>
-                <div style={{width: '100%'}}>
-                    <HeaderName ref={ref} />
+        <AppBar position="fixed"
+                className={clsx(classes.appBar, {
+                    [classes.appBarShift]: open,
+                })}>
+            <Title ref={ref} name={name} formatColor={formatColor} secondaryColor={secondaryColor} />
 
-                    <span style={{display: name === "My Day" ? 'block' : 'none'}}>
-                        { moment(new Date()).format('dddd, MMMM D') }
-                    </span>
-                </div>
-
-                <HeaderButton buttonColor={ secondaryColor() } />
-            </header>
-
-            { selectedList[0].sorted ? <SortBar barColor={ secondaryColor() } /> : null }
-        </div>
+            <SortBar barColor={ secondaryColor() } selectedList= {selectedList} />
+        </AppBar>
     );
-})
+});
 
 Header.propTypes = {
     name: PropTypes.string.isRequired,
+    open: PropTypes.bool.isRequired,
     selectedList: PropTypes.array.isRequired,
     formatColor: PropTypes.func.isRequired,
     secondaryColor: PropTypes.func.isRequired
-}
+};
 
 export default Header;

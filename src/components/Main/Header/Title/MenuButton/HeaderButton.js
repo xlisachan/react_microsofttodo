@@ -36,10 +36,10 @@ const HeaderButton = ({buttonColor}) => {
             />
         </div>
     );
-}
+};
 
 HeaderButton.propTypes = {
     buttonColor: PropTypes.string.isRequired
-}
+};
 
 export default HeaderButton;

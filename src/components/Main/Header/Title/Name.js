@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderName = React.forwardRef(({currentList, lists, onSetList=f=>f, onSubmit=f=>f}, ref) => { 
+const Title = React.forwardRef(({currentList, lists, onSetList=f=>f, onSubmit=f=>f}, ref) => { 
     const selectedList = lists.filter(list => list.id === currentList.id);
     const defaultList = selectedList[0].defaultList;
 
@@ -22,13 +22,13 @@ const HeaderName = React.forwardRef(({currentList, lists, onSetList=f=>f, onSubm
             }
         </h2>
     )
-})
+});
 
-HeaderName.propTypes = {
+Title.propTypes = {
     currentList: PropTypes.object.isRequired,
     lists: PropTypes.array.isRequired,
     onSetList: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
-}
+};
 
-export default HeaderName;
+export default Title;

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { renameList } from '../../../actions/listsActions';
-import { setList } from '../../../actions/currentActions';
-import HeaderName from './HeaderName';
+import { renameList } from '../../../../actions/listsActions';
+import { setList } from '../../../../actions/currentActions';
+import Name from './Name';
 
-const HeaderNameContainer = React.forwardRef(({currentList, lists, onRenameList=f=>f, onSetList=f=>f}, ref) => { 
+const NameContainer = React.forwardRef(({currentList, lists, onRenameList=f=>f, onSetList=f=>f}, ref) => { 
     const onSubmit = e => {
         e.preventDefault();
 
@@ -35,7 +36,7 @@ const HeaderNameContainer = React.forwardRef(({currentList, lists, onRenameList=
     }
 
     return (
-        <HeaderName 
+        <Name 
             ref={ ref }
             currentList={ currentList }
             lists={ lists }
@@ -43,15 +44,21 @@ const HeaderNameContainer = React.forwardRef(({currentList, lists, onRenameList=
             onSubmit={ onSubmit }
         />
     )
-})
+});
+
+NameContainer.propTypes = {
+    currentList: PropTypes.object.isRequired,
+    lists: PropTypes.array.isRequired,
+    onRenameList: PropTypes.func.isRequired,
+    onSetList: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     currentList: state.current.list,
     lists: state.lists
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-    
     onSetList(id, title) {
         dispatch(
             setList(id, title)
@@ -67,7 +74,6 @@ const mapDispatchToProps = dispatch => ({
             renameList(id, name)
         )
     }
+});
 
-})
-
-export default connect(mapStateToProps, mapDispatchToProps, null, {forwardRef: true})(HeaderNameContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, {forwardRef: true})(NameContainer);
