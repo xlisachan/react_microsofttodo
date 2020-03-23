@@ -30,11 +30,11 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                 borderBottom: 'none'
             }
         }
-    }
+    };
 
     const onSubmit = e => {
         e.preventDefault();
-        if(!item) return
+        if (!item) return
 
         const newStep = {
             completedStatus: false,
@@ -50,16 +50,16 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
         else {
             if (name === "My Day") {
                 onAddTask({
-                    task_id: uuid.v4(), 
+                    task_id: uuid.v4(),
                     item,
                     date_completed: "",
-                    date_created: todaysDate, 
-                    date_due: "", 
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: true, 
-                    planned: false, 
-                    important: false, 
+                    date_created: todaysDate,
+                    date_due: "",
+                    completedStatus: false,
+                    importantStatus: false,
+                    my_day: true,
+                    planned: false,
+                    important: false,
                     tasks: true,
                     list_id: '3',
                     note: "",
@@ -68,16 +68,16 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                 });
             } else if (name === "Important") {
                 onAddTask({
-                    task_id: uuid.v4(), 
-                    item, 
+                    task_id: uuid.v4(),
+                    item,
                     date_completed: "",
-                    date_created: todaysDate, 
+                    date_created: todaysDate,
                     date_due: "",
-                    completedStatus: false, 
-                    importantStatus: true, 
-                    my_day: false, 
-                    planned: false, 
-                    important: true, 
+                    completedStatus: false,
+                    importantStatus: true,
+                    my_day: false,
+                    planned: false,
+                    important: true,
                     tasks: true,
                     list_id: '3',
                     note: "",
@@ -86,16 +86,16 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                 });
             } else if (name === "Planned") {
                 onAddTask({
-                    task_id: uuid.v4(), 
+                    task_id: uuid.v4(),
                     item,
                     date_completed: "",
-                    date_created: todaysDate, 
+                    date_created: todaysDate,
                     date_due: todaysDate,
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: false, 
-                    planned: true, 
-                    important: false, 
+                    completedStatus: false,
+                    importantStatus: false,
+                    my_day: false,
+                    planned: true,
+                    important: false,
                     tasks: true,
                     list_id: '3',
                     note: "",
@@ -104,16 +104,16 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                 });
             } else if (name === "Tasks") {
                 onAddTask({
-                    task_id: uuid.v4(), 
+                    task_id: uuid.v4(),
                     item,
                     date_completed: "",
-                    date_created: todaysDate, 
+                    date_created: todaysDate,
                     date_due: "",
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: false, 
-                    planned: false, 
-                    important: false, 
+                    completedStatus: false,
+                    importantStatus: false,
+                    my_day: false,
+                    planned: false,
+                    important: false,
                     tasks: true,
                     list_id: '3',
                     note: "",
@@ -122,16 +122,16 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
                 });
             } else {
                 onAddTask({
-                    task_id: uuid.v4(), 
+                    task_id: uuid.v4(),
                     item,
                     date_completed: "",
-                    date_created: todaysDate, 
+                    date_created: todaysDate,
                     date_due: "",
-                    completedStatus: false, 
-                    importantStatus: false, 
-                    my_day: false, 
-                    planned: false, 
-                    important: false, 
+                    completedStatus: false,
+                    importantStatus: false,
+                    my_day: false,
+                    planned: false,
+                    important: false,
                     tasks: false,
                     list_id: selectedList[0].id,
                     note: "",
@@ -142,24 +142,24 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
         }
 
         setItem('');
-    }
+    };
 
     const handleChange = () => {
         setItem(_newItem.value)
-    }
+    };
 
     
     return (
-        <AddItem 
-            ref={input => _newItem = input }
-            addItem={ addItem }
-            item={ item }
-            placeholder={ placeholder }
-            itemStyle={ itemStyle }
-            onChange={ handleChange }
-            onSubmit={ onSubmit }
+        <AddItem
+            ref={input => _newItem = input}
+            addItem={addItem}
+            item={item}
+            placeholder={placeholder}
+            itemStyle={itemStyle}
+            onChange={handleChange}
+            onSubmit={onSubmit}
         />
-    )
+    );
 };
 
 AddItemContainer.propTypes = {

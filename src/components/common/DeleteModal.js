@@ -42,7 +42,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
     };
 
     return (
-        <div>
+        <React.Fragment>
             <div id={`${todo}_${id}`} onClick={handleOpen}>
                 { location === 'more-bottom' ? 
                     <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
@@ -82,7 +82,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
                     </DialogActions>
                 </div>
             </Modal>
-        </div>
+        </React.Fragment>
     );
 };
 
