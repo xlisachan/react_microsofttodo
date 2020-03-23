@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { addStep, addTask } from '../actions/tasksActions';
+import { addStep, addTask } from '../../actions/tasksActions';
 import AddItem from './AddItem';
 
 const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {

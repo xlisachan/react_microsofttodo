@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Steps from './Steps';
-import AddItem from '../../../AddItemContainer';
+import AddItem from '../../../common/AddItemContainer';
 
 const StepsContainer = ({selectedTask}) => {
     if (!selectedTask[0]) return null;
