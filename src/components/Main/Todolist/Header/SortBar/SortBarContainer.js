@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeDir, changeOrder, resetChangeDir } from '../../../../actions/listsActions';
+import { changeDir, changeOrder, resetChangeDir } from '../../../../../actions/listsActions';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import SortBar from './SortBar';
 

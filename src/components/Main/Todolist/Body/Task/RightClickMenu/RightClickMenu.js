@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeTask } from '../../../../../actions/tasksActions'; 
+import { removeTask } from '../../../../../../actions/tasksActions'; 
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import TaskContainer from '../TaskContainer';
-import DeleteModal from '../../../../common/DeleteModal';
+import DeleteModal from '../../../../../common/DeleteModal';
 import MarkMyDay from '../MenuItem/MarkMyDay';
 import MarkCompleted from '../MenuItem/MarkCompleted';
 import MarkImportant from '../MenuItem/MarkImportant';

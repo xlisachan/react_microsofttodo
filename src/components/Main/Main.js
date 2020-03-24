@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ResultsContainer from './ResultsContainer';
-import TodoList from './TodoList';
+import ResultsContainer from './Results/ResultsContainer';
+import TodoList from './Todolist/TodoList';
 
 const Main = React.forwardRef(({filteredTasks, open, query, selectedList, onOpen=f=>f, onClose=f=>f}, ref) => {
     return query ? 

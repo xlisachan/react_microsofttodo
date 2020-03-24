@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { renameList } from '../../../../actions/listsActions';
-import { setList } from '../../../../actions/currentActions';
+import { renameList } from '../../../../../actions/listsActions';
+import { setList } from '../../../../../actions/currentActions';
 import Name from './Name';
 
 const NameContainer = React.forwardRef(({currentList, lists, onRenameList=f=>f, onSetList=f=>f}, ref) => { 

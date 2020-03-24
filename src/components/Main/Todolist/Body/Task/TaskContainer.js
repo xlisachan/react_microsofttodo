@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setTask } from '../../../../actions/currentActions';
+import { setTask } from '../../../../../actions/currentActions';
 import Task from './Task';
 
 const TaskContainer = ({selectedTaskId, task, onClick=f=>f, onSetTask=f=>f}) => {

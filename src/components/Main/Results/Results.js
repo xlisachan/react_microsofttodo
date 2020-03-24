@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import ListBody from './Body';
-import MoreSection from '../MoreInfo/MoreInfoContainer';
+import ListBody from '../Todolist/Body';
+import MoreSection from '../../MoreInfo/MoreInfoContainer';
 
 const drawerWidth = 250;
 

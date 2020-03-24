@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MenuItem } from 'react-contextmenu';
 import { FaRegSun } from 'react-icons/fa';
-import { toggleMyDay } from '../../../../../actions/tasksActions'; 
+import { toggleMyDay } from '../../../../../../actions/tasksActions'; 
 
 const MarkMyDay = ({task, onToggleMyDay=f=>f}) => {
     const removeMyDay =

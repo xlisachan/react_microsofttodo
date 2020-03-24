@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MenuItem } from 'react-contextmenu';
 import { FaStar, FaRegStar } from 'react-icons/fa';
-import { toggleImportant } from '../../../../../actions/tasksActions'; 
+import { toggleImportant } from '../../../../../../actions/tasksActions'; 
 
 const MarkImportant = ({task, onToggleImportant=f=>f}) => {
     const removeImportance =

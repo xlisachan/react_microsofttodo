@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RightClickMenu from '../Task/RightClickMenu/RightClickMenu';
+import RightClickMenu from './RightClickMenu/RightClickMenu';
 
 const Tasks = ({tasks, onClick=f=>f, onClose=f=>f}) => {
     const renderTasks = () =>

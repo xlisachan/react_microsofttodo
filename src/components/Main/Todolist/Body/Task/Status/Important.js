@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleImportant } from '../../../../../actions/tasksActions'; 
+import { toggleImportant } from '../../../../../../actions/tasksActions'; 
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const Important = ({task, onToggleImportant=f=>f}) => {

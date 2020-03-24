@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleCompleted } from '../../../../../actions/tasksActions'; 
+import { toggleCompleted } from '../../../../../../actions/tasksActions'; 
 import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 
 const Completed = ({task, onToggleComplete=f=>f}) => {

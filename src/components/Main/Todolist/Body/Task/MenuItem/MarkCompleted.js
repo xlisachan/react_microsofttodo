@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MenuItem } from 'react-contextmenu';
 import { FaCheckCircle, FaRegCheckCircle } from 'react-icons/fa';
-import { toggleCompleted } from '../../../../../actions/tasksActions'; 
+import { toggleCompleted } from '../../../../../../actions/tasksActions'; 
 
 const MarkCompleted = ({task, onToggleComplete=f=>f}) => {
     const markNotCompleted =
