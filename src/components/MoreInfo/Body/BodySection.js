@@ -6,25 +6,23 @@ import MoreMyDay from './MyDay/MoreMyDayContainer';
 import MorePlanned from './Planned/MorePlanned';
 import Note from './Note/NoteContainer';
 
-const BodySection = ({selectedTask, tasks, onClose}) => {
-    return (
-        <div style={{height: '82vh', overflow: 'auto'}}>
-            <Steps selectedTask={ selectedTask } />
+const BodySection = ({selectedTask, tasks, onClose}) => (
+    <div style={{height: '82vh', overflow: 'auto'}}>
+        <Steps selectedTask={ selectedTask } />
 
-            <Divider />
+        <Divider />
 
-            <MoreMyDay selectedTask={ selectedTask } onClose={ onClose } />
+        <MoreMyDay selectedTask={ selectedTask } onClose={ onClose } />
 
-            <Divider />
+        <Divider />
 
-            <MorePlanned selectedTask={ selectedTask } tasks={ tasks } />
+        <MorePlanned selectedTask={ selectedTask } tasks={ tasks } />
 
-            <Divider />
+        <Divider />
 
-            <Note selectedTask={ selectedTask } />
-        </div>
-    );
-};
+        <Note selectedTask={ selectedTask } />
+    </div>
+);
 
 BodySection.propTypes = {
     selectedTask: PropTypes.array.isRequired,

@@ -76,9 +76,7 @@ class PlannedMenuContainer extends Component {
     render() {
         const { anchorEl, open, onClose } = this.props;
         
-        return (
-            <MenuTemplate anchorEl={ anchorEl } menuArr={ dateDueMenu } open={ open } onClose={ onClose } renderMenuItems={ this.renderMenuItems } />
-        );
+        return <MenuTemplate anchorEl={anchorEl} menuArr={dateDueMenu} open={open} onClose={onClose} renderMenuItems={this.renderMenuItems} />;
     }
 };
 

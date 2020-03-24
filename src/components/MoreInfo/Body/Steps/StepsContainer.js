@@ -7,11 +7,11 @@ const StepsContainer = ({selectedTask}) => {
     if (!selectedTask[0]) return null;
     
     return (
-        <div>
+        <React.Fragment>
             <Steps selectedTask={selectedTask} />
 
             <AddItem addItem={'step'} placeholder={selectedTask[0].steps.length > 0 ? 'Next Step' : 'Add step'} />
-        </div>
+        </React.Fragment>
         
     );
 };
