@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react_microsofttodo/static/css/main.6eaf212c.chunk.css",
+    "main.js": "/react_microsofttodo/static/js/main.699b6542.chunk.js",
+    "main.js.map": "/react_microsofttodo/static/js/main.699b6542.chunk.js.map",
+    "runtime-main.js": "/react_microsofttodo/static/js/runtime-main.abe5697b.js",
+    "runtime-main.js.map": "/react_microsofttodo/static/js/runtime-main.abe5697b.js.map",
+    "static/js/2.7fb42a93.chunk.js": "/react_microsofttodo/static/js/2.7fb42a93.chunk.js",
+    "static/js/2.7fb42a93.chunk.js.map": "/react_microsofttodo/static/js/2.7fb42a93.chunk.js.map",
+    "index.html": "/react_microsofttodo/index.html",
+    "precache-manifest.beca63c65af0aa88f27526d1cae818a6.js": "/react_microsofttodo/precache-manifest.beca63c65af0aa88f27526d1cae818a6.js",
+    "service-worker.js": "/react_microsofttodo/service-worker.js",
+    "static/css/main.6eaf212c.chunk.css.map": "/react_microsofttodo/static/css/main.6eaf212c.chunk.css.map",
+    "static/js/2.7fb42a93.chunk.js.LICENSE.txt": "/react_microsofttodo/static/js/2.7fb42a93.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.abe5697b.js",
+    "static/js/2.7fb42a93.chunk.js",
+    "static/css/main.6eaf212c.chunk.css",
+    "static/js/main.699b6542.chunk.js"
+  ]
+}
