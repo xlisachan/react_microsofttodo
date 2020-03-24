@@ -28,9 +28,7 @@ const Completed = ({selectedTask}) => {
             Created {' '} { getFormattedDate(selectedTask[0].date_created) }
         </span>
 
-    return (
-        selectedTask[0].completedStatus ? completed : created
-    );
+    return selectedTask[0].completedStatus ? completed : created;
 };
 
 Completed.propTypes = {
