@@ -17,11 +17,7 @@ const Important = ({selectedTask, onToggleImportant=f=>f}) => {
             onClick={() => onToggleImportant(selectedTask[0].task_id)}
         />
 
-    return (
-        <span>
-            { selectedTask[0].importantStatus ? important : notImportant }
-        </span>
-    );
+    return selectedTask[0].importantStatus ? important : notImportant;
 };
 
 Important.propTypes = {
