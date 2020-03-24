@@ -1,4 +1,4 @@
-## <a href="https://msft-todolist.herokuapp.com/">Task Management App</a>
+## Task Management App</a>
 * Created a task management app based on Microsoft To Do app
 * Built an application with CRUD functionality using front-end framework (React) and state management (Redux)
 * Utilized CSS framework to add dynamic functionality and responsive design
@@ -16,6 +16,3 @@
 
 ## Built With
 React, Redux, Bootstrap, Material-UI
-
-## Deployment
-<a href="https://msft-todolist.herokuapp.com/">https://msft-todolist.herokuapp.com/</a>
