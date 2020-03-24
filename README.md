@@ -12,6 +12,8 @@
 * Utilize default lists or create custom color-coded lists to help stay organized
 * Set due dates or add notes to help manage tasks
 
+<img width="80%" src="https://raw.githubusercontent.com/xlisachan/react_microsofttodo/master/public/screenshot.png?token=AGWTUDQGM54BE6NDX3FAA6S6QOYHK" alt="screenshot of project">
+
 ## Built With
 React, Redux, Bootstrap, Material-UI
 
