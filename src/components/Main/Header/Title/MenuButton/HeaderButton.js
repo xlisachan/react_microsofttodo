@@ -16,7 +16,7 @@ const HeaderButton = ({buttonColor}) => {
     }
 
     return (
-        <div>
+        <React.Fragment>
             <Button
                 variant="contained"
                 style={{
@@ -34,7 +34,7 @@ const HeaderButton = ({buttonColor}) => {
                 onClose={ handleMenuClose }
                 anchorEl={ anchorEl }
             />
-        </div>
+        </React.Fragment>
     );
 };
 

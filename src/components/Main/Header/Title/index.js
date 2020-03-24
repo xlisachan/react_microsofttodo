@@ -4,19 +4,17 @@ import Name from './NameContainer';
 import TodaysDate from './TodaysDate';
 import HeaderButton from './MenuButton/HeaderButton';
 
-const Title = React.forwardRef(({name, formatColor, secondaryColor}, ref) => {
-    return (
-        <header className="header align-center space-between" style={{backgroundColor: formatColor()}}>
-            <div style={{width: '100%'}}>
-                <Name ref={ref} />
+const Title = React.forwardRef(({name, formatColor, secondaryColor}, ref) => (
+    <header className="header align-center space-between" style={{backgroundColor: formatColor()}}>
+        <div style={{width: '100%'}}>
+            <Name ref={ref} />
 
-                <TodaysDate name={name} />
-            </div>
+            <TodaysDate name={name} />
+        </div>
 
-            <HeaderButton buttonColor={ secondaryColor() } />
-        </header>
-    );
-});
+        <HeaderButton buttonColor={ secondaryColor() } />
+    </header>
+));
 
 Title.propTypes = {
     name: PropTypes.string.isRequired,
