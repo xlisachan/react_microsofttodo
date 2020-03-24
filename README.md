@@ -1,4 +1,4 @@
-## Task Management App</a>
+## Task Management App
 * Created a task management app based on Microsoft To Do app
 * Built an application with CRUD functionality using front-end framework (React) and state management (Redux)
 * Utilized CSS framework to add dynamic functionality and responsive design
