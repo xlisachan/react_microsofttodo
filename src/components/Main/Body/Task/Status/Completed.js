@@ -17,11 +17,7 @@ const Completed = ({task, onToggleComplete=f=>f}) => {
             onClick={() => onToggleComplete(task.task_id)}
         />
         
-    return (
-        <span>
-            { task.completedStatus ? completed : notCompleted }
-        </span>
-    )
+    return task.completedStatus ? completed : notCompleted;
 };
 
 Completed.propTypes = {
