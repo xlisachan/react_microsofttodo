@@ -78,17 +78,6 @@ textarea {
   top: 25px;
 }
 
-.add-form {
-  background: #fafafa;
-}
-
-.add-btn { 
-  font-size: 1.5rem;
-  margin-right: 5px;
-  background: transparent;
-  border: none;
-}
-
 .list-icon {
   font-size: 1.2rem;
 }

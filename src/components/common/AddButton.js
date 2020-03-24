@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../stylesheets/common.css';
 import PropTypes from 'prop-types';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
 

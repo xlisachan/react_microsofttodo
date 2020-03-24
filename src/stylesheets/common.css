@@ -1,0 +1,10 @@
+.add-btn { 
+  font-size: 1.5rem;
+  margin-right: 5px;
+  background: transparent;
+  border: none;
+}
+
+.add-form {
+  background: #fafafa;
+}

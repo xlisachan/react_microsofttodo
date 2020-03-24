@@ -41,20 +41,25 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
         setOpen(false);
     };
 
+    const renderDelete = () => {
+        if (location === 'more-bottom') {
+            return <FaRegTrashAlt style={{ margin: '0 5px 3px 0' }} />;
+        } else if (location === 'more-top') {
+            return <FaTimes />;
+        } else {
+            return (
+                <React.Fragment>
+                    <FaRegTrashAlt style={{ margin: '0 5px 3px 0' }} />
+                    <span>Delete {todo}</span>
+                </React.Fragment>
+            );
+        };
+    };
+
     return (
         <React.Fragment>
             <div id={`${todo}_${id}`} onClick={handleOpen}>
-                { location === 'more-bottom' ? 
-                    <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
-                    :
-                    location === 'more-top' ?
-                        <FaTimes />
-                        :
-                        <div>
-                            <FaRegTrashAlt style={{margin: '0 5px 3px 0'}} />
-                            <span>Delete {todo}</span>
-                        </div>
-                }
+                { renderDelete() }
             </div>
             
             <Modal
