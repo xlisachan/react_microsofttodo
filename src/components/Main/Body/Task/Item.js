@@ -8,7 +8,7 @@ const Item = ({task}) => {
             color: task.completedStatus ? 'dimgray' : 'black',
             textDecoration: task.completedStatus ? 'line-through' : 'none'
         }
-    }
+    };
     
     return (
         <span style={ listItem() }>

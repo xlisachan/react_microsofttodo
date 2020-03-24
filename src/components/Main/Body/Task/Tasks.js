@@ -12,9 +12,7 @@ const Tasks = ({tasks, onClick=f=>f, onClose=f=>f}) => {
                 onClose={ onClose }
             />
     )
-    return (
-        renderTasks()
-    );
+    return renderTasks();
 };
 
 Tasks.propTypes = {

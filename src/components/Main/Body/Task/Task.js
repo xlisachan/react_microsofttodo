@@ -10,7 +10,7 @@ const Task = ({selectedTaskId, task, onClick=f=>f}) => {
             borderRadius: id === selectedTaskId ? 10 : null,
             backgroundColor: id === selectedTaskId ? '#eee' : null
         }
-    }
+    };
 
     return ( 
         <div className="list-item align-center space-between" style={ listStyle(task.task_id) } onClick={ onClick }>

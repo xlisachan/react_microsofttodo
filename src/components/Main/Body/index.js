@@ -4,15 +4,13 @@ import { connect } from 'react-redux';
 import Tasks from './Task/Tasks';
 import AddItem from '../../common/AddItemContainer';
 
-const Body = ({query, tasks, onClick=f=>f, onClose=f=>f}) => {
-    return (
-        <div className="main-container">
-            <Tasks tasks={tasks} onClick={onClick} onClose={onClose} />
+const Body = ({ query, tasks, onClick = f => f, onClose = f => f }) => (
+    <div className="main-container">
+        <Tasks tasks={tasks} onClick={onClick} onClose={onClose} />
 
-            { query ? null : <AddItem addItem={'task'} placeholder={'Add Task'} /> }
-        </div>
-    );
-};
+        {query ? null : <AddItem addItem={'task'} placeholder={'Add Task'} />}
+    </div>
+);
 
 Body.propTypes = {
     query: PropTypes.string,
