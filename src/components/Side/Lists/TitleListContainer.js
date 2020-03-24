@@ -36,9 +36,7 @@ const TitleListContainer = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f
         customs
     }
 
-    return (
-        <TitleList renderLists={ renderLists } />
-    );
+    return <TitleList renderLists={renderLists} />;
 };
 
 TitleListContainer.propTypes = {

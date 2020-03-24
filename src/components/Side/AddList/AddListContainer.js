@@ -38,9 +38,7 @@ const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f
         onClose();
     }
 
-    return (
-        <AddList onClick={ handleClick } />
-    );
+    return <AddList onClick={ handleClick } />;
 };
 
 AddListContainer.propTypes = {
