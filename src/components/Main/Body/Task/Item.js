@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Details from './Details/DetailsContainer';
+import Details from './Details/Details';
 
 const Item = ({task}) => {
     const listItem = () => {
