@@ -1,4 +1,4 @@
-## Task Management App
+## <a href="https://xlisachan.github.io/react_microsofttodo/">Task Management App</a>
 * Created a task management app based on Microsoft To Do app
 * Built an application with CRUD functionality using front-end framework (React) and state management (Redux)
 * Utilized CSS framework to add dynamic functionality and responsive design
@@ -16,3 +16,6 @@
 
 ## Built With
 React, Redux, Bootstrap, Material-UI
+
+## Deployment
+<a href="https://xlisachan.github.io/react_microsofttodo/">https://xlisachan.github.io/react_microsofttodo/</a>
