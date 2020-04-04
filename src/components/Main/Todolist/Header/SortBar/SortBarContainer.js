@@ -23,10 +23,9 @@ const SortBarContainer = ({barColor, lists, selectedList, selectedListId, onChan
         return dict[orderBy];
     }
 
-    const getDirIcon = () => {
-        return currentList[0].orderDir === 'asc' ?
-            <FaChevronUp /> : <FaChevronDown />
-    }
+    const getDirIcon = currentList[0].orderDir === 'asc'
+        ? <FaChevronUp />
+        : <FaChevronDown />;
 
     return (
         <SortBar

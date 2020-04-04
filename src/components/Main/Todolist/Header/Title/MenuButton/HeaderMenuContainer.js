@@ -127,7 +127,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
     onChangeBgColor(color, id) {
         dispatch(
             changeBgColor(color, id)
@@ -145,7 +144,6 @@ const mapDispatchToProps = dispatch => ({
             toggleHide(id)
         )
     }
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderMenuContainer);

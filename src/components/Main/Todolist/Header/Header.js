@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Header = React.forwardRef(({name, open, selectedList, formatColor=f=>f, secondaryColor=f=>f}, ref) => {
+const Header = React.forwardRef(({formatColor, name, open, selectedList, secondaryColor=f=>f}, ref) => {
     const classes = useStyles();
 
     return (
@@ -50,7 +50,7 @@ Header.propTypes = {
     name: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     selectedList: PropTypes.array.isRequired,
-    formatColor: PropTypes.func.isRequired,
+    formatColor: PropTypes.string.isRequired,
     secondaryColor: PropTypes.func.isRequired
 };
 

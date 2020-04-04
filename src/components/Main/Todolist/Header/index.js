@@ -6,10 +6,7 @@ import Header from './Header';
 const HeaderContainer = React.forwardRef(({lists, open, selectedListId}, ref) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
-
-    const formatColor = () => {
-        return 'rgb(' + selectedList[0].color.join(',') + ')';
-    };
+    const formatColor = 'rgb(' + selectedList[0].color.join(',') + ')';
 
     const secondaryColor = () => {
         const newArr = selectedList[0].color.map(col => parseInt(col * .6));
