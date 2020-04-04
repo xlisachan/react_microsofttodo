@@ -6,16 +6,22 @@ import { Icon } from '@material-ui/core';
 const Detail = ({el, name, task}) => {
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
-    const statusColor = () => {
-        if (el.id === 'my_day' || (el.id === 'planned' && task.date_due === todaysDate)) {
-            return 'royalblue';
-        } else if (el.id === 'planned' && task.date_due < todaysDate) {
-            return 'crimson';
-        } else {
-            return null;
-        }
-    };
+    const statusColor = (el.id === 'my_day' || (el.id === 'planned' && task.date_due === todaysDate))
+        ? 'royalblue'
+        : (el.id === 'planned' && task.date_due < todaysDate)
+            ? 'crimson'
+            : null;
+    
+    const detailIcon = el.icon
+        ? <Icon style={{ fontSize: 'small', marginRight: 3, paddingTop: 1 }}>{el.icon}</Icon>
+        : null
 
+    const listDetail =
+        <li className="list-detail" style={{ color: statusColor }}>
+            {detailIcon}
+            {el.text}
+        </li>
+    
     return (
         (el.id === "my_day" && task.my_day === true && name !== "My Day") ||
         (el.id === "custom" && task.tasks === false && name !== el.text) ||
@@ -23,12 +29,9 @@ const Detail = ({el, name, task}) => {
         (el.id === "step" && task.steps.length > 0) ||
         (el.id === "planned" && task.date_due) ||
         (el.id === "note" && task.note)
-        ) ?
-            <li className="list-detail" style={{ color: statusColor() }}>
-                {el.icon ? <Icon style={{fontSize: 'small', marginRight: 3, paddingTop: 1}}>{el.icon}</Icon> : null}
-                {el.text}
-            </li>
-            : null
+    )
+        ? listDetail
+        : null
 };
 
 Detail.propTypes = {

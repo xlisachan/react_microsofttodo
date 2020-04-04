@@ -46,9 +46,7 @@ const Details = ({lists, selectedListId, task}) => {
         return formattedDate;
     }
     
-    const getPlannedDate = () => {
-        return !task.date_due ? null : getFormattedDate()
-    }
+    const getPlannedDate = !task.date_due ? null : getFormattedDate();
 
     const details = [
         {
@@ -72,7 +70,7 @@ const Details = ({lists, selectedListId, task}) => {
         {
             "id": "planned",
             "icon": "calendar_today",
-            "text": getPlannedDate()
+            "text": getPlannedDate
         },
         {
             "id": "note",
@@ -81,7 +79,7 @@ const Details = ({lists, selectedListId, task}) => {
         }
     ];
 
-    const renderDetails = (arr) => {
+    const renderDetails = arr => {
         const name = selectedList[0].name;
 
         return arr.map(detail =>
