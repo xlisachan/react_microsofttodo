@@ -2,19 +2,16 @@
   "name": "react_microsofttodo",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "13.10.1",
-    "npm": "6.13.7"
-  },
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
-    "@material-ui/core": "^4.9.7",
+    "@material-ui/core": "^4.9.8",
     "@material-ui/pickers": "^3.2.10",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "clsx": "^1.1.0",
-    "date-fns": "^2.11.0",
+    "date-fns": "^2.11.1",
     "jquery": "^3.4.1",
+    "kind-of": "^6.0.3",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-contextmenu": "^2.13.0",
