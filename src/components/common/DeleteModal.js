@@ -81,7 +81,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
                             Cancel
                         </Button>
 
-                        <Button onClick={onClick} color="primary" autoFocus="true">
+                        <Button onClick={onClick} color="primary" autoFocus={true}>
                             Delete { todo }
                         </Button>
                     </DialogActions>
