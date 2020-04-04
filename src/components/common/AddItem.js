@@ -2,9 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddButton from './AddButton';
 
-const AddItem = React.forwardRef(({addItem, item, placeholder, itemStyle=f=>f, onChange=f=>f, onSubmit=f=>f}, ref) => (
-    <form className="add-form align-center" style={ itemStyle() } onSubmit={ onSubmit }>
-        <AddButton addItem={addItem} item={item} />
+const AddItem = React.forwardRef(({ addItem, item, placeholder, itemStyle = f => f, onChange = f => f, onSubmit = f => f }, ref) => (
+    <form
+        className="add-form align-center"
+        style={itemStyle()}
+        onSubmit={onSubmit}
+    >
+        <AddButton
+            addItem={addItem}
+            item={item}
+        />
         
         <input
             ref={ref}

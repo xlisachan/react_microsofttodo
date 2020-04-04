@@ -3,16 +3,18 @@ import '../../stylesheets/common.css';
 import PropTypes from 'prop-types';
 import { FaRegCircle, FaPlus } from 'react-icons/fa';
 
-const AddButton = ({addItem, item}) => {
+const AddButton = ({ addItem, item }) => {
+    const getSize = addItem === 'task' ? '1.2rem' : '1rem';
+    
     const add =
         <FaPlus 
-            style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} 
+            style={{fontSize: getSize}} 
             className="blue" 
         />
 
     const status = 
         <FaRegCircle 
-            style={{fontSize: addItem === 'task' ? '1.2rem' : '1rem'}} 
+            style={{fontSize: getSize}} 
             className="gray" 
         /> 
 
