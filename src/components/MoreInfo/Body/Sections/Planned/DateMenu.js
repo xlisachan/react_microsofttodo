@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const getDay = (num) => {
+const getDay = num => {
     return moment(new Date()).add(num, 'days').format('ddd')
 }
 

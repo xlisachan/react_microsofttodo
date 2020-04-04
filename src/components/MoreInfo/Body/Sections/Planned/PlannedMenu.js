@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import moment from 'moment'
 import DatePicker from './DatePicker';
 import { connect } from 'react-redux';
-import { addDateDue } from '../../../../actions/tasksActions';
+import { addDateDue } from '../../../../../actions/tasksActions';
 import { Icon, ListItemText, MenuItem } from '@material-ui/core';
-import MenuTemplate from '../../../common/MenuTemplate';
+import MenuTemplate from '../../../../common/MenuTemplate';
 import dateDueMenu from './DateMenu';
 
-class PlannedMenuContainer extends Component {
+class PlannedMenu extends Component {
     state={
         subAnchorEl: null,
         subMenuOpen: false,
@@ -76,7 +76,15 @@ class PlannedMenuContainer extends Component {
     render() {
         const { anchorEl, open, onClose } = this.props;
         
-        return <MenuTemplate anchorEl={anchorEl} menuArr={dateDueMenu} open={open} onClose={onClose} renderMenuItems={this.renderMenuItems} />;
+        return (
+            <MenuTemplate
+                anchorEl={anchorEl}
+                menuArr={dateDueMenu}
+                open={open}
+                onClose={onClose}
+                renderMenuItems={this.renderMenuItems}
+            />
+        );
     }
 };
 
@@ -88,4 +96,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(null, mapDispatchToProps)(PlannedMenuContainer);
+export default connect(null, mapDispatchToProps)(PlannedMenu);

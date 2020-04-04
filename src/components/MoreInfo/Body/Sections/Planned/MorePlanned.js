@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ListItem } from '@material-ui/core';
-import PlannedButton from './PlannedButtonContainer';
-import PlannedMenu from './PlannedMenuContainer';
+import PlannedButton from './PlannedButton';
+import PlannedMenu from './PlannedMenu';
 
 const Planned = ({selectedTask, tasks}) => {
     const [anchorEl, setAnchorEl] = useState(null);

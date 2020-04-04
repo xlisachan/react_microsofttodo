@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider } from '@material-ui/core';
-import Steps from './Steps/StepsContainer';
-import MoreMyDay from './MyDay/MoreMyDayContainer';
-import MorePlanned from './Planned/MorePlanned';
-import Note from './Note/NoteContainer';
+import Steps from './Sections/Steps/StepsContainer';
+import MoreMyDay from './Sections/MyDay';
+import MorePlanned from './Sections/Planned/MorePlanned';
+import Note from './Sections/Note';
 
 const BodySection = ({selectedTask, tasks, onClose}) => (
     <div style={{height: '82vh', overflow: 'auto'}}>

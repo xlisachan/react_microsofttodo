@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setStep } from '../../../../actions/currentActions'; 
-import { removeStep, toggleStep, updateStep } from '../../../../actions/tasksActions';
+import { setStep } from '../../../../../actions/currentActions'; 
+import { removeStep, toggleStep, updateStep } from '../../../../../actions/tasksActions';
 import Step from './Step';
 
 const StepContainer = ({currentStep, currentSteps, selectedTask, step, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f, onUpdateStep=f=>f}) => {

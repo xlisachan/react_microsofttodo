@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
-import DeleteModal from '../../../common/DeleteModal';
+import DeleteModal from '../../../../common/DeleteModal';
 import Completed from './Completed';
 
 const Step = ({selectedTask, step, stepContainer=f=>f, stepStyle=f=>f, getPlaceholder=f=>f, onEnterPress=f=>f, onRemoveStep=f=>f, onSetStep=f=>f, onToggleStep=f=>f}) => (
