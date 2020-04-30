@@ -1,7 +1,5 @@
-## <a href="https://xlisachan.github.io/react_microsofttodo/">Task Management App</a>
-* Created a task management app based on Microsoft To Do app
-* Built an application with CRUD functionality using front-end framework (React) and state management (Redux)
-* Utilized CSS framework to add dynamic functionality and responsive design
+## Task Management App (<a href="https://xlisachan.github.io/react_microsofttodo/">https://xlisachan.github.io/react_microsofttodo/</a>)
+A task management app based on Microsoft To Do app
 
 ## Installation
 `npm install`
@@ -9,13 +7,17 @@
 <br/>Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
 ## Features and Functionality
-* Utilize default lists or create custom color-coded lists to help stay organized
-* Set due dates or add notes to help manage tasks
+* Provide abilities for the following by managing state with Redux:
+  - Add, edit, and delete tasks and lists, as well as their properties (e.g., deadlines, notes, steps, etc)
+  - Use default lists or create custom color-coded lists
+  - Sort tasks based on importance, alphabetically, due date, creation date, or completion status
+* Select and set due dates for tasks through date-io
+* Responsive layout and dynamic functionality created with Material
 
 <img width="80%" src="https://raw.githubusercontent.com/xlisachan/react_microsofttodo/master/public/screenshot.png?token=AGWTUDQGM54BE6NDX3FAA6S6QOYHK" alt="screenshot of project">
 
 ## Built With
-React, Redux, Bootstrap, Material-UI
+React, Redux, Material-UI, date-io
 
 ## Deployment
 <a href="https://xlisachan.github.io/react_microsofttodo/">https://xlisachan.github.io/react_microsofttodo/</a>
