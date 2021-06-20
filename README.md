@@ -1,4 +1,4 @@
-## Task Management App (<a href="https://xlisachan.github.io/react_microsofttodo/">https://xlisachan.github.io/react_microsofttodo/</a>)
+## Task Management App
 A task management app based on Microsoft To Do app
 
 ## Installation
@@ -18,6 +18,3 @@ A task management app based on Microsoft To Do app
 
 ## Built With
 React, Redux, Material-UI, date-io
-
-## Deployment
-<a href="https://xlisachan.github.io/react_microsofttodo/">https://xlisachan.github.io/react_microsofttodo/</a>
