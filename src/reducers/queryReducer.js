@@ -2,7 +2,7 @@ import C from '../actions/constants';
 
 const initialState = "";
 
-export default (state=initialState, action) => {
+const queryReducer = (state=initialState, action) => {
 	switch(action.type) {
         case C.CHANGE_QUERY :
             return action.payload
@@ -14,3 +14,5 @@ export default (state=initialState, action) => {
             return state
     }
 }
+
+export default queryReducer;

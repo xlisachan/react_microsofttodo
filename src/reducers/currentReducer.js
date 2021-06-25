@@ -22,7 +22,7 @@ const step = (state={}, action) =>
         action.payload :
         state
 
-export default (state=initialState, action) => {
+const currentReducer = (state=initialState, action) => {
     switch (action.type) {
         case C.SET_LIST :
             return {
@@ -95,3 +95,5 @@ export default (state=initialState, action) => {
             return state
     }
 }
+
+export default currentReducer;

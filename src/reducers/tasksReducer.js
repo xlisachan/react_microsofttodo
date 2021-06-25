@@ -15,7 +15,7 @@ const task = (state={}, action) =>
         action.payload :
         state
 
-export default (state=initialState, action) => {
+const tasksReducer = (state=initialState, action) => {
     switch(action.type) {
         case C.ADD_TASK :
             return [
@@ -278,3 +278,5 @@ export default (state=initialState, action) => {
             return state
     }
 }
+
+export default tasksReducer;

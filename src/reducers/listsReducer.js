@@ -48,7 +48,7 @@ const list = (state={}, action) =>
         action.payload :
         state
 
-export default (state=initialState, action) => {
+const listReducer = (state=initialState, action) => {
     switch(action.type) {
         case C.ADD_LIST :
             return [
@@ -139,3 +139,5 @@ export default (state=initialState, action) => {
             return state
     }
 }
+
+export default listReducer;
