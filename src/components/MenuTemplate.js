@@ -13,10 +13,10 @@ const MenuTemplate = ({anchorEl, menuArr, open, onClose=f=>f, renderMenuItems=f=
 );
 
 MenuTemplate.propTypes = {
-    open: PropTypes.bool.isRequired,
     anchorElement: PropTypes.any,
-    onClose: PropTypes.func.isRequired,
     menuArr: PropTypes.array.isRequired,
+    open: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
     renderMenuItems: PropTypes.func.isRequired
 };
 

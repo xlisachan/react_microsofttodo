@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import ListBody from '../Todolist/Body';
-import MoreSection from '../../MoreInfo/MoreInfoContainer';
+import MoreSection from '../../../sections/MoreInfo/';
 
 const drawerWidth = 250;
 

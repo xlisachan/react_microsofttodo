@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Tasks from './Task/Tasks';
-import AddItem from '../../../common/AddItemContainer';
+import AddItem from '../../../AddItem';
 
 const Body = ({ query, tasks, onClick = f => f, onClose = f => f }) => (
     <div className="main-container">

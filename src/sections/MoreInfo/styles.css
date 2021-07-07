@@ -1,0 +1,44 @@
+.moreinfo-margins {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 0 16px;
+  width: 235px;
+}
+
+.moreinfo-header {
+  align-items: flex-start;
+}
+
+.moreinfo-list-title{
+  font-weight: bold;
+  width: 130px;
+}
+
+.moreinfo-myday,
+.moreinfo-planned {
+  margin: 10px 0;
+}
+
+.moreinfo-note {
+  margin: 10px 3px;
+}
+
+.moreinfo-step {
+  font-size: 16px;
+  margin-right: 18px;
+}
+
+.moreinfo-footer {
+  align-items: center;
+  background: #fafafa;
+  bottom: 0;
+  margin-bottom: 0;
+  padding: 10px 16px;
+  position: fixed;
+  z-index: 1;
+}
+
+.moreinfo-footer-text {
+  font-size: 12px;
+}

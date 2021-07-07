@@ -36,6 +36,10 @@ textarea {
   color: royalblue;
 }
 
+.dimgray {
+  color: dimgray;
+}
+
 .green {
   color: limegreen;
 }
@@ -90,10 +94,6 @@ textarea {
   margin-right: 15px;
 }
 
-.step-margin-rt {
-  margin-right: 18px;
-}
-
 .list-item {
   height: 60px;
   margin: 0 auto;
@@ -140,9 +140,20 @@ li.list-detail:first-child::before {
   background: #eee;
 }
 
-.more-list-title{
-  width: 130px;
-  font-weight: bold;
+.additem-btn { 
+  font-size: 1.5rem;
+  margin-right: 5px;
+  background: transparent;
+  border: none;
+}
+
+.additem-form {
+  background: #fafafa;
+}
+
+.additem-input {
+  border: none;
+  padding: 5px;
 }
 
 /* sidebar */
@@ -156,32 +167,6 @@ li.list-detail:first-child::before {
 .list-titles {
   position: relative;
   top: 100px;
-}
-
-/* more */
-.more-fixed {
-  position: fixed;
-  background: #fafafa;
-  z-index: 1;
-}
-
-.more-margins{
-  width: 235px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 16px;
-}
-
-.more-header {
-  align-items: flex-start;
-}
-
-.more-footer {
-  bottom: 0;
-  margin-bottom: 0;
-  padding: 10px 16px;
-  align-items: center;
 }
 
 /* context menu */

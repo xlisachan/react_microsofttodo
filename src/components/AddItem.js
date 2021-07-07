@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
-import uuid from 'uuid';
+import PropTypes from 'prop-types';
+import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { addStep, addTask } from '../../actions/tasksActions';
-import AddItem from './AddItem';
+import uuid from 'uuid';
 
-const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
+import { addStep, addTask } from '../actions/tasksActions';
+
+const AddItem = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
     const [item, setItem] = useState('');
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
@@ -15,21 +16,18 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
     let _newItem;
 
     const itemStyle = () => {
-        if (addItem === 'task') {
-            return {
+        return addItem === 'task' ?
+            {
                 margin: '0 auto',
                 height: 60,
                 padding: '10px 14px',
                 borderBottom: '1px solid gainsboro'
-            }
-        } else {
-            return {
+            } : {
                 margin: '3px 0 10px 0',
                 height: 30,
                 padding: '10px 12px',
                 borderBottom: 'none'
             }
-        }
     };
 
     const onSubmit = e => {
@@ -141,28 +139,48 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
             }
         }
 
-        setItem('');
+        _newItem = ''
+        setItem(_newItem);
     };
 
-    const handleChange = () => {
-        setItem(_newItem.value)
+    const onChange = val => {
+        setItem(val);
     };
 
+    const getSize = addItem === 'task' ? '1.2rem' : '1rem';
     
     return (
-        <AddItem
-            ref={input => _newItem = input}
-            addItem={addItem}
-            item={item}
-            placeholder={placeholder}
-            itemStyle={itemStyle}
-            onChange={handleChange}
-            onSubmit={onSubmit}
-        />
+        <form
+            className="additem-form align-center"
+            style={itemStyle()}
+            onSubmit={onSubmit}>
+            <button className="additem-btn" type="submit">
+                {!item ? (
+                    <FaPlus
+                        className="blue"
+                        style={{ fontSize: getSize }}
+                    />
+                ) : (
+                    <FaRegCircle
+                        className="gray"
+                        style={{ fontSize: getSize }}
+                    />
+                )}
+            </button>
+            
+            <input
+                className="additem-input"
+                name="item"
+                placeholder={placeholder}
+                type="text"
+                value={item}
+                onChange={e => onChange(e.target.value)}
+            />
+        </form>
     );
 };
 
-AddItemContainer.propTypes = {
+AddItem.propTypes = {
     addItem: PropTypes.string.isRequired,
     lists: PropTypes.array.isRequired,
     placeholder: PropTypes.any,
@@ -180,13 +198,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onAddTask({
-            task_id, item, date_completed, date_created, date_due, temp,
-            completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
+        task_id, item, date_completed, date_created, date_due,
+        temp, completedStatus, importantStatus, my_day,
+        planned, important, tasks, list_id, note, steps
         }) {
         dispatch(
             addTask(
-                task_id, item, date_completed, date_created, date_due, temp,
-                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
+                task_id, item, date_completed, date_created, date_due,
+                temp, completedStatus, importantStatus, my_day,
+                planned, important, tasks, list_id, note, steps
             )
         )
     },
@@ -198,4 +218,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddItemContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

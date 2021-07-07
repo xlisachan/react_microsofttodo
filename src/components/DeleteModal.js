@@ -41,9 +41,9 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
         setOpen(false);
     };
 
-    const deleteType = location === 'more-bottom'
+    const deleteType = location === 'moreinfo-bottom'
         ? <FaRegTrashAlt style={{ margin: '0 5px 3px 0' }} />
-        : location === 'more-top'
+        : location === 'moreinfo-top'
             ? <FaTimes />
             : (
                 <>

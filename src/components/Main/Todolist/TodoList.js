@@ -5,7 +5,7 @@ import { CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from './Header';
 import ListBody from './Body';
-import MoreSection from '../../MoreInfo/MoreInfoContainer';
+import MoreSection from '../../../sections/MoreInfo/';
 
 const drawerWidth = 250;
 

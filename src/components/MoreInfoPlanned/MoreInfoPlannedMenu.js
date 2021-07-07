@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import moment from 'moment'
-import DatePicker from './DatePicker';
+import moment from 'moment';
 import { connect } from 'react-redux';
-import { addDateDue } from '../../../../../actions/tasksActions';
 import { Icon, ListItemText, MenuItem } from '@material-ui/core';
-import MenuTemplate from '../../../../common/MenuTemplate';
-import dateDueMenu from './DateMenu';
+
+import { addDateDue } from '../../actions/tasksActions';
+import MenuTemplate from '../MenuTemplate';
+import dateDueMenu from './MoreInfoDateMenu';
+import DatePicker from './MoreInfoDatePicker';
 
 class PlannedMenu extends Component {
     state={
