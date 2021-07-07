@@ -1,6 +1,7 @@
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = (localStorage["redux-store"]) ?
     JSON.parse(localStorage["redux-store"]) :
@@ -14,11 +15,8 @@ const middleware = [thunk];
 const store = createStore(
     rootReducer,
     initialState,
-    compose(
+    composeWithDevTools(
       applyMiddleware(...middleware),
-      window.REDUX_DEVTOOLS_EXTENSION_COMPOSE ? window.REDUX_DEVTOOLS_EXTENSION_COMPOSE({
-        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-        }) : compose
     )
   );
 
