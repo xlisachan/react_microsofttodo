@@ -1,7 +1,7 @@
 import React from 'react';
 import { CssBaseline, useMediaQuery} from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import Sidebar from './Side';
+import Side from '../sections/Side/';
 import Main from './Main';
 
 const ResponsiveDrawer = () => {
@@ -30,7 +30,7 @@ const ResponsiveDrawer = () => {
         <div style={{display: 'flex'}}>
             <CssBaseline />
 
-            <Sidebar
+            <Side
                 onClose={ handleDrawerClose }
                 onEditClick={ editClick }
             />

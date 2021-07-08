@@ -129,33 +129,9 @@ li.list-detail:first-child::before {
   color: gray;
 }
 
-.add-list {
-  width: 199px;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  color: royalblue;
-  background: #eee;
-}
-
 .more-list-title{
   width: 130px;
   font-weight: bold;
-}
-
-/* sidebar */
-.search-bar {
-  width: 200px;
-  background: #eee;
-  position: fixed;
-  z-index: 2;
-}
-
-.list-titles {
-  position: relative;
-  top: 100px;
 }
 
 /* more */

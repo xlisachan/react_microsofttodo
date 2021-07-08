@@ -1,0 +1,28 @@
+.side-add-list {
+  align-items: center;
+  background: #eee;
+  bottom: 0;
+  color: royalblue;
+  display: flex;
+  padding: 10px 20px;
+  position: fixed;
+  width: 199px;
+}
+
+.side-lists {
+  overflow: auto;
+  padding-bottom: 60px;
+  position: relative;
+  top: 100px;
+}
+
+.side-searchbar {
+  background: #eee;
+  position: fixed;
+  width: 200px;
+}
+
+.side-list-item {
+  align-items: center;
+  display: flex;
+}
