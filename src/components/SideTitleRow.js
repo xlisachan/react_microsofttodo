@@ -1,13 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+    FaList,
+    FaRegSun,
+    FaRegStar,
+    FaRegCalendar,
+    FaRegCalendarCheck
+} from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { setList } from '../../../actions/currentActions';
-import { FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
-import TitleRow from './TitleRow';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+
+
+import { setList } from '../actions/currentActions';
 
 const listIcons = [<FaRegSun />, <FaRegStar />, <FaRegCalendar />, <FaRegCalendarCheck />];
 
-const TitleRowContainer = ({list, index, lists, query, selectedListId, tasks, onClick=f=>f, onClose=f=>f, onSetList=f=>f}) => {
+const TitleRow = ({
+    index,
+    list,
+    lists,
+    query,
+    selectedListId,
+    tasks,
+    onClick = f => f,
+    onClose = f => f,
+    onSetList = f => f
+}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
 
@@ -51,21 +69,23 @@ const TitleRowContainer = ({list, index, lists, query, selectedListId, tasks, on
     }
 
     return (
-        <TitleRow
-            list={ list }
-            index={ index }
-            listIcons={ listIcons }
-            headerStyle={ headerStyle }
-            iconStyle={ iconStyle }
-            numberOfTasks={ numberOfTasks }
-            onClick={ handleClick }
-        />
+        <ListItem style={ headerStyle(list.name) } onClick={ handleClick }>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <ListItemIcon style={ iconStyle(list.color) }>
+                    { list.defaultList ? listIcons[index] : <FaList /> }
+                </ListItemIcon>
+
+                <ListItemText primary={list.name} />
+            </div>
+
+            { numberOfTasks(list.id, list.name) } 
+        </ListItem>
     );
 };
 
-TitleRowContainer.propTypes = {
+TitleRow.propTypes = {
+    index: PropTypes.number,
     list: PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired,
     lists: PropTypes.array.isRequired,
     query: PropTypes.string.isRequired,
     selectedListId: PropTypes.string.isRequired,
@@ -90,4 +110,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TitleRowContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TitleRow);

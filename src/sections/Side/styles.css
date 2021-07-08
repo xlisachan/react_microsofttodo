@@ -1,0 +1,23 @@
+.side-add-list {
+  align-items: center;
+  background: #eee;
+  bottom: 0;
+  color: royalblue;
+  display: flex;
+  padding: 10px 20px;
+  position: fixed;
+  width: 200px;
+}
+
+.side-list-titles {
+  height: 82vh;
+  overflow: auto;
+  top: 100px;
+}
+
+.side-search {
+  background: #eee;
+  height: 100vh;
+  position: fixed;
+  width: 200px;
+}

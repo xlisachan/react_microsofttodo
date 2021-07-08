@@ -1,8 +1,9 @@
 import React from 'react';
 import { CssBaseline, useMediaQuery} from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import Sidebar from './Side';
+
 import Main from './Main';
+import Sidebar from '../sections/Side/';
 
 const ResponsiveDrawer = () => {
     let inputEl = null;

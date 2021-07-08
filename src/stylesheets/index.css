@@ -129,17 +129,6 @@ li.list-detail:first-child::before {
   color: gray;
 }
 
-.add-list {
-  width: 199px;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  color: royalblue;
-  background: #eee;
-}
-
 .additem-btn { 
   font-size: 1.5rem;
   margin-right: 5px;
@@ -154,19 +143,6 @@ li.list-detail:first-child::before {
 .additem-input {
   border: none;
   padding: 5px;
-}
-
-/* sidebar */
-.search-bar {
-  width: 200px;
-  background: #eee;
-  position: fixed;
-  z-index: 2;
-}
-
-.list-titles {
-  position: relative;
-  top: 100px;
 }
 
 /* context menu */

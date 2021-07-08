@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaSearch, FaTimesCircle } from 'react-icons/fa';
-import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
+import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
@@ -37,11 +37,11 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Search = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) => {
+const SideSearch = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) => {
     const classes = useStyles();
 
     return (
-        <div className="search-bar">
+        <div className="side-search">
             <div className={classes.toolbar} />
 
             <div className={classes.search} style={{width: '90%', margin: 'auto'}}>
@@ -50,27 +50,34 @@ const Search = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) => {
                 </div>
 
                 <InputBase
-                    style={{width: '88%'}}
-                    placeholder="Search"
                     classes={{
                         root: classes.inputRoot,
                         input: classes.inputInput,
                     }}
                     inputProps={{ 'aria-label': 'Search' }}
                     inputRef={ ref }
-                    onChange={ onChange }
+                    onChange={onChange}
+                    placeholder="Search"
+                    style={{width: '88%'}}
                 />
 
-                { !query ? null : <FaTimesCircle style={{fontSize: '1rem'}} onClick={ onClear } /> }
+                {!query ?
+                    null
+                    :
+                    <FaTimesCircle
+                        style={{ fontSize: '1rem' }}
+                        onClick={onClear}
+                    />
+                }
             </div>
         </div>
     );
 });
 
-Search.propTypes = {
+SideSearch.propTypes = {
     query: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     onClear: PropTypes.func.isRequired,
 };
 
-export default Search;
+export default SideSearch;

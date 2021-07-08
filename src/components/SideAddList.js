@@ -1,12 +1,19 @@
 import React from 'react';
-import uuid from 'uuid';
 import PropTypes from 'prop-types';
+import { FaPlus } from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { addList } from '../../../actions/listsActions';
-import { setList } from '../../../actions/currentActions';
-import AddList from './AddList';
+import uuid from 'uuid';
+import { ListItemText } from '@material-ui/core';
 
-const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f})  => {
+import { addList } from '../actions/listsActions';
+import { setList } from '../actions/currentActions';
+
+const SideAddList = ({
+    lists,
+    onAddList = f => f,
+    onEditClick = f => f,
+    onClose = f => f
+}) => {
     const namesOnList = lists.map(list => list.name);
 
     const setListName = () => {
@@ -21,7 +28,7 @@ const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f
         return subName;
     }
 
-    const handleClick = () => {
+    const onClick = () => {
         const newList = {
             id: uuid.v4(),
             name: setListName(),
@@ -38,10 +45,16 @@ const AddListContainer = ({lists, onAddList=f=>f, onEditClick=f=>f, onClose=f=>f
         onClose();
     }
 
-    return <AddList onClick={ handleClick } />;
+    return (
+        <div className="side-add-list" onClick={ onClick }>
+            <FaPlus className="list-icon list-icon-margin-rt" />
+
+            <ListItemText primary="New List" />
+        </div>
+    );
 };
 
-AddListContainer.propTypes = {
+SideAddList.propTypes = {
     lists: PropTypes.array.isRequired,
     onAddList: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
@@ -64,4 +77,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SideAddList);
