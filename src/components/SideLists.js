@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import RightClickMenuSide from './RightClickMenuSideContainer';
-import TitleRow from './TitleRowContainer';
-import TitleList from './TitleList';
+import { Divider, List } from '@material-ui/core';
 
-const TitleListContainer = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
-    const defaultLists = lists.filter(list => list.defaultList)
-    const customLists = lists.filter(list => !list.defaultList)
+import CustomList from './SideCustomList';
+import TitleRow from './SideListItem';
 
-    const defaults = () =>
-        defaultLists.map((list, index) => (
+const SideLists = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
+    const defaultLists = lists
+        .filter(list => list.defaultList)
+        .map((list, index) => (
             <TitleRow
                 key={list.name + '_' + list.id}
                 list={ list }
@@ -20,9 +19,10 @@ const TitleListContainer = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f
             />
         ))
 
-    const customs = () =>
-        customLists.map(list => (
-            <RightClickMenuSide
+    const customLists = lists
+        .filter(list => !list.defaultList)
+        .map(list => (
+            <CustomList
                 key={list.name + '_' + list.id}
                 list={ list }
                 onClick={ onClick }
@@ -30,16 +30,19 @@ const TitleListContainer = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f
                 onClose={ onClose }
             />
         ))
-    
-    const renderLists = {
-        defaults,
-        customs
-    }
 
-    return <TitleList renderLists={renderLists} />;
+    return (
+        <List className="side-lists">
+            { defaultLists }
+
+            <Divider style={{margin: 10}} />
+
+            { customLists }
+        </List>
+    );
 };
 
-TitleListContainer.propTypes = {
+SideLists.propTypes = {
     lists: PropTypes.array.isRequired,
     onClick: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
@@ -50,4 +53,4 @@ const mapStateToProps = state => ({
     lists: state.lists,
 });
 
-export default connect(mapStateToProps)(TitleListContainer);
+export default connect(mapStateToProps)(SideLists);
