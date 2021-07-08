@@ -4,7 +4,7 @@ import DatePicker from './DatePicker';
 import { connect } from 'react-redux';
 import { addDateDue } from '../../../../../actions/tasksActions';
 import { Icon, ListItemText, MenuItem } from '@material-ui/core';
-import MenuTemplate from '../../../../common/MenuTemplate';
+import MenuTemplate from '../../../../MenuTemplate';
 import dateDueMenu from './DateMenu';
 
 class PlannedMenu extends Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaChevronRight } from 'react-icons/fa';
 import Completed from './Completed';
-import DeleteModal from '../../common/DeleteModal';
+import DeleteModal from '../../DeleteModal';
 
 const FooterSection = ({selectedTask, onClose=f=>f, onRemove=f=>f}) => (
     <div className="more-fixed more-margins more-footer">

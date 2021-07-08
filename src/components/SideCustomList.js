@@ -9,7 +9,7 @@ import { removeList } from '../actions/listsActions';
 import { removeTask } from '../actions/tasksActions';
 
 import SideListItem from './SideListItem';
-import DeleteModal from './common/DeleteModal';
+import DeleteModal from './DeleteModal';
 
 
 const SideCustomList = ({

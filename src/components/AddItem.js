@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import uuid from 'uuid';
+import { FaRegCircle, FaPlus } from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { addStep, addTask } from '../../actions/tasksActions';
-import AddItem from './AddItem';
+import uuid from 'uuid';
 
-const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selectedTaskId, onAddStep=f=>f, onAddTask=f=>f}) => {
+import { addStep, addTask } from '../actions/tasksActions';
+
+const AddItemContainer = ({
+    addItem,
+    lists,
+    placeholder,
+    selectedListId,
+    selectedTaskId,
+    onAddStep = f => f,
+    onAddTask = f => f
+}) => {
     const [item, setItem] = useState('');
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
+    const getSize = addItem === 'task' ? '1.2rem' : '1rem';
+
+    const handleChange = () => {
+        setItem(_newItem.value)
+    };
 
     let _newItem;
 
@@ -143,22 +157,37 @@ const AddItemContainer = ({addItem, lists, placeholder, selectedListId, selected
 
         setItem('');
     };
-
-    const handleChange = () => {
-        setItem(_newItem.value)
-    };
-
     
     return (
-        <AddItem
-            ref={input => _newItem = input}
-            addItem={addItem}
-            item={item}
-            placeholder={placeholder}
-            itemStyle={itemStyle}
-            onChange={handleChange}
-            onSubmit={onSubmit}
-        />
+        <form
+            className="additem-form align-center"
+            style={itemStyle()}
+            onSubmit={onSubmit}>
+
+            <button className="additem-btn" type="submit">
+                {!item ? (
+                    <FaPlus
+                        style={{ fontSize: getSize }}
+                        className="blue"
+                    />
+                ) : (
+                    <FaRegCircle
+                        style={{ fontSize: getSize }}
+                        className="gray"
+                    />
+                )}
+            </button>
+            
+            <input
+                name="item"
+                placeholder={placeholder}
+                ref={input => _newItem = input}
+                style={{ flex: '10', padding: 5, border: 'none' }}
+                type="text"
+                value={item}
+                onChange={e => handleChange(e.target.value)}
+            />
+        </form>
     );
 };
 
@@ -180,13 +209,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onAddTask({
-            task_id, item, date_completed, date_created, date_due, temp,
-            completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
+        task_id, item, date_completed, date_created, date_due,
+        temp, completedStatus, importantStatus, my_day, planned,
+        important, tasks, list_id, note, steps
         }) {
         dispatch(
             addTask(
-                task_id, item, date_completed, date_created, date_due, temp,
-                completedStatus, importantStatus, my_day, planned, important, tasks, list_id, note, steps
+                task_id, item, date_completed, date_created, date_due,
+                temp, completedStatus, importantStatus, my_day, planned,
+                important, tasks, list_id, note, steps
             )
         )
     },

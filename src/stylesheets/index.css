@@ -134,6 +134,17 @@ li.list-detail:first-child::before {
   font-weight: bold;
 }
 
+.additem-btn { 
+  font-size: 1.5rem;
+  margin-right: 5px;
+  background: transparent;
+  border: none;
+}
+
+.additem-form {
+  background: #fafafa;
+}
+
 /* more */
 .more-fixed {
   position: fixed;

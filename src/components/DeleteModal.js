@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Modal, DialogActions, Button } from '@material-ui/core';
 import { FaRegTrashAlt, FaTimes } from 'react-icons/fa';
+import { Modal, DialogActions, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const getModalStyle = () => {
     const top = 50;
