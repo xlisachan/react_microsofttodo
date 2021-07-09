@@ -50,13 +50,12 @@ const HeaderMenuContainer = ({anchorEl, open, onClose, lists, selectedListId, on
                 return (name !== 'Planned' || item.id !== "sortTasks") ?
                     <div key={ item.id }>
                         <MenuItem
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                            }}
+                            className="main-header-menu-item"
                             onClick={e => handleSubItemClick(e, item)}>
                         
-                            <Icon style={{marginRight: '8px', fontSize: item.size}}>
+                            <Icon
+                                className="main-header-icon"
+                                style={{ fontSize: item.size }}>
                                 { item.icon }
                             </Icon>
 
@@ -92,10 +91,7 @@ const HeaderMenuContainer = ({anchorEl, open, onClose, lists, selectedListId, on
                 ) ?
                     <MenuItem
                         key={item.id}
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between'
-                        }}
+                        className="main-header-menu-item"
                         onClick={() => handleSort(item)}>
                             <Icon style={{color: formatColor(item.color), marginRight: '8px', fontSize: item.size}}>
                                 { item.icon }

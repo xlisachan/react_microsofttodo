@@ -42,18 +42,18 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
     };
 
     const deleteType = location === 'moreinfo-bottom'
-        ? <FaRegTrashAlt style={{ margin: '0 5px 3px 0' }} />
+        ? <FaRegTrashAlt className="task-menu-item" />
         : location === 'moreinfo-top'
             ? <FaTimes />
             : (
                 <>
-                    <FaRegTrashAlt style={{ margin: '0 5px 3px 0' }} />
+                    <FaRegTrashAlt className="task-menu-item" />
                     <span>Delete {todo}</span>
                 </>
             );
 
     return (
-        <>
+        <div className="delete-modal">
             <div id={`${todo}_${id}`} onClick={handleOpen}>
                 { deleteType }
             </div>
@@ -64,7 +64,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
                 open={open}>
 
                 <div style={modalStyle} className={classes.paper}>
-                    <h2 id={`item-${todo}_${id}`} style={{fontSize: 16, fontWeight: 'bold'}}>
+                    <h2 id={`item-${todo}_${id}`} className="delete-modal-header">
                         "{ name }" will be permanently deleted.
                     </h2>
 
@@ -83,7 +83,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
                     </DialogActions>
                 </div>
             </Modal>
-        </>
+        </div>
     );
 };
 

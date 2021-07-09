@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
 import moment from 'moment';
-import Detail from './TaskDetail';
 
-const Details = ({lists, selectedListId, task}) => {
+import TaskDetail from './TaskDetail';
+
+const TaskDetails = ({lists, selectedListId, task}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);
 
     const listItemDetail = () => {
@@ -22,12 +23,14 @@ const Details = ({lists, selectedListId, task}) => {
     }
 
     const completedTask = () => {
-        return numOfCompletedSteps() === task.steps.length ? <FaCheck style={{fontSize: 12}} /> : null
+        return numOfCompletedSteps() === task.steps.length ?
+            <FaCheck className="main-task-icon" /> : null
     }
 
     const numOfCompletedSteps = () => {
         let count = 0;
-        task.steps.forEach(step => step.completedStatus === true ? count++ : count)
+        task.steps.forEach(step =>
+            step.completedStatus === true ? count++ : count)
 
         return count;
     }
@@ -83,7 +86,12 @@ const Details = ({lists, selectedListId, task}) => {
         const name = selectedList[0].name;
 
         return arr.map(detail =>
-            <Detail key={detail.id} el= {detail} name={name} task={task} />
+            <TaskDetail
+                key={detail.id}
+                el={detail}
+                name={name}
+                task={task}
+            />
         )
     }
 
@@ -94,7 +102,7 @@ const Details = ({lists, selectedListId, task}) => {
     );
 };
 
-Details.propTypes = {
+TaskDetails.propTypes = {
     lists: PropTypes.array.isRequired,
     selectedListId: PropTypes.string.isRequired, 
     task: PropTypes.object.isRequired
@@ -105,4 +113,4 @@ const mapStateToProps = state => ({
     selectedListId: state.current.list["id"]
 });
  
-export default connect(mapStateToProps)(Details);
+export default connect(mapStateToProps)(TaskDetails);

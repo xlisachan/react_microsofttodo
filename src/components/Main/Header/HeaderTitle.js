@@ -44,7 +44,7 @@ const HeaderTitle = React.forwardRef(({
     }
 
     return (
-        <h2 className="main-header-title" >
+        <h2 className="main-header-title-text" >
             { defaultList ?
                 currentList.title
                 :

@@ -20,7 +20,7 @@ const HeaderBanner = React.forwardRef(({ name, formatColor, secondaryColor }, re
 
     return (
         <header className="main-header align-center space-between" style={{ backgroundColor: formatColor }}>
-            <div style={{ width: '100%' }}>
+            <div className="main-header-title">
                 <HeaderTitle ref={ref} />
 
                 {name === "My Day" ?

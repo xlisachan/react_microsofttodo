@@ -29,23 +29,21 @@ const MoreInfoNote = ({
         setOpen(false);
     };
 
-    const placeholder = 
-        <Textarea
-            placeholder={'Add a Note'}
-            value={ currentNote }
-            onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
-        />
-
-    const note = 
-        <Textarea
-            value={ currentNote }
-            onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
-        />
-
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <ListItem className="moreinfo-body-note" onClick={handleClick}>
-                { selectedTask[0].note ? note : placeholder }
+                {selectedTask[0].note ? (
+                    <Textarea
+                        value={ currentNote }
+                        onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
+                    />
+                ) : (
+                    <Textarea
+                        placeholder={'Add a Note'}
+                        value={ currentNote }
+                        onChange={e => onSetNote(selectedTask[0].task_id, e.target.value)}
+                    />
+                ) }
             </ListItem>
         </ClickAwayListener>
     );

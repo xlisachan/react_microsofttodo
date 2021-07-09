@@ -19,7 +19,7 @@ import {
 import TaskItem from './TaskItem';
 import DeleteModal from '../../DeleteModal';
 
-const RightClickMenu = ({
+const Task = ({
     task,
     onClick = f => f,
     onClose = f => f,
@@ -43,12 +43,12 @@ const RightClickMenu = ({
                 <MenuItem>
                     {task.my_day ? (
                         <div onClick={() => onToggleMyDay(task.task_id)}>
-                            <FaRegSun className="list-icon" style={{margin: '0 5px 3px 0'}}/>
+                            <FaRegSun className="list-icon task-menu-item" />
                             <span>Remove from My Day</span>
                         </div>
                     ) : (
                         <div onClick={() => onToggleMyDay(task.task_id)}>
-                            <FaRegSun className="list-icon" style={{margin: '0 5px 3px 0'}}/>
+                            <FaRegSun className="list-icon task-menu-item" />
                             <span>Add to My Day</span>
                         </div>   
                     )}
@@ -57,12 +57,12 @@ const RightClickMenu = ({
                 <MenuItem>
                     {task.completedStatus ? (
                         <div onClick={() => onToggleComplete(task.task_id)}>
-                            <FaRegCheckCircle className="list-icon" style={{margin: '0 5px 3px 0'}}/>
+                            <FaRegCheckCircle className="list-icon task-menu-item" />
                             <span>Mark as not completed</span>
                         </div>
                     ) : (
                         <div onClick={() => onToggleComplete(task.task_id)}>
-                            <FaCheckCircle className="list-icon" style={{margin: '0 5px 3px 0'}}/>
+                            <FaCheckCircle className="list-icon task-menu-item" />
                             <span>Mark as completed</span>
                         </div> 
                     )}
@@ -71,12 +71,12 @@ const RightClickMenu = ({
                 <MenuItem>
                     {task.importantStatus ? (
                         <div onClick={() => onToggleImportant(task.task_id)}>
-                            <FaRegStar className="list-icon" style={{margin: '0 5px 3px 0'}}/>
+                            <FaRegStar className="list-icon task-menu-item" />
                             <span>Remove importance</span>
                         </div>
                     ) : (
                         <div onClick={() => onToggleImportant(task.task_id)}>
-                            <FaStar className="list-icon" style={{margin: '0 5px 3px 0'}}/>
+                            <FaStar className="list-icon task-menu-item" />
                             <span>Mark as important</span>
                         </div>
                     )}
@@ -98,7 +98,7 @@ const RightClickMenu = ({
     )
 };
 
-RightClickMenu.propTypes = {
+Task.propTypes = {
     task: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
@@ -131,4 +131,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(null, mapDispatchToProps)(RightClickMenu);
+export default connect(null, mapDispatchToProps)(Task);

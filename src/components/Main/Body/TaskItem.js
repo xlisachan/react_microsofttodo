@@ -39,10 +39,10 @@ const TaskItem = ({
         <div className="main-list-item align-center space-between" 
             style={ listStyle(task.task_id) } onClick={ handleClick }>
             
-            <div style={{display: 'flex', alignItems: 'center'}}>
+            <div className="main-body-task-item">
                 {task.completedStatus ? (
                     <FaCheckCircle
-                        className="list-icon green list-icon-margin-rt"
+                        className="list-icon list-icon-margin-rt green"
                         onClick={() => onToggleComplete(task.task_id)}
                     />
                 ) : (

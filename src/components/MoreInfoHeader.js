@@ -46,7 +46,7 @@ const MoreInfoHeader = ({
 
     return (
         <div className="moreinfo-header moreinfo-margins">
-            <div style={{display: 'flex'}}>
+            <div className="moreinfo-header-item">
                 {selectedTask[0].completedStatus ? (
                     <FaCheckCircle 
                         className="list-icon list-icon-margin-rt green" 

@@ -60,7 +60,7 @@ class PlannedMenu extends Component {
                 <MenuItem key={item.id}
                     className="moreinfo-planned-item align-center space-between"
                     onClick={() => this.handleSort(item)}>
-                        <Icon className="list-icon" style={{marginRight: 8}}>
+                        <Icon className="list-icon moreinfo-planned-icon">
                             { item.icon }
                         </Icon>
                 

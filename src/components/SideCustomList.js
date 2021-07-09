@@ -44,7 +44,7 @@ const SideCustomList = ({
 
             <ContextMenu id={list.id}>
                 <MenuItem onClick={ onEditClick }>
-                    <FaRegEdit className="list-icon" style={{margin: '0 5px 3px 0'}} />
+                    <FaRegEdit className="list-icon task-menu-item" />
                     <span>Rename list</span>
                 </MenuItem>
 

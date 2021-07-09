@@ -67,7 +67,7 @@ textarea {
 }
 
 .list-icon {
-  font-size: 1.2rem;
+  font-size: 19px;
 }
 
 .list-icon-left {
@@ -85,7 +85,7 @@ ul {
 }
 
 .additem-btn { 
-  font-size: 1.5rem;
+  font-size: 24px;
   margin-right: 5px;
   background: transparent;
   border: none;
@@ -95,12 +95,17 @@ ul {
   background: #fafafa;
 }
 
+.delete-modal-header {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 /* context menu */
 .react-contextmenu {
   background-color: whitesmoke;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border-radius: 4px;
   color: #373a3c;
   font-size: 16px;
   margin: 2px 0 0;

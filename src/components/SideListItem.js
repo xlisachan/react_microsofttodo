@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaList, FaRegSun, FaRegStar, FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
+import {
+    FaList,
+    FaRegSun,
+    FaRegStar,
+    FaRegCalendar,
+    FaRegCalendarCheck
+} from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
@@ -24,10 +30,10 @@ const SideListItem = ({
 
     const headerStyle = text => {
         return {
+            alignItems: 'center',
+            backgroundColor: name === text ? 'gainsboro' : null,
             display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between', 
-            backgroundColor: name === text ? 'gainsboro' : null
+            justifyContent: 'space-between'
         }
     }
 
@@ -54,7 +60,7 @@ const SideListItem = ({
         ).length
         
         return numOfTasks > 0 ?
-            <div style={{color: 'gray'}}>
+            <div className="gray">
                 { numOfTasks }
             </div>
             :

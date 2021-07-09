@@ -29,6 +29,10 @@
   align-items: flex-start;
 }
 
+.moreinfo-header-item {
+  display: flex;
+}
+
 .moreinfo-list-title{
   font-weight: bold;
   width: 130px;
@@ -40,6 +44,10 @@
   margin: 10px 0;
   padding: 0 16px;
   width: 235px;
+}
+
+.moreinfo-planned-icon {
+  margin-right: 8px;
 }
 
 .moreinfo-step {

@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { Divider, List } from '@material-ui/core';
 
 import CustomList from './SideCustomList';
-import TitleRow from './SideListItem';
+import SideListItem from './SideListItem';
 
 const SideLists = ({lists, onClick=f=>f, onClose=f=>f, onEditClick=f=>f}) => {
     const defaultLists = lists
         .filter(list => list.defaultList)
         .map((list, index) => (
-            <TitleRow
+            <SideListItem
                 key={list.name + '_' + list.id}
                 list={ list }
                 index={ index }

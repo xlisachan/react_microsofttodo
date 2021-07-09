@@ -9,7 +9,7 @@ const plannedMenu = [
         "id": "today",
         "icon": "today",
         "caption": "Today",
-        "size": ".8rem",
+        "size": "13px",
         "num": 0,
         "day": getDay(0)
     },
@@ -17,7 +17,7 @@ const plannedMenu = [
         "id": "tomorrow",
         "icon": "event",
         "caption": "Tomorrow",
-        "size": ".8rem",
+        "size": "13px",
         "num": 1,
         "day": getDay(1)
     },
@@ -25,7 +25,7 @@ const plannedMenu = [
         "id": "nextWeek",
         "icon": "event_note",
         "caption": "Next Week",
-        "size": ".8rem",
+        "size": "13px",
         "num": 2,
         "day": getDay(2)
     },

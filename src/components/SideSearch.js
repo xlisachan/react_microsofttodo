@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
     inputRoot: {
         color: 'inherit',
+        width: '88%'
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 6),
@@ -41,16 +42,15 @@ const SideSearch = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) 
     const classes = useStyles();
 
     return (
-        <div className="side-searchbar">
+        <div className="side-search">
             <div className={classes.toolbar} />
 
             <div className={classes.search} style={{width: '90%', margin: 'auto'}}>
                 <div className={classes.searchIcon}>
-                    <FaSearch style={{fontSize: 16}} />
+                    <FaSearch className="side-search-icons" />
                 </div>
 
                 <InputBase
-                    style={{width: '88%'}}
                     placeholder="Search"
                     classes={{
                         root: classes.inputRoot,
@@ -62,7 +62,12 @@ const SideSearch = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) 
                 />
 
                 {!query ?
-                    null : <FaTimesCircle style={{ fontSize: 16 }} onClick={onClear} />}
+                    null :
+                    <FaTimesCircle
+                        className="side-search-icons"
+                        onClick={onClear}
+                    />
+                }
             </div>
         </div>
     );

@@ -1,3 +1,8 @@
+.main-body-task-item {
+  align-items: center;
+  display: flex;
+}
+
 .main-container {
   position: relative;
   top: 25px;
@@ -16,7 +21,20 @@
 }
 
 .main-header-title {
+  width: 100%;
+}
+
+.main-header-title-text {
   font-weight: bold;
+}
+
+.main-header-icon {
+  margin-right: 8px;
+}
+
+.main-header-menu-item {
+  display: flex;
+  justify-content: space-between;
 }
 
 .main-header-sortbar {
@@ -51,4 +69,12 @@ li.main-list-detail:first-child::before {
   font-size: small !important;
   margin-right: 3px;
   padding-top: 1px; 
+}
+
+.main-task-icon {
+  font-size: 12px;
+}
+
+.task-menu-item {
+  margin: 0 5px 3px 0;
 }

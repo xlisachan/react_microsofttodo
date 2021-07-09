@@ -16,13 +16,17 @@
   top: 100px;
 }
 
-.side-searchbar {
+.side-list-item {
+  align-items: center;
+  display: flex;
+}
+
+.side-search {
   background: #eee;
   position: fixed;
   width: 200px;
 }
 
-.side-list-item {
-  align-items: center;
-  display: flex;
+.side-search-icons {
+  font-size: 16px;
 }

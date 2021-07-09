@@ -19,6 +19,20 @@ const MoreInfoPlanned = ({
 
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
 
+    const plannedStyle = () => {
+        return {
+            color: selectedTask[0].date_due < todaysDate ? 'crimson' : 'royalblue'
+        }
+    }
+
+    const handleButtonClick = e => {
+        setAnchorEl(e.currentTarget);
+    }
+
+    const handleMenuClose = () => {
+        setAnchorEl(null)
+    }
+
     const getDateDue = () => {
         if (!selectedTask[0].date_due) return
 
@@ -35,14 +49,6 @@ const MoreInfoPlanned = ({
         return formattedDate;
     }
 
-    const handleButtonClick = e => {
-        setAnchorEl(e.currentTarget);
-    }
-
-    const handleMenuClose = () => {
-        setAnchorEl(null)
-    }
-
     return (
         <ListItem className="moreinfo-body-list-item">
             {!selectedTask[0].date_due ? (
@@ -52,7 +58,7 @@ const MoreInfoPlanned = ({
                 </div>
             ) : (
                 <div className="align-center space-between">
-                    <div className="align-center" style={{color: selectedTask[0].date_due < todaysDate ? 'crimson' : 'royalblue'}} onClick={ handleButtonClick }>
+                    <div className="align-center" style={plannedStyle()} onClick={ handleButtonClick }>
                         <FaRegCalendar className="list-icon list-icon-margin-rt" />
                         <span>Due {getDateDue()}</span>
                     </div>
