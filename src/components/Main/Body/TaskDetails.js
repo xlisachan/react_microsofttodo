@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
 import moment from 'moment';
-import Detail from './Detail';
+import Detail from './TaskDetail';
 
 const Details = ({lists, selectedListId, task}) => {
     const selectedList = lists.filter(list => list.id === selectedListId);

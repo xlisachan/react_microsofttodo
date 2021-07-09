@@ -1,8 +1,9 @@
 import React from 'react';
 import { CssBaseline, useMediaQuery} from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
+
+import Main from '../sections/Main/';
 import Side from '../sections/Side/';
-import Main from './Main';
 
 const ResponsiveDrawer = () => {
     let inputEl = null;

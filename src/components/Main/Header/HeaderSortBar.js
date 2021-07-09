@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeDir, changeOrder, resetChangeDir } from '../../../../../actions/listsActions';
-import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
-import SortBar from './SortBar';
+import { FaChevronUp, FaChevronDown, FaTimes } from 'react-icons/fa';
 
-const SortBarContainer = ({barColor, lists, selectedList, selectedListId, onChangeDir=f=>f, onClear=f=>f}) => {
+import { changeDir, changeOrder, resetChangeDir } from '../../../actions/listsActions';
+
+const HeaderSortBar = ({
+    barColor,
+    lists,
+    selectedList,
+    selectedListId,
+    onChangeDir = f => f,
+    onClear = f => f
+}) => {
     const currentList = lists.filter(list => list.id === selectedListId);
 
     const getOrderBy = () => {
@@ -28,19 +35,20 @@ const SortBarContainer = ({barColor, lists, selectedList, selectedListId, onChan
         : <FaChevronDown />;
 
     return (
-        <SortBar
-            barColor={ barColor }
-            selectedList={ selectedList }
-            selectedListId={ selectedListId }
-            getOrderBy={ getOrderBy }
-            getDirIcon={ getDirIcon }
-            onChange={ onChangeDir }
-            onClear={ onClear }
-        />
+        selectedList[0].sorted ?
+            <div className="main-header-sortbar align-center space-between" style={{ backgroundColor: barColor }}>
+                <div onClick={() => onChangeDir(selectedListId)}>
+                    Sorted { getOrderBy() } { getDirIcon }
+                </div>
+                
+                <FaTimes onClick={ () => onClear(selectedListId) }/>
+            </div>
+            :
+            null
     )
 };
     
-SortBarContainer.propTypes = {
+HeaderSortBar.propTypes = {
     barColor: PropTypes.string.isRequired,
     lists: PropTypes.array.isRequired,
     selectedList: PropTypes.array.isRequired,
@@ -72,4 +80,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SortBarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderSortBar);

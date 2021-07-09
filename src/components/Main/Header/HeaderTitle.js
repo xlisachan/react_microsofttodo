@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { renameList } from '../../../../../actions/listsActions';
-import { setList } from '../../../../../actions/currentActions';
-import Name from './Name';
 
-const NameContainer = React.forwardRef(({currentList, lists, onRenameList=f=>f, onSetList=f=>f}, ref) => { 
+import { setList } from '../../../actions/currentActions';
+import { renameList } from '../../../actions/listsActions';
+
+const HeaderTitle = React.forwardRef(({
+    currentList,
+    lists,
+    onRenameList = f => f,
+    onSetList = f => f
+}, ref) => {
+    const selectedList = lists.filter(list => list.id === currentList.id);
+    const defaultList = selectedList[0].defaultList;
+    
     const onSubmit = e => {
         e.preventDefault();
 
@@ -36,17 +44,25 @@ const NameContainer = React.forwardRef(({currentList, lists, onRenameList=f=>f, 
     }
 
     return (
-        <Name 
-            ref={ ref }
-            currentList={ currentList }
-            lists={ lists }
-            onSetList={ onSetList }
-            onSubmit={ onSubmit }
-        />
+        <h2 className="main-header-title" >
+            { defaultList ?
+                currentList.title
+                :
+                <form onSubmit={ onSubmit }>
+                    <input
+                        ref={ref}
+                        type="text"
+                        className="edit-input"
+                        value={ currentList.title }
+                        onChange={e => onSetList(currentList.id, e.target.value)}
+                    />
+                </form>
+            }
+        </h2>
     )
 });
 
-NameContainer.propTypes = {
+HeaderTitle.propTypes = {
     currentList: PropTypes.object.isRequired,
     lists: PropTypes.array.isRequired,
     onRenameList: PropTypes.func.isRequired,
@@ -76,4 +92,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {forwardRef: true})(NameContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(HeaderTitle);

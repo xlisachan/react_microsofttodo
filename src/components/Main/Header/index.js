@@ -1,10 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Title from './Title';
-import SortBar from './SortBar/SortBarContainer';
+
+import HeaderBanner from './HeaderBanner';
+import HeaderSortBar from './HeaderSortBar';
 
 const drawerWidth = 250;
 
@@ -31,7 +33,17 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Header = React.forwardRef(({formatColor, name, open, selectedList, secondaryColor=f=>f}, ref) => {
+const Header = React.forwardRef(({lists, open, selectedListId}, ref) => {
+    const selectedList = lists.filter(list => list.id === selectedListId);
+    const name = selectedList[0].name;
+    const formatColor = 'rgb(' + selectedList[0].color.join(',') + ')';
+
+    const secondaryColor = () => {
+        const newArr = selectedList[0].color.map(col => parseInt(col * .6));
+        const newColor = 'rgb(' + newArr.join(',') + ')';
+        return newColor;
+    };
+
     const classes = useStyles();
 
     return (
@@ -39,19 +51,30 @@ const Header = React.forwardRef(({formatColor, name, open, selectedList, seconda
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
                 })}>
-            <Title ref={ref} name={name} formatColor={formatColor} secondaryColor={secondaryColor} />
+            <HeaderBanner
+                ref={ref}
+                name={name}
+                formatColor={formatColor}
+                secondaryColor={secondaryColor}
+            />
 
-            <SortBar barColor={ secondaryColor() } selectedList= {selectedList} />
+            <HeaderSortBar
+                barColor={secondaryColor()}
+                selectedList={selectedList}
+            />
         </AppBar>
     );
 });
 
 Header.propTypes = {
-    name: PropTypes.string.isRequired,
+    lists: PropTypes.array.isRequired,
     open: PropTypes.bool.isRequired,
-    selectedList: PropTypes.array.isRequired,
-    formatColor: PropTypes.string.isRequired,
-    secondaryColor: PropTypes.func.isRequired
+    selectedListId: PropTypes.string.isRequired
 };
 
-export default Header;
+const mapStateToProps = state => ({
+    lists: state.lists,
+    selectedListId: state.current.list["id"]
+});
+
+export default connect(mapStateToProps, null, null, { forwardRef: true })(Header);

@@ -13,11 +13,11 @@ const Detail = ({el, name, task}) => {
             : null;
     
     const detailIcon = el.icon
-        ? <Icon style={{ fontSize: 'small', marginRight: 3, paddingTop: 1 }}>{el.icon}</Icon>
+        ? <Icon className="main-list-detail-icon">{el.icon}</Icon>
         : null
 
     const listDetail =
-        <li className="list-detail" style={{ color: statusColor }}>
+        <li className="main-list-detail" style={{ color: statusColor }}>
             {detailIcon}
             {el.text}
         </li>

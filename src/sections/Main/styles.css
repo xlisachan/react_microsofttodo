@@ -1,0 +1,54 @@
+.main-container {
+  position: relative;
+  top: 25px;
+}
+
+.main-no-match {
+  height: 100vh;
+  justify-content: center;
+  color: gray;
+}
+
+.main-header {
+  color: white;
+  padding: 16px 32px;
+  height: 107px;
+}
+
+.main-header-title {
+  font-weight: bold;
+}
+
+.main-header-sortbar {
+  padding: 5px 50px 5px 30px;
+  font-size: 14px;
+}
+
+.main-list-item {
+  height: 60px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.main-list-detail {
+  padding-right: 10px;
+}
+
+li.main-list-detail::before {
+  content: "\2022";
+  color: gray;
+  padding-right: 10px
+}
+
+li.main-list-detail:first-child::before {
+  content: "";
+  margin-left: 0;
+  padding: 0;
+}
+
+.main-list-detail-icon {
+  font-size: small !important;
+  margin-right: 3px;
+  padding-top: 1px; 
+}
