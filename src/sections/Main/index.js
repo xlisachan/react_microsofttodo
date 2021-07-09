@@ -44,12 +44,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const MainSection = React.forwardRef(({lists, query, selectedListId, tasks, open, onClose=f=>f, onOpen=f=>f}, ref) => {
+const MainSection = React.forwardRef(({ lists, query, selectedListId, tasks, open, onClose = f => f, onOpen = f => f }, ref) => {
     const classes = useStyles();
 
     const mainStyle = () => {
         return {
-            position: selectedList[0].sorted ? 'relative' : null, 
+            position: selectedList[0].sorted ? 'relative' : null,
             top: selectedList[0].sorted ? 30 : null
         }
     }
@@ -69,16 +69,16 @@ const MainSection = React.forwardRef(({lists, query, selectedListId, tasks, open
             if (
                 (task.item.toLowerCase().indexOf(query) !== -1) ||
                 (task.note.toLowerCase().indexOf(query) !== -1)
-            ){
+            ) {
                 filteredTasks.push(task);
             }
         })
         :
         filteredTasks = tasks
             .filter(task => {
-                return task[`${ name.toLowerCase().replace(/ /g,"_") }`] || task.list_id === selectedListId
+                return task[`${name.toLowerCase().replace(/ /g, "_")}`] || task.list_id === selectedListId
             })
-            .sort((a,b) => {
+            .sort((a, b) => {
                 return (
                     orderBy === 'item' ||
                     orderBy === 'date_due' ||
@@ -92,45 +92,44 @@ const MainSection = React.forwardRef(({lists, query, selectedListId, tasks, open
             .filter(task => hideCompleted ? !task.completedStatus : task)
 
     return (
-        filteredTasks.length > 0 ?
-            <div style={{ flexGrow: 1 }} className={query? null : classes.root}>
-                <div style={{ flexGrow: 1 }} className={classes.root}>
-                    {query ? null : <CssBaseline />}
+        // refactor
+        query ? (
+            <div style={{flexGrow: 1}}>
+                {filteredTasks.length > 0 ?
+                    <div className={classes.root}>
+                        <main style={mainStyle()}
+                            className={clsx(classes.content, {
+                                [classes.contentShift]: open,
+                            })}>
 
-                    {query ?
-                        null :
-                        <Header
-                            ref={ref}
-                            open={open}
-                        />
-                    }
+                            <ListBody tasks={filteredTasks} onClick={onOpen} onClose={onClose} />
+                        </main>
 
-                    <main style={mainStyle()}
-                        className={clsx(classes.content, {
-                            [classes.contentShift]: open,
-                        })}>
-                        
-                        {query ?
-                            null :
-                            <div className={classes.drawerHeader} />
-                        }
-                        
-                        <ListBody
-                            tasks={filteredTasks}
-                            onClick={onOpen}
-                            onClose={onClose}
-                        />
-                    </main>
-
-                    <MoreInfo
-                        open={open}
-                        onClose={onClose}
-                    />
-                </div>
+                        <MoreInfo open={open} onClose={onClose} />
+                    </div>
+                    :
+                    <div className="main-no-match align-center">
+                        <p>We searched high and low but couldn't find what you're looking for.</p>
+                    </div>
+                }
             </div>
-         : (
-            <div className="main-no-match align-center">
-                <p>We searched high and low but couldn't find what you're looking for.</p>
+        ) : (
+            <div style={{flexGrow: 1}} className={classes.root}>
+                <CssBaseline />
+
+                <Header ref={ref} open={open} />
+
+                <main style={ mainStyle() }
+                    className={clsx(classes.content, {
+                        [classes.contentShift]: open,
+                    })}>
+
+                    <div className={classes.drawerHeader} />
+
+                    <ListBody tasks={ filteredTasks } onClick={ onOpen } onClose={ onClose } />
+                </main>
+
+                <MoreInfo open={ open } onClose={ onClose } />
             </div>
         )
     )
