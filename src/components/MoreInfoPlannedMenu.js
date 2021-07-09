@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment'
-import DatePicker from './DatePicker';
 import { connect } from 'react-redux';
-import { addDateDue } from '../../../../../actions/tasksActions';
 import { Icon, ListItemText, MenuItem } from '@material-ui/core';
-import MenuTemplate from '../../../../MenuTemplate';
-import dateDueMenu from './DateMenu';
+
+import { addDateDue } from '../actions/tasksActions';
+import DatePicker from './MoreInfoPlannedDatePicker';
+import dateDueMenu from './MoreInfoPlannedDateMenu';
+import MenuTemplate from './MenuTemplate';
 
 class PlannedMenu extends Component {
     state={
@@ -57,9 +58,9 @@ class PlannedMenu extends Component {
 
             return (
                 <MenuItem key={item.id}
-                    className="align-center space-between"
+                    className="moreinfo-planned-item align-center space-between"
                     onClick={() => this.handleSort(item)}>
-                        <Icon className="list-icon" style={{marginRight: '.5rem'}}>
+                        <Icon className="list-icon" style={{marginRight: 8}}>
                             { item.icon }
                         </Icon>
                 

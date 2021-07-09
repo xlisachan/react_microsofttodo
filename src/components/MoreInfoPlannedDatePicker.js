@@ -1,11 +1,17 @@
-import 'date-fns';
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
-import moment from 'moment';
 
-const MaterialUIPickers = ({selectedTask, tasks, onAddDateDue=f=>f, onClose=f=>f}) => {
+import 'date-fns';
+
+const MaterialUIPickers = ({
+    selectedTask,
+    tasks,
+    onAddDateDue = f => f,
+    onClose = f => f
+}) => {
     const [selectedDate, setSelectedDate] = React.useState(new Date());
 
     const handleDateChange = (date) => {

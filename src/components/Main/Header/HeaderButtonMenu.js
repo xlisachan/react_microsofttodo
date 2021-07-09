@@ -56,7 +56,7 @@ const HeaderMenuContainer = ({anchorEl, open, onClose, lists, selectedListId, on
                             }}
                             onClick={e => handleSubItemClick(e, item)}>
                         
-                            <Icon style={{marginRight: '.5rem', fontSize: item.size}}>
+                            <Icon style={{marginRight: '8px', fontSize: item.size}}>
                                 { item.icon }
                             </Icon>
 
@@ -97,7 +97,7 @@ const HeaderMenuContainer = ({anchorEl, open, onClose, lists, selectedListId, on
                             justifyContent: 'space-between'
                         }}
                         onClick={() => handleSort(item)}>
-                            <Icon style={{color: formatColor(item.color), marginRight: '.5rem', fontSize: item.size}}>
+                            <Icon style={{color: formatColor(item.color), marginRight: '8px', fontSize: item.size}}>
                                 { item.icon }
                             </Icon>
                     

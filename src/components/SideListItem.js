@@ -34,7 +34,7 @@ const SideListItem = ({
     const iconStyle = color => {
         return {
             marginRight: -25, 
-            fontSize: '1.2rem',
+            fontSize: 19,
             color: 'rgb(' + color.join(',') + ')'
         }
     }

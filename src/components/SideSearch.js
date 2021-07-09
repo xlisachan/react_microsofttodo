@@ -46,7 +46,7 @@ const SideSearch = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) 
 
             <div className={classes.search} style={{width: '90%', margin: 'auto'}}>
                 <div className={classes.searchIcon}>
-                    <FaSearch style={{fontSize: '1rem'}} />
+                    <FaSearch style={{fontSize: 16}} />
                 </div>
 
                 <InputBase
@@ -62,7 +62,7 @@ const SideSearch = React.forwardRef(({query, onChange=f=>f, onClear=f=>f}, ref) 
                 />
 
                 {!query ?
-                    null : <FaTimesCircle style={{ fontSize: '1rem' }} onClick={onClear} />}
+                    null : <FaTimesCircle style={{ fontSize: 16 }} onClick={onClear} />}
             </div>
         </div>
     );

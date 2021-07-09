@@ -36,6 +36,10 @@ textarea {
   color: royalblue;
 }
 
+.dimgray {
+  color: dimgray;
+}
+
 .green {
   color: limegreen;
 }
@@ -45,9 +49,9 @@ textarea {
 }
 
 .align-center {
-  width: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  width: 100%;
 }
 
 .space-between {
@@ -74,19 +78,10 @@ textarea {
   margin-right: 15px;
 }
 
-.step-margin-rt {
-  margin-right: 18px;
-}
-
 ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.more-list-title{
-  width: 130px;
-  font-weight: bold;
 }
 
 .additem-btn { 
@@ -98,32 +93,6 @@ ul {
 
 .additem-form {
   background: #fafafa;
-}
-
-/* more */
-.more-fixed {
-  position: fixed;
-  background: #fafafa;
-  z-index: 1;
-}
-
-.more-margins{
-  width: 235px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 16px;
-}
-
-.more-header {
-  align-items: flex-start;
-}
-
-.more-footer {
-  bottom: 0;
-  margin-bottom: 0;
-  padding: 10px 16px;
-  align-items: center;
 }
 
 /* context menu */

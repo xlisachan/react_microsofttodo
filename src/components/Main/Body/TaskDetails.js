@@ -11,7 +11,7 @@ const Details = ({lists, selectedListId, task}) => {
     const listItemDetail = () => {
         return {
             display: 'flex',
-            fontSize: '.8rem',
+            fontSize: '12px',
             color: task.completedStatus ? 'darkgray' : 'dimgray'
         }
     }
@@ -22,7 +22,7 @@ const Details = ({lists, selectedListId, task}) => {
     }
 
     const completedTask = () => {
-        return numOfCompletedSteps() === task.steps.length ? <FaCheck style={{fontSize: '.7rem'}} /> : null
+        return numOfCompletedSteps() === task.steps.length ? <FaCheck style={{fontSize: 12}} /> : null
     }
 
     const numOfCompletedSteps = () => {

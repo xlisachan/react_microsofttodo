@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ClickAwayListener, ListItem } from '@material-ui/core';
 import Textarea from 'react-textarea-autosize';
-import { setNote } from '../../../../actions/currentActions';
-import { updateNote } from '../../../../actions/tasksActions';
+import { ClickAwayListener, ListItem } from '@material-ui/core';
 
-const Note = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=f=>f}) => {
+import { setNote } from '../actions/currentActions';
+import { updateNote } from '../actions/tasksActions';
+
+const MoreInfoNote = ({
+    currentNote,
+    selectedTask,
+    onSetNote = f => f,
+    onUpdateNote = f => f
+}) => {
     const [open, setOpen] = React.useState(false);
 
     if (!selectedTask[0]) return null;
@@ -38,14 +44,14 @@ const Note = ({currentNote, selectedTask, onSetNote=f=>f, onUpdateNote=f=>f}) =>
 
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
-            <ListItem style={{margin: '10px 3px'}} onClick={handleClick}>
+            <ListItem className="moreinfo-body-note" onClick={handleClick}>
                 { selectedTask[0].note ? note : placeholder }
             </ListItem>
         </ClickAwayListener>
     );
 };
 
-Note.propTypes = {
+MoreInfoNote.propTypes = {
     currentNote: PropTypes.string,
     selectedTask: PropTypes.array,
     onSetNote: PropTypes.func.isRequired,
@@ -70,4 +76,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default (connect)(mapStateToProps, mapDispatchToProps)(Note);
+export default (connect)(mapStateToProps, mapDispatchToProps)(MoreInfoNote);

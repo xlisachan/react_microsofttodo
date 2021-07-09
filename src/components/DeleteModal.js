@@ -41,9 +41,9 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
         setOpen(false);
     };
 
-    const deleteType = location === 'more-bottom'
+    const deleteType = location === 'moreinfo-bottom'
         ? <FaRegTrashAlt style={{ margin: '0 5px 3px 0' }} />
-        : location === 'more-top'
+        : location === 'moreinfo-top'
             ? <FaTimes />
             : (
                 <>
@@ -64,7 +64,7 @@ const DeleteModal = ({id, location, name, todo, onClick=f=>f}) => {
                 open={open}>
 
                 <div style={modalStyle} className={classes.paper}>
-                    <h2 id={`item-${todo}_${id}`} style={{fontSize: '1rem', fontWeight: 'bold'}}>
+                    <h2 id={`item-${todo}_${id}`} style={{fontSize: 16, fontWeight: 'bold'}}>
                         "{ name }" will be permanently deleted.
                     </h2>
 

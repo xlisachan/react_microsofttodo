@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import ListBody from '../../components/Main/Body';
 import Header from '../../components/Main/Header';
-import MoreInfo from '../../components/MoreInfo/MoreInfoContainer';
+import MoreInfo from '../MoreInfo/';
 
 import './styles.css';
 

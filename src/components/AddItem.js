@@ -20,7 +20,7 @@ const AddItemContainer = ({
     const selectedList = lists.filter(list => list.id === selectedListId);
     const name = selectedList[0].name;
     const todaysDate = moment(new Date()).format('YYYY-MM-DD');
-    const getSize = addItem === 'task' ? '1.2rem' : '1rem';
+    const getSize = addItem === 'task' ? 19 : 16;
 
     const handleChange = () => {
         setItem(_newItem.value)
@@ -29,21 +29,18 @@ const AddItemContainer = ({
     let _newItem;
 
     const itemStyle = () => {
-        if (addItem === 'task') {
-            return {
+        return (addItem === 'task') ?
+            {
                 margin: '0 auto',
                 height: 60,
                 padding: '10px 14px',
                 borderBottom: '1px solid gainsboro'
-            }
-        } else {
-            return {
+            } : {
                 margin: '3px 0 10px 0',
                 height: 30,
                 padding: '10px 12px',
                 borderBottom: 'none'
             }
-        }
     };
 
     const onSubmit = e => {
