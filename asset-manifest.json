@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react_microsofttodo/static/css/main.691aac25.chunk.css",
-    "main.js": "/react_microsofttodo/static/js/main.5b56f3af.chunk.js",
-    "main.js.map": "/react_microsofttodo/static/js/main.5b56f3af.chunk.js.map",
+    "main.js": "/react_microsofttodo/static/js/main.f30ebc7c.chunk.js",
+    "main.js.map": "/react_microsofttodo/static/js/main.f30ebc7c.chunk.js.map",
     "runtime-main.js": "/react_microsofttodo/static/js/runtime-main.777e3bbb.js",
     "runtime-main.js.map": "/react_microsofttodo/static/js/runtime-main.777e3bbb.js.map",
     "static/js/2.25f58933.chunk.js": "/react_microsofttodo/static/js/2.25f58933.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.777e3bbb.js",
     "static/js/2.25f58933.chunk.js",
     "static/css/main.691aac25.chunk.css",
-    "static/js/main.5b56f3af.chunk.js"
+    "static/js/main.f30ebc7c.chunk.js"
   ]
 }
