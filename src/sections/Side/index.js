@@ -43,6 +43,11 @@ const Side = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClic
         onClear();
     }
 
+    const addListClose = () => {
+        onClose();
+        clearSearch();
+    }
+
     const classes = useStyles();
 
     return (
@@ -64,7 +69,7 @@ const Side = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClic
 
                     <SideAddList
                         onEditClick={onEditClick}
-                        onClose={onClose}
+                        onClose={addListClose}
                     />
                 </Drawer>
             </Hidden>
