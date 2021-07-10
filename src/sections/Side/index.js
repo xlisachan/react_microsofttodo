@@ -57,7 +57,7 @@ const Side = ({query, onChangeQuery=f=>f, onClear=f=>f, onClose=f=>f, onEditClic
                     />
 
                     <SideLists
-                        onClick={onClear}
+                        onClick={clearSearch}
                         onClose={onClose}
                         onEditClick={onEditClick}
                     />
