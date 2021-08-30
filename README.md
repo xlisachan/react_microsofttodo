@@ -1,10 +1,5 @@
-## Task Management App
+## [Task Management App](https://xlisachan.github.io/react_microsofttodo/)</a>
 A task management app based on Microsoft To Do app
-
-## Installation
-`npm install`
-<br/>`npm start`
-<br/>Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
 ## Features and Functionality
 * Provide abilities for the following by managing state with Redux:
